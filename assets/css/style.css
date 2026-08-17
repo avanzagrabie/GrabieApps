@@ -151,7 +151,7 @@ input, textarea, select{ font: inherit; color: inherit; }
 .brand small{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: .68rem; color: var(--text-faint); letter-spacing: .06em; }
 
 .nav-links{ display: flex; align-items: center; gap: 30px; }
-.nav-links a{ font-size: .92rem; color: var(--text-dim); transition: color .2s ease; position: relative; }
+.nav-links a{ font-size: .92rem; color: var(--text-dim); position: relative; }
 .nav-links a:hover, .nav-links a.is-active{ color: var(--text); }
 .nav-links a.is-active::after{
   content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--gradient);

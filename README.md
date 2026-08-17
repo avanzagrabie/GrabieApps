@@ -10,7 +10,7 @@ Sitio estático (GitHub Pages) del estudio de ingeniería de Gabriel Díaz Berna
 - **7 idiomas** (Español, English, Français, Português, العربية, 中文, 日本語), cada uno en su **propia URL** — no un solo URL que cambia de texto por JS. Ver [SEO y multi-idioma](#seo-y-multi-idioma).
 - **Contacto muy restringido, no un formulario abierto**: solo se aceptan clientes por invitación. El formulario (`#contact`) no envía nada a ningún servidor nuestro — abre un chat de Telegram con el mensaje ya redactado (`t.me/Chichanofis?text=...`) y el visitante decide si lo envía. Ver [Contacto](#contacto).
 - **SEO al detalle**: canonical + `hreflang` por idioma, Open Graph/Twitter localizados, JSON-LD (`Person`, `ProfessionalService`, `WebSite`), `sitemap.xml` con anotaciones de idioma (+ hoja de estilo para verlo legible en el navegador), `robots.txt`, verificación de Google Search Console.
-- **Cada página shippea 2 requests**: el HTML y un `main.js` diferido. Nada más — ver [Rendimiento](#rendimiento).
+- **Cada página es 1 sola solicitud HTTP**: HTML, CSS y JS, todo inline. Nada más que cargar — ver [Rendimiento](#rendimiento).
 - **Cero cookies, cero analítica, cero rastreo** — verificable, no solo declarado. Página de privacidad honesta en los 7 idiomas (`/privacy.html`) explicando exactamente eso. Ver [Privacidad](#privacidad-y-cumplimiento).
 - **Fuera de la Wayback Machine**: `robots.txt` excluye a `ia_archiver`/`archive.org_bot` y todas las páginas llevan `noarchive` — ver [Archivado](#archivado).
 
@@ -79,12 +79,13 @@ El selector de idioma del menú no usa JavaScript para "cambiar" nada — son en
 
 ## Rendimiento
 
-Cada página shippea exactamente **2 requests**: el HTML y `assets/js/main.js` (con `defer`, no bloquea el render). Eso sale de dos decisiones que toma el build, no algo que haya que mantener a mano:
+Cada página generada es **una única respuesta HTTP**: HTML, CSS y JS, todo en el mismo archivo. Eso sale de tres decisiones que toma el build, no algo que haya que mantener a mano:
 
 - **El CSS va incrustado** (`<style>` en el `<head>`, generado a partir de `assets/css/style.css`) en vez de enlazado — elimina la solicitud que bloqueaba el renderizado inicial.
+- **`assets/js/main.js` también va incrustado** (`<script>` al final del `<body>`, generado a partir de `assets/js/main.js`) — GitHub Pages fija el `Cache-Control` en 10 minutos para cualquier archivo estático y no hay forma de cambiarlo desde aquí, así que la única manera de que Lighthouse deje de avisar de "tiempos de caché ineficientes" para ese archivo es no servirlo aparte.
 - **`assets/js/i18n.js` no se sirve nunca.** Es solo la fuente de datos que lee el generador en build time; lo único que un visitante necesitaba de ahí en runtime eran las 5 líneas de la terminal animada del hero, así que cada página lleva ya esas 5 líneas — en su propio idioma — incrustadas en un `<script>` de un par de líneas.
 
-Si vuelves a ver "solicitudes que bloquean el renderizado" o similar en Lighthouse/PageSpeed después de tocar `tools/template.html`, revisa que no hayas reintroducido un `<link rel="stylesheet">` o un `<script src="assets/js/i18n.js">` sueltos — el generador espera encontrarlos exactamente una vez, con ese texto exacto, para poder sustituirlos.
+Si vuelves a ver "solicitudes que bloquean el renderizado" o "tiempos de caché ineficientes" en Lighthouse/PageSpeed después de tocar `tools/template.html`, revisa que no hayas reintroducido un `<link rel="stylesheet">`, un `<script src="assets/js/main.js">` o un `<script src="assets/js/i18n.js">` sueltos — el generador espera encontrarlos exactamente una vez, con ese texto exacto, para poder sustituirlos.
 
 ### Regenerar las páginas
 

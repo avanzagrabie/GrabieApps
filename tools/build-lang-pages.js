@@ -21,15 +21,23 @@
        attributes stripped.
      - assets/css/style.css inlined into a <style> tag — removes
        the render-blocking CSS request entirely.
+     - assets/js/main.js inlined into a <script> tag too — GitHub
+       Pages fixes Cache-Control at 10 minutes for every static
+       asset and there's no way to override that here, so the only
+       way to stop Lighthouse flagging "inefficient cache lifetime"
+       for it is to not ship it as a separate request at all.
      - assets/js/i18n.js is NOT shipped at all. Instead, a tiny
        inline <script> carries just that page's 5 terminal
-       cmd/out pairs for assets/js/main.js's typewriter.
+       cmd/out pairs for the inlined main.js's typewriter.
      - <html lang dir>, title/description/OG/Twitter, canonical,
        the full hreflang cluster, og:locale (+alternates), the
        language-switcher menu (own language marked current) and
        the JSON-LD description are all set per language.
-     - Local asset paths (favicon, manifest, main.js) get a `../`
+     - Remaining local asset paths (favicon, manifest) get a `../`
        prefix for the 6 subpages (they live one level deep).
+
+   Net result: every generated page is a single HTTP response —
+   HTML, CSS and JS all inline, nothing else to fetch.
 
    Run after editing tools/template.html, assets/css/style.css
    and/or assets/js/i18n.js:
@@ -119,7 +127,7 @@ function buildTerminalScript(dict) {
   return `<script>window.GDB_TERMINAL_LINES=${JSON.stringify(lines)};</script>`;
 }
 
-function renderPage(templateHtml, lang, dict, cssContent) {
+function renderPage(templateHtml, lang, dict, cssContent, jsContent) {
   let html = templateHtml;
 
   // <html lang dir>
@@ -189,17 +197,31 @@ function renderPage(templateHtml, lang, dict, cssContent) {
     html = html.replace(/href="manifest\.webmanifest"/, 'href="../manifest.webmanifest"');
   }
 
+  html = inlineMainJs(html, jsContent);
+
   return html;
 }
 
-function render404(templateHtml, cssContent) {
-  return templateHtml.replace(
-    /<link rel="stylesheet" href="assets\/css\/style\.css">/,
-    `<style>\n${cssContent}\n</style>`
+// main.js is tiny (a few KB) and every page needs it, so it gets inlined too:
+// one HTML response per page, zero external requests, nothing left for
+// "use efficient cache lifetimes" to flag (GitHub Pages fixes that header at
+// 10 minutes for every static asset and there is no way to override it here).
+function inlineMainJs(html, jsContent) {
+  return html.replace(
+    /<script src="(?:\.\.\/)?assets\/js\/main\.js" defer><\/script>/,
+    () => `<script>\n${jsContent}\n</script>`
   );
 }
 
-function renderPrivacy(templateHtml, lang, dict, cssContent) {
+function render404(templateHtml, cssContent, jsContent) {
+  const html = templateHtml.replace(
+    /<link rel="stylesheet" href="assets\/css\/style\.css">/,
+    `<style>\n${cssContent}\n</style>`
+  );
+  return inlineMainJs(html, jsContent);
+}
+
+function renderPrivacy(templateHtml, lang, dict, cssContent, jsContent) {
   let html = templateHtml;
 
   html = html.replace(
@@ -241,18 +263,21 @@ function renderPrivacy(templateHtml, lang, dict, cssContent) {
     html = html.replace(/href="manifest\.webmanifest"/, 'href="../manifest.webmanifest"');
   }
 
+  html = inlineMainJs(html, jsContent);
+
   return html;
 }
 
 function main() {
   const template = fs.readFileSync(path.join(__dirname, "template.html"), "utf8");
   const cssContent = fs.readFileSync(path.join(ROOT, "assets", "css", "style.css"), "utf8").trim();
+  const jsContent = fs.readFileSync(path.join(ROOT, "assets", "js", "main.js"), "utf8").trim();
   const I18N = extractI18N(fs.readFileSync(path.join(ROOT, "assets", "js", "i18n.js"), "utf8"));
 
   for (const lang of ORDER) {
     const dict = I18N[lang];
     if (!dict) { console.error(`No dictionary for "${lang}" in i18n.js — skipped`); continue; }
-    const out = renderPage(template, lang, dict, cssContent);
+    const out = renderPage(template, lang, dict, cssContent, jsContent);
     const outPath = outPathFor(lang);
     fs.mkdirSync(path.dirname(outPath), { recursive: true });
     fs.writeFileSync(outPath, out, "utf8");
@@ -263,7 +288,7 @@ function main() {
   for (const lang of ORDER) {
     const dict = I18N[lang];
     if (!dict) continue;
-    const out = renderPrivacy(privacyTemplate, lang, dict, cssContent);
+    const out = renderPrivacy(privacyTemplate, lang, dict, cssContent, jsContent);
     const outPath = outPathForPrivacy(lang);
     fs.mkdirSync(path.dirname(outPath), { recursive: true });
     fs.writeFileSync(outPath, out, "utf8");
@@ -271,7 +296,7 @@ function main() {
   }
 
   const template404 = fs.readFileSync(path.join(__dirname, "404-template.html"), "utf8");
-  const out404 = render404(template404, cssContent);
+  const out404 = render404(template404, cssContent, jsContent);
   fs.writeFileSync(path.join(ROOT, "404.html"), out404, "utf8");
   console.log(`Built 404.html (${out404.length} bytes)`);
 
