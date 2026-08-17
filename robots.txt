@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Keep this site out of the Wayback Machine / Internet Archive.
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: archive.org_bot
+Disallow: /
+
 Sitemap: https://avanzagrabie.github.io/GrabieApps/sitemap.xml

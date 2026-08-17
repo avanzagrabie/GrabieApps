@@ -60,6 +60,12 @@ function urlFor(lang) {
 function outPathFor(lang) {
   return lang === "es" ? path.join(ROOT, "index.html") : path.join(ROOT, lang, "index.html");
 }
+function urlForPrivacy(lang) {
+  return lang === "es" ? `${BASE_URL}privacy.html` : `${BASE_URL}${lang}/privacy.html`;
+}
+function outPathForPrivacy(lang) {
+  return lang === "es" ? path.join(ROOT, "privacy.html") : path.join(ROOT, lang, "privacy.html");
+}
 
 function escapeHtml(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -87,10 +93,11 @@ function extractI18N(jsSource) {
   return new Function("return (" + literal + ");")();
 }
 
-function buildLangMenu(currentLang) {
+function buildLangMenu(currentLang, urlFn) {
+  const fn = urlFn || urlFor;
   const lines = ORDER.map((l) => {
     const cur = l === currentLang ? ' aria-current="true"' : "";
-    return `          <a role="menuitem" href="${urlFor(l)}"${cur}>${LANGS[l].name} <span class="code">${LANGS[l].code}</span></a>`;
+    return `          <a role="menuitem" href="${fn(l)}"${cur}>${LANGS[l].name} <span class="code">${LANGS[l].code}</span></a>`;
   });
   return `<div class="lang-menu" role="menu">\n${lines.join("\n")}\n        </div>`;
 }
@@ -192,6 +199,51 @@ function render404(templateHtml, cssContent) {
   );
 }
 
+function renderPrivacy(templateHtml, lang, dict, cssContent) {
+  let html = templateHtml;
+
+  html = html.replace(
+    /<html lang="es">/,
+    LANGS[lang].dir === "rtl" ? `<html lang="${lang}" dir="rtl">` : `<html lang="${lang}">`
+  );
+
+  html = html.replace(
+    /<meta\b([^>]*?)content="[^"]*"([^>]*?)\sdata-i18n-attr="content:([a-zA-Z0-9_.]+)"([^>]*)>/g,
+    (m, pre, mid, key, post) => {
+      const val = dict[key] !== undefined ? dict[key] : key;
+      return `<meta${pre}content="${escapeAttr(val)}"${mid}${post}>`;
+    }
+  );
+
+  html = html.replace(
+    /\sdata-i18n="([a-zA-Z0-9_.]+)"([^>]*)>([^<]*)</g,
+    (m, key, restAttrs, oldText) => {
+      const val = dict[key] !== undefined ? dict[key] : key;
+      return `${restAttrs}>${escapeHtml(val)}<`;
+    }
+  );
+
+  const selfUrl = urlForPrivacy(lang);
+  html = html.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${selfUrl}">`);
+
+  html = html.replace(/<div class="lang-menu" role="menu">[\s\S]*?<\/div>/, buildLangMenu(lang, urlForPrivacy));
+
+  html = html.replace(/<span class="code">ES<\/span>\s*<\/button>/, `<span class="code">${LANGS[lang].code}</span>\n        </button>`);
+
+  html = html.replace(
+    /<link rel="stylesheet" href="assets\/css\/style\.css">/,
+    `<style>\n${cssContent}\n</style>`
+  );
+
+  if (lang !== "es") {
+    html = html.replace(/href="assets\//g, 'href="../assets/');
+    html = html.replace(/src="assets\//g, 'src="../assets/');
+    html = html.replace(/href="manifest\.webmanifest"/, 'href="../manifest.webmanifest"');
+  }
+
+  return html;
+}
+
 function main() {
   const template = fs.readFileSync(path.join(__dirname, "template.html"), "utf8");
   const cssContent = fs.readFileSync(path.join(ROOT, "assets", "css", "style.css"), "utf8").trim();
@@ -207,12 +259,23 @@ function main() {
     console.log(`Built ${path.relative(ROOT, outPath)} (${out.length} bytes)`);
   }
 
+  const privacyTemplate = fs.readFileSync(path.join(__dirname, "privacy-template.html"), "utf8");
+  for (const lang of ORDER) {
+    const dict = I18N[lang];
+    if (!dict) continue;
+    const out = renderPrivacy(privacyTemplate, lang, dict, cssContent);
+    const outPath = outPathForPrivacy(lang);
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, out, "utf8");
+    console.log(`Built ${path.relative(ROOT, outPath)} (${out.length} bytes)`);
+  }
+
   const template404 = fs.readFileSync(path.join(__dirname, "404-template.html"), "utf8");
   const out404 = render404(template404, cssContent);
   fs.writeFileSync(path.join(ROOT, "404.html"), out404, "utf8");
   console.log(`Built 404.html (${out404.length} bytes)`);
 
-  console.log("Done. Edit tools/template.html, tools/404-template.html and/or assets/js/i18n.js, then re-run this script.");
+  console.log("Done. Edit tools/template.html, tools/privacy-template.html, tools/404-template.html and/or assets/js/i18n.js, then re-run this script.");
 }
 
 main();

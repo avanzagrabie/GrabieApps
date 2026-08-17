@@ -11,6 +11,8 @@ Sitio estático (GitHub Pages) del estudio de ingeniería de Gabriel Díaz Berna
 - **Sin sección de contacto**: el estudio trabaja solo bajo invitación, así que no hay formulario ni email público — es una decisión de posicionamiento, no un descuido.
 - **SEO al detalle**: canonical + `hreflang` por idioma, Open Graph/Twitter localizados, JSON-LD (`Person`, `ProfessionalService`, `WebSite`), `sitemap.xml` con anotaciones de idioma (+ hoja de estilo para verlo legible en el navegador), `robots.txt`, verificación de Google Search Console.
 - **Cada página shippea 2 requests**: el HTML y un `main.js` diferido. Nada más — ver [Rendimiento](#rendimiento).
+- **Cero cookies, cero analítica, cero rastreo** — verificable, no solo declarado. Página de privacidad honesta en los 7 idiomas (`/privacy.html`) explicando exactamente eso. Ver [Privacidad](#privacidad-y-cumplimiento).
+- **Fuera de la Wayback Machine**: `robots.txt` excluye a `ia_archiver`/`archive.org_bot` y todas las páginas llevan `noarchive` — ver [Archivado](#archivado).
 
 ## Estructura
 
@@ -22,9 +24,13 @@ pt/index.html                 )
 ar/index.html                 )
 zh/index.html                 )
 ja/index.html                 )
+privacy.html                  ) Página de privacidad, misma lógica, 7 idiomas.
+en/privacy.html                )
+...                            )
 404.html                      )
 tools/
-  template.html                Fuente en español — SE EDITA a mano
+  template.html                Fuente en español (portada) — SE EDITA a mano
+  privacy-template.html        Fuente de la página de privacidad — SE EDITA a mano
   404-template.html            Fuente de la página 404 — SE EDITA a mano
   build-lang-pages.js          Generador (Node, sin dependencias)
 assets/
@@ -82,13 +88,29 @@ Si vuelves a ver "solicitudes que bloquean el renderizado" o similar en Lighthou
 
 ### Regenerar las páginas
 
-`tools/template.html` (contenido en español), `tools/404-template.html` y `assets/js/i18n.js` (diccionario) son los únicos archivos que se editan a mano — igual que `assets/css/style.css` para el diseño. Después de tocar cualquiera de ellos:
+`tools/template.html` (contenido en español), `tools/privacy-template.html`, `tools/404-template.html` y `assets/js/i18n.js` (diccionario) son los únicos archivos que se editan a mano — igual que `assets/css/style.css` para el diseño. Después de tocar cualquiera de ellos:
 
 ```bash
 node tools/build-lang-pages.js
 ```
 
-Esto reescribe `index.html`, `en/index.html`, `fr/index.html`, `pt/index.html`, `ar/index.html`, `zh/index.html`, `ja/index.html` y `404.html` desde cero, con el CSS ya incrustado y las traducciones ya horneadas. Si añades una sección nueva o una clave `data-i18n` nueva en `tools/template.html`, añade su traducción en las 7 entradas de `assets/js/i18n.js` antes de regenerar (si falta una clave en algún idioma, el generador deja la clave sin traducir en su lugar en vez de fallar, así que conviene revisar la salida).
+Esto reescribe `index.html`, `en/index.html`, `fr/index.html`, `pt/index.html`, `ar/index.html`, `zh/index.html`, `ja/index.html`, las 7 `privacy.html` y `404.html` desde cero, con el CSS ya incrustado y las traducciones ya horneadas. Si añades una sección nueva o una clave `data-i18n` nueva en cualquiera de las plantillas, añade su traducción en las 7 entradas de `assets/js/i18n.js` antes de regenerar (si falta una clave en algún idioma, el generador deja la clave sin traducir en su lugar en vez de fallar, así que conviene revisar la salida).
+
+## Privacidad y cumplimiento
+
+El sitio no usa cookies (propias ni de terceros), no ejecuta ningún script de analítica, no carga nada desde fuera de este dominio y no tiene ningún formulario — no hay ningún dato personal que recopilar. Esto no es una afirmación de marketing: se puede verificar con `grep -rn "localStorage\|document.cookie" assets/js/` (sin coincidencias) o mirando las cabeceras de red de cualquier página (sin `Set-Cookie`).
+
+Como consecuencia:
+
+- **No hay banner de cookies.** Mostrar uno pidiendo consentimiento para cookies que no existen sería inexacto, no "más cumplidor" — el RGPD (y leyes equivalentes: CCPA/CPRA, LGPD, etc.) exigen consentimiento *antes de* usar cookies no esenciales; si no hay ninguna, no hay nada que consentir.
+- **`/privacy.html`** (y su versión en cada idioma) documenta esto explícitamente: qué no hacemos, por qué el RGPD y normativas equivalentes no aplican al no haber tratamiento de datos, y una nota sobre qué procesa GitHub Pages como parte del hosting (fuera de nuestro control).
+- Si en el futuro se añade **cualquier** cookie, script de analítica, formulario o recurso de terceros, hay que actualizar `tools/privacy-template.html` para reflejarlo con precisión — y probablemente entonces sí haga falta un banner de consentimiento real.
+
+## Archivado
+
+`robots.txt` excluye explícitamente a `ia_archiver` y `archive.org_bot` (el crawler de la Wayback Machine de Internet Archive), y todas las páginas llevan `<meta name="robots" content="... noarchive">`, que además evita que Google/Bing ofrezcan una copia en caché del sitio.
+
+Esto es lo estándar y lo que los archivadores que se comportan bien (incluida la Wayback Machine) respetan — pero es una señal voluntaria, no un candado. Ninguna página pública en la web puede impedir de forma absoluta que alguien la capture: siempre queda ver el código fuente, guardarla desde el navegador, hacer una captura de pantalla o usar una herramienta de archivado que ignore `robots.txt`. Si el dominio llegara a tener capturas antiguas ya guardadas en el Wayback Machine (poco probable, es nuevo), hay que pedir su retirada directamente en `archive.org/about/exclude.php` — eso no se puede automatizar desde el repositorio.
 
 ## Publicar en GitHub Pages
 

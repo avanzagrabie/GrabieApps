@@ -21,7 +21,7 @@
       "meta.description": `Gabriel Díaz Bernal lidera un estudio de 25 ingenieros de software de élite. Ubicación no divulgada. Trabajamos bajo demanda y aceptamos proyectos solo bajo condiciones muy selectas.`,
 
       "nav.home": `Inicio`, "nav.about": `Sobre mí`, "nav.stack": `Stack`, "nav.team": `Equipo`,
-      "nav.clients": `Clientes`, "nav.process": `Proceso`,
+      "nav.clients": `Clientes`, "nav.process": `Proceso`, "nav.privacy": `Privacidad`,
 
       "hero.eyebrow": `Disponible solo bajo invitación`,
       "hero.title": `Gabriel Díaz Bernal`,
@@ -94,6 +94,24 @@
       "location.text": `No divulgamos oficina ni ciudad base. El equipo opera 100% en remoto, distribuido, con reuniones bajo NDA cuando el proyecto lo requiere. Es una decisión operativa, no un truco de marketing.`,
       "location.badge": `Ubicación: clasificada`,
 
+      "privacy.eyebrow": `Privacidad`,
+      "privacy.title": `Este sitio no te vigila.`,
+      "privacy.subtitle": `Sin cookies, sin analítica, sin rastreo. Esta página explica exactamente qué hacemos con tus datos: nada.`,
+      "privacy.box_title": `Cero cookies. Cero rastreo.`,
+      "privacy.box_text": `Este sitio no usa cookies, ni propias ni de terceros, no ejecuta ningún script de analítica y no carga ningún recurso desde fuera de este dominio. No hay nada que rastrear, así que no hay ningún banner pidiéndote permiso para algo que no hacemos.`,
+      "privacy.donot_label": `Lo que no hacemos`,
+      "privacy.donot1": `No usamos cookies, ni propias ni de terceros`,
+      "privacy.donot2": `No usamos Google Analytics ni ninguna otra herramienta de analítica`,
+      "privacy.donot3": `No cargamos fuentes, CDNs ni scripts externos`,
+      "privacy.donot4": `No usamos píxeles de publicidad ni de redes sociales`,
+      "privacy.donot5": `No hay formularios: no recopilamos ningún dato que nos envíes`,
+      "privacy.gdpr_title": `RGPD y leyes de protección de datos`,
+      "privacy.gdpr_text": `Como no recopilamos datos personales a través de este sitio, no hay tratamiento de datos sobre el que aplicar el RGPD (UE), la Directiva de privacidad electrónica, la CCPA/CPRA (California), la LGPD (Brasil) ni ninguna normativa equivalente en el país desde el que nos visites. No hay datos que procesar, ceder ni vender — y por tanto, nada sobre lo que ejercer esos derechos.`,
+      "privacy.hosting_title": `Alojamiento`,
+      "privacy.hosting_text": `Este sitio es estático y se sirve desde GitHub Pages. GitHub, Inc. puede procesar direcciones IP y registros técnicos de acceso como parte de su infraestructura de entrega, fuera de nuestro control y sin que los usemos con ningún fin propio. Consulta la política de privacidad de GitHub para más información.`,
+      "privacy.hosting_link": `Política de privacidad de GitHub`,
+      "privacy.updated": `Última actualización: 17 de agosto de 2026`,
+
       "footer.tagline": `Software de élite. Bajo invitación.`, "footer.rights": `Todos los derechos reservados.`,
       "footer.made": `Sitio construido con precisión de ingeniería.`,
 
@@ -108,7 +126,7 @@
       "meta.description": `Gabriel Díaz Bernal leads a studio of 25 elite software engineers. Undisclosed location. We work on demand and accept projects only under very selective terms.`,
 
       "nav.home": `Home`, "nav.about": `About`, "nav.stack": `Stack`, "nav.team": `Team`,
-      "nav.clients": `Clients`, "nav.process": `Process`,
+      "nav.clients": `Clients`, "nav.process": `Process`, "nav.privacy": `Privacy`,
 
       "hero.eyebrow": `Available by invitation only`,
       "hero.title": `Gabriel Díaz Bernal`,
@@ -181,6 +199,24 @@
       "location.text": `We don't disclose an office or a home city. The team operates 100% remote, distributed, with NDA-bound meetings when a project requires them. It's an operational decision, not a marketing trick.`,
       "location.badge": `Location: classified`,
 
+      "privacy.eyebrow": `Privacy`,
+      "privacy.title": `This site doesn't watch you.`,
+      "privacy.subtitle": `No cookies, no analytics, no tracking. This page explains exactly what we do with your data: nothing.`,
+      "privacy.box_title": `Zero cookies. Zero tracking.`,
+      "privacy.box_text": `This site uses no cookies, first-party or third-party, runs no analytics script, and loads nothing from outside this domain. There's nothing to track, so there's no banner asking your permission for something we don't do.`,
+      "privacy.donot_label": `What we don't do`,
+      "privacy.donot1": `We don't use cookies, first-party or third-party`,
+      "privacy.donot2": `We don't use Google Analytics or any other analytics tool`,
+      "privacy.donot3": `We don't load external fonts, CDNs, or scripts`,
+      "privacy.donot4": `We don't use advertising or social media pixels`,
+      "privacy.donot5": `There are no forms: we don't collect anything you'd send us`,
+      "privacy.gdpr_title": `GDPR and data protection laws`,
+      "privacy.gdpr_text": `Since we don't collect personal data through this site, there's no data processing for the GDPR (EU), the ePrivacy Directive, the CCPA/CPRA (California), the LGPD (Brazil), or any equivalent law in whichever country you're visiting from to apply to. There's no data to process, share, or sell — and therefore nothing to exercise those rights over.`,
+      "privacy.hosting_title": `Hosting`,
+      "privacy.hosting_text": `This site is static and served from GitHub Pages. GitHub, Inc. may process IP addresses and technical access logs as part of its delivery infrastructure, outside our control and not used by us for any purpose of our own. See GitHub's privacy statement for details.`,
+      "privacy.hosting_link": `GitHub's privacy statement`,
+      "privacy.updated": `Last updated: August 17, 2026`,
+
       "footer.tagline": `Elite software. By invitation.`, "footer.rights": `All rights reserved.`,
       "footer.made": `Site built with engineering precision.`,
 
@@ -195,7 +231,7 @@
       "meta.description": `Gabriel Díaz Bernal dirige un studio de 25 ingénieurs logiciels d'élite. Localisation non divulguée. Nous travaillons à la demande et n'acceptons des projets que selon des conditions très sélectives.`,
 
       "nav.home": `Accueil`, "nav.about": `À propos`, "nav.stack": `Stack`, "nav.team": `Équipe`,
-      "nav.clients": `Clients`, "nav.process": `Processus`,
+      "nav.clients": `Clients`, "nav.process": `Processus`, "nav.privacy": `Confidentialité`,
 
       "hero.eyebrow": `Disponible uniquement sur invitation`,
       "hero.title": `Gabriel Díaz Bernal`,
@@ -268,6 +304,24 @@
       "location.text": `Nous ne divulguons ni bureau ni ville de base. L'équipe opère à 100 % à distance, de façon distribuée, avec des réunions sous NDA lorsque le projet l'exige. C'est une décision opérationnelle, pas un artifice marketing.`,
       "location.badge": `Localisation : classifiée`,
 
+      "privacy.eyebrow": `Confidentialité`,
+      "privacy.title": `Ce site ne vous surveille pas.`,
+      "privacy.subtitle": `Aucun cookie, aucune analyse, aucun suivi. Cette page explique exactement ce que nous faisons de vos données : rien.`,
+      "privacy.box_title": `Zéro cookie. Zéro suivi.`,
+      "privacy.box_text": `Ce site n'utilise aucun cookie, ni propriétaire ni tiers, n'exécute aucun script d'analyse et ne charge rien depuis l'extérieur de ce domaine. Il n'y a rien à suivre, donc aucune bannière ne vous demande la permission pour quelque chose que nous ne faisons pas.`,
+      "privacy.donot_label": `Ce que nous ne faisons pas`,
+      "privacy.donot1": `Nous n'utilisons aucun cookie, propriétaire ou tiers`,
+      "privacy.donot2": `Nous n'utilisons pas Google Analytics ni aucun autre outil d'analyse`,
+      "privacy.donot3": `Nous ne chargeons aucune police, CDN ou script externe`,
+      "privacy.donot4": `Nous n'utilisons aucun pixel publicitaire ou de réseau social`,
+      "privacy.donot5": `Il n'y a aucun formulaire : nous ne collectons rien de ce que vous nous enverriez`,
+      "privacy.gdpr_title": `RGPD et lois de protection des données`,
+      "privacy.gdpr_text": `Comme nous ne collectons aucune donnée personnelle via ce site, il n'y a aucun traitement de données auquel le RGPD (UE), la directive ePrivacy, le CCPA/CPRA (Californie), la LGPD (Brésil) ou toute loi équivalente du pays depuis lequel vous nous visitez pourrait s'appliquer. Il n'y a aucune donnée à traiter, céder ou vendre — et donc rien sur quoi exercer ces droits.`,
+      "privacy.hosting_title": `Hébergement`,
+      "privacy.hosting_text": `Ce site est statique et hébergé sur GitHub Pages. GitHub, Inc. peut traiter les adresses IP et les journaux d'accès techniques dans le cadre de son infrastructure de diffusion, hors de notre contrôle et sans que nous les utilisions à nos propres fins. Consultez la déclaration de confidentialité de GitHub pour plus de détails.`,
+      "privacy.hosting_link": `Déclaration de confidentialité de GitHub`,
+      "privacy.updated": `Dernière mise à jour : 17 août 2026`,
+
       "footer.tagline": `Logiciel d'élite. Sur invitation.`, "footer.rights": `Tous droits réservés.`,
       "footer.made": `Site construit avec précision d'ingénierie.`,
 
@@ -282,7 +336,7 @@
       "meta.description": `Gabriel Díaz Bernal lidera um estúdio de 25 engenheiros de software de elite. Localização não divulgada. Trabalhamos sob demanda e aceitamos projetos apenas em condições muito seletas.`,
 
       "nav.home": `Início`, "nav.about": `Sobre mim`, "nav.stack": `Stack`, "nav.team": `Equipe`,
-      "nav.clients": `Clientes`, "nav.process": `Processo`,
+      "nav.clients": `Clientes`, "nav.process": `Processo`, "nav.privacy": `Privacidade`,
 
       "hero.eyebrow": `Disponível apenas por convite`,
       "hero.title": `Gabriel Díaz Bernal`,
@@ -355,6 +409,24 @@
       "location.text": `Não divulgamos escritório nem cidade-base. A equipe opera 100% remota, distribuída, com reuniões sob NDA quando o projeto exige. É uma decisão operacional, não um truque de marketing.`,
       "location.badge": `Localização: classificada`,
 
+      "privacy.eyebrow": `Privacidade`,
+      "privacy.title": `Este site não te vigia.`,
+      "privacy.subtitle": `Sem cookies, sem análise, sem rastreamento. Esta página explica exatamente o que fazemos com os seus dados: nada.`,
+      "privacy.box_title": `Zero cookies. Zero rastreamento.`,
+      "privacy.box_text": `Este site não usa cookies, próprios ou de terceiros, não executa nenhum script de análise e não carrega nada de fora deste domínio. Não há nada para rastrear, então não há nenhum banner pedindo sua permissão para algo que não fazemos.`,
+      "privacy.donot_label": `O que não fazemos`,
+      "privacy.donot1": `Não usamos cookies, próprios ou de terceiros`,
+      "privacy.donot2": `Não usamos Google Analytics nem nenhuma outra ferramenta de análise`,
+      "privacy.donot3": `Não carregamos fontes, CDNs ou scripts externos`,
+      "privacy.donot4": `Não usamos pixels de publicidade ou de redes sociais`,
+      "privacy.donot5": `Não há formulários: não coletamos nada que você nos envie`,
+      "privacy.gdpr_title": `RGPD e leis de proteção de dados`,
+      "privacy.gdpr_text": `Como não coletamos dados pessoais através deste site, não há tratamento de dados sobre o qual o RGPD (UE), a Diretiva de Privacidade Eletrônica, a CCPA/CPRA (Califórnia), a LGPD (Brasil) ou qualquer lei equivalente do país de onde você nos visita possa se aplicar. Não há dados para processar, compartilhar ou vender — e, portanto, nada sobre o que exercer esses direitos.`,
+      "privacy.hosting_title": `Hospedagem`,
+      "privacy.hosting_text": `Este site é estático e hospedado no GitHub Pages. A GitHub, Inc. pode processar endereços IP e registros técnicos de acesso como parte de sua infraestrutura de entrega, fora do nosso controle e sem que os usemos para qualquer finalidade própria. Consulte a política de privacidade do GitHub para mais detalhes.`,
+      "privacy.hosting_link": `Política de privacidade do GitHub`,
+      "privacy.updated": `Última atualização: 17 de agosto de 2026`,
+
       "footer.tagline": `Software de elite. Sob convite.`, "footer.rights": `Todos os direitos reservados.`,
       "footer.made": `Site construído com precisão de engenharia.`,
 
@@ -369,7 +441,7 @@
       "meta.description": `يقود غابرييل دياز بيرنال استوديو من 25 مهندس برمجيات من النخبة. الموقع غير معلن. نعمل عند الطلب ونقبل المشاريع وفق شروط انتقائية للغاية فقط.`,
 
       "nav.home": `الرئيسية`, "nav.about": `نبذة عني`, "nav.stack": `التقنيات`, "nav.team": `الفريق`,
-      "nav.clients": `العملاء`, "nav.process": `منهجية العمل`,
+      "nav.clients": `العملاء`, "nav.process": `منهجية العمل`, "nav.privacy": `الخصوصية`,
 
       "hero.eyebrow": `متاح فقط بالدعوة`,
       "hero.title": `غابرييل دياز بيرنال`,
@@ -442,6 +514,24 @@
       "location.text": `لا نُفصح عن مكتب أو مدينة رئيسية. يعمل الفريق عن بُعد بنسبة 100%، وبشكل موزّع، مع اجتماعات بموجب اتفاقية سرية عند الحاجة. إنه قرار تشغيلي، لا خدعة تسويقية.`,
       "location.badge": `الموقع: سرّي`,
 
+      "privacy.eyebrow": `الخصوصية`,
+      "privacy.title": `هذا الموقع لا يراقبك.`,
+      "privacy.subtitle": `لا ملفات تعريف ارتباط، لا تحليلات، لا تتبع. توضح هذه الصفحة بالضبط ما نفعله ببياناتك: لا شيء.`,
+      "privacy.box_title": `صفر ملفات تعريف ارتباط. صفر تتبع.`,
+      "privacy.box_text": `لا يستخدم هذا الموقع أي ملفات تعريف ارتباط، سواء خاصة بنا أو من أطراف ثالثة، ولا يشغّل أي نص تحليلي، ولا يحمّل أي شيء من خارج هذا النطاق. لا يوجد شيء لتتبعه، لذا لا توجد أي لافتة تطلب إذنك لشيء لا نقوم به.`,
+      "privacy.donot_label": `ما لا نفعله`,
+      "privacy.donot1": `لا نستخدم ملفات تعريف ارتباط، خاصة أو من أطراف ثالثة`,
+      "privacy.donot2": `لا نستخدم Google Analytics ولا أي أداة تحليلات أخرى`,
+      "privacy.donot3": `لا نحمّل خطوطًا أو شبكات توصيل محتوى أو نصوصًا خارجية`,
+      "privacy.donot4": `لا نستخدم بكسلات إعلانية أو خاصة بالشبكات الاجتماعية`,
+      "privacy.donot5": `لا توجد نماذج: لا نجمع أي شيء قد ترسله إلينا`,
+      "privacy.gdpr_title": `اللائحة العامة لحماية البيانات وقوانين حماية البيانات`,
+      "privacy.gdpr_text": `بما أننا لا نجمع بيانات شخصية عبر هذا الموقع، فلا يوجد أي معالجة بيانات تنطبق عليها اللائحة العامة لحماية البيانات (الاتحاد الأوروبي)، أو توجيه الخصوصية الإلكترونية، أو CCPA/CPRA (كاليفورنيا)، أو LGPD (البرازيل)، أو أي قانون مماثل في البلد الذي تزورنا منه. لا توجد بيانات لمعالجتها أو مشاركتها أو بيعها — وبالتالي لا يوجد ما يمكن ممارسة تلك الحقوق عليه.`,
+      "privacy.hosting_title": `الاستضافة`,
+      "privacy.hosting_text": `هذا الموقع ثابت ويُستضاف عبر GitHub Pages. قد تعالج GitHub, Inc. عناوين IP وسجلات الوصول التقنية كجزء من بنيتها التحتية للتسليم، خارج سيطرتنا ودون أن نستخدمها لأي غرض خاص بنا. راجع بيان خصوصية GitHub لمزيد من التفاصيل.`,
+      "privacy.hosting_link": `بيان خصوصية GitHub`,
+      "privacy.updated": `آخر تحديث: 17 أغسطس 2026`,
+
       "footer.tagline": `برمجيات النخبة. بالدعوة فقط.`, "footer.rights": `جميع الحقوق محفوظة.`,
       "footer.made": `موقع مبني بدقة هندسية.`,
 
@@ -456,7 +546,7 @@
       "meta.description": `加布里埃尔·迪亚兹·贝尔纳尔领导着一支由25名精英软件工程师组成的团队。地点保密。我们按需工作，仅在非常严格的条件下承接项目。`,
 
       "nav.home": `首页`, "nav.about": `关于我`, "nav.stack": `技术栈`, "nav.team": `团队`,
-      "nav.clients": `客户`, "nav.process": `合作流程`,
+      "nav.clients": `客户`, "nav.process": `合作流程`, "nav.privacy": `隐私`,
 
       "hero.eyebrow": `仅凭邀请开放`,
       "hero.title": `加布里埃尔·迪亚兹·贝尔纳尔`,
@@ -529,6 +619,24 @@
       "location.text": `我们不公开办公室或所在城市。团队100%远程分布式运作，在项目需要时通过保密协议约束下的会议沟通。这是运营层面的决定，不是营销噱头。`,
       "location.badge": `地点：保密`,
 
+      "privacy.eyebrow": `隐私`,
+      "privacy.title": `本网站不会监视你。`,
+      "privacy.subtitle": `没有Cookie，没有分析工具，没有追踪。本页面准确说明我们如何处理你的数据：什么都不做。`,
+      "privacy.box_title": `零Cookie。零追踪。`,
+      "privacy.box_text": `本网站不使用任何Cookie，无论是自有的还是第三方的，不运行任何分析脚本，也不从本域名之外加载任何内容。没有什么需要追踪的，所以也没有横幅弹窗来征求你对我们并未做的事情的同意。`,
+      "privacy.donot_label": `我们不做的事`,
+      "privacy.donot1": `不使用任何Cookie，无论自有还是第三方`,
+      "privacy.donot2": `不使用Google Analytics或任何其他分析工具`,
+      "privacy.donot3": `不加载外部字体、CDN或脚本`,
+      "privacy.donot4": `不使用广告或社交媒体像素`,
+      "privacy.donot5": `没有任何表单：不收集你发送给我们的任何信息`,
+      "privacy.gdpr_title": `GDPR与数据保护法律`,
+      "privacy.gdpr_text": `由于我们不通过本网站收集任何个人数据，因此不存在适用欧盟《通用数据保护条例》（GDPR）、电子隐私指令、加州CCPA/CPRA、巴西LGPD或你所在国家任何同等法律的数据处理行为。没有数据需要处理、共享或出售——因此也没有可以据以行使这些权利的对象。`,
+      "privacy.hosting_title": `托管`,
+      "privacy.hosting_text": `本网站是静态网站，托管于GitHub Pages。GitHub, Inc. 可能会在其交付基础设施中处理IP地址和技术访问日志，这不在我们的控制范围内，我们也不会将其用于任何自身目的。详情请参阅GitHub的隐私声明。`,
+      "privacy.hosting_link": `GitHub隐私声明`,
+      "privacy.updated": `最后更新：2026年8月17日`,
+
       "footer.tagline": `精英软件，仅限受邀。`, "footer.rights": `版权所有，保留所有权利。`,
       "footer.made": `以工程级精度构建的网站。`,
 
@@ -543,7 +651,7 @@
       "meta.description": `ガブリエル・ディアス・ベルナルは、25名の精鋭ソフトウェアエンジニアからなるスタジオを率いています。所在地非公開。オンデマンドで活動し、極めて厳選された条件下でのみプロジェクトを受託します。`,
 
       "nav.home": `ホーム`, "nav.about": `プロフィール`, "nav.stack": `技術スタック`, "nav.team": `チーム`,
-      "nav.clients": `クライアント`, "nav.process": `プロセス`,
+      "nav.clients": `クライアント`, "nav.process": `プロセス`, "nav.privacy": `プライバシー`,
 
       "hero.eyebrow": `招待制のみ`,
       "hero.title": `ガブリエル・ディアス・ベルナル`,
@@ -615,6 +723,24 @@
       "location.title": `固定の拠点はなし。すべてのタイムゾーンに。`,
       "location.text": `オフィスも拠点都市も公開していません。チームは100%リモートかつ分散型で運営され、プロジェクトが必要とする場合にはNDAのもとで会議を行います。これはマーケティング上の演出ではなく、運用上の判断です。`,
       "location.badge": `所在地：機密`,
+
+      "privacy.eyebrow": `プライバシー`,
+      "privacy.title": `このサイトはあなたを監視しません。`,
+      "privacy.subtitle": `クッキーなし、解析なし、追跡なし。このページでは、私たちがあなたのデータをどう扱っているかを正確に説明します——何もしていません。`,
+      "privacy.box_title": `クッキーゼロ。追跡ゼロ。`,
+      "privacy.box_text": `このサイトは自社・第三者を問わずクッキーを一切使用せず、解析スクリプトも実行せず、このドメイン外から何も読み込みません。追跡するものが何もないため、私たちが行っていないことへの許可を求めるバナーも表示されません。`,
+      "privacy.donot_label": `私たちが行わないこと`,
+      "privacy.donot1": `自社・第三者を問わずクッキーを使用しません`,
+      "privacy.donot2": `Google Analyticsやその他の解析ツールを使用しません`,
+      "privacy.donot3": `外部フォント、CDN、スクリプトを読み込みません`,
+      "privacy.donot4": `広告やソーシャルメディアのピクセルを使用しません`,
+      "privacy.donot5": `フォームは一切ありません：送信していただく情報を収集することもありません`,
+      "privacy.gdpr_title": `GDPRとデータ保護法`,
+      "privacy.gdpr_text": `このサイトを通じて個人データを収集していないため、EUのGDPR、eプライバシー指令、カリフォルニア州のCCPA/CPRA、ブラジルのLGPD、またはあなたが訪問している国の同等の法律が適用されるようなデータ処理は存在しません。処理、共有、販売するデータが存在しないため、それらの権利を行使する対象そのものがありません。`,
+      "privacy.hosting_title": `ホスティング`,
+      "privacy.hosting_text": `このサイトは静的サイトであり、GitHub Pagesから配信されています。GitHub, Inc.は配信インフラの一部としてIPアドレスや技術的なアクセスログを処理する場合がありますが、それは私たちの管理下にはなく、私たち自身の目的で使用することもありません。詳細はGitHubのプライバシーステートメントをご覧ください。`,
+      "privacy.hosting_link": `GitHubのプライバシーステートメント`,
+      "privacy.updated": `最終更新日：2026年8月17日`,
 
       "footer.tagline": `エリートソフトウェア。招待制。`, "footer.rights": `全著作権所有。`,
       "footer.made": `エンジニアリングの精度で構築されたサイト。`,
