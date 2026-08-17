@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i18n="meta.title">Gabriel Díaz Bernal — Arquitecto de Software</title>
-<meta name="description" content="Gabriel Díaz Bernal lidera un estudio de 25 ingenieros de software de élite. Ubicación no divulgada. Trabajamos bajo demanda y aceptamos proyectos solo bajo condiciones muy selectas." data-i18n-attr="content:meta.description">
+<title>Gabriel Díaz Bernal — Arquitecto de Software</title>
+<meta name="description" content="Gabriel Díaz Bernal lidera un estudio de 25 ingenieros de software de élite. Ubicación no divulgada. Trabajamos bajo demanda y aceptamos proyectos solo bajo condiciones muy selectas.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#05070d">
 <meta name="google-site-verification" content="181uB_jxUEffPYuu3Qgm9wYDJS9nICaZqhIrUn-ELD8" />
@@ -23,8 +23,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Gabriel Díaz Bernal">
-<meta property="og:title" content="Gabriel Díaz Bernal — Arquitecto de Software" data-i18n-attr="content:meta.title">
-<meta property="og:description" content="Estudio de 25 ingenieros de élite. Ubicación no divulgada. Trabajo bajo demanda, bajo condiciones muy selectas." data-i18n-attr="content:meta.description">
+<meta property="og:title" content="Gabriel Díaz Bernal — Arquitecto de Software">
+<meta property="og:description" content="Gabriel Díaz Bernal lidera un estudio de 25 ingenieros de software de élite. Ubicación no divulgada. Trabajamos bajo demanda y aceptamos proyectos solo bajo condiciones muy selectas.">
 <meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/">
 <meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
 <meta property="og:image:width" content="1200">
@@ -39,8 +39,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Gabriel Díaz Bernal — Arquitecto de Software" data-i18n-attr="content:meta.title">
-<meta name="twitter:description" content="Estudio de 25 ingenieros de élite. Ubicación no divulgada. Trabajo bajo demanda." data-i18n-attr="content:meta.description">
+<meta name="twitter:title" content="Gabriel Díaz Bernal — Arquitecto de Software">
+<meta name="twitter:description" content="Gabriel Díaz Bernal lidera un estudio de 25 ingenieros de software de élite. Ubicación no divulgada. Trabajamos bajo demanda y aceptamos proyectos solo bajo condiciones muy selectas.">
 <meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
 
 <!-- Icons -->
@@ -49,7 +49,350 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 
-<link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* =========================================================
+   Gabriel Díaz Bernal — Estudio de ingeniería
+   Design system: dark, elite, technical.
+   Zero external dependencies. Zero web fonts. Zero CDNs.
+   ========================================================= */
+
+:root{
+  --bg: #05070d;
+  --bg-alt: #0a0e1a;
+  --bg-elevated: #0d1220;
+  --surface: rgba(255,255,255,.035);
+  --surface-strong: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.09);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #eef1fa;
+  --text-dim: #9aa3ba;
+  --text-faint: #626c85;
+  --accent: #5eead4;
+  --accent-2: #8b5cf6;
+  --accent-3: #22d3ee;
+  --danger: #ff6b81;
+  --gradient: linear-gradient(120deg, var(--accent-3), var(--accent-2));
+  --gradient-soft: linear-gradient(160deg, rgba(94,234,212,.14), rgba(139,92,246,.14));
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 20px 60px -20px rgba(0,0,0,.6);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans Arabic", "Segoe UI Arabic", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --maxw: 1180px;
+  --nav-h: 76px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg{ display: block; max-width: 100%; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin: 0; padding: 0; list-style: none; }
+h1,h2,h3,h4,p{ margin: 0; }
+button{ font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, textarea, select{ font: inherit; color: inherit; }
+
+::selection{ background: var(--accent-2); color: #fff; }
+
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- layout helpers ---------- */
+.container{ width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.section{ padding: 120px 0; position: relative; }
+.section-tight{ padding: 80px 0; }
+@media (max-width: 720px){
+  .section{ padding: 80px 0; }
+  .section-tight{ padding: 56px 0; }
+}
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.eyebrow::before{
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gradient); box-shadow: 0 0 12px var(--accent);
+}
+
+.section-head{ max-width: 720px; margin-bottom: 56px; }
+.section-title{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; }
+.section-subtitle{ margin-top: 14px; color: var(--text-dim); font-size: 1.05rem; max-width: 620px; }
+
+.gradient-text{
+  background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity: 1; transform: none; }
+
+/* ---------- buttons ---------- */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: .95rem;
+  border: 1px solid var(--border-strong);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.btn-primary{
+  background: var(--gradient); color: #04121a; border-color: transparent;
+  box-shadow: 0 8px 30px -8px rgba(94,234,212,.45);
+}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px -10px rgba(139,92,246,.55); }
+.btn-ghost{ background: var(--surface); color: var(--text); }
+.btn-ghost:hover{ border-color: var(--accent); background: var(--surface-strong); transform: translateY(-2px); }
+.btn-block{ width: 100%; }
+
+/* ---------- background fx ---------- */
+.bg-grid{
+  position: fixed; inset: 0; z-index: -2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+.bg-glow{
+  position: fixed; inset: 0; z-index: -3; background: var(--bg);
+}
+.bg-glow::before, .bg-glow::after{
+  content: ""; position: absolute; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px;
+  border-radius: 50%; filter: blur(120px); opacity: .18;
+}
+.bg-glow::before{ background: var(--accent-3); top: -12%; left: -10%; }
+.bg-glow::after{ background: var(--accent-2); bottom: -18%; right: -8%; }
+#fx-canvas{ position: fixed; inset: 0; z-index: -1; opacity: .5; pointer-events: none; }
+
+/* ---------- nav ---------- */
+.nav{
+  position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+/* Blur lives on a pseudo-element (not on .nav itself) so backdrop-filter doesn't
+   turn .nav into a containing block for its position:fixed mobile-menu descendant. */
+.nav::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(5,7,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.nav .container{ display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand{ display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; font-size: 1.05rem; }
+.brand-mark{ width: 34px; height: 34px; }
+.brand small{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: .68rem; color: var(--text-faint); letter-spacing: .06em; }
+
+.nav-links{ display: flex; align-items: center; gap: 30px; }
+.nav-links a{ font-size: .92rem; color: var(--text-dim); transition: color .2s ease; position: relative; }
+.nav-links a:hover, .nav-links a.is-active{ color: var(--text); }
+.nav-links a.is-active::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--gradient);
+}
+
+.nav-right{ display: flex; align-items: center; gap: 14px; }
+
+.lang-switch{ position: relative; }
+.lang-btn{
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px;
+  font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-dim);
+  transition: border-color .2s ease, color .2s ease;
+}
+.lang-btn:hover{ border-color: var(--accent); color: var(--text); }
+.lang-menu{
+  position: absolute; top: calc(100% + 10px); inset-inline-end: 0; min-width: 168px; max-height: 320px; overflow-y: auto;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow); padding: 6px; display: none; flex-direction: column; gap: 2px;
+}
+.lang-switch.is-open .lang-menu{ display: flex; }
+.lang-menu a{
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 9px 10px; border-radius: 6px; font-size: .86rem; color: var(--text-dim); text-align: left;
+}
+.lang-menu a:hover{ background: var(--surface-strong); color: var(--text); }
+.lang-menu a[aria-current="true"]{ color: var(--accent); background: var(--surface); }
+.lang-menu .code{ font-family: var(--font-mono); font-size: .72rem; color: var(--text-faint); }
+
+.nav-toggle{ display: none; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; align-items: center; justify-content: center; }
+.nav-toggle span{ display: block; width: 18px; height: 2px; background: var(--text); position: relative; }
+.nav-toggle span::before, .nav-toggle span::after{ content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: var(--text); transition: transform .2s ease; }
+.nav-toggle span::before{ top: -6px; } .nav-toggle span::after{ top: 6px; }
+
+@media (max-width: 880px){
+  .nav-links{
+    position: fixed; inset: var(--nav-h) 0 0 0; flex-direction: column; align-items: stretch;
+    background: var(--bg-alt); padding: 28px 24px; gap: 4px; transform: translateY(-8px);
+    opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    border-top: 1px solid var(--border); overflow-y: auto;
+  }
+  .nav-links a{ padding: 14px 6px; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+  body.menu-open .nav-links{ opacity: 1; pointer-events: auto; transform: none; }
+  .nav-toggle{ display: flex; }
+}
+
+/* ---------- hero ---------- */
+.hero{ padding: 76px 0 60px; }
+.hero-grid{ display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+@media (max-width: 980px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+.hero-title{ font-size: clamp(2.3rem, 5.4vw, 3.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.hero-subtitle{ margin-top: 20px; font-size: 1.14rem; color: var(--text-dim); max-width: 560px; }
+.hero-actions{ display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+
+.stat-row{ display: grid; grid-template-columns: repeat(4, auto); gap: 32px; margin-top: 56px; }
+.stat-value{ font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.stat-label{ margin-top: 4px; font-size: .78rem; color: var(--text-faint); max-width: 120px; }
+@media (max-width: 620px){ .stat-row{ grid-template-columns: repeat(2, auto); row-gap: 24px; } }
+
+/* terminal card — stays LTR chrome (dots, prompt) even on RTL pages, like any code/terminal widget */
+.terminal{
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); overflow: hidden; direction: ltr; text-align: start;
+}
+.terminal-bar{ display: flex; align-items: center; gap: 8px; padding: 14px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.terminal-dot{ width: 11px; height: 11px; border-radius: 50%; }
+.terminal-dot:nth-child(1){ background: #ff6159; }
+.terminal-dot:nth-child(2){ background: #ffbd2e; }
+.terminal-dot:nth-child(3){ background: #27c93f; }
+.terminal-title{ margin-inline-start: 8px; font-family: var(--font-mono); font-size: .74rem; color: var(--text-faint); }
+.terminal-body{ padding: 22px 22px 26px; font-family: var(--font-mono); font-size: .9rem; min-height: 260px; }
+.term-line{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.term-prompt{ color: var(--accent); flex-shrink: 0; }
+.term-cmd{ color: var(--text); }
+.term-out{ color: var(--text-dim); padding-inline-start: 20px; margin-top: 4px; flex-basis: 100%; }
+.term-cursor{ display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+@keyframes blink{ 50%{ opacity: 0; } }
+
+/* ---------- about ---------- */
+.about-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+@media (max-width: 900px){ .about-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.about-copy p{ color: var(--text-dim); margin-bottom: 18px; font-size: 1.02rem; }
+.about-badges{ display: flex; flex-direction: column; gap: 14px; }
+.about-badge{
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--surface);
+}
+.about-badge .dot{ width: 10px; height: 10px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
+.about-badge span.label{ font-weight: 600; font-size: .95rem; }
+
+/* ---------- stack grid ---------- */
+.stack-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px){ .stack-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px){ .stack-grid{ grid-template-columns: 1fr; } }
+.stack-card{
+  padding: 26px 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.stack-card:hover{ transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-strong); }
+.stack-icon{
+  width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  background: var(--gradient-soft); border: 1px solid var(--border); margin-bottom: 16px;
+}
+.stack-icon svg{ width: 22px; height: 22px; stroke: var(--accent); }
+.stack-card h3{ font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
+.stack-card p{ color: var(--text-dim); font-size: .92rem; }
+
+/* ---------- team ---------- */
+.team-wrap{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .team-wrap{ grid-template-columns: 1fr; gap: 32px; } }
+.team-list{ display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.team-row{ display: flex; align-items: center; gap: 18px; padding: 18px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.team-row:last-child{ border-bottom: 0; }
+.team-count{ font-family: var(--font-mono); font-weight: 700; color: var(--accent); font-size: 1.05rem; width: 34px; flex-shrink: 0; }
+.team-note{ margin-top: 20px; color: var(--text-faint); font-size: .9rem; font-style: italic; }
+.team-orb{
+  aspect-ratio: 1; border-radius: 50%; position: relative;
+  background: radial-gradient(circle at 35% 30%, rgba(94,234,212,.22), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(139,92,246,.25), transparent 55%),
+              var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.team-orb .orb-number{ font-family: var(--font-mono); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 800; }
+.team-orb .orb-label{ position: absolute; bottom: 14%; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+
+/* ---------- clients ---------- */
+.clients-grid{ display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .clients-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.clients-stat .value{ font-family: var(--font-mono); font-weight: 800; font-size: clamp(3rem, 7vw, 4.5rem); line-height: 1; }
+.clients-stat .label{ margin-top: 12px; color: var(--text-dim); font-size: 1rem; max-width: 260px; }
+.sectors-label{ font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
+.sector-chips{ display: flex; flex-wrap: wrap; gap: 10px; }
+.sector-chip{
+  padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
+  font-family: var(--font-mono); font-size: .84rem; color: var(--text-dim); transition: border-color .2s ease, color .2s ease;
+}
+.sector-chip:hover{ border-color: var(--accent); color: var(--text); }
+
+/* ---------- process ---------- */
+.process-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 980px){ .process-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .process-grid{ grid-template-columns: 1fr; } }
+.process-card{ padding: 26px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); position: relative; }
+.process-step{ font-family: var(--font-mono); color: var(--text-faint); font-size: .8rem; margin-bottom: 14px; }
+.process-card h3{ font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.process-card p{ color: var(--text-dim); font-size: .9rem; }
+.process-callout{
+  margin-top: 40px; padding: 22px 26px; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  display: flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: .92rem; color: var(--text);
+  background: var(--gradient-soft);
+}
+
+/* ---------- location ---------- */
+.location-box{
+  border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.14), transparent 60%), var(--bg-elevated);
+}
+.location-badge{
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .78rem;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--danger); margin-top: 22px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.location-badge::before{ content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+.location-box p{ color: var(--text-dim); max-width: 620px; margin: 0 auto; font-size: 1.02rem; }
+
+/* ---------- footer ---------- */
+.footer{ border-top: 1px solid var(--border); padding: 48px 0; }
+.footer .container{ display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand{ display: flex; align-items: center; gap: 12px; }
+.footer-tagline{ font-size: .82rem; color: var(--text-faint); }
+.footer-links{ display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a{ font-size: .86rem; color: var(--text-dim); }
+.footer-links a:hover{ color: var(--accent); }
+.footer-bottom{ margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- 404 ---------- */
+.notfound{ min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+.notfound-code{ font-family: var(--font-mono); font-size: clamp(4rem, 14vw, 8rem); font-weight: 800; line-height: 1; }
+.notfound p{ margin-top: 18px; color: var(--text-dim); font-size: 1.05rem; }
+.notfound .btn{ margin-top: 30px; }
+
+/* ---------- misc ---------- */
+.skip-link{
+  position: absolute; inset-inline-start: -9999px; top: 0; background: var(--accent); color: #04121a; padding: 12px 18px;
+  border-end-end-radius: 8px; z-index: 200; font-weight: 600;
+}
+.skip-link:focus{ inset-inline-start: 0; }
+</style>
 
 <script type="application/ld+json">
 {
@@ -73,7 +416,7 @@
       "url": "https://avanzagrabie.github.io/GrabieApps/",
       "logo": "https://avanzagrabie.github.io/GrabieApps/assets/img/favicon-512.png",
       "image": "https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png",
-      "description": "Estudio distribuido de 25 ingenieros de software de élite que trabaja bajo demanda y acepta proyectos solo bajo condiciones muy selectas.",
+      "description": "Gabriel Díaz Bernal lidera un estudio de 25 ingenieros de software de élite. Ubicación no divulgada. Trabajamos bajo demanda y aceptamos proyectos solo bajo condiciones muy selectas.",
       "numberOfEmployees": { "@type": "QuantitativeValue", "value": 25 },
       "areaServed": "Worldwide",
       "knowsAbout": ["Inteligencia artificial agéntica", "Edge computing", "Rust", "TypeScript", "Kubernetes", "Zero-trust security", "Criptografía poscuántica", "Web3", "Computación espacial"]
@@ -106,16 +449,16 @@
         <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
         <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
       </svg>
-      <span>Gabriel Díaz Bernal<small data-i18n="footer.tagline">Software de élite. Bajo invitación.</small></span>
+      <span>Gabriel Díaz Bernal<small>Software de élite. Bajo invitación.</small></span>
     </a>
 
     <nav class="nav-links" aria-label="Navegación principal">
-      <a href="#top" data-i18n="nav.home">Inicio</a>
-      <a href="#about" data-i18n="nav.about">Sobre mí</a>
-      <a href="#stack" data-i18n="nav.stack">Stack</a>
-      <a href="#team" data-i18n="nav.team">Equipo</a>
-      <a href="#clients" data-i18n="nav.clients">Clientes</a>
-      <a href="#process" data-i18n="nav.process">Proceso</a>
+      <a href="#top">Inicio</a>
+      <a href="#about">Sobre mí</a>
+      <a href="#stack">Stack</a>
+      <a href="#team">Equipo</a>
+      <a href="#clients">Clientes</a>
+      <a href="#process">Proceso</a>
     </nav>
 
     <div class="nav-right">
@@ -145,24 +488,24 @@
   <section id="top" class="hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow" data-i18n="hero.eyebrow">Disponible solo bajo invitación</p>
-        <h1 class="hero-title" data-i18n="hero.title">Gabriel Díaz Bernal</h1>
-        <p class="hero-subtitle" data-i18n="hero.subtitle">Arquitecto de software. Fundador de un estudio distribuido de 25 ingenieros que construye lo que otros consideran imposible.</p>
+        <p class="eyebrow">Disponible solo bajo invitación</p>
+        <h1 class="hero-title">Gabriel Díaz Bernal</h1>
+        <p class="hero-subtitle">Arquitecto de software. Fundador de un estudio distribuido de 25 ingenieros que construye lo que otros consideran imposible.</p>
         <div class="hero-actions">
-          <a href="#stack" class="btn btn-ghost" data-i18n="hero.cta_secondary">Ver el arsenal técnico</a>
+          <a href="#stack" class="btn btn-ghost">Ver el arsenal técnico</a>
         </div>
         <div class="stat-row">
-          <div><div class="stat-value" data-i18n="hero.stat1_value">25</div><div class="stat-label" data-i18n="hero.stat1_label">ingenieros senior</div></div>
-          <div><div class="stat-value" data-i18n="hero.stat2_value">100%</div><div class="stat-label" data-i18n="hero.stat2_label">remoto y distribuido</div></div>
-          <div><div class="stat-value" data-i18n="hero.stat3_value">&lt;3%</div><div class="stat-label" data-i18n="hero.stat3_label">de solicitudes aceptadas</div></div>
-          <div><div class="stat-value" data-i18n="hero.stat4_value">0</div><div class="stat-label" data-i18n="hero.stat4_label">clientes divulgados</div></div>
+          <div><div class="stat-value">25</div><div class="stat-label">ingenieros senior</div></div>
+          <div><div class="stat-value">100%</div><div class="stat-label">remoto y distribuido</div></div>
+          <div><div class="stat-value">&lt;3%</div><div class="stat-label">de solicitudes aceptadas</div></div>
+          <div><div class="stat-value">0</div><div class="stat-label">clientes divulgados</div></div>
         </div>
       </div>
 
       <div class="terminal reveal" aria-hidden="true">
         <div class="terminal-bar">
           <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
-          <span class="terminal-title" data-i18n="hero.terminal_title">gabriel@estudio — zsh</span>
+          <span class="terminal-title">gabriel@estudio — zsh</span>
         </div>
         <div class="terminal-body">
           <noscript>
@@ -179,19 +522,19 @@
   <section id="about" class="section about">
     <div class="container about-grid">
       <div class="reveal">
-        <p class="eyebrow" data-i18n="about.eyebrow">Sobre mí</p>
-        <h2 class="section-title" data-i18n="about.title">Construyo software cuando fallar no es una opción.</h2>
+        <p class="eyebrow">Sobre mí</p>
+        <h2 class="section-title">Construyo software cuando fallar no es una opción.</h2>
       </div>
       <div class="reveal">
         <div class="about-copy">
-          <p data-i18n="about.p1">Llevo más de una década diseñando sistemas de misión crítica para organizaciones que no pueden permitirse errores. En algún momento dejé de trabajar solo y empecé a construir un estudio.</p>
-          <p data-i18n="about.p2">Hoy dirijo un equipo distribuido de 25 ingenieros senior repartidos en husos horarios que no confirmamos públicamente. No tenemos oficina. No tenemos logos de clientes en portada. Tenemos acuerdos de confidencialidad y un historial del que hablamos solo en privado.</p>
-          <p data-i18n="about.p3">No competimos por volumen, competimos por criterio: aceptamos los proyectos que de verdad importan y los ejecutamos como si el negocio del cliente dependiera de ello — porque casi siempre es así.</p>
+          <p>Llevo más de una década diseñando sistemas de misión crítica para organizaciones que no pueden permitirse errores. En algún momento dejé de trabajar solo y empecé a construir un estudio.</p>
+          <p>Hoy dirijo un equipo distribuido de 25 ingenieros senior repartidos en husos horarios que no confirmamos públicamente. No tenemos oficina. No tenemos logos de clientes en portada. Tenemos acuerdos de confidencialidad y un historial del que hablamos solo en privado.</p>
+          <p>No competimos por volumen, competimos por criterio: aceptamos los proyectos que de verdad importan y los ejecutamos como si el negocio del cliente dependiera de ello — porque casi siempre es así.</p>
         </div>
         <div class="about-badges">
-          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="about.badge1">Confidencialidad primero</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="about.badge2">Cero portfolio público</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="about.badge3">Estándares no negociables</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Confidencialidad primero</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Cero portfolio público</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Estándares no negociables</span></div>
         </div>
       </div>
     </div>
@@ -201,55 +544,55 @@
   <section id="stack" class="section stack">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="stack.eyebrow">Arsenal técnico</p>
-        <h2 class="section-title" data-i18n="stack.title">Las herramientas más punteras de 2026</h2>
-        <p class="section-subtitle" data-i18n="stack.subtitle">No perseguimos el hype. Adoptamos lo que da ventaja real y lo llevamos a producción antes que el resto del mercado.</p>
+        <p class="eyebrow">Arsenal técnico</p>
+        <h2 class="section-title">Las herramientas más punteras de 2026</h2>
+        <p class="section-subtitle">No perseguimos el hype. Adoptamos lo que da ventaja real y lo llevamos a producción antes que el resto del mercado.</p>
       </div>
       <div class="stack-grid">
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 2l2.4 5.5L20 9l-4.8 3.9L16.5 19 12 15.8 7.5 19l1.3-6.1L4 9l5.6-1.5z"/></svg></div>
-          <h3 data-i18n="stack.item1_title">Sistemas de IA agéntica</h3>
-          <p data-i18n="stack.item1_desc">Orquestación multiagente en producción, modelos frontier de razonamiento extendido y pipelines RAG de última generación.</p>
+          <h3>Sistemas de IA agéntica</h3>
+          <p>Orquestación multiagente en producción, modelos frontier de razonamiento extendido y pipelines RAG de última generación.</p>
         </article>
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
-          <h3 data-i18n="stack.item2_title">Edge computing distribuido</h3>
-          <p data-i18n="stack.item2_desc">Cómputo en el borde con inferencia on-device, runtimes WASM y latencias de un dígito en cualquier continente.</p>
+          <h3>Edge computing distribuido</h3>
+          <p>Cómputo en el borde con inferencia on-device, runtimes WASM y latencias de un dígito en cualquier continente.</p>
         </article>
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M8 4L4 12l4 8M16 4l4 8-4 8M14 4l-4 16"/></svg></div>
-          <h3 data-i18n="stack.item3_title">Rust, Zig & TypeScript</h3>
-          <p data-i18n="stack.item3_desc">Sistemas críticos en Rust y Zig; superficies de producto en TypeScript con Server Components y streaming nativo.</p>
+          <h3>Rust, Zig &amp; TypeScript</h3>
+          <p>Sistemas críticos en Rust y Zig; superficies de producto en TypeScript con Server Components y streaming nativo.</p>
         </article>
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M6 18a4 4 0 0 1-1-7.9A5 5 0 0 1 14.9 7 4.5 4.5 0 0 1 19 15.5"/><path d="M6 18h13"/></svg></div>
-          <h3 data-i18n="stack.item4_title">Infraestructura cloud-native</h3>
-          <p data-i18n="stack.item4_desc">Kubernetes multi-clúster, GitOps y observabilidad total con OpenTelemetry desde el primer commit.</p>
+          <h3>Infraestructura cloud-native</h3>
+          <p>Kubernetes multi-clúster, GitOps y observabilidad total con OpenTelemetry desde el primer commit.</p>
         </article>
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <h3 data-i18n="stack.item5_title">Seguridad zero-trust</h3>
-          <p data-i18n="stack.item5_desc">Arquitecturas zero-trust, criptografía poscuántica y pentesting continuo integrado en el pipeline de entrega.</p>
+          <h3>Seguridad zero-trust</h3>
+          <p>Arquitecturas zero-trust, criptografía poscuántica y pentesting continuo integrado en el pipeline de entrega.</p>
         </article>
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
-          <h3 data-i18n="stack.item6_title">Datos en tiempo real</h3>
-          <p data-i18n="stack.item6_desc">Bases de datos vectoriales, streaming analítico e inferencia de IA ejecutándose en el edge, cerca del usuario.</p>
+          <h3>Datos en tiempo real</h3>
+          <p>Bases de datos vectoriales, streaming analítico e inferencia de IA ejecutándose en el edge, cerca del usuario.</p>
         </article>
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3" y="9" width="6" height="6" rx="1"/><rect x="15" y="9" width="6" height="6" rx="1"/><rect x="9" y="3" width="6" height="6" rx="1"/><path d="M9 9V6M12 9v3M15 12H9"/></svg></div>
-          <h3 data-i18n="stack.item7_title">Infraestructura descentralizada</h3>
-          <p data-i18n="stack.item7_desc">Contratos inteligentes auditados, pruebas de conocimiento cero y sistemas resistentes a la censura cuando el proyecto lo exige.</p>
+          <h3>Infraestructura descentralizada</h3>
+          <p>Contratos inteligentes auditados, pruebas de conocimiento cero y sistemas resistentes a la censura cuando el proyecto lo exige.</p>
         </article>
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
-          <h3 data-i18n="stack.item8_title">Computación espacial & XR</h3>
-          <p data-i18n="stack.item8_desc">Interfaces para visores de nueva generación y experiencias inmersivas construidas con motores en tiempo real.</p>
+          <h3>Computación espacial &amp; XR</h3>
+          <p>Interfaces para visores de nueva generación y experiencias inmersivas construidas con motores en tiempo real.</p>
         </article>
         <article class="stack-card reveal">
           <div class="stack-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg></div>
-          <h3 data-i18n="stack.item9_title">DevOps autónomo</h3>
-          <p data-i18n="stack.item9_desc">Pipelines que se autorregulan, despliegues progresivos y rollback automático guiado por observabilidad con IA.</p>
+          <h3>DevOps autónomo</h3>
+          <p>Pipelines que se autorregulan, despliegues progresivos y rollback automático guiado por observabilidad con IA.</p>
         </article>
       </div>
     </div>
@@ -259,25 +602,25 @@
   <section id="team" class="section team">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="team.eyebrow">El equipo</p>
-        <h2 class="section-title" data-i18n="team.title">25 ingenieros. Cero egos. Un solo estándar.</h2>
-        <p class="section-subtitle" data-i18n="team.subtitle">No publicamos fotos ni nombres. Publicamos criterio.</p>
+        <p class="eyebrow">El equipo</p>
+        <h2 class="section-title">25 ingenieros. Cero egos. Un solo estándar.</h2>
+        <p class="section-subtitle">No publicamos fotos ni nombres. Publicamos criterio.</p>
       </div>
       <div class="team-wrap">
         <div class="reveal">
           <ul class="team-list">
-            <li class="team-row"><span class="team-count" data-i18n="team.row1_count">08</span><span data-i18n="team.row1_label">Backend & sistemas distribuidos</span></li>
-            <li class="team-row"><span class="team-count" data-i18n="team.row2_count">05</span><span data-i18n="team.row2_label">IA aplicada</span></li>
-            <li class="team-row"><span class="team-count" data-i18n="team.row3_count">04</span><span data-i18n="team.row3_label">Seguridad ofensiva y defensiva</span></li>
-            <li class="team-row"><span class="team-count" data-i18n="team.row4_count">03</span><span data-i18n="team.row4_label">Arquitectura cloud</span></li>
-            <li class="team-row"><span class="team-count" data-i18n="team.row5_count">03</span><span data-i18n="team.row5_label">Frontend e interfaces de alto rendimiento</span></li>
-            <li class="team-row"><span class="team-count" data-i18n="team.row6_count">02</span><span data-i18n="team.row6_label">Blockchain e infraestructura descentralizada</span></li>
+            <li class="team-row"><span class="team-count">08</span><span>Backend &amp; sistemas distribuidos</span></li>
+            <li class="team-row"><span class="team-count">05</span><span>IA aplicada</span></li>
+            <li class="team-row"><span class="team-count">04</span><span>Seguridad ofensiva y defensiva</span></li>
+            <li class="team-row"><span class="team-count">03</span><span>Arquitectura cloud</span></li>
+            <li class="team-row"><span class="team-count">03</span><span>Frontend e interfaces de alto rendimiento</span></li>
+            <li class="team-row"><span class="team-count">02</span><span>Blockchain e infraestructura descentralizada</span></li>
           </ul>
-          <p class="team-note" data-i18n="team.note">Cada ingeniero ha pasado por un proceso de selección más estricto que el de nuestros propios clientes.</p>
+          <p class="team-note">Cada ingeniero ha pasado por un proceso de selección más estricto que el de nuestros propios clientes.</p>
         </div>
         <div class="team-orb reveal">
           <div class="orb-number gradient-text">25</div>
-          <div class="orb-label" data-i18n="team.orb_label">Ingenieros activos</div>
+          <div class="orb-label">Ingenieros activos</div>
         </div>
       </div>
     </div>
@@ -287,26 +630,26 @@
   <section id="clients" class="section clients">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="clients.eyebrow">Clientes</p>
-        <h2 class="section-title" data-i18n="clients.title">Más de 170 clientes. Cero logos en esta página.</h2>
-        <p class="section-subtitle" data-i18n="clients.subtitle">Gobiernos, bancos, infraestructuras críticas y empresas que no pueden permitirse una brecha. Trabajamos con quien más tiene que perder — y por eso nunca sabrás con certeza para quién.</p>
+        <p class="eyebrow">Clientes</p>
+        <h2 class="section-title">Más de 170 clientes. Cero logos en esta página.</h2>
+        <p class="section-subtitle">Gobiernos, bancos, infraestructuras críticas y empresas que no pueden permitirse una brecha. Trabajamos con quien más tiene que perder — y por eso nunca sabrás con certeza para quién.</p>
       </div>
       <div class="clients-grid">
         <div class="clients-stat reveal">
-          <div class="value gradient-text" data-i18n="clients.stat_value">170+</div>
-          <div class="label" data-i18n="clients.stat_label">clientes atendidos, todos bajo NDA</div>
+          <div class="value gradient-text">170+</div>
+          <div class="label">clientes atendidos, todos bajo NDA</div>
         </div>
         <div class="reveal">
-          <p class="sectors-label" data-i18n="clients.sectors_label">Sectores en los que operamos</p>
+          <p class="sectors-label">Sectores en los que operamos</p>
           <div class="sector-chips">
-            <span class="sector-chip" data-i18n="clients.sector1">Agencias gubernamentales</span>
-            <span class="sector-chip" data-i18n="clients.sector2">Ciberseguridad</span>
-            <span class="sector-chip" data-i18n="clients.sector3">Banca y finanzas</span>
-            <span class="sector-chip" data-i18n="clients.sector4">Infraestructura crítica</span>
-            <span class="sector-chip" data-i18n="clients.sector5">Telecomunicaciones</span>
-            <span class="sector-chip" data-i18n="clients.sector6">Defensa</span>
-            <span class="sector-chip" data-i18n="clients.sector7">Salud</span>
-            <span class="sector-chip" data-i18n="clients.sector8">Energía</span>
+            <span class="sector-chip">Agencias gubernamentales</span>
+            <span class="sector-chip">Ciberseguridad</span>
+            <span class="sector-chip">Banca y finanzas</span>
+            <span class="sector-chip">Infraestructura crítica</span>
+            <span class="sector-chip">Telecomunicaciones</span>
+            <span class="sector-chip">Defensa</span>
+            <span class="sector-chip">Salud</span>
+            <span class="sector-chip">Energía</span>
           </div>
         </div>
       </div>
@@ -317,34 +660,34 @@
   <section id="process" class="section process">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="process.eyebrow">Cómo trabajamos</p>
-        <h2 class="section-title" data-i18n="process.title">Bajo demanda. Bajo tus condiciones, nunca.</h2>
-        <p class="section-subtitle" data-i18n="process.subtitle">Aceptamos trabajo solo bajo condiciones muy selectas. Así es el proceso.</p>
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2 class="section-title">Bajo demanda. Bajo tus condiciones, nunca.</h2>
+        <p class="section-subtitle">Aceptamos trabajo solo bajo condiciones muy selectas. Así es el proceso.</p>
       </div>
       <div class="process-grid">
         <div class="process-card reveal">
-          <div class="process-step" data-i18n="process.step1_num">01</div>
-          <h3 data-i18n="process.step1_title">Solicitud confidencial</h3>
-          <p data-i18n="process.step1_desc">Nos cuentas el proyecto bajo NDA. Sin formularios públicos, sin bandeja de entrada abierta.</p>
+          <div class="process-step">01</div>
+          <h3>Solicitud confidencial</h3>
+          <p>Nos cuentas el proyecto bajo NDA. Sin formularios públicos, sin bandeja de entrada abierta.</p>
         </div>
         <div class="process-card reveal">
-          <div class="process-step" data-i18n="process.step2_num">02</div>
-          <h3 data-i18n="process.step2_title">Evaluación de encaje</h3>
-          <p data-i18n="process.step2_desc">Evaluamos si el problema está a la altura del equipo. La mayoría de las solicitudes no lo están.</p>
+          <div class="process-step">02</div>
+          <h3>Evaluación de encaje</h3>
+          <p>Evaluamos si el problema está a la altura del equipo. La mayoría de las solicitudes no lo están.</p>
         </div>
         <div class="process-card reveal">
-          <div class="process-step" data-i18n="process.step3_num">03</div>
-          <h3 data-i18n="process.step3_title">Propuesta cerrada</h3>
-          <p data-i18n="process.step3_desc">Si aceptamos, formamos un equipo dedicado y fijamos alcance, plazos y condiciones — sin subcontrataciones.</p>
+          <div class="process-step">03</div>
+          <h3>Propuesta cerrada</h3>
+          <p>Si aceptamos, formamos un equipo dedicado y fijamos alcance, plazos y condiciones — sin subcontrataciones.</p>
         </div>
         <div class="process-card reveal">
-          <div class="process-step" data-i18n="process.step4_num">04</div>
-          <h3 data-i18n="process.step4_title">Ejecución clasificada</h3>
-          <p data-i18n="process.step4_desc">Comunicación cifrada, entregas verificables y cero menciones públicas salvo que tú lo autorices.</p>
+          <div class="process-step">04</div>
+          <h3>Ejecución clasificada</h3>
+          <p>Comunicación cifrada, entregas verificables y cero menciones públicas salvo que tú lo autorices.</p>
         </div>
       </div>
       <div class="process-callout reveal">
-        <span data-i18n="process.callout">Menos del 3% de las solicitudes que recibimos se convierten en proyecto.</span>
+        <span>Menos del 3% de las solicitudes que recibimos se convierten en proyecto.</span>
       </div>
     </div>
   </section>
@@ -353,10 +696,10 @@
   <section id="location" class="section-tight">
     <div class="container">
       <div class="location-box reveal">
-        <p class="eyebrow" data-i18n="location.eyebrow">Ubicación</p>
-        <h2 class="section-title" data-i18n="location.title">En ningún sitio fijo. En todos los husos horarios.</h2>
-        <p data-i18n="location.text" style="margin-top:18px">No divulgamos oficina ni ciudad base. El equipo opera 100% en remoto, distribuido, con reuniones bajo NDA cuando el proyecto lo requiere. Es una decisión operativa, no un truco de marketing.</p>
-        <div class="location-badge" data-i18n="location.badge">Ubicación: clasificada</div>
+        <p class="eyebrow">Ubicación</p>
+        <h2 class="section-title">En ningún sitio fijo. En todos los husos horarios.</h2>
+        <p style="margin-top:18px">No divulgamos oficina ni ciudad base. El equipo opera 100% en remoto, distribuido, con reuniones bajo NDA cuando el proyecto lo requiere. Es una decisión operativa, no un truco de marketing.</p>
+        <div class="location-badge">Ubicación: clasificada</div>
       </div>
     </div>
   </section>
@@ -376,23 +719,23 @@
       </svg>
       <div>
         <div>Gabriel Díaz Bernal</div>
-        <div class="footer-tagline" data-i18n="footer.tagline">Software de élite. Bajo invitación.</div>
+        <div class="footer-tagline">Software de élite. Bajo invitación.</div>
       </div>
     </div>
     <nav class="footer-links" aria-label="Enlaces de pie de página">
-      <a href="#about" data-i18n="nav.about">Sobre mí</a>
-      <a href="#stack" data-i18n="nav.stack">Stack</a>
-      <a href="#clients" data-i18n="nav.clients">Clientes</a>
+      <a href="#about">Sobre mí</a>
+      <a href="#stack">Stack</a>
+      <a href="#clients">Clientes</a>
       <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>
   <div class="container footer-bottom">
-    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span data-i18n="footer.rights">Todos los derechos reservados.</span></span>
-    <span data-i18n="footer.made">Sitio construido con precisión de ingeniería.</span>
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span>Todos los derechos reservados.</span></span>
+    <span>Sitio construido con precisión de ingeniería.</span>
   </div>
 </footer>
 
-<script src="assets/js/i18n.js" defer></script>
+<script>window.GDB_TERMINAL_LINES=[{"cmd":"whoami","out":"gabriel_diaz_bernal — arquitecto de software"},{"cmd":"team --size","out":"25 ingenieros senior · distribuidos · bajo NDA"},{"cmd":"location --reveal","out":"acceso denegado: ubicación clasificada"},{"cmd":"availability --check","out":"true — solo bajo invitación"},{"cmd":"stack --2026","out":"cargando arsenal técnico..."}];</script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

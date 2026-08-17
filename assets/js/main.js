@@ -118,16 +118,8 @@
 
   function runTerminal(body) {
     if (terminalTimer) { clearTimeout(terminalTimer); terminalTimer = null; }
-    if (!window.GDB_I18N) return;
-    var lang = document.documentElement.getAttribute("lang") || "es";
-    var t = window.GDB_I18N.t;
-    var lines = [
-      { cmd: t(lang, "hero.term1_cmd"), out: t(lang, "hero.term1_out") },
-      { cmd: t(lang, "hero.term2_cmd"), out: t(lang, "hero.term2_out") },
-      { cmd: t(lang, "hero.term3_cmd"), out: t(lang, "hero.term3_out") },
-      { cmd: t(lang, "hero.term4_cmd"), out: t(lang, "hero.term4_out") },
-      { cmd: t(lang, "hero.term5_cmd"), out: t(lang, "hero.term5_out") }
-    ];
+    var lines = window.GDB_TERMINAL_LINES;
+    if (!lines || !lines.length) return;
 
     body.innerHTML = "";
 
@@ -207,7 +199,6 @@
 
     function resize() {
       w = canvas.width = window.innerWidth;
-      h = canvas.height = Math.max(window.innerHeight, document.documentElement.scrollHeight * 0);
       h = canvas.height = window.innerHeight;
     }
 

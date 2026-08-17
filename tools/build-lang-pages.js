@@ -2,23 +2,37 @@
 /* =========================================================
    build-lang-pages.js
    ---------------------------------------------------------
-   Generates one fully-translated, statically-baked HTML page
-   per non-Spanish language (en/fr/pt/ar/zh/ja) from index.html
-   (the Spanish source of truth) and assets/js/i18n.js (the
+   Generates one fully-translated, statically-baked, performance-
+   optimized HTML page per language (es at the repo root, plus
+   en/fr/pt/ar/zh/ja subfolders) from tools/template.html (the
+   hand-edited Spanish source) and assets/js/i18n.js (the
    translation dictionary).
 
-   Why: search engines need one crawlable, self-contained URL
-   per language — not one URL whose text is swapped by client
-   JS after load. This script produces:
-     /en/index.html   /fr/index.html   /pt/index.html
-     /ar/index.html   /zh/index.html   /ja/index.html
-   each with its own <html lang>, dir, title, meta description,
-   Open Graph/Twitter tags, hreflang cluster, canonical URL and
-   body copy already baked in as plain HTML — no JS required to
-   read the content in the right language.
+   Why a build step at all, given "no build step" was the original
+   pitch: search engines need one crawlable, self-contained URL per
+   language (see README → SEO y multi-idioma), and performance
+   audits (Lighthouse) want the render-blocking stylesheet inlined
+   and no unnecessary script fetched just to type five lines into a
+   terminal widget. Doing both by hand across 7 pages would drift;
+   this script keeps them in lockstep with one source of truth.
 
-   Run after editing content in index.html and/or translations
-   in assets/js/i18n.js:
+   Per generated page:
+     - data-i18n / data-i18n-attr text baked in as plain HTML,
+       attributes stripped.
+     - assets/css/style.css inlined into a <style> tag — removes
+       the render-blocking CSS request entirely.
+     - assets/js/i18n.js is NOT shipped at all. Instead, a tiny
+       inline <script> carries just that page's 5 terminal
+       cmd/out pairs for assets/js/main.js's typewriter.
+     - <html lang dir>, title/description/OG/Twitter, canonical,
+       the full hreflang cluster, og:locale (+alternates), the
+       language-switcher menu (own language marked current) and
+       the JSON-LD description are all set per language.
+     - Local asset paths (favicon, manifest, main.js) get a `../`
+       prefix for the 6 subpages (they live one level deep).
+
+   Run after editing tools/template.html, assets/css/style.css
+   and/or assets/js/i18n.js:
      node tools/build-lang-pages.js
    ========================================================= */
 
@@ -38,10 +52,13 @@ const LANGS = {
   ja: { name: "日本語", code: "JA", dir: "ltr", locale: "ja_JP" }
 };
 const ORDER = ["es", "en", "fr", "pt", "ar", "zh", "ja"];
-const TARGETS = ORDER.filter((l) => l !== "es");
+const TERM_KEYS = ["term1_cmd", "term1_out", "term2_cmd", "term2_out", "term3_cmd", "term3_out", "term4_cmd", "term4_out", "term5_cmd", "term5_out"];
 
 function urlFor(lang) {
   return lang === "es" ? BASE_URL : `${BASE_URL}${lang}/`;
+}
+function outPathFor(lang) {
+  return lang === "es" ? path.join(ROOT, "index.html") : path.join(ROOT, lang, "index.html");
 }
 
 function escapeHtml(s) {
@@ -86,7 +103,16 @@ function buildLocaleBlock(currentLang) {
   return lines.join("\n");
 }
 
-function renderPage(templateHtml, lang, dict) {
+function buildTerminalScript(dict) {
+  var lines = [];
+  for (var i = 0; i < TERM_KEYS.length; i += 2) {
+    var cmdKey = "hero." + TERM_KEYS[i], outKey = "hero." + TERM_KEYS[i + 1];
+    lines.push({ cmd: dict[cmdKey] !== undefined ? dict[cmdKey] : cmdKey, out: dict[outKey] !== undefined ? dict[outKey] : outKey });
+  }
+  return `<script>window.GDB_TERMINAL_LINES=${JSON.stringify(lines)};</script>`;
+}
+
+function renderPage(templateHtml, lang, dict, cssContent) {
   let html = templateHtml;
 
   // <html lang dir>
@@ -136,30 +162,57 @@ function renderPage(templateHtml, lang, dict) {
     `"description": "${escapeJson(dict["meta.description"])}"`
   );
 
-  // local asset paths -> one level up (pages live at /{lang}/index.html)
-  html = html.replace(/href="assets\//g, 'href="../assets/');
-  html = html.replace(/src="assets\//g, 'src="../assets/');
-  html = html.replace(/href="manifest\.webmanifest"/, 'href="../manifest.webmanifest"');
+  // inline the stylesheet: no render-blocking request, no separate cached asset to manage
+  html = html.replace(
+    /<link rel="stylesheet" href="assets\/css\/style\.css">/,
+    `<style>\n${cssContent}\n</style>`
+  );
+
+  // i18n.js is not shipped: swap it for a tiny inline snippet with just this
+  // page's 5 terminal lines, which is all the client ever needed from it.
+  html = html.replace(
+    /<script src="assets\/js\/i18n\.js" defer><\/script>\n/,
+    buildTerminalScript(dict) + "\n"
+  );
+
+  // remaining local asset paths -> one level up (subpages live at /{lang}/index.html)
+  if (lang !== "es") {
+    html = html.replace(/href="assets\//g, 'href="../assets/');
+    html = html.replace(/src="assets\//g, 'src="../assets/');
+    html = html.replace(/href="manifest\.webmanifest"/, 'href="../manifest.webmanifest"');
+  }
 
   return html;
 }
 
-function main() {
-  const templatePath = path.join(ROOT, "index.html");
-  const i18nPath = path.join(ROOT, "assets", "js", "i18n.js");
-  const template = fs.readFileSync(templatePath, "utf8");
-  const I18N = extractI18N(fs.readFileSync(i18nPath, "utf8"));
+function render404(templateHtml, cssContent) {
+  return templateHtml.replace(
+    /<link rel="stylesheet" href="assets\/css\/style\.css">/,
+    `<style>\n${cssContent}\n</style>`
+  );
+}
 
-  for (const lang of TARGETS) {
+function main() {
+  const template = fs.readFileSync(path.join(__dirname, "template.html"), "utf8");
+  const cssContent = fs.readFileSync(path.join(ROOT, "assets", "css", "style.css"), "utf8").trim();
+  const I18N = extractI18N(fs.readFileSync(path.join(ROOT, "assets", "js", "i18n.js"), "utf8"));
+
+  for (const lang of ORDER) {
     const dict = I18N[lang];
     if (!dict) { console.error(`No dictionary for "${lang}" in i18n.js — skipped`); continue; }
-    const out = renderPage(template, lang, dict);
-    const dir = path.join(ROOT, lang);
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, "index.html"), out, "utf8");
-    console.log(`Built ${lang}/index.html (${out.length} bytes)`);
+    const out = renderPage(template, lang, dict, cssContent);
+    const outPath = outPathFor(lang);
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, out, "utf8");
+    console.log(`Built ${path.relative(ROOT, outPath)} (${out.length} bytes)`);
   }
-  console.log("Done. Remember: index.html (Spanish) is the hand-edited source — edit it and assets/js/i18n.js, then re-run this script.");
+
+  const template404 = fs.readFileSync(path.join(__dirname, "404-template.html"), "utf8");
+  const out404 = render404(template404, cssContent);
+  fs.writeFileSync(path.join(ROOT, "404.html"), out404, "utf8");
+  console.log(`Built 404.html (${out404.length} bytes)`);
+
+  console.log("Done. Edit tools/template.html, tools/404-template.html and/or assets/js/i18n.js, then re-run this script.");
 }
 
 main();
