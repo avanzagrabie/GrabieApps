@@ -357,6 +357,17 @@ input, textarea, select{ font: inherit; color: inherit; }
   background: var(--gradient-soft);
 }
 
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+
 /* ---------- location ---------- */
 .location-box{
   border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
@@ -459,6 +470,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="#team">الفريق</a>
       <a href="#clients">العملاء</a>
       <a href="#process">منهجية العمل</a>
+      <a href="#contact">التواصل</a>
     </nav>
 
     <div class="nav-right">
@@ -704,6 +716,47 @@ input, textarea, select{ font: inherit; color: inherit; }
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container about-grid">
+      <div class="reveal">
+        <p class="eyebrow">التواصل</p>
+        <h2 class="section-title">اقرأ هذا قبل أن تكتب إلينا.</h2>
+        <p class="section-subtitle">نقبل العملاء بالدعوة فقط.</p>
+
+        <p class="sectors-label" style="margin-top:32px">قبل أن تكتب</p>
+        <div class="about-badges" style="margin-top:14px">
+          <div class="about-badge"><span class="dot"></span><span class="label">إذا كانت لديك دعوة نشطة بالفعل وكانت هذه حالة طارئة، استخدم القناة المباشرة مع منسّقك التي حصلت عليها أثناء الانضمام — لا ننشرها هنا.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">لا نرد على التواصل الشخصي أو الفضول أو أسئلة الميزانية عبر هذه القناة.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">لن يتم الرد على أي رسالة لا تستوفي هذه الشروط.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">إذا وافقنا على الاجتماع، فالاجتماع ليس مجانيًا: يغطي وقتنا، ويُدفع مقدمًا، ولا يُسترد أو يُخصم من المشروع إذا قبلناه في النهاية.</span></div>
+        </div>
+
+        <div class="process-callout reveal" style="margin-top:32px">
+          <span>أقل من 5% من الرسائل تحصل على رد — ومن هذه، أقل من 3% تتحول إلى مشروع حقيقي.</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form id="contact-form" data-telegram="Chichanofis">
+          <div class="field">
+            <label for="f-name">الاسم</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-code">رمز الدعوة</label>
+            <input id="f-code" name="code" type="text" required>
+          </div>
+          <div class="field">
+            <label for="f-message">الرسالة</label>
+            <textarea id="f-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">فتح Telegram</button>
+          <p class="form-note">سيتم فتح Telegram برسالتك جاهزة بالفعل — أنت من يقرر إرسالها. هذا الموقع لا يجمع ولا يخزّن أي شيء من هذا النموذج.</p>
+        </form>
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -726,6 +779,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="#about">نبذة عني</a>
       <a href="#stack">التقنيات</a>
       <a href="#clients">العملاء</a>
+      <a href="#contact">التواصل</a>
       <a href="privacy.html">الخصوصية</a>
       <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
     </nav>

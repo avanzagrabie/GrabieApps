@@ -16,6 +16,7 @@
     initActiveLink();
     initTerminal();
     initBackgroundFx();
+    initContactForm();
     initYear();
   });
 
@@ -251,6 +252,30 @@
     window.addEventListener("resize", function () {
       resize();
       makeNodes();
+    });
+  }
+
+  /* ---------- contact form → Telegram deep link ----------
+     Static site, no backend: there is nowhere to POST this to
+     without either running a server or embedding a bot token in
+     public client-side code (a real credential leak). Instead this
+     opens a t.me chat with the recipient, prefilled with the
+     message — the visitor still has to press send themselves.
+     Nothing here is ever transmitted to, or stored by, this site. */
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var username = form.getAttribute("data-telegram") || "Chichanofis";
+      var name = form.querySelector("#f-name").value.trim();
+      var code = form.querySelector("#f-code").value.trim();
+      var message = form.querySelector("#f-message").value.trim();
+
+      var text = "Nombre: " + name + "\nCódigo de invitación: " + code + "\n\n" + message;
+      var url = "https://t.me/" + encodeURIComponent(username) + "?text=" + encodeURIComponent(text);
+
+      window.open(url, "_blank", "noopener");
     });
   }
 

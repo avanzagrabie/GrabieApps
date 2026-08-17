@@ -8,7 +8,7 @@ Sitio estático (GitHub Pages) del estudio de ingeniería de Gabriel Díaz Berna
 
 - **Diseño propio**, oscuro y técnico, con fondo animado (canvas), terminal interactiva en el hero y microinteracciones en JS vainilla.
 - **7 idiomas** (Español, English, Français, Português, العربية, 中文, 日本語), cada uno en su **propia URL** — no un solo URL que cambia de texto por JS. Ver [SEO y multi-idioma](#seo-y-multi-idioma).
-- **Sin sección de contacto**: el estudio trabaja solo bajo invitación, así que no hay formulario ni email público — es una decisión de posicionamiento, no un descuido.
+- **Contacto muy restringido, no un formulario abierto**: solo se aceptan clientes por invitación. El formulario (`#contact`) no envía nada a ningún servidor nuestro — abre un chat de Telegram con el mensaje ya redactado (`t.me/Chichanofis?text=...`) y el visitante decide si lo envía. Ver [Contacto](#contacto).
 - **SEO al detalle**: canonical + `hreflang` por idioma, Open Graph/Twitter localizados, JSON-LD (`Person`, `ProfessionalService`, `WebSite`), `sitemap.xml` con anotaciones de idioma (+ hoja de estilo para verlo legible en el navegador), `robots.txt`, verificación de Google Search Console.
 - **Cada página shippea 2 requests**: el HTML y un `main.js` diferido. Nada más — ver [Rendimiento](#rendimiento).
 - **Cero cookies, cero analítica, cero rastreo** — verificable, no solo declarado. Página de privacidad honesta en los 7 idiomas (`/privacy.html`) explicando exactamente eso. Ver [Privacidad](#privacidad-y-cumplimiento).
@@ -128,7 +128,14 @@ Esto es lo estándar y lo que los archivadores que se comportan bien (incluida l
 2. En Search Console → **Sitemaps**, añade `sitemap.xml` (URL completa: `https://avanzagrabie.github.io/GrabieApps/sitemap.xml`).
 3. Opcional: usa **Inspección de URLs** para pedir la indexación manual de `/`, `/en/`, etc. la primera vez, en vez de esperar al rastreo natural.
 
+## Contacto
+
+El formulario (`tools/template.html`, sección `#contact`) no tiene backend ni lo necesita: al enviarlo, `assets/js/main.js` construye el texto a partir de los campos y abre `https://t.me/Chichanofis?text=...` en una pestaña nueva — el navegador (o la app) de Telegram del propio visitante es quien realmente envía el mensaje, si el visitante decide confirmarlo. Este sitio nunca recibe, procesa ni almacena esos datos; por eso la página de privacidad sigue siendo honesta sin necesitar un backend.
+
+**No se usa ni se expone ningún token de bot de Telegram** — hacerlo en código público sería una fuga de credenciales real, ya que cualquiera podría leerlo con solo ver el código fuente. Un enlace `t.me/usuario` es el único mecanismo compatible con un sitio 100% estático sin comprometer eso.
+
+Para cambiar el destinatario, edita el atributo `data-telegram` del `<form>` en `tools/template.html` y regenera con `node tools/build-lang-pages.js`.
+
 ## Personalización pendiente
 
 - El enlace de GitHub en el pie de página apunta a `github.com/avanzagrabie` — actualízalo si procede.
-- No hay ninguna vía de contacto pública por diseño (el estudio solo opera bajo invitación). Si en algún momento quieres reintroducir un canal de contacto, añade de nuevo la clave `nav.contact` y el namespace `contact.*` en `assets/js/i18n.js` para los 7 idiomas, y actualiza `tools/build-lang-pages.js` si el nuevo contenido necesita tratamiento especial.

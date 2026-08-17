@@ -357,6 +357,17 @@ input, textarea, select{ font: inherit; color: inherit; }
   background: var(--gradient-soft);
 }
 
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+
 /* ---------- location ---------- */
 .location-box{
   border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
@@ -459,6 +470,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="#team">Équipe</a>
       <a href="#clients">Clients</a>
       <a href="#process">Processus</a>
+      <a href="#contact">Contact</a>
     </nav>
 
     <div class="nav-right">
@@ -704,6 +716,47 @@ input, textarea, select{ font: inherit; color: inherit; }
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container about-grid">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 class="section-title">Lisez ceci avant de nous écrire.</h2>
+        <p class="section-subtitle">Nous n'acceptons des clients que sur invitation.</p>
+
+        <p class="sectors-label" style="margin-top:32px">Avant d'écrire</p>
+        <div class="about-badges" style="margin-top:14px">
+          <div class="about-badge"><span class="dot"></span><span class="label">Si vous avez déjà une invitation active et qu'il s'agit d'une urgence, utilisez le canal direct vers votre coordinateur qui vous a été communiqué lors de votre intégration — nous ne le publions pas ici.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Nous ne répondons pas aux contacts personnels, à la curiosité ni aux questions de budget par ce canal.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Tout message ne respectant pas ces conditions restera sans réponse.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Si nous acceptons de nous rencontrer, la réunion n'est pas gratuite : elle couvre notre temps, se paie à l'avance, et n'est ni remboursable ni déduite du projet si nous l'acceptons finalement.</span></div>
+        </div>
+
+        <div class="process-callout reveal" style="margin-top:32px">
+          <span>Moins de 5 % des messages reçoivent une réponse — et parmi eux, moins de 3 % deviennent un vrai projet.</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form id="contact-form" data-telegram="Chichanofis">
+          <div class="field">
+            <label for="f-name">Nom</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-code">Code d'invitation</label>
+            <input id="f-code" name="code" type="text" required>
+          </div>
+          <div class="field">
+            <label for="f-message">Message</label>
+            <textarea id="f-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Ouvrir Telegram</button>
+          <p class="form-note">Cela ouvre Telegram avec votre message déjà rédigé — c'est vous qui décidez de l'envoyer. Ce site ne collecte ni ne conserve rien de ce formulaire.</p>
+        </form>
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -726,6 +779,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="#about">À propos</a>
       <a href="#stack">Stack</a>
       <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
       <a href="privacy.html">Confidentialité</a>
       <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
     </nav>

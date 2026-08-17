@@ -331,6 +331,17 @@ input, textarea, select{ font: inherit; color: inherit; }
   background: var(--gradient-soft);
 }
 
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+
 /* ---------- location ---------- */
 .location-box{
   border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
@@ -427,7 +438,7 @@ input, textarea, select{ font: inherit; color: inherit; }
         <div class="about-badge"><span class="dot"></span><span class="label">لا نستخدم Google Analytics ولا أي أداة تحليلات أخرى</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">لا نحمّل خطوطًا أو شبكات توصيل محتوى أو نصوصًا خارجية</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">لا نستخدم بكسلات إعلانية أو خاصة بالشبكات الاجتماعية</span></div>
-        <div class="about-badge"><span class="dot"></span><span class="label">لا توجد نماذج: لا نجمع أي شيء قد ترسله إلينا</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">النموذج الوحيد الذي لدينا لا يمر عبر أي خادم خاص بنا: فقط يفتح Telegram برسالتك مكتوبة بالفعل</span></div>
       </div>
 
       <div class="about-copy reveal">
@@ -462,6 +473,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="index.html#about">نبذة عني</a>
       <a href="index.html#stack">التقنيات</a>
       <a href="index.html#clients">العملاء</a>
+      <a href="index.html#contact">التواصل</a>
       <a href="privacy.html">الخصوصية</a>
       <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
     </nav>

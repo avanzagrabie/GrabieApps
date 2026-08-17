@@ -116,6 +116,7 @@
       <a href="#team" data-i18n="nav.team">Equipo</a>
       <a href="#clients" data-i18n="nav.clients">Clientes</a>
       <a href="#process" data-i18n="nav.process">Proceso</a>
+      <a href="#contact" data-i18n="nav.contact">Contacto</a>
     </nav>
 
     <div class="nav-right">
@@ -361,6 +362,47 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container about-grid">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="contact.eyebrow">Contacto</p>
+        <h2 class="section-title" data-i18n="contact.title">Antes de escribirnos, lee esto.</h2>
+        <p class="section-subtitle" data-i18n="contact.subtitle">Solo aceptamos clientes por invitación.</p>
+
+        <p class="sectors-label" style="margin-top:32px" data-i18n="contact.rules_label">Antes de escribir</p>
+        <div class="about-badges" style="margin-top:14px">
+          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule1">Si ya tienes una invitación activa y es una emergencia, usa el canal directo con tu coordinador que se te entregó al incorporarte — no lo publicamos aquí.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule2">No respondemos contacto personal, curiosidad ni preguntas sobre presupuestos por este medio.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule3">No se contestará ningún mensaje que no cumpla estas condiciones.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule4">Si aceptamos reunirnos, la reunión no es gratuita: cubre nuestro tiempo, se paga por adelantado y no es reembolsable ni se descuenta del proyecto si finalmente lo aceptamos.</span></div>
+        </div>
+
+        <div class="process-callout reveal" style="margin-top:32px">
+          <span data-i18n="contact.stat">Menos del 5% de los mensajes recibe respuesta — y de esos, menos del 3% se convierte en un proyecto real.</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form id="contact-form" data-telegram="Chichanofis">
+          <div class="field">
+            <label for="f-name" data-i18n="contact.form_name">Nombre</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-code" data-i18n="contact.form_code">Código de invitación</label>
+            <input id="f-code" name="code" type="text" required>
+          </div>
+          <div class="field">
+            <label for="f-message" data-i18n="contact.form_message">Mensaje</label>
+            <textarea id="f-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="contact.form_submit">Abrir Telegram</button>
+          <p class="form-note" data-i18n="contact.form_note">Se abre Telegram con tu mensaje ya redactado — decides tú si lo envías. Este sitio no recopila ni almacena nada de este formulario.</p>
+        </form>
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -383,6 +425,7 @@
       <a href="#about" data-i18n="nav.about">Sobre mí</a>
       <a href="#stack" data-i18n="nav.stack">Stack</a>
       <a href="#clients" data-i18n="nav.clients">Clientes</a>
+      <a href="#contact" data-i18n="nav.contact">Contacto</a>
       <a href="privacy.html" data-i18n="nav.privacy">Privacidad</a>
       <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
     </nav>

@@ -331,6 +331,17 @@ input, textarea, select{ font: inherit; color: inherit; }
   background: var(--gradient-soft);
 }
 
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+
 /* ---------- location ---------- */
 .location-box{
   border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
@@ -427,7 +438,7 @@ input, textarea, select{ font: inherit; color: inherit; }
         <div class="about-badge"><span class="dot"></span><span class="label">不使用Google Analytics或任何其他分析工具</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">不加载外部字体、CDN或脚本</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">不使用广告或社交媒体像素</span></div>
-        <div class="about-badge"><span class="dot"></span><span class="label">没有任何表单：不收集你发送给我们的任何信息</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">我们唯一的表单不经过任何我们的服务器：它只是打开Telegram并显示你已写好的信息</span></div>
       </div>
 
       <div class="about-copy reveal">
@@ -462,6 +473,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="index.html#about">关于我</a>
       <a href="index.html#stack">技术栈</a>
       <a href="index.html#clients">客户</a>
+      <a href="index.html#contact">联系</a>
       <a href="privacy.html">隐私</a>
       <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
     </nav>

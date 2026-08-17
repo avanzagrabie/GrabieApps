@@ -357,6 +357,17 @@ input, textarea, select{ font: inherit; color: inherit; }
   background: var(--gradient-soft);
 }
 
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+
 /* ---------- location ---------- */
 .location-box{
   border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
@@ -459,6 +470,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="#team">チーム</a>
       <a href="#clients">クライアント</a>
       <a href="#process">プロセス</a>
+      <a href="#contact">お問い合わせ</a>
     </nav>
 
     <div class="nav-right">
@@ -704,6 +716,47 @@ input, textarea, select{ font: inherit; color: inherit; }
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container about-grid">
+      <div class="reveal">
+        <p class="eyebrow">お問い合わせ</p>
+        <h2 class="section-title">ご連絡の前にお読みください。</h2>
+        <p class="section-subtitle">クライアントは招待制のみでお受けしています。</p>
+
+        <p class="sectors-label" style="margin-top:32px">ご連絡の前に</p>
+        <div class="about-badges" style="margin-top:14px">
+          <div class="about-badge"><span class="dot"></span><span class="label">すでに有効な招待をお持ちで緊急の場合は、オンボーディング時にお渡ししたコーディネーターへの直接連絡先をご利用ください——ここでは公開していません。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">この窓口では、個人的な連絡、興味本位のご質問、予算に関するご質問にはお答えしません。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">これらの条件を満たさないメッセージには返信いたしません。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">面談をお受けする場合、無料ではありません。費用は私たちの時間に対するものであり、前払い制で、最終的に案件をお受けした場合でも返金や差し引きの対象にはなりません。</span></div>
+        </div>
+
+        <div class="process-callout reveal" style="margin-top:32px">
+          <span>メッセージのうち返信があるのは5%未満——そのうち実際のプロジェクトになるのは3%未満です。</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form id="contact-form" data-telegram="Chichanofis">
+          <div class="field">
+            <label for="f-name">お名前</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-code">招待コード</label>
+            <input id="f-code" name="code" type="text" required>
+          </div>
+          <div class="field">
+            <label for="f-message">メッセージ</label>
+            <textarea id="f-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Telegramを開く</button>
+          <p class="form-note">Telegramがメッセージ入力済みの状態で開きます——送信するかどうかはあなた次第です。このサイトはこのフォームから何も収集・保存しません。</p>
+        </form>
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -726,6 +779,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="#about">プロフィール</a>
       <a href="#stack">技術スタック</a>
       <a href="#clients">クライアント</a>
+      <a href="#contact">お問い合わせ</a>
       <a href="privacy.html">プライバシー</a>
       <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
     </nav>

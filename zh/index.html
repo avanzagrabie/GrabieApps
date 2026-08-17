@@ -357,6 +357,17 @@ input, textarea, select{ font: inherit; color: inherit; }
   background: var(--gradient-soft);
 }
 
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+
 /* ---------- location ---------- */
 .location-box{
   border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
@@ -459,6 +470,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="#team">团队</a>
       <a href="#clients">客户</a>
       <a href="#process">合作流程</a>
+      <a href="#contact">联系</a>
     </nav>
 
     <div class="nav-right">
@@ -704,6 +716,47 @@ input, textarea, select{ font: inherit; color: inherit; }
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container about-grid">
+      <div class="reveal">
+        <p class="eyebrow">联系</p>
+        <h2 class="section-title">写信给我们之前，请先读这些。</h2>
+        <p class="section-subtitle">我们只接受受邀客户。</p>
+
+        <p class="sectors-label" style="margin-top:32px">写信之前</p>
+        <div class="about-badges" style="margin-top:14px">
+          <div class="about-badge"><span class="dot"></span><span class="label">如果你已经拥有有效邀请，并且是紧急情况，请使用在加入时提供给你的与协调人的直接联络渠道——我们不会在此公开。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">我们不会通过此渠道回复私人联系、好奇咨询或预算相关问题。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">任何不符合这些条件的信息都不会被回复。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">如果我们同意会面，该会面并非免费：费用用于支付我们的时间，需提前支付，即使最终接受该项目，该费用也不予退还或抵扣。</span></div>
+        </div>
+
+        <div class="process-callout reveal" style="margin-top:32px">
+          <span>不到5%的信息会收到回复——在这些当中，不到3%最终成为真正的项目。</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form id="contact-form" data-telegram="Chichanofis">
+          <div class="field">
+            <label for="f-name">姓名</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-code">邀请码</label>
+            <input id="f-code" name="code" type="text" required>
+          </div>
+          <div class="field">
+            <label for="f-message">留言</label>
+            <textarea id="f-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">打开Telegram</button>
+          <p class="form-note">这将打开Telegram，并已为你预填好信息——是否发送由你决定。本网站不会收集或存储此表单的任何信息。</p>
+        </form>
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -726,6 +779,7 @@ input, textarea, select{ font: inherit; color: inherit; }
       <a href="#about">关于我</a>
       <a href="#stack">技术栈</a>
       <a href="#clients">客户</a>
+      <a href="#contact">联系</a>
       <a href="privacy.html">隐私</a>
       <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
     </nav>
