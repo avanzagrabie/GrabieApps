@@ -2,13 +2,15 @@
    Gabriel Díaz Bernal — i18n engine
    Detects device language (navigator.language) and swaps all
    [data-i18n] content client-side. No build step, no server.
-   Supported: es (default/source) · en · fr · pt
+   Supported: es (default/source) · en · fr · pt · ar · zh · ja
+   Arabic renders right-to-left; applyLang() flips <html dir>.
    ========================================================= */
 
 (function (global) {
   "use strict";
 
-  var SUPPORTED = ["es", "en", "fr", "pt"];
+  var SUPPORTED = ["es", "en", "fr", "pt", "ar", "zh", "ja"];
+  var RTL_LANGS = ["ar"];
   var DEFAULT_LANG = "es";
   var STORAGE_KEY = "gdb_lang";
 
@@ -16,7 +18,10 @@
     es: { name: "Español", code: "ES" },
     en: { name: "English", code: "EN" },
     fr: { name: "Français", code: "FR" },
-    pt: { name: "Português", code: "PT" }
+    pt: { name: "Português", code: "PT" },
+    ar: { name: "العربية", code: "AR" },
+    zh: { name: "中文", code: "ZH" },
+    ja: { name: "日本語", code: "JA" }
   };
 
   var I18N = {
@@ -25,12 +30,11 @@
       "meta.description": `Gabriel Díaz Bernal lidera un estudio de 25 ingenieros de software de élite. Ubicación no divulgada. Trabajamos bajo demanda y aceptamos proyectos solo bajo condiciones muy selectas.`,
 
       "nav.home": `Inicio`, "nav.about": `Sobre mí`, "nav.stack": `Stack`, "nav.team": `Equipo`,
-      "nav.process": `Proceso`, "nav.blog": `Blog`, "nav.contact": `Contacto`, "nav.cta": `Solicitar acceso`,
+      "nav.process": `Proceso`, "nav.blog": `Blog`,
 
       "hero.eyebrow": `Disponible solo bajo invitación`,
       "hero.title": `Gabriel Díaz Bernal`,
       "hero.subtitle": `Arquitecto de software. Fundador de un estudio distribuido de 25 ingenieros que construye lo que otros consideran imposible.`,
-      "hero.cta_primary": `Solicitar acceso`,
       "hero.cta_secondary": `Ver el arsenal técnico`,
       "hero.stat1_value": `25`, "hero.stat1_label": `ingenieros senior`,
       "hero.stat2_value": `100%`, "hero.stat2_label": `remoto y distribuido`,
@@ -99,18 +103,6 @@
       "blog.post3_tag": `Seguridad`, "blog.post3_title": `Criptografía poscuántica: preparar hoy sistemas que deben durar diez años`,
       "blog.post3_excerpt": `Migrar a criptografía resistente a computación cuántica no es pánico, es planificación. Cómo lo abordamos en sistemas que no pueden permitirse una brecha en 2035.`, "blog.post3_date": `3 may 2026`,
 
-      "contact.eyebrow": `Contacto`, "contact.title": `¿Tu proyecto merece nuestro equipo?`,
-      "contact.subtitle": `Cuéntanos lo esencial. Respondemos solo a las solicitudes que encajan.`,
-      "contact.form_name": `Nombre`, "contact.form_email": `Email`, "contact.form_type": `Tipo de proyecto`,
-      "contact.form_budget": `Presupuesto estimado`, "contact.form_message": `Cuéntanos en pocas líneas`,
-      "contact.form_submit": `Enviar solicitud confidencial`,
-      "contact.form_note": `Toda solicitud se trata bajo confidencialidad. No compartimos ni vendemos tus datos.`,
-      "contact.type_opt1": `Producto nuevo desde cero`, "contact.type_opt2": `Rescate de proyecto crítico`,
-      "contact.type_opt3": `Auditoría de seguridad`, "contact.type_opt4": `Otro`,
-      "contact.budget_opt1": `50.000 € – 150.000 €`, "contact.budget_opt2": `150.000 € – 500.000 €`,
-      "contact.budget_opt3": `500.000 € +`, "contact.budget_opt4": `Prefiero indicarlo en la solicitud`,
-      "contact.direct": `¿Prefieres ir directo? Escríbenos a`,
-
       "footer.tagline": `Software de élite. Bajo invitación.`, "footer.rights": `Todos los derechos reservados.`,
       "footer.made": `Sitio construido con precisión de ingeniería.`,
 
@@ -157,12 +149,11 @@
       "meta.description": `Gabriel Díaz Bernal leads a studio of 25 elite software engineers. Undisclosed location. We work on demand and accept projects only under very selective terms.`,
 
       "nav.home": `Home`, "nav.about": `About`, "nav.stack": `Stack`, "nav.team": `Team`,
-      "nav.process": `Process`, "nav.blog": `Blog`, "nav.contact": `Contact`, "nav.cta": `Request access`,
+      "nav.process": `Process`, "nav.blog": `Blog`,
 
       "hero.eyebrow": `Available by invitation only`,
       "hero.title": `Gabriel Díaz Bernal`,
       "hero.subtitle": `Software architect. Founder of a distributed studio of 25 engineers that builds what others consider impossible.`,
-      "hero.cta_primary": `Request access`,
       "hero.cta_secondary": `View the tech arsenal`,
       "hero.stat1_value": `25`, "hero.stat1_label": `senior engineers`,
       "hero.stat2_value": `100%`, "hero.stat2_label": `remote and distributed`,
@@ -231,18 +222,6 @@
       "blog.post3_tag": `Security`, "blog.post3_title": `Post-quantum cryptography: preparing today systems that must last a decade`,
       "blog.post3_excerpt": `Migrating to quantum-resistant cryptography isn't panic, it's planning. How we approach it in systems that can't afford a breach in 2035.`, "blog.post3_date": `May 3, 2026`,
 
-      "contact.eyebrow": `Contact`, "contact.title": `Does your project deserve our team?`,
-      "contact.subtitle": `Tell us the essentials. We only reply to requests that fit.`,
-      "contact.form_name": `Name`, "contact.form_email": `Email`, "contact.form_type": `Project type`,
-      "contact.form_budget": `Estimated budget`, "contact.form_message": `Tell us in a few lines`,
-      "contact.form_submit": `Send confidential request`,
-      "contact.form_note": `Every request is handled confidentially. We don't share or sell your data.`,
-      "contact.type_opt1": `New product from scratch`, "contact.type_opt2": `Critical project rescue`,
-      "contact.type_opt3": `Security audit`, "contact.type_opt4": `Other`,
-      "contact.budget_opt1": `$50,000 – $150,000`, "contact.budget_opt2": `$150,000 – $500,000`,
-      "contact.budget_opt3": `$500,000+`, "contact.budget_opt4": `I'd rather specify it in the request`,
-      "contact.direct": `Prefer to go straight to the point? Write to us at`,
-
       "footer.tagline": `Elite software. By invitation.`, "footer.rights": `All rights reserved.`,
       "footer.made": `Site built with engineering precision.`,
 
@@ -289,12 +268,11 @@
       "meta.description": `Gabriel Díaz Bernal dirige un studio de 25 ingénieurs logiciels d'élite. Localisation non divulguée. Nous travaillons à la demande et n'acceptons des projets que selon des conditions très sélectives.`,
 
       "nav.home": `Accueil`, "nav.about": `À propos`, "nav.stack": `Stack`, "nav.team": `Équipe`,
-      "nav.process": `Processus`, "nav.blog": `Blog`, "nav.contact": `Contact`, "nav.cta": `Demander l'accès`,
+      "nav.process": `Processus`, "nav.blog": `Blog`,
 
       "hero.eyebrow": `Disponible uniquement sur invitation`,
       "hero.title": `Gabriel Díaz Bernal`,
       "hero.subtitle": `Architecte logiciel. Fondateur d'un studio distribué de 25 ingénieurs qui construit ce que d'autres jugent impossible.`,
-      "hero.cta_primary": `Demander l'accès`,
       "hero.cta_secondary": `Voir l'arsenal technique`,
       "hero.stat1_value": `25`, "hero.stat1_label": `ingénieurs seniors`,
       "hero.stat2_value": `100%`, "hero.stat2_label": `à distance et distribués`,
@@ -363,18 +341,6 @@
       "blog.post3_tag": `Sécurité`, "blog.post3_title": `Cryptographie post-quantique : préparer aujourd'hui des systèmes qui doivent durer dix ans`,
       "blog.post3_excerpt": `Migrer vers une cryptographie résistante au quantique n'est pas de la panique, c'est de la planification. Comment nous l'abordons dans des systèmes qui ne peuvent pas se permettre une brèche en 2035.`, "blog.post3_date": `3 mai 2026`,
 
-      "contact.eyebrow": `Contact`, "contact.title": `Votre projet mérite-t-il notre équipe ?`,
-      "contact.subtitle": `Dites-nous l'essentiel. Nous ne répondons qu'aux demandes qui correspondent.`,
-      "contact.form_name": `Nom`, "contact.form_email": `Email`, "contact.form_type": `Type de projet`,
-      "contact.form_budget": `Budget estimé`, "contact.form_message": `Expliquez-nous en quelques lignes`,
-      "contact.form_submit": `Envoyer la demande confidentielle`,
-      "contact.form_note": `Chaque demande est traitée confidentiellement. Nous ne partageons ni ne vendons vos données.`,
-      "contact.type_opt1": `Nouveau produit à partir de zéro`, "contact.type_opt2": `Sauvetage de projet critique`,
-      "contact.type_opt3": `Audit de sécurité`, "contact.type_opt4": `Autre`,
-      "contact.budget_opt1": `50 000 € – 150 000 €`, "contact.budget_opt2": `150 000 € – 500 000 €`,
-      "contact.budget_opt3": `500 000 € +`, "contact.budget_opt4": `Je préfère le préciser dans la demande`,
-      "contact.direct": `Vous préférez aller droit au but ? Écrivez-nous à`,
-
       "footer.tagline": `Logiciel d'élite. Sur invitation.`, "footer.rights": `Tous droits réservés.`,
       "footer.made": `Site construit avec précision d'ingénierie.`,
 
@@ -421,12 +387,11 @@
       "meta.description": `Gabriel Díaz Bernal lidera um estúdio de 25 engenheiros de software de elite. Localização não divulgada. Trabalhamos sob demanda e aceitamos projetos apenas em condições muito seletas.`,
 
       "nav.home": `Início`, "nav.about": `Sobre mim`, "nav.stack": `Stack`, "nav.team": `Equipe`,
-      "nav.process": `Processo`, "nav.blog": `Blog`, "nav.contact": `Contato`, "nav.cta": `Solicitar acesso`,
+      "nav.process": `Processo`, "nav.blog": `Blog`,
 
       "hero.eyebrow": `Disponível apenas por convite`,
       "hero.title": `Gabriel Díaz Bernal`,
       "hero.subtitle": `Arquiteto de software. Fundador de um estúdio distribuído de 25 engenheiros que constrói o que outros consideram impossível.`,
-      "hero.cta_primary": `Solicitar acesso`,
       "hero.cta_secondary": `Ver o arsenal técnico`,
       "hero.stat1_value": `25`, "hero.stat1_label": `engenheiros sênior`,
       "hero.stat2_value": `100%`, "hero.stat2_label": `remoto e distribuído`,
@@ -495,18 +460,6 @@
       "blog.post3_tag": `Segurança`, "blog.post3_title": `Criptografia pós-quântica: preparar hoje sistemas que precisam durar dez anos`,
       "blog.post3_excerpt": `Migrar para criptografia resistente à computação quântica não é pânico, é planejamento. Como abordamos isso em sistemas que não podem se dar ao luxo de uma brecha em 2035.`, "blog.post3_date": `3 mai 2026`,
 
-      "contact.eyebrow": `Contato`, "contact.title": `Seu projeto merece a nossa equipe?`,
-      "contact.subtitle": `Conte-nos o essencial. Respondemos apenas às solicitações que se encaixam.`,
-      "contact.form_name": `Nome`, "contact.form_email": `Email`, "contact.form_type": `Tipo de projeto`,
-      "contact.form_budget": `Orçamento estimado`, "contact.form_message": `Conte-nos em poucas linhas`,
-      "contact.form_submit": `Enviar solicitação confidencial`,
-      "contact.form_note": `Toda solicitação é tratada com confidencialidade. Não compartilhamos nem vendemos seus dados.`,
-      "contact.type_opt1": `Novo produto do zero`, "contact.type_opt2": `Resgate de projeto crítico`,
-      "contact.type_opt3": `Auditoria de segurança`, "contact.type_opt4": `Outro`,
-      "contact.budget_opt1": `US$ 50.000 – 150.000`, "contact.budget_opt2": `US$ 150.000 – 500.000`,
-      "contact.budget_opt3": `US$ 500.000+`, "contact.budget_opt4": `Prefiro indicar na solicitação`,
-      "contact.direct": `Prefere ir direto ao ponto? Escreva para`,
-
       "footer.tagline": `Software de elite. Sob convite.`, "footer.rights": `Todos os direitos reservados.`,
       "footer.made": `Site construído com precisão de engenharia.`,
 
@@ -546,6 +499,363 @@
       "post_pqc.quote": `A parte mais difícil não foi a criptografia, foi o inventário: saber onde vive cada chave, cada certificado e cada dependência legada antes de tocar em qualquer coisa.`,
       "post_pqc.p4": `Migrar em produção, sem downtime e com rollback verificado, é exatamente o tipo de projeto que aceitamos: alto risco, margem de erro zero.`,
       "post_pqc.p5": `Dez anos parece muito tempo — até que seja a sua infraestrutura que precise continuar de pé quando esse momento chegar.`
+    },
+
+    ar: {
+      "meta.title": `غابرييل دياز بيرنال — مهندس برمجيات`,
+      "meta.description": `يقود غابرييل دياز بيرنال استوديو من 25 مهندس برمجيات من النخبة. الموقع غير معلن. نعمل عند الطلب ونقبل المشاريع وفق شروط انتقائية للغاية فقط.`,
+
+      "nav.home": `الرئيسية`, "nav.about": `نبذة عني`, "nav.stack": `التقنيات`, "nav.team": `الفريق`,
+      "nav.process": `منهجية العمل`, "nav.blog": `المدونة`,
+
+      "hero.eyebrow": `متاح فقط بالدعوة`,
+      "hero.title": `غابرييل دياز بيرنال`,
+      "hero.subtitle": `مهندس برمجيات. مؤسس استوديو موزّع يضم 25 مهندسًا يبنون ما يعتبره الآخرون مستحيلاً.`,
+      "hero.cta_secondary": `استعرض الترسانة التقنية`,
+      "hero.stat1_value": `25`, "hero.stat1_label": `مهندس أول`,
+      "hero.stat2_value": `100%`, "hero.stat2_label": `عمل عن بُعد وموزّع`,
+      "hero.stat3_value": `<3%`, "hero.stat3_label": `من الطلبات المقبولة`,
+      "hero.stat4_value": `0`, "hero.stat4_label": `عملاء معلنون`,
+      "hero.terminal_title": `gabriel@studio — zsh`,
+      "hero.term1_cmd": `whoami`, "hero.term1_out": `gabriel_diaz_bernal — مهندس برمجيات`,
+      "hero.term2_cmd": `team --size`, "hero.term2_out": `25 مهندسًا أول · موزّعون · بموجب اتفاقية سرية`,
+      "hero.term3_cmd": `location --reveal`, "hero.term3_out": `تم رفض الوصول: الموقع سرّي`,
+      "hero.term4_cmd": `availability --check`, "hero.term4_out": `true — بالدعوة فقط`,
+      "hero.term5_cmd": `stack --2026`, "hero.term5_out": `جارٍ تحميل الترسانة التقنية...`,
+
+      "about.eyebrow": `نبذة عني`,
+      "about.title": `أبني برمجيات حين لا يكون الفشل خيارًا.`,
+      "about.p1": `منذ أكثر من عقد وأنا أصمم أنظمة بالغة الأهمية لمؤسسات لا تحتمل الأخطاء. في مرحلة ما توقفت عن العمل بمفردي وبدأت ببناء استوديو.`,
+      "about.p2": `اليوم أقود فريقًا موزّعًا من 25 مهندسًا أول منتشرين عبر مناطق زمنية لا نُفصح عنها علنًا. لا مكتب لدينا. لا شعارات عملاء على الصفحة الرئيسية. لدينا اتفاقيات سرية وسجل حافل لا نناقشه إلا سرًا.`,
+      "about.p3": `لا نتنافس على الحجم، بل على الحكمة في الاختيار: نقبل المشاريع التي تهم حقًا وننفذها كما لو أن مستقبل عمل العميل يعتمد عليها — لأن ذلك صحيح في أغلب الأحيان.`,
+      "about.badge1": `السرية أولاً`, "about.badge2": `لا معرض أعمال علني`, "about.badge3": `معايير غير قابلة للتفاوض`,
+
+      "stack.eyebrow": `الترسانة التقنية`,
+      "stack.title": `أحدث الأدوات التقنية لعام 2026`,
+      "stack.subtitle": `لا نلاحق الضجيج. نتبنى ما يمنح ميزة حقيقية وننقله إلى الإنتاج قبل بقية السوق.`,
+      "stack.item1_title": `أنظمة الذكاء الاصطناعي الوكيلي`, "stack.item1_desc": `تنسيق متعدد الوكلاء في الإنتاج، ونماذج متقدمة ذات استدلال موسّع، وخطوط RAG من الجيل التالي.`,
+      "stack.item2_title": `الحوسبة الطرفية الموزّعة`, "stack.item2_desc": `حوسبة طرفية باستدلال على الجهاز، وبيئات تشغيل WASM، وزمن استجابة أحادي الرقم في أي قارة.`,
+      "stack.item3_title": `Rust وZig وTypeScript`, "stack.item3_desc": `أنظمة حرجة بلغتي Rust وZig؛ واجهات المنتج بلغة TypeScript مع Server Components والبث المباشر الأصلي.`,
+      "stack.item4_title": `بنية تحتية سحابية أصيلة`, "stack.item4_desc": `Kubernetes متعدد العناقيد، وGitOps، ومراقبة شاملة عبر OpenTelemetry منذ أول Commit.`,
+      "stack.item5_title": `أمن الثقة الصفرية`, "stack.item5_desc": `معماريات الثقة الصفرية، والتشفير المقاوم للحوسبة الكمّية، واختبار الاختراق المستمر المدمج في خط التسليم.`,
+      "stack.item6_title": `بيانات في الزمن الحقيقي`, "stack.item6_desc": `قواعد بيانات متجهية، وتحليلات بث لحظية، واستدلال ذكاء اصطناعي يعمل عند الطرف، قريبًا من المستخدم.`,
+      "stack.item7_title": `بنية تحتية لامركزية`, "stack.item7_desc": `عقود ذكية مدقَّقة، وبراهين المعرفة الصفرية، وأنظمة مقاومة للرقابة عند الحاجة.`,
+      "stack.item8_title": `الحوسبة المكانية وتقنيات XR`, "stack.item8_desc": `واجهات لنظارات الجيل القادم وتجارب غامرة مبنية بمحركات الزمن الحقيقي.`,
+      "stack.item9_title": `DevOps مستقل`, "stack.item9_desc": `خطوط تشغيل ذاتية التنظيم، ونشر تدريجي، وتراجع تلقائي موجَّه بمراقبة مدعومة بالذكاء الاصطناعي.`,
+
+      "team.eyebrow": `الفريق`,
+      "team.title": `25 مهندسًا. صفر غرور. معيار واحد فقط.`,
+      "team.subtitle": `لا ننشر صورًا ولا أسماء. ننشر معاييرنا.`,
+      "team.orb_label": `مهندسون نشطون`,
+      "team.row1_count": `08`, "team.row1_label": `الخلفية البرمجية والأنظمة الموزّعة`,
+      "team.row2_count": `05`, "team.row2_label": `الذكاء الاصطناعي التطبيقي`,
+      "team.row3_count": `04`, "team.row3_label": `الأمن الهجومي والدفاعي`,
+      "team.row4_count": `03`, "team.row4_label": `هندسة السحابة`,
+      "team.row5_count": `03`, "team.row5_label": `الواجهات الأمامية وعالية الأداء`,
+      "team.row6_count": `02`, "team.row6_label": `البلوك تشين والبنية التحتية اللامركزية`,
+      "team.note": `كل مهندس اجتاز عملية اختيار أشد صرامة من تلك التي نطبّقها على عملائنا أنفسهم.`,
+
+      "process.eyebrow": `كيف نعمل`,
+      "process.title": `عند الطلب. وفق شروطك أبدًا.`,
+      "process.subtitle": `نقبل العمل وفق شروط انتقائية للغاية فقط. هذه هي المنهجية.`,
+      "process.step1_num": `01`, "process.step1_title": `طلب سرّي`, "process.step1_desc": `تشاركنا مشروعك بموجب اتفاقية سرية. لا نماذج علنية، ولا بريد وارد مفتوح.`,
+      "process.step2_num": `02`, "process.step2_title": `تقييم الملاءمة`, "process.step2_desc": `نقيّم ما إذا كانت المشكلة تستحق الفريق. معظم الطلبات لا ترقى لذلك.`,
+      "process.step3_num": `03`, "process.step3_title": `عرض محدد النطاق`, "process.step3_desc": `إذا قبلنا، نُشكّل فريقًا مخصصًا ونحدد النطاق والجدول الزمني والشروط — دون تعاقد من الباطن.`,
+      "process.step4_num": `04`, "process.step4_title": `تنفيذ سرّي`, "process.step4_desc": `تواصل مشفّر، ومخرجات قابلة للتحقق، وصفر إشارات علنية ما لم تأذن بذلك.`,
+      "process.callout": `أقل من 3% من الطلبات التي نتلقاها تتحول إلى مشروع.`,
+
+      "location.eyebrow": `الموقع`,
+      "location.title": `لا مكان ثابت. كل المناطق الزمنية.`,
+      "location.text": `لا نُفصح عن مكتب أو مدينة رئيسية. يعمل الفريق عن بُعد بنسبة 100%، وبشكل موزّع، مع اجتماعات بموجب اتفاقية سرية عند الحاجة. إنه قرار تشغيلي، لا خدعة تسويقية.`,
+      "location.badge": `الموقع: سرّي`,
+
+      "blog.eyebrow": `المدونة`, "blog.title": `ملاحظات من الاستوديو`,
+      "blog.subtitle": `أفكار ومعماريات ودروس من مشاريع لا يمكننا دائمًا الإفصاح عن أسمائها.`,
+      "blog.readmore": `قراءة المقال`, "blog.viewall": `عرض كل المدونة`, "blog.back": `العودة إلى المدونة`, "blog.minread": `دقائق قراءة`,
+      "blog.post1_tag": `الذكاء الاصطناعي`, "blog.post1_title": `تنسيق وكلاء الذكاء الاصطناعي في الإنتاج: دروس عام 2026`,
+      "blog.post1_excerpt": `ما تعلمناه من نقل أنظمة متعددة الوكلاء حقيقية إلى الإنتاج: أعطال صامتة، وتكلفة السياق، ولماذا يهم التنسيق أكثر من النموذج نفسه.`, "blog.post1_date": `2 يوليو 2026`,
+      "blog.post2_tag": `البنية التحتية`, "blog.post2_title": `الحوسبة الطرفية الموزّعة: لماذا لا يعيش المستقبل في سحابة مركزية`,
+      "blog.post2_excerpt": `للمركزية السحابية سقف زمن استجابة. نروي كيف نصمم معماريات طرفية لعملاء لا يمكنهم الانتظار حتى 100 مللي ثانية.`, "blog.post2_date": `14 يونيو 2026`,
+      "blog.post3_tag": `الأمن`, "blog.post3_title": `التشفير ما بعد الكمّي: تجهيز أنظمة اليوم لتدوم عقدًا كاملاً`,
+      "blog.post3_excerpt": `الانتقال إلى تشفير مقاوم للحوسبة الكمّية ليس ذعرًا، بل تخطيط. كيف نتعامل معه في أنظمة لا تحتمل اختراقًا في 2035.`, "blog.post3_date": `3 مايو 2026`,
+
+      "footer.tagline": `برمجيات النخبة. بالدعوة فقط.`, "footer.rights": `جميع الحقوق محفوظة.`,
+      "footer.made": `موقع مبني بدقة هندسية.`,
+
+      "notfound.title": `المسار غير موجود`, "notfound.text": `هذا المورد غير موجود أو أنه سرّي.`, "notfound.cta": `العودة إلى الرئيسية`,
+
+      "author.role": `المؤسس ومهندس البرمجيات`,
+
+      "post_ia.tag": `الذكاء الاصطناعي`, "post_ia.date": `2 يوليو 2026`, "post_ia.readtime": `6`,
+      "post_ia.meta_title": `تنسيق وكلاء الذكاء الاصطناعي في الإنتاج — مدونة غابرييل دياز بيرنال`,
+      "post_ia.meta_desc": `دروس حقيقية من نقل أنظمة الذكاء الاصطناعي متعددة الوكلاء إلى الإنتاج: أعطال صامتة، وتكلفة السياق، ولماذا يهم التنسيق أكثر من النموذج.`,
+      "post_ia.title": `تنسيق وكلاء الذكاء الاصطناعي في الإنتاج: دروس عام 2026`,
+      "post_ia.p1": `في عام 2026 لم يعد أحد يناقش استخدام وكلاء الذكاء الاصطناعي في الإنتاج؛ السؤال هو كيف نمنع نظامًا متعدد الوكلاء من التحول إلى صندوق أسود يستحيل تصحيحه.`,
+      "post_ia.p2": `الخطأ الأول الشائع هو معاملة كل وكيل كخدمة مصغّرة مستقلة بلا ذاكرة مشتركة. في الأنظمة الحرجة، تُعد إمكانية تتبع القرارات بأهمية النتيجة النهائية نفسها.`,
+      "post_ia.p3": `تبنّينا نمط منسّق مركزي مع وكلاء متخصصين بمهمة واحدة، كل منهم مدقَّق وله ميزانية سياق واضحة. هذا يقلل الأعطال الصامتة ويسهّل التراجع.`,
+      "post_ia.quote": `نظام وكلاء بلا مراقبة حقيقية هو نظام لا يمكن الوثوق به في الإنتاج، مهما بدا جيدًا في العرض التجريبي.`,
+      "post_ia.p4": `التكلفة لم تعد فقط في الرموز: بل في زمن الاستجابة المتراكم بين النداءات. تحسين مخطط القرار يوفر أكثر من تحسين الطلب نفسه.`,
+      "post_ia.p5": `تعلمنا الدرس الأغلى من مراقبة الإنتاج، لا المختبر. وهذه في الجوهر الطريقة الصادقة الوحيدة لتعلّمه.`,
+
+      "post_edge.tag": `البنية التحتية`, "post_edge.date": `14 يونيو 2026`, "post_edge.readtime": `5`,
+      "post_edge.meta_title": `الحوسبة الطرفية الموزّعة — مدونة غابرييل دياز بيرنال`,
+      "post_edge.meta_desc": `لماذا لا يعيش المستقبل في سحابة مركزية: كيف نصمم معماريات طرفية لعملاء لا يمكنهم الانتظار حتى 100 مللي ثانية.`,
+      "post_edge.title": `الحوسبة الطرفية الموزّعة: لماذا لا يعيش المستقبل في سحابة مركزية`,
+      "post_edge.p1": `حين يحتاج العميل إلى قرارات في أقل من 20 مللي ثانية، لا تكون أي منطقة سحابية مركزية قريبة بما يكفي. الجواب لم يعد "مزيدًا من الخوادم"، بل "مسافة أقل".`,
+      "post_edge.p2": `نقلنا الاستدلال والمصادقة وجزءًا من منطق العمل إلى الطرف، بالقرب من المستخدم أو الجهاز، مع مزامنة لاحقة نحو النواة المركزية.`,
+      "post_edge.p3": `التحدي ليس تقنيًا، بل يتعلق بالاتساق: التصميم لأعطال جزئية وبيانات قديمة عن قصد دون كسر التجربة.`,
+      "post_edge.quote": `مكّننا WebAssembly من نشر نفس الملف الثنائي المدقَّق عند الطرف، وفي المتصفح، وعلى الخادم، دون إعادة كتابة المنطق الحرج ثلاث مرات.`,
+      "post_edge.p4": `النتيجة: زمن استجابة أحادي الرقم في معظم القارات، ومعمارية تتدهور بأناقة بدلاً من الانهيار الكامل.`,
+      "post_edge.p5": `لم يكن أي من هذه القرارات مجانيًا. كل قرار كلّف أسابيع من اختبارات الفوضى قبل أن يلمس الإنتاج.`,
+
+      "post_pqc.tag": `الأمن`, "post_pqc.date": `3 مايو 2026`, "post_pqc.readtime": `7`,
+      "post_pqc.meta_title": `التشفير ما بعد الكمّي — مدونة غابرييل دياز بيرنال`,
+      "post_pqc.meta_desc": `الانتقال إلى تشفير مقاوم للحوسبة الكمّية ليس ذعرًا، بل تخطيط. كيف نتعامل معه في أنظمة يجب أن تدوم عقدًا كاملاً.`,
+      "post_pqc.title": `التشفير ما بعد الكمّي: تجهيز أنظمة اليوم لتدوم عقدًا كاملاً`,
+      "post_pqc.p1": `لم تعد استراتيجية "اجمع الآن، فك التشفير لاحقًا" سيناريو نظريًا: هناك جهات تلتقط حركة بيانات مشفّرة اليوم، رهانًا على إمكانية فك تشفيرها متى سمحت الحوسبة الكمّية بذلك.`,
+      "post_pqc.p2": `بالنسبة لأنظمة تحمل بيانات حساسة على مدى عشر سنوات، فإن انتظار أن "يهاجر الجميع" ليس استراتيجية، بل رهان لا نقبل خوضه نيابة عن عميل.`,
+      "post_pqc.p3": `تبنّينا مخططات هجينة: خوارزميات كلاسيكية مدمجة مع بدائل ما بعد كمّية موحّدة بالفعل، حتى لا نعتمد على عائلة تشفير واحدة.`,
+      "post_pqc.quote": `لم يكن الجزء الأصعب هو التشفير، بل الجرد: معرفة مكان كل مفتاح وكل شهادة وكل تبعية قديمة قبل المساس بأي شيء.`,
+      "post_pqc.p4": `الترحيل أثناء التشغيل، دون توقف وبتراجع موثّق، هو بالضبط نوع المشاريع التي نقبلها: مخاطرة عالية، وهامش خطأ صفري.`,
+      "post_pqc.p5": `تبدو عشر سنوات مدة طويلة إلى أن تكون بنيتك التحتية هي التي يجب أن تظل صامدة حين تحين تلك اللحظة.`
+    },
+
+    zh: {
+      "meta.title": `加布里埃尔·迪亚兹·贝尔纳尔 — 软件架构师`,
+      "meta.description": `加布里埃尔·迪亚兹·贝尔纳尔领导着一支由25名精英软件工程师组成的团队。地点保密。我们按需工作，仅在非常严格的条件下承接项目。`,
+
+      "nav.home": `首页`, "nav.about": `关于我`, "nav.stack": `技术栈`, "nav.team": `团队`,
+      "nav.process": `合作流程`, "nav.blog": `博客`,
+
+      "hero.eyebrow": `仅凭邀请开放`,
+      "hero.title": `加布里埃尔·迪亚兹·贝尔纳尔`,
+      "hero.subtitle": `软件架构师。分布式工作室创始人，率领25名工程师打造他人眼中不可能的产品。`,
+      "hero.cta_secondary": `查看技术武器库`,
+      "hero.stat1_value": `25`, "hero.stat1_label": `资深工程师`,
+      "hero.stat2_value": `100%`, "hero.stat2_label": `远程分布式办公`,
+      "hero.stat3_value": `<3%`, "hero.stat3_label": `请求接受率`,
+      "hero.stat4_value": `0`, "hero.stat4_label": `公开客户数`,
+      "hero.terminal_title": `gabriel@studio — zsh`,
+      "hero.term1_cmd": `whoami`, "hero.term1_out": `gabriel_diaz_bernal — 软件架构师`,
+      "hero.term2_cmd": `team --size`, "hero.term2_out": `25名资深工程师 · 分布式团队 · 保密协议约束`,
+      "hero.term3_cmd": `location --reveal`, "hero.term3_out": `访问被拒：地点已保密`,
+      "hero.term4_cmd": `availability --check`, "hero.term4_out": `true — 仅限受邀`,
+      "hero.term5_cmd": `stack --2026`, "hero.term5_out": `正在加载技术武器库...`,
+
+      "about.eyebrow": `关于我`,
+      "about.title": `我打造的软件，容不得失败。`,
+      "about.p1": `十多年来，我一直在为承受不起失误的组织设计关键任务系统。某个时刻，我不再单打独斗，开始组建自己的工作室。`,
+      "about.p2": `如今，我带领一支由25名资深工程师组成的分布式团队，分布在我们从不公开确认的时区里。没有办公室，主页上也没有客户标志。我们签有保密协议，过往战绩只在私下谈起。`,
+      "about.p3": `我们不比数量，比的是判断力：只接手真正重要的项目，并全力以赴——因为客户的事业几乎总是系于此。`,
+      "about.badge1": `保密至上`, "about.badge2": `零公开作品集`, "about.badge3": `不可妥协的标准`,
+
+      "stack.eyebrow": `技术武器库`,
+      "stack.title": `2026年最前沿的技术`,
+      "stack.subtitle": `我们不追逐炒作，只采用真正带来优势的技术，并比市场其他人更早将其投入生产。`,
+      "stack.item1_title": `智能体AI系统`, "stack.item1_desc": `生产环境中的多智能体编排、具备扩展推理能力的前沿模型，以及新一代RAG管道。`,
+      "stack.item2_title": `分布式边缘计算`, "stack.item2_desc": `具备设备端推理能力的边缘计算、WASM运行时，以及任意大陆均可实现的个位数延迟。`,
+      "stack.item3_title": `Rust、Zig 与 TypeScript`, "stack.item3_desc": `关键系统采用 Rust 与 Zig 构建；产品界面使用 TypeScript，搭配 Server Components 与原生流式渲染。`,
+      "stack.item4_title": `云原生基础设施`, "stack.item4_desc": `多集群 Kubernetes、GitOps，以及从第一次提交起就贯穿始终的 OpenTelemetry 全面可观测性。`,
+      "stack.item5_title": `零信任安全`, "stack.item5_desc": `零信任架构、后量子密码学，以及集成于交付流水线中的持续渗透测试。`,
+      "stack.item6_title": `实时数据`, "stack.item6_desc": `向量数据库、流式实时分析，以及在边缘就近用户运行的AI推理。`,
+      "stack.item7_title": `去中心化基础设施`, "stack.item7_desc": `经过审计的智能合约、零知识证明，以及在项目需要时提供抗审查能力的系统。`,
+      "stack.item8_title": `空间计算与XR`, "stack.item8_desc": `面向新一代头显设备的界面，以及基于实时引擎打造的沉浸式体验。`,
+      "stack.item9_title": `自主化DevOps`, "stack.item9_desc": `自我调节的流水线、渐进式发布，以及由AI驱动可观测性引导的自动回滚。`,
+
+      "team.eyebrow": `团队`,
+      "team.title": `25名工程师。零自负。同一套标准。`,
+      "team.subtitle": `我们不公开照片，也不公开姓名。我们公开的是标准。`,
+      "team.orb_label": `在职工程师`,
+      "team.row1_count": `08`, "team.row1_label": `后端与分布式系统`,
+      "team.row2_count": `05`, "team.row2_label": `应用型AI`,
+      "team.row3_count": `04`, "team.row3_label": `攻防安全`,
+      "team.row4_count": `03`, "team.row4_label": `云架构`,
+      "team.row5_count": `03`, "team.row5_label": `前端与高性能界面`,
+      "team.row6_count": `02`, "team.row6_label": `区块链与去中心化基础设施`,
+      "team.note": `每一位工程师所经历的选拔流程，都比我们对客户本身的审核更为严苛。`,
+
+      "process.eyebrow": `合作方式`,
+      "process.title": `按需服务，但绝不迁就条件。`,
+      "process.subtitle": `我们仅在非常严格的条件下承接工作，以下是具体流程。`,
+      "process.step1_num": `01`, "process.step1_title": `保密请求`, "process.step1_desc": `你在保密协议下向我们说明项目。没有公开表单，没有敞开的收件箱。`,
+      "process.step2_num": `02`, "process.step2_title": `适配度评估`, "process.step2_desc": `我们评估这个问题是否值得动用整个团队——大多数请求并不值得。`,
+      "process.step3_num": `03`, "process.step3_title": `封闭范围提案`, "process.step3_desc": `一旦接受，我们组建专属团队，锁定范围、时间表与条款——绝不外包分包。`,
+      "process.step4_num": `04`, "process.step4_title": `保密执行`, "process.step4_desc": `加密通信、可验证的交付成果，未经你授权绝不对外提及。`,
+      "process.callout": `我们收到的请求中，成为正式项目的不足3%。`,
+
+      "location.eyebrow": `地点`,
+      "location.title": `没有固定地点，遍布每个时区。`,
+      "location.text": `我们不公开办公室或所在城市。团队100%远程分布式运作，在项目需要时通过保密协议约束下的会议沟通。这是运营层面的决定，不是营销噱头。`,
+      "location.badge": `地点：保密`,
+
+      "blog.eyebrow": `工作室手记`, "blog.title": `来自工作室的笔记`,
+      "blog.subtitle": `来自那些我们未必能公开名字的项目的想法、架构与经验教训。`,
+      "blog.readmore": `阅读全文`, "blog.viewall": `查看全部博客`, "blog.back": `返回博客`, "blog.minread": `分钟阅读`,
+      "blog.post1_tag": `人工智能`, "blog.post1_title": `生产环境中的AI智能体编排：2026年的经验教训`,
+      "blog.post1_excerpt": `将真实的多智能体系统推向生产环境后我们学到了什么：静默故障、上下文成本，以及为何编排比模型本身更重要。`, "blog.post1_date": `2026年7月2日`,
+      "blog.post2_tag": `基础设施`, "blog.post2_title": `分布式边缘计算：为何未来不属于中心化云端`,
+      "blog.post2_excerpt": `云端集中化存在延迟上限。我们分享如何为无法容忍超过100毫秒延迟的客户设计边缘架构。`, "blog.post2_date": `2026年6月14日`,
+      "blog.post3_tag": `安全`, "blog.post3_title": `后量子密码学：让今天的系统为未来十年做好准备`,
+      "blog.post3_excerpt": `迁移到抗量子加密并非出于恐慌，而是出于规划。我们如何在承受不起2035年数据泄露的系统中推进这项工作。`, "blog.post3_date": `2026年5月3日`,
+
+      "footer.tagline": `精英软件，仅限受邀。`, "footer.rights": `版权所有，保留所有权利。`,
+      "footer.made": `以工程级精度构建的网站。`,
+
+      "notfound.title": `路径未找到`, "notfound.text": `该资源不存在，或已被列为保密内容。`, "notfound.cta": `返回首页`,
+
+      "author.role": `创始人兼软件架构师`,
+
+      "post_ia.tag": `人工智能`, "post_ia.date": `2026年7月2日`, "post_ia.readtime": `6`,
+      "post_ia.meta_title": `生产环境中的AI智能体编排 — 加布里埃尔·迪亚兹·贝尔纳尔博客`,
+      "post_ia.meta_desc": `将多智能体AI系统真正推向生产环境的经验教训：静默故障、上下文成本，以及为何编排比模型本身更重要。`,
+      "post_ia.title": `生产环境中的AI智能体编排：2026年的经验教训`,
+      "post_ia.p1": `到了2026年，是否该在生产环境中使用AI智能体已不再是问题；真正的问题是如何避免一个多智能体系统沦为无法调试的黑箱。`,
+      "post_ia.p2": `最常见的第一个错误，是把每个智能体当作没有共享记忆的独立微服务对待。在关键系统中，决策的可追溯性和最终结果同样重要。`,
+      "post_ia.p3": `我们采用了中央编排器模式，搭配多个专注单一任务的智能体，每个都经过审计并拥有明确的上下文预算。这减少了静默故障，也让回滚更容易。`,
+      "post_ia.quote": `一个缺乏真正可观测性的智能体系统，无论演示效果多好，都是一个无法在生产环境中被信任的系统。`,
+      "post_ia.p4": `成本已不再只是token的问题：而是调用之间累积的延迟。优化决策图带来的收益，远胜于优化提示词本身。`,
+      "post_ia.p5": `我们最昂贵的一课，是通过观察生产环境而非实验室学到的。归根结底，这也是学到它的唯一诚实方式。`,
+
+      "post_edge.tag": `基础设施`, "post_edge.date": `2026年6月14日`, "post_edge.readtime": `5`,
+      "post_edge.meta_title": `分布式边缘计算 — 加布里埃尔·迪亚兹·贝尔纳尔博客`,
+      "post_edge.meta_desc": `为何未来不属于中心化云端：我们如何为无法容忍超过100毫秒延迟的客户设计边缘架构。`,
+      "post_edge.title": `分布式边缘计算：为何未来不属于中心化云端`,
+      "post_edge.p1": `当客户需要在20毫秒内做出决策时，没有任何中心化云区域足够靠近。答案不再是"增加服务器"，而是"缩短距离"。`,
+      "post_edge.p2": `我们将推理、身份验证以及部分业务逻辑迁移到了边缘，贴近用户或设备端，并与核心系统进行最终同步。`,
+      "post_edge.p3": `挑战并非技术层面的，而是一致性层面的：需要为部分故障和刻意存在的过期数据做设计，同时不破坏使用体验。`,
+      "post_edge.quote": `WebAssembly让我们能够在边缘、浏览器与服务器上部署同一个经过审计的二进制文件，而无需将关键逻辑重写三遍。`,
+      "post_edge.p4": `结果是：在大多数大陆实现了个位数延迟，架构也能优雅降级，而不是彻底崩溃。`,
+      "post_edge.p5": `这些决策没有一个是没有代价的。每一项都是在真正接触生产环境之前，用数周的混沌测试换来的。`,
+
+      "post_pqc.tag": `安全`, "post_pqc.date": `2026年5月3日`, "post_pqc.readtime": `7`,
+      "post_pqc.meta_title": `后量子密码学 — 加布里埃尔·迪亚兹·贝尔纳尔博客`,
+      "post_pqc.meta_desc": `迁移到抗量子加密并非出于恐慌，而是出于规划。我们如何在必须坚持十年的系统中推进这项工作。`,
+      "post_pqc.title": `后量子密码学：让今天的系统为未来十年做好准备`,
+      "post_pqc.p1": `"现在窃取，日后解密"已不再是纸上谈兵的场景：已有攻击者在今天截获加密流量，赌的是量子计算成熟后能将其破解。`,
+      "post_pqc.p2": `对于数据敏感期长达十年的系统而言，等待"所有人都迁移完成"并不是一种策略，而是我们不愿代表客户去下的赌注。`,
+      "post_pqc.p3": `我们采用了混合方案：将经典算法与已标准化的后量子加密算法相结合，从而不依赖单一的密码学体系。`,
+      "post_pqc.quote": `最难的部分不是密码学本身，而是资产清点：在动手之前，先弄清楚每一把密钥、每一张证书、每一项遗留依赖究竟在哪里。`,
+      "post_pqc.p4": `在不停机的情况下完成实时迁移，并具备经过验证的回滚方案——这正是我们愿意承接的项目类型：高风险，零容错空间。`,
+      "post_pqc.p5": `十年听起来很长，直到那一刻真正来临，需要屹立不倒的，是你自己的基础设施。`
+    },
+
+    ja: {
+      "meta.title": `ガブリエル・ディアス・ベルナル — ソフトウェアアーキテクト`,
+      "meta.description": `ガブリエル・ディアス・ベルナルは、25名の精鋭ソフトウェアエンジニアからなるスタジオを率いています。所在地非公開。オンデマンドで活動し、極めて厳選された条件下でのみプロジェクトを受託します。`,
+
+      "nav.home": `ホーム`, "nav.about": `プロフィール`, "nav.stack": `技術スタック`, "nav.team": `チーム`,
+      "nav.process": `プロセス`, "nav.blog": `ブログ`,
+
+      "hero.eyebrow": `招待制のみ`,
+      "hero.title": `ガブリエル・ディアス・ベルナル`,
+      "hero.subtitle": `ソフトウェアアーキテクト。他者が不可能と考えるものを構築する、25名からなる分散型スタジオの創設者。`,
+      "hero.cta_secondary": `技術アーセナルを見る`,
+      "hero.stat1_value": `25`, "hero.stat1_label": `シニアエンジニア`,
+      "hero.stat2_value": `100%`, "hero.stat2_label": `リモート・分散型`,
+      "hero.stat3_value": `<3%`, "hero.stat3_label": `依頼の承諾率`,
+      "hero.stat4_value": `0`, "hero.stat4_label": `公開クライアント数`,
+      "hero.terminal_title": `gabriel@studio — zsh`,
+      "hero.term1_cmd": `whoami`, "hero.term1_out": `gabriel_diaz_bernal — ソフトウェアアーキテクト`,
+      "hero.term2_cmd": `team --size`, "hero.term2_out": `シニアエンジニア25名 · 分散型 · NDA締結済み`,
+      "hero.term3_cmd": `location --reveal`, "hero.term3_out": `アクセス拒否：所在地は機密情報です`,
+      "hero.term4_cmd": `availability --check`, "hero.term4_out": `true — 招待制のみ`,
+      "hero.term5_cmd": `stack --2026`, "hero.term5_out": `技術アーセナルを読み込み中...`,
+
+      "about.eyebrow": `プロフィール`,
+      "about.title": `失敗が許されない場面でこそ、ソフトウェアをつくる。`,
+      "about.p1": `10年以上にわたり、ミスの許されない組織のためにミッションクリティカルなシステムを設計してきました。あるとき、一人で働くことをやめ、スタジオを築き始めました。`,
+      "about.p2": `現在は、公にはしないタイムゾーンに散らばる25名のシニアエンジニアからなる分散型チームを率いています。オフィスはありません。トップページにクライアントのロゴもありません。あるのは秘密保持契約と、非公開の場でしか語らない実績です。`,
+      "about.p3": `私たちは量ではなく、見極めで勝負します。本当に重要なプロジェクトだけを引き受け、クライアントの事業がそれにかかっているかのように取り組みます——実際、ほとんどの場合そうだからです。`,
+      "about.badge1": `機密保持を最優先`, "about.badge2": `公開実績ゼロ`, "about.badge3": `妥協なき基準`,
+
+      "stack.eyebrow": `技術アーセナル`,
+      "stack.title": `2026年、最先端の技術`,
+      "stack.subtitle": `私たちは流行を追いません。真の優位性をもたらす技術を採用し、市場の誰よりも早く本番環境へ投入します。`,
+      "stack.item1_title": `エージェント型AIシステム`, "stack.item1_desc": `本番環境でのマルチエージェントオーケストレーション、拡張推論を備えたフロンティアモデル、次世代RAGパイプライン。`,
+      "stack.item2_title": `分散型エッジコンピューティング`, "stack.item2_desc": `デバイス上推論を伴うエッジコンピューティング、WASMランタイム、どの大陸でも実現する一桁ミリ秒のレイテンシ。`,
+      "stack.item3_title": `Rust、Zig、TypeScript`, "stack.item3_desc": `重要システムはRustとZigで構築。プロダクト表層はServer Componentsとネイティブストリーミングを備えたTypeScriptで実装。`,
+      "stack.item4_title": `クラウドネイティブ基盤`, "stack.item4_desc": `マルチクラスタKubernetes、GitOps、そして最初のコミットから始まるOpenTelemetryによる完全な可観測性。`,
+      "stack.item5_title": `ゼロトラストセキュリティ`, "stack.item5_desc": `ゼロトラストアーキテクチャ、耐量子暗号、そして配信パイプラインに組み込まれた継続的なペネトレーションテスト。`,
+      "stack.item6_title": `リアルタイムデータ`, "stack.item6_desc": `ベクトルデータベース、ストリーミング分析、そしてユーザーの近くエッジで動作するAI推論。`,
+      "stack.item7_title": `分散型インフラストラクチャ`, "stack.item7_desc": `監査済みスマートコントラクト、ゼロ知識証明、そして必要に応じた検閲耐性のあるシステム。`,
+      "stack.item8_title": `空間コンピューティング & XR`, "stack.item8_desc": `次世代ヘッドセット向けインターフェースと、リアルタイムエンジンで構築された没入型体験。`,
+      "stack.item9_title": `自律型DevOps`, "stack.item9_desc": `自己調整するパイプライン、段階的リリース、そしてAI主導の可観測性による自動ロールバック。`,
+
+      "team.eyebrow": `チーム`,
+      "team.title": `エンジニア25名。エゴはゼロ。基準はただひとつ。`,
+      "team.subtitle": `写真も名前も公開しません。公開するのは基準です。`,
+      "team.orb_label": `稼働中のエンジニア`,
+      "team.row1_count": `08`, "team.row1_label": `バックエンド & 分散システム`,
+      "team.row2_count": `05`, "team.row2_label": `応用AI`,
+      "team.row3_count": `04`, "team.row3_label": `攻撃的・防御的セキュリティ`,
+      "team.row4_count": `03`, "team.row4_label": `クラウドアーキテクチャ`,
+      "team.row5_count": `03`, "team.row5_label": `フロントエンド & 高性能インターフェース`,
+      "team.row6_count": `02`, "team.row6_label": `ブロックチェーン & 分散型インフラ`,
+      "team.note": `すべてのエンジニアは、私たちがクライアントに課す基準よりも厳しい選考プロセスを経ています。`,
+
+      "process.eyebrow": `私たちの働き方`,
+      "process.title": `オンデマンドで。あなたの条件には決して従いません。`,
+      "process.subtitle": `極めて厳選された条件下でのみ、仕事をお受けしています。以下がそのプロセスです。`,
+      "process.step1_num": `01`, "process.step1_title": `機密の依頼`, "process.step1_desc": `NDAのもとでプロジェクトをお話しいただきます。公開フォームも、開かれた受信箱もありません。`,
+      "process.step2_num": `02`, "process.step2_title": `適合性の評価`, "process.step2_desc": `その課題がチームを動かすに値するかを見極めます。ほとんどの依頼はそれに届きません。`,
+      "process.step3_num": `03`, "process.step3_title": `クローズドスコープの提案`, "process.step3_desc": `お受けする場合は専任チームを編成し、範囲・スケジュール・条件を確定します——再委託は一切行いません。`,
+      "process.step4_num": `04`, "process.step4_title": `機密裏の実行`, "process.step4_desc": `暗号化された連絡手段、検証可能な成果物、そして許可なき公開言及は一切ありません。`,
+      "process.callout": `寄せられる依頼のうち、プロジェクト化するのは3%未満です。`,
+
+      "location.eyebrow": `所在地`,
+      "location.title": `固定の拠点はなし。すべてのタイムゾーンに。`,
+      "location.text": `オフィスも拠点都市も公開していません。チームは100%リモートかつ分散型で運営され、プロジェクトが必要とする場合にはNDAのもとで会議を行います。これはマーケティング上の演出ではなく、運用上の判断です。`,
+      "location.badge": `所在地：機密`,
+
+      "blog.eyebrow": `ブログ`, "blog.title": `スタジオからのノート`,
+      "blog.subtitle": `名前を明かせないプロジェクトから得たアイデア、アーキテクチャ、そして教訓。`,
+      "blog.readmore": `記事を読む`, "blog.viewall": `ブログ一覧を見る`, "blog.back": `ブログに戻る`, "blog.minread": `分で読了`,
+      "blog.post1_tag": `人工知能`, "blog.post1_title": `本番環境におけるAIエージェントオーケストレーション：2026年の教訓`,
+      "blog.post1_excerpt": `実際のマルチエージェントシステムを本番環境へ投入して学んだこと——サイレント障害、コンテキストコスト、そしてなぜモデルよりオーケストレーションが重要なのか。`, "blog.post1_date": `2026年7月2日`,
+      "blog.post2_tag": `インフラストラクチャ`, "blog.post2_title": `分散型エッジコンピューティング：なぜ未来は中央集権的なクラウドにはないのか`,
+      "blog.post2_excerpt": `クラウドの中央集権化にはレイテンシの限界があります。100ミリ秒すら待てないクライアントのために、私たちがどのようにエッジアーキテクチャを設計しているかをお伝えします。`, "blog.post2_date": `2026年6月14日`,
+      "blog.post3_tag": `セキュリティ`, "blog.post3_title": `耐量子暗号：10年先まで持ちこたえるシステムを今日から準備する`,
+      "blog.post3_excerpt": `耐量子暗号への移行はパニックではなく、計画です。2035年の情報漏えいを許容できないシステムで、私たちがどう取り組んでいるか。`, "blog.post3_date": `2026年5月3日`,
+
+      "footer.tagline": `エリートソフトウェア。招待制。`, "footer.rights": `全著作権所有。`,
+      "footer.made": `エンジニアリングの精度で構築されたサイト。`,
+
+      "notfound.title": `ページが見つかりません`, "notfound.text": `このリソースは存在しないか、機密情報です。`, "notfound.cta": `ホームに戻る`,
+
+      "author.role": `創設者 & ソフトウェアアーキテクト`,
+
+      "post_ia.tag": `人工知能`, "post_ia.date": `2026年7月2日`, "post_ia.readtime": `6`,
+      "post_ia.meta_title": `本番環境におけるAIエージェントオーケストレーション — ガブリエル・ディアス・ベルナル ブログ`,
+      "post_ia.meta_desc": `マルチエージェントAIシステムを実際に本番環境へ投入して得たリアルな教訓——サイレント障害、コンテキストコスト、そしてなぜモデルよりオーケストレーションが重要なのか。`,
+      "post_ia.title": `本番環境におけるAIエージェントオーケストレーション：2026年の教訓`,
+      "post_ia.p1": `2026年、本番環境でAIエージェントを使うかどうかはもはや議論の対象ではありません。問題は、マルチエージェントシステムがデバッグ不可能なブラックボックスになるのをどう防ぐかです。`,
+      "post_ia.p2": `よくある最初の過ちは、各エージェントを共有メモリを持たない独立したマイクロサービスとして扱うことです。重要なシステムでは、意思決定のトレーサビリティは最終的な結果と同じくらい重要です。`,
+      "post_ia.p3": `私たちは、単一タスクに特化したエージェント群を中央オーケストレーターがまとめるパターンを採用しました。各エージェントは監査対象であり、明示的なコンテキスト予算を持ちます。これによりサイレント障害が減り、ロールバックも容易になります。`,
+      "post_ia.quote": `本物の可観測性を欠いたエージェントシステムは、デモでどれほど良く見えても、本番環境で信頼できるシステムではありません。`,
+      "post_ia.p4": `コストはもはやトークンだけの問題ではなく、呼び出し間で積み重なるレイテンシの問題です。意思決定グラフの最適化は、プロンプトの最適化よりも大きな効果をもたらします。`,
+      "post_ia.p5": `最も高くついた教訓は、ラボではなく本番環境を観察することで学びました。そして結局のところ、それこそが唯一誠実な学び方なのです。`,
+
+      "post_edge.tag": `インフラストラクチャ`, "post_edge.date": `2026年6月14日`, "post_edge.readtime": `5`,
+      "post_edge.meta_title": `分散型エッジコンピューティング — ガブリエル・ディアス・ベルナル ブログ`,
+      "post_edge.meta_desc": `なぜ未来は中央集権的なクラウドにはないのか——100ミリ秒すら待てないクライアントのためのエッジアーキテクチャ設計。`,
+      "post_edge.title": `分散型エッジコンピューティング：なぜ未来は中央集権的なクラウドにはないのか`,
+      "post_edge.p1": `クライアントが20ミリ秒以内の意思決定を必要とするとき、どの中央クラウドリージョンも十分に近くはありません。答えはもはや「サーバーを増やす」ことではなく、「距離を縮める」ことです。`,
+      "post_edge.p2": `私たちは推論、認証、そして一部のビジネスロジックをエッジへ移し、ユーザーやデバイスの近くで処理したうえで、コアへの同期は事後的に行うようにしました。`,
+      "post_edge.p3": `課題は技術的なものではなく、一貫性の設計にあります。部分的な障害や意図的に古いデータを前提としながら、体験を損なわない設計が求められます。`,
+      "post_edge.quote": `WebAssemblyのおかげで、監査済みの同一バイナリをエッジ、ブラウザ、サーバーに展開でき、重要なロジックを三度書き直す必要がなくなりました。`,
+      "post_edge.p4": `結果として、ほとんどの大陸で一桁ミリ秒のレイテンシを実現し、完全にダウンするのではなく優雅に劣化するアーキテクチャが生まれました。`,
+      "post_edge.p5": `これらの判断はどれもタダではありません。それぞれが、本番環境に触れる前の数週間にわたるカオステストの上に成り立っています。`,
+
+      "post_pqc.tag": `セキュリティ`, "post_pqc.date": `2026年5月3日`, "post_pqc.readtime": `7`,
+      "post_pqc.meta_title": `耐量子暗号 — ガブリエル・ディアス・ベルナル ブログ`,
+      "post_pqc.meta_desc": `耐量子暗号への移行はパニックではなく、計画です。10年先まで持ちこたえる必要があるシステムでの取り組み方。`,
+      "post_pqc.title": `耐量子暗号：10年先まで持ちこたえるシステムを今日から準備する`,
+      "post_pqc.p1": `「今収集し、後で復号する」はもはや理論上のシナリオではありません。量子コンピューティングが実用化された時点で復号できることに賭けて、今日この瞬間も暗号化された通信を収集している主体が存在します。`,
+      "post_pqc.p2": `10年先まで機密性を保つべきデータを扱うシステムにとって、「みんなが移行するのを待つ」のは戦略ではなく、クライアントに代わって私たちが受け入れることのできない賭けです。`,
+      "post_pqc.p3": `私たちはハイブリッド方式を採用しました。従来型アルゴリズムと、すでに標準化された耐量子暗号プリミティブを組み合わせることで、単一の暗号方式ファミリーに依存しないようにしています。`,
+      "post_pqc.quote": `最も難しかったのは暗号技術そのものではなく、棚卸しでした——何かに手を付ける前に、すべての鍵、証明書、レガシーな依存関係がどこにあるかを把握することです。`,
+      "post_pqc.p4": `ダウンタイムなしで、検証済みのロールバック手段を備えたライブ移行——それこそが私たちが引き受けるプロジェクトそのものです。高いリスク、ゼロの許容誤差。`,
+      "post_pqc.p5": `10年は長く感じられます——それが到来したとき、なお立ち続けていなければならないのが自分のインフラだと気づくまでは。`
     }
   };
 
@@ -569,6 +879,7 @@
   function applyLang(lang) {
     if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
     document.documentElement.setAttribute("lang", lang);
+    document.documentElement.setAttribute("dir", RTL_LANGS.indexOf(lang) !== -1 ? "rtl" : "ltr");
     try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* ignore */ }
 
     var nodes = document.querySelectorAll("[data-i18n]");
@@ -596,6 +907,7 @@
 
   global.GDB_I18N = {
     SUPPORTED: SUPPORTED,
+    RTL_LANGS: RTL_LANGS,
     LANG_LABELS: LANG_LABELS,
     detectLang: detectLang,
     applyLang: applyLang,

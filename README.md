@@ -7,7 +7,8 @@ Sitio estático (GitHub Pages) del estudio de ingeniería de Gabriel Díaz Berna
 ## Características
 
 - **Diseño propio**, oscuro y técnico, con fondo animado (canvas), terminal interactiva en el hero y microinteracciones en JS vainilla.
-- **4 idiomas** (Español, English, Français, Português): se detecta el idioma del dispositivo (`navigator.language`) y se puede cambiar manualmente desde el selector del menú. Ver [assets/js/i18n.js](assets/js/i18n.js).
+- **7 idiomas** (Español, English, Français, Português, العربية, 中文, 日本語): se detecta el idioma del dispositivo (`navigator.language`) y se puede cambiar manualmente desde el selector del menú. El árabe activa `dir="rtl"` automáticamente; la ventana de terminal se mantiene siempre LTR (como cualquier bloque de código). Ver [assets/js/i18n.js](assets/js/i18n.js).
+- **Sin sección de contacto**: el estudio trabaja solo bajo invitación, así que no hay formulario ni email público — es una decisión de posicionamiento, no un descuido.
 - **SEO**: metadatos completos (title/description/canonical), Open Graph + Twitter Cards con imágenes generadas a medida, datos estructurados JSON-LD (`Person`, `ProfessionalService`, `Blog`, `BlogPosting`), `sitemap.xml`, `robots.txt` y `manifest.webmanifest`.
 - **Blog** estático en [blog/](blog/), con 3 artículos de ejemplo.
 - **Cero dependencias**: no hay CDNs, ni Google Fonts, ni frameworks. Todo el CSS/JS vive en `assets/`.
@@ -54,12 +55,12 @@ npx serve .
 ## Añadir una entrada al blog
 
 1. Duplica cualquier archivo de `blog/` (por ejemplo `blog/ia-agentica-produccion.html`) y renómbralo con el slug del nuevo artículo.
-2. Sustituye las claves `data-i18n="post_xxx.*"` por un nuevo namespace (`post_nuevo.*`) y añade esas claves con su traducción en los 4 idiomas dentro de `assets/js/i18n.js`.
+2. Sustituye las claves `data-i18n="post_xxx.*"` por un nuevo namespace (`post_nuevo.*`) y añade esas claves con su traducción en los 7 idiomas dentro de `assets/js/i18n.js`.
 3. Añade una tarjeta nueva en `blog/index.html` (y opcionalmente en la vista previa de `index.html`).
 4. Añade la URL del nuevo artículo a `sitemap.xml`.
 5. Genera una imagen Open Graph a juego si quieres (ver el generador en el historial del proyecto, basado en `System.Drawing`) o reutiliza `assets/img/og-default.png`.
 
 ## Personalización pendiente
 
-- El email de contacto (`contacto@gabrieldiazbernal.dev`) es un **placeholder** — sustitúyelo por la dirección real en `index.html` (atributo `data-mailto` del formulario y el enlace `mailto:` visible) antes de publicar.
 - El enlace de GitHub en el pie de página apunta a `github.com/avanzagrabie` — actualízalo si procede.
+- No hay ninguna vía de contacto pública por diseño (el estudio solo opera bajo invitación). Si en algún momento quieres reintroducir un canal de contacto, añade de nuevo la clave `nav.contact` y el namespace `contact.*` en `assets/js/i18n.js` para los 7 idiomas.

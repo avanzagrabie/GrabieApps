@@ -1,7 +1,7 @@
 /* =========================================================
    Gabriel Díaz Bernal — interactions
    Nav, language switcher, scroll reveal, terminal typewriter,
-   background canvas, contact form. Vanilla JS, no dependencies.
+   background canvas. Vanilla JS, no dependencies.
    ========================================================= */
 
 (function () {
@@ -16,7 +16,6 @@
     initActiveLink();
     initTerminal();
     initBackgroundFx();
-    initContactForm();
     initYear();
   });
 
@@ -268,35 +267,6 @@
     window.addEventListener("resize", function () {
       resize();
       makeNodes();
-    });
-  }
-
-  /* ---------- contact form → mailto ---------- */
-  function initContactForm() {
-    var form = document.getElementById("contact-form");
-    if (!form) return;
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var to = form.getAttribute("data-mailto") || "contacto@gabrieldiazbernal.dev";
-      var name = form.querySelector("#f-name").value.trim();
-      var email = form.querySelector("#f-email").value.trim();
-      var type = form.querySelector("#f-type").value;
-      var budget = form.querySelector("#f-budget").value;
-      var message = form.querySelector("#f-message").value.trim();
-
-      var subject = "Solicitud confidencial — " + name;
-      var body =
-        "Nombre: " + name + "\n" +
-        "Email: " + email + "\n" +
-        "Tipo de proyecto: " + type + "\n" +
-        "Presupuesto: " + budget + "\n\n" +
-        message;
-
-      var url = "mailto:" + encodeURIComponent(to) +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
-
-      window.location.href = url;
     });
   }
 
