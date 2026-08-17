@@ -135,8 +135,13 @@ input, textarea, select{ font: inherit; color: inherit; }
 .nav{
   position: sticky; top: 0; z-index: 100; height: var(--nav-h);
   display: flex; align-items: center;
-  background: rgba(5,7,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
+}
+/* Blur lives on a pseudo-element (not on .nav itself) so backdrop-filter doesn't
+   turn .nav into a containing block for its position:fixed mobile-menu descendant. */
+.nav::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(5,7,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
 }
 .nav .container{ display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand{ display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; font-size: 1.05rem; }
