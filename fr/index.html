@@ -333,6 +333,8 @@ input, textarea, select{ font: inherit; color: inherit; }
 /* ---------- clients ---------- */
 .clients-grid{ display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
 @media (max-width: 900px){ .clients-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.games-block{ margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+.games-block .section-subtitle{ margin-top: 16px; max-width: 640px; }
 .clients-stat .value{ font-family: var(--font-mono); font-weight: 800; font-size: clamp(3rem, 7vw, 4.5rem); line-height: 1; }
 .clients-stat .label{ margin-top: 12px; color: var(--text-dim); font-size: 1rem; max-width: 260px; }
 .sectors-label{ font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
@@ -665,6 +667,14 @@ input, textarea, select{ font: inherit; color: inherit; }
             <span class="sector-chip">Énergie</span>
           </div>
         </div>
+      </div>
+      <div class="games-block reveal">
+        <p class="sectors-label">Moteur de jeu : travail réel</p>
+        <div class="sector-chips">
+          <span class="sector-chip">Sniper 3D: Gun Shooting Games</span>
+          <span class="sector-chip">Cities: Skylines II</span>
+        </div>
+        <p class="section-subtitle">Programmation moteur — physique, performance, systèmes de jeu — jamais de design ni d'art, et presque jamais crédités publiquement. Nous développons aussi nos propres jeux : le premier s'appelle Rosmino, avec plusieurs autres en phase de test, strictement confidentiels pour l'instant. Ce ne sont pas des commandes — ils seront entièrement à nous, et ils vont changer les règles du marché.</p>
       </div>
     </div>
   </section>
