@@ -30,7 +30,7 @@
       "meta.description": `Gabriel Díaz Bernal lidera un estudio de 25 ingenieros de software de élite. Ubicación no divulgada. Trabajamos bajo demanda y aceptamos proyectos solo bajo condiciones muy selectas.`,
 
       "nav.home": `Inicio`, "nav.about": `Sobre mí`, "nav.stack": `Stack`, "nav.team": `Equipo`,
-      "nav.process": `Proceso`,
+      "nav.clients": `Clientes`, "nav.process": `Proceso`,
 
       "hero.eyebrow": `Disponible solo bajo invitación`,
       "hero.title": `Gabriel Díaz Bernal`,
@@ -79,6 +79,16 @@
       "team.row6_count": `02`, "team.row6_label": `Blockchain e infraestructura descentralizada`,
       "team.note": `Cada ingeniero ha pasado por un proceso de selección más estricto que el de nuestros propios clientes.`,
 
+      "clients.eyebrow": `Clientes`,
+      "clients.title": `Más de 170 clientes. Cero logos en esta página.`,
+      "clients.subtitle": `Gobiernos, bancos, infraestructuras críticas y empresas que no pueden permitirse una brecha. Trabajamos con quien más tiene que perder — y por eso nunca sabrás con certeza para quién.`,
+      "clients.stat_value": `170+`, "clients.stat_label": `clientes atendidos, todos bajo NDA`,
+      "clients.sectors_label": `Sectores en los que operamos`,
+      "clients.sector1": `Agencias gubernamentales`, "clients.sector2": `Ciberseguridad`,
+      "clients.sector3": `Banca y finanzas`, "clients.sector4": `Infraestructura crítica`,
+      "clients.sector5": `Telecomunicaciones`, "clients.sector6": `Defensa`,
+      "clients.sector7": `Salud`, "clients.sector8": `Energía`,
+
       "process.eyebrow": `Cómo trabajamos`,
       "process.title": `Bajo demanda. Bajo tus condiciones, nunca.`,
       "process.subtitle": `Aceptamos trabajo solo bajo condiciones muy selectas. Así es el proceso.`,
@@ -107,7 +117,7 @@
       "meta.description": `Gabriel Díaz Bernal leads a studio of 25 elite software engineers. Undisclosed location. We work on demand and accept projects only under very selective terms.`,
 
       "nav.home": `Home`, "nav.about": `About`, "nav.stack": `Stack`, "nav.team": `Team`,
-      "nav.process": `Process`,
+      "nav.clients": `Clients`, "nav.process": `Process`,
 
       "hero.eyebrow": `Available by invitation only`,
       "hero.title": `Gabriel Díaz Bernal`,
@@ -156,6 +166,16 @@
       "team.row6_count": `02`, "team.row6_label": `Blockchain & decentralized infrastructure`,
       "team.note": `Every engineer has been through a selection process stricter than the one we run for our own clients.`,
 
+      "clients.eyebrow": `Clients`,
+      "clients.title": `170+ clients. Zero logos on this page.`,
+      "clients.subtitle": `Governments, banks, critical infrastructure, and companies that can't afford a breach. We work with those who have the most to lose — which is exactly why you'll never know for sure who.`,
+      "clients.stat_value": `170+`, "clients.stat_label": `clients served, all under NDA`,
+      "clients.sectors_label": `Sectors we operate in`,
+      "clients.sector1": `Government agencies`, "clients.sector2": `Cybersecurity`,
+      "clients.sector3": `Banking & finance`, "clients.sector4": `Critical infrastructure`,
+      "clients.sector5": `Telecommunications`, "clients.sector6": `Defense`,
+      "clients.sector7": `Healthcare`, "clients.sector8": `Energy`,
+
       "process.eyebrow": `How we work`,
       "process.title": `On demand. On your terms, never.`,
       "process.subtitle": `We accept work only under very selective terms. Here's the process.`,
@@ -184,7 +204,7 @@
       "meta.description": `Gabriel Díaz Bernal dirige un studio de 25 ingénieurs logiciels d'élite. Localisation non divulguée. Nous travaillons à la demande et n'acceptons des projets que selon des conditions très sélectives.`,
 
       "nav.home": `Accueil`, "nav.about": `À propos`, "nav.stack": `Stack`, "nav.team": `Équipe`,
-      "nav.process": `Processus`,
+      "nav.clients": `Clients`, "nav.process": `Processus`,
 
       "hero.eyebrow": `Disponible uniquement sur invitation`,
       "hero.title": `Gabriel Díaz Bernal`,
@@ -233,6 +253,16 @@
       "team.row6_count": `02`, "team.row6_label": `Blockchain & infrastructure décentralisée`,
       "team.note": `Chaque ingénieur a traversé un processus de sélection plus strict que celui que nous imposons à nos propres clients.`,
 
+      "clients.eyebrow": `Clients`,
+      "clients.title": `Plus de 170 clients. Zéro logo sur cette page.`,
+      "clients.subtitle": `Gouvernements, banques, infrastructures critiques et entreprises qui ne peuvent pas se permettre une brèche. Nous travaillons avec ceux qui ont le plus à perdre — c'est exactement pour cela que vous ne saurez jamais avec certitude qui.`,
+      "clients.stat_value": `170+`, "clients.stat_label": `clients servis, tous sous NDA`,
+      "clients.sectors_label": `Secteurs dans lesquels nous opérons`,
+      "clients.sector1": `Agences gouvernementales`, "clients.sector2": `Cybersécurité`,
+      "clients.sector3": `Banque & finance`, "clients.sector4": `Infrastructures critiques`,
+      "clients.sector5": `Télécommunications`, "clients.sector6": `Défense`,
+      "clients.sector7": `Santé`, "clients.sector8": `Énergie`,
+
       "process.eyebrow": `Comment nous travaillons`,
       "process.title": `À la demande. Jamais selon vos conditions.`,
       "process.subtitle": `Nous n'acceptons du travail que selon des conditions très sélectives. Voici le processus.`,
@@ -261,7 +291,7 @@
       "meta.description": `Gabriel Díaz Bernal lidera um estúdio de 25 engenheiros de software de elite. Localização não divulgada. Trabalhamos sob demanda e aceitamos projetos apenas em condições muito seletas.`,
 
       "nav.home": `Início`, "nav.about": `Sobre mim`, "nav.stack": `Stack`, "nav.team": `Equipe`,
-      "nav.process": `Processo`,
+      "nav.clients": `Clientes`, "nav.process": `Processo`,
 
       "hero.eyebrow": `Disponível apenas por convite`,
       "hero.title": `Gabriel Díaz Bernal`,
@@ -310,6 +340,16 @@
       "team.row6_count": `02`, "team.row6_label": `Blockchain e infraestrutura descentralizada`,
       "team.note": `Cada engenheiro passou por um processo de seleção mais rígido do que o que aplicamos aos nossos próprios clientes.`,
 
+      "clients.eyebrow": `Clientes`,
+      "clients.title": `Mais de 170 clientes. Zero logos nesta página.`,
+      "clients.subtitle": `Governos, bancos, infraestrutura crítica e empresas que não podem se dar ao luxo de uma brecha. Trabalhamos com quem tem mais a perder — e é exatamente por isso que você nunca saberá ao certo quem.`,
+      "clients.stat_value": `170+`, "clients.stat_label": `clientes atendidos, todos sob NDA`,
+      "clients.sectors_label": `Setores em que atuamos`,
+      "clients.sector1": `Agências governamentais`, "clients.sector2": `Cibersegurança`,
+      "clients.sector3": `Bancos e finanças`, "clients.sector4": `Infraestrutura crítica`,
+      "clients.sector5": `Telecomunicações`, "clients.sector6": `Defesa`,
+      "clients.sector7": `Saúde`, "clients.sector8": `Energia`,
+
       "process.eyebrow": `Como trabalhamos`,
       "process.title": `Sob demanda. Sob suas condições, nunca.`,
       "process.subtitle": `Aceitamos trabalho apenas em condições muito seletas. Este é o processo.`,
@@ -338,7 +378,7 @@
       "meta.description": `يقود غابرييل دياز بيرنال استوديو من 25 مهندس برمجيات من النخبة. الموقع غير معلن. نعمل عند الطلب ونقبل المشاريع وفق شروط انتقائية للغاية فقط.`,
 
       "nav.home": `الرئيسية`, "nav.about": `نبذة عني`, "nav.stack": `التقنيات`, "nav.team": `الفريق`,
-      "nav.process": `منهجية العمل`,
+      "nav.clients": `العملاء`, "nav.process": `منهجية العمل`,
 
       "hero.eyebrow": `متاح فقط بالدعوة`,
       "hero.title": `غابرييل دياز بيرنال`,
@@ -387,6 +427,16 @@
       "team.row6_count": `02`, "team.row6_label": `البلوك تشين والبنية التحتية اللامركزية`,
       "team.note": `كل مهندس اجتاز عملية اختيار أشد صرامة من تلك التي نطبّقها على عملائنا أنفسهم.`,
 
+      "clients.eyebrow": `العملاء`,
+      "clients.title": `أكثر من 170 عميلًا. صفر شعارات في هذه الصفحة.`,
+      "clients.subtitle": `حكومات، بنوك، بنية تحتية حرجة، وشركات لا تحتمل اختراقًا. نعمل مع من لديهم الأكثر ليخسروه — ولهذا بالضبط لن تعرف أبدًا من هم على وجه اليقين.`,
+      "clients.stat_value": `170+`, "clients.stat_label": `عميلًا تمت خدمتهم، جميعهم بموجب اتفاقية سرية`,
+      "clients.sectors_label": `القطاعات التي نعمل بها`,
+      "clients.sector1": `جهات حكومية`, "clients.sector2": `الأمن السيبراني`,
+      "clients.sector3": `البنوك والتمويل`, "clients.sector4": `البنية التحتية الحرجة`,
+      "clients.sector5": `الاتصالات`, "clients.sector6": `الدفاع`,
+      "clients.sector7": `الرعاية الصحية`, "clients.sector8": `الطاقة`,
+
       "process.eyebrow": `كيف نعمل`,
       "process.title": `عند الطلب. وفق شروطك أبدًا.`,
       "process.subtitle": `نقبل العمل وفق شروط انتقائية للغاية فقط. هذه هي المنهجية.`,
@@ -415,7 +465,7 @@
       "meta.description": `加布里埃尔·迪亚兹·贝尔纳尔领导着一支由25名精英软件工程师组成的团队。地点保密。我们按需工作，仅在非常严格的条件下承接项目。`,
 
       "nav.home": `首页`, "nav.about": `关于我`, "nav.stack": `技术栈`, "nav.team": `团队`,
-      "nav.process": `合作流程`,
+      "nav.clients": `客户`, "nav.process": `合作流程`,
 
       "hero.eyebrow": `仅凭邀请开放`,
       "hero.title": `加布里埃尔·迪亚兹·贝尔纳尔`,
@@ -464,6 +514,16 @@
       "team.row6_count": `02`, "team.row6_label": `区块链与去中心化基础设施`,
       "team.note": `每一位工程师所经历的选拔流程，都比我们对客户本身的审核更为严苛。`,
 
+      "clients.eyebrow": `客户`,
+      "clients.title": `超过170家客户，页面上零标志。`,
+      "clients.subtitle": `政府、银行、关键基础设施，以及承受不起数据泄露的企业。我们服务那些损失风险最高的客户——这正是你永远无法确定具体是谁的原因。`,
+      "clients.stat_value": `170+`, "clients.stat_label": `服务客户数，全部签署保密协议`,
+      "clients.sectors_label": `我们所服务的行业`,
+      "clients.sector1": `政府机构`, "clients.sector2": `网络安全`,
+      "clients.sector3": `银行与金融`, "clients.sector4": `关键基础设施`,
+      "clients.sector5": `电信`, "clients.sector6": `国防`,
+      "clients.sector7": `医疗健康`, "clients.sector8": `能源`,
+
       "process.eyebrow": `合作方式`,
       "process.title": `按需服务，但绝不迁就条件。`,
       "process.subtitle": `我们仅在非常严格的条件下承接工作，以下是具体流程。`,
@@ -492,7 +552,7 @@
       "meta.description": `ガブリエル・ディアス・ベルナルは、25名の精鋭ソフトウェアエンジニアからなるスタジオを率いています。所在地非公開。オンデマンドで活動し、極めて厳選された条件下でのみプロジェクトを受託します。`,
 
       "nav.home": `ホーム`, "nav.about": `プロフィール`, "nav.stack": `技術スタック`, "nav.team": `チーム`,
-      "nav.process": `プロセス`,
+      "nav.clients": `クライアント`, "nav.process": `プロセス`,
 
       "hero.eyebrow": `招待制のみ`,
       "hero.title": `ガブリエル・ディアス・ベルナル`,
@@ -540,6 +600,16 @@
       "team.row5_count": `03`, "team.row5_label": `フロントエンド & 高性能インターフェース`,
       "team.row6_count": `02`, "team.row6_label": `ブロックチェーン & 分散型インフラ`,
       "team.note": `すべてのエンジニアは、私たちがクライアントに課す基準よりも厳しい選考プロセスを経ています。`,
+
+      "clients.eyebrow": `クライアント`,
+      "clients.title": `170社以上のクライアント。このページにロゴはゼロ。`,
+      "clients.subtitle": `政府機関、銀行、重要インフラ、そして情報漏えいを許容できない企業。最も失うものが大きい相手とだけ仕事をします——だからこそ、あなたが誰なのか確実に知ることは決してありません。`,
+      "clients.stat_value": `170+`, "clients.stat_label": `契約実績数、すべてNDAのもとで`,
+      "clients.sectors_label": `私たちが手がける業界`,
+      "clients.sector1": `政府機関`, "clients.sector2": `サイバーセキュリティ`,
+      "clients.sector3": `銀行・金融`, "clients.sector4": `重要インフラ`,
+      "clients.sector5": `通信`, "clients.sector6": `防衛`,
+      "clients.sector7": `ヘルスケア`, "clients.sector8": `エネルギー`,
 
       "process.eyebrow": `私たちの働き方`,
       "process.title": `オンデマンドで。あなたの条件には決して従いません。`,
