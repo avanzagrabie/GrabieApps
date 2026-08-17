@@ -1,28 +1,19 @@
 /* =========================================================
-   Gabriel Díaz Bernal — i18n engine
-   Detects device language (navigator.language) and swaps all
-   [data-i18n] content client-side. No build step, no server.
-   Supported: es (default/source) · en · fr · pt · ar · zh · ja
-   Arabic renders right-to-left; applyLang() flips <html dir>.
+   Gabriel Díaz Bernal — translation dictionary
+   Source of truth for all 7 languages (es/en/fr/pt/ar/zh/ja).
+   Consumed two ways:
+     1. tools/build-lang-pages.js reads this file at build time to
+        bake each language's text directly into its own static page.
+     2. assets/js/main.js reads it at runtime (via t()) purely to
+        feed the hero terminal's typewriter animation.
+   There is no client-side "switch language in place" anymore —
+   each language is its own crawlable URL (see build script).
    ========================================================= */
 
 (function (global) {
   "use strict";
 
-  var SUPPORTED = ["es", "en", "fr", "pt", "ar", "zh", "ja"];
-  var RTL_LANGS = ["ar"];
   var DEFAULT_LANG = "es";
-  var STORAGE_KEY = "gdb_lang";
-
-  var LANG_LABELS = {
-    es: { name: "Español", code: "ES" },
-    en: { name: "English", code: "EN" },
-    fr: { name: "Français", code: "FR" },
-    pt: { name: "Português", code: "PT" },
-    ar: { name: "العربية", code: "AR" },
-    zh: { name: "中文", code: "ZH" },
-    ja: { name: "日本語", code: "JA" }
-  };
 
   var I18N = {
     es: {
@@ -635,62 +626,16 @@
     }
   };
 
-  function detectLang() {
-    try {
-      var stored = localStorage.getItem(STORAGE_KEY);
-      if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
-    } catch (e) { /* localStorage unavailable */ }
-
-    var raw = (global.navigator && (global.navigator.language || (global.navigator.languages && global.navigator.languages[0]))) || DEFAULT_LANG;
-    var short = String(raw).slice(0, 2).toLowerCase();
-    return SUPPORTED.indexOf(short) !== -1 ? short : "en";
-  }
-
   function t(lang, key) {
     var dict = I18N[lang] || I18N[DEFAULT_LANG];
     if (dict[key] !== undefined) return dict[key];
     return I18N[DEFAULT_LANG][key] !== undefined ? I18N[DEFAULT_LANG][key] : key;
   }
 
-  function applyLang(lang) {
-    if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
-    document.documentElement.setAttribute("lang", lang);
-    document.documentElement.setAttribute("dir", RTL_LANGS.indexOf(lang) !== -1 ? "rtl" : "ltr");
-    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* ignore */ }
-
-    var nodes = document.querySelectorAll("[data-i18n]");
-    for (var i = 0; i < nodes.length; i++) {
-      var key = nodes[i].getAttribute("data-i18n");
-      nodes[i].textContent = t(lang, key);
-    }
-
-    var attrNodes = document.querySelectorAll("[data-i18n-attr]");
-    for (var j = 0; j < attrNodes.length; j++) {
-      var spec = attrNodes[j].getAttribute("data-i18n-attr");
-      var parts = spec.split(":");
-      if (parts.length === 2) attrNodes[j].setAttribute(parts[0], t(lang, parts[1]));
-    }
-
-    var menu = document.querySelectorAll(".lang-menu button");
-    for (var k = 0; k < menu.length; k++) {
-      menu[k].setAttribute("aria-current", menu[k].getAttribute("data-lang") === lang ? "true" : "false");
-    }
-    var btn = document.querySelector(".lang-btn .code");
-    if (btn) btn.textContent = LANG_LABELS[lang].code;
-
-    document.dispatchEvent(new CustomEvent("gdb:langchange", { detail: { lang: lang } }));
-  }
-
-  global.GDB_I18N = {
-    SUPPORTED: SUPPORTED,
-    RTL_LANGS: RTL_LANGS,
-    LANG_LABELS: LANG_LABELS,
-    detectLang: detectLang,
-    applyLang: applyLang,
-    t: t
-  };
-
-  document.addEventListener("DOMContentLoaded", function () {
-    applyLang(detectLang());
-  });
+  // Each language is served as its own static, pre-translated page
+  // (/, /en/, /fr/, /pt/, /ar/, /zh/, /ja/ — see tools/build-lang-pages.js),
+  // so there is no client-side language switch to perform here. This module
+  // stays loaded only so the terminal typewriter (assets/js/main.js) can pull
+  // its lines via t(lang, key) for the page's own baked-in <html lang>.
+  global.GDB_I18N = { t: t };
 })(window);

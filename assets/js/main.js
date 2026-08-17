@@ -36,7 +36,10 @@
     }
   }
 
-  /* ---------- language switcher ---------- */
+  /* ---------- language switcher ----------
+     Each language lives at its own crawlable URL (/, /en/, /fr/...);
+     the menu items are plain <a> links, so switching is just navigation.
+     This JS only opens/closes the dropdown. */
   function initLangSwitch() {
     var switcher = document.querySelector(".lang-switch");
     if (!switcher) return;
@@ -49,15 +52,6 @@
       switcher.classList.toggle("is-open");
       btn.setAttribute("aria-expanded", switcher.classList.contains("is-open") ? "true" : "false");
     });
-
-    var options = menu.querySelectorAll("button[data-lang]");
-    for (var i = 0; i < options.length; i++) {
-      options[i].addEventListener("click", function () {
-        var lang = this.getAttribute("data-lang");
-        if (window.GDB_I18N) window.GDB_I18N.applyLang(lang);
-        switcher.classList.remove("is-open");
-      });
-    }
 
     document.addEventListener("click", function (e) {
       if (!switcher.contains(e.target)) switcher.classList.remove("is-open");
@@ -120,7 +114,6 @@
     var body = document.querySelector(".terminal-body");
     if (!body) return;
     runTerminal(body);
-    document.addEventListener("gdb:langchange", function () { runTerminal(body); });
   }
 
   function runTerminal(body) {
