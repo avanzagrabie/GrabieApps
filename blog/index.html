@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="blog.title">Notas desde el estudio — Blog de Gabriel Díaz Bernal</title>
+<meta name="description" content="Ideas, arquitecturas y lecciones del estudio de Gabriel Díaz Bernal: IA agéntica, edge computing, seguridad y más." data-i18n-attr="content:blog.subtitle">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/blog/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Notas desde el estudio — Blog de Gabriel Díaz Bernal">
+<meta property="og:description" content="Ideas, arquitecturas y lecciones de proyectos que no siempre podemos nombrar.">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/blog/">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+<meta property="og:locale" content="es_ES">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Notas desde el estudio — Blog de Gabriel Díaz Bernal">
+<meta name="twitter:description" content="Ideas, arquitecturas y lecciones de proyectos que no siempre podemos nombrar.">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Notas desde el estudio",
+  "url": "https://avanzagrabie.github.io/GrabieApps/blog/",
+  "publisher": { "@type": "ProfessionalService", "name": "Gabriel Díaz Bernal — Estudio de Ingeniería" },
+  "blogPost": [
+    { "@type": "BlogPosting", "headline": "Orquestación de agentes de IA en producción: lecciones de 2026", "datePublished": "2026-07-02", "url": "https://avanzagrabie.github.io/GrabieApps/blog/ia-agentica-produccion.html" },
+    { "@type": "BlogPosting", "headline": "Edge computing distribuido: por qué el futuro no vive en una nube central", "datePublished": "2026-06-14", "url": "https://avanzagrabie.github.io/GrabieApps/blog/edge-computing-distribuido.html" },
+    { "@type": "BlogPosting", "headline": "Criptografía poscuántica: preparar hoy sistemas que deben durar diez años", "datePublished": "2026-05-03", "url": "https://avanzagrabie.github.io/GrabieApps/blog/criptografia-post-cuantica.html" }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="../index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small data-i18n="footer.tagline">Software de élite. Bajo invitación.</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="../index.html#top" data-i18n="nav.home">Inicio</a>
+      <a href="../index.html#about" data-i18n="nav.about">Sobre mí</a>
+      <a href="../index.html#stack" data-i18n="nav.stack">Stack</a>
+      <a href="../index.html#team" data-i18n="nav.team">Equipo</a>
+      <a href="index.html" class="is-active" data-i18n="nav.blog">Blog</a>
+      <a href="../index.html#contact" data-i18n="nav.contact">Contacto</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">ES</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <button type="button" role="menuitem" data-lang="es">Español <span class="code">ES</span></button>
+          <button type="button" role="menuitem" data-lang="en">English <span class="code">EN</span></button>
+          <button type="button" role="menuitem" data-lang="fr">Français <span class="code">FR</span></button>
+          <button type="button" role="menuitem" data-lang="pt">Português <span class="code">PT</span></button>
+        </div>
+      </div>
+      <a href="../index.html#contact" class="btn btn-primary nav-cta" data-i18n="nav.cta">Solicitar acceso</a>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="blog.eyebrow">Bitácora</p>
+        <h1 class="section-title" data-i18n="blog.title">Notas desde el estudio</h1>
+        <p class="section-subtitle" data-i18n="blog.subtitle">Ideas, arquitecturas y lecciones de proyectos que no siempre podemos nombrar.</p>
+      </div>
+
+      <div class="blog-grid">
+        <a class="blog-card reveal" href="ia-agentica-produccion.html">
+          <div class="blog-thumb"></div>
+          <div class="blog-body">
+            <span class="blog-tag" data-i18n="blog.post1_tag">Inteligencia Artificial</span>
+            <h2 data-i18n="blog.post1_title">Orquestación de agentes de IA en producción: lecciones de 2026</h2>
+            <p class="blog-excerpt" data-i18n="blog.post1_excerpt">Qué aprendimos llevando sistemas multiagente reales a producción.</p>
+            <div class="blog-meta"><span data-i18n="blog.post1_date">2 jul 2026</span><span><span data-i18n="post_ia.readtime">6</span> <span data-i18n="blog.minread">min de lectura</span></span></div>
+          </div>
+        </a>
+        <a class="blog-card reveal" href="edge-computing-distribuido.html">
+          <div class="blog-thumb"></div>
+          <div class="blog-body">
+            <span class="blog-tag" data-i18n="blog.post2_tag">Infraestructura</span>
+            <h2 data-i18n="blog.post2_title">Edge computing distribuido: por qué el futuro no vive en una nube central</h2>
+            <p class="blog-excerpt" data-i18n="blog.post2_excerpt">La centralización en la nube tiene un techo de latencia.</p>
+            <div class="blog-meta"><span data-i18n="blog.post2_date">14 jun 2026</span><span><span data-i18n="post_edge.readtime">5</span> <span data-i18n="blog.minread">min de lectura</span></span></div>
+          </div>
+        </a>
+        <a class="blog-card reveal" href="criptografia-post-cuantica.html">
+          <div class="blog-thumb"></div>
+          <div class="blog-body">
+            <span class="blog-tag" data-i18n="blog.post3_tag">Seguridad</span>
+            <h2 data-i18n="blog.post3_title">Criptografía poscuántica: preparar hoy sistemas que deben durar diez años</h2>
+            <p class="blog-excerpt" data-i18n="blog.post3_excerpt">Migrar a criptografía resistente a computación cuántica no es pánico, es planificación.</p>
+            <div class="blog-meta"><span data-i18n="blog.post3_date">3 may 2026</span><span><span data-i18n="post_pqc.readtime">7</span> <span data-i18n="blog.minread">min de lectura</span></span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline" data-i18n="footer.tagline">Software de élite. Bajo invitación.</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="../index.html#about" data-i18n="nav.about">Sobre mí</a>
+      <a href="../index.html#stack" data-i18n="nav.stack">Stack</a>
+      <a href="index.html" data-i18n="nav.blog">Blog</a>
+      <a href="../index.html#contact" data-i18n="nav.contact">Contacto</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span data-i18n="footer.rights">Todos los derechos reservados.</span></span>
+    <span data-i18n="footer.made">Sitio construido con precisión de ingeniería.</span>
+  </div>
+</footer>
+
+<script src="../assets/js/i18n.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avanzagrabie.github.io/GrabieApps/sitemap.xml
