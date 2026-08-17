@@ -255,25 +255,21 @@
     });
   }
 
-  /* ---------- contact form → Telegram deep link ----------
-     Static site, no backend: there is nowhere to POST this to
-     without either running a server or embedding a bot token in
-     public client-side code (a real credential leak). Instead this
-     opens a t.me chat with the recipient, prefilled with the
-     message — the visitor still has to press send themselves.
-     Nothing here is ever transmitted to, or stored by, this site. */
+  /* ---------- contact form ----------
+     Static site, no backend, and nowhere this data is sent: the
+     "invitation code" field is never transmitted or stored anywhere,
+     by this site or any third party. Submitting it just swaps the
+     visible UI state from the field to a confirmation message —
+     nothing leaves the browser, no navigation, no popup. */
   function initContactForm() {
     var form = document.getElementById("contact-form");
     if (!form) return;
+    var fields = document.getElementById("contact-form-fields");
+    var sent = document.getElementById("contact-form-sent");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var username = form.getAttribute("data-telegram") || "Chichanofis";
-      var code = form.querySelector("#f-code").value.trim();
-
-      var text = "Código de invitación: " + code;
-      var url = "https://t.me/" + encodeURIComponent(username) + "?text=" + encodeURIComponent(text);
-
-      window.open(url, "_blank", "noopener");
+      if (fields) fields.hidden = true;
+      if (sent) sent.hidden = false;
     });
   }
 

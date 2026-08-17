@@ -367,6 +367,7 @@ input, textarea, select{ font: inherit; color: inherit; }
 .field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
 .field textarea{ resize: vertical; min-height: 100px; }
 .form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+.form-sent-title{ font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); margin-bottom: 8px; }
 
 /* ---------- location ---------- */
 .location-box{
@@ -728,7 +729,8 @@ input, textarea, select{ font: inherit; color: inherit; }
         <div class="about-badges" style="margin-top:14px">
           <div class="about-badge"><span class="dot"></span><span class="label">すでに有効な招待をお持ちで緊急の場合は、オンボーディング時にお渡ししたコーディネーターへの直接連絡先をご利用ください——ここでは公開していません。</span></div>
           <div class="about-badge"><span class="dot"></span><span class="label">誰があなたに招待を送ったのか、そしてなぜ招待を受け取ったのか、私たちは正確に把握しています。説明していただく必要はありません。</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label">先に進めることを決めた場合、私たち自身が事前の連絡なしに直接あなたのオフィスに伺います。その最初の面談は、私たちのチームの誰とでもありません。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">あなたのケースが最優先事項である場合、世界のどこにいても、数瞬のうちに誰かが直接あなたの会社に伺います。その人物は私たちのチームの一員ではありません。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">まず状況を評価します。対応可能であり、本当に緊急を要する場合は、伺う前にご連絡します——そして問題を解決するための即応チーム全体を伴って向かいます。</span></div>
           <div class="about-badge"><span class="dot"></span><span class="label">これらの条件に交渉の余地はありません。受け入れられない場合、私たちと仕事をすることは決してありません。</span></div>
           <div class="about-badge"><span class="dot"></span><span class="label">面談をお受けする場合、無料ではありません。費用は私たちの時間に対するものであり、前払い制で、最終的に案件をお受けした場合でも返金や差し引きの対象にはなりません。</span></div>
         </div>
@@ -739,13 +741,19 @@ input, textarea, select{ font: inherit; color: inherit; }
       </div>
 
       <div class="reveal">
-        <form id="contact-form" data-telegram="Chichanofis">
-          <div class="field">
-            <label for="f-code">招待コード</label>
-            <input id="f-code" name="code" type="text" required>
+        <form id="contact-form">
+          <div id="contact-form-fields">
+            <div class="field">
+              <label for="f-code">招待コード</label>
+              <input id="f-code" name="code" type="text" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">送信</button>
+            <p class="form-note">あなたのコードはどこにも送信されません。有効な招待に一致する場合、私たちはすでに把握しています。</p>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">送信</button>
-          <p class="form-note">送信すると、招待コードを添えてTelegramが開きます——確認するかどうかはあなた次第です。その後どうするかは私たちが把握しています。このサイトはこのフォームから何も収集・保存しません。</p>
+          <div id="contact-form-sent" hidden>
+            <p class="form-sent-title">受け付けました。</p>
+            <p class="form-note">招待が有効であれば、他に何もしていただく必要はありません。</p>
+          </div>
         </form>
       </div>
     </div>
@@ -1042,25 +1050,21 @@ input, textarea, select{ font: inherit; color: inherit; }
     });
   }
 
-  /* ---------- contact form → Telegram deep link ----------
-     Static site, no backend: there is nowhere to POST this to
-     without either running a server or embedding a bot token in
-     public client-side code (a real credential leak). Instead this
-     opens a t.me chat with the recipient, prefilled with the
-     message — the visitor still has to press send themselves.
-     Nothing here is ever transmitted to, or stored by, this site. */
+  /* ---------- contact form ----------
+     Static site, no backend, and nowhere this data is sent: the
+     "invitation code" field is never transmitted or stored anywhere,
+     by this site or any third party. Submitting it just swaps the
+     visible UI state from the field to a confirmation message —
+     nothing leaves the browser, no navigation, no popup. */
   function initContactForm() {
     var form = document.getElementById("contact-form");
     if (!form) return;
+    var fields = document.getElementById("contact-form-fields");
+    var sent = document.getElementById("contact-form-sent");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var username = form.getAttribute("data-telegram") || "Chichanofis";
-      var code = form.querySelector("#f-code").value.trim();
-
-      var text = "Código de invitación: " + code;
-      var url = "https://t.me/" + encodeURIComponent(username) + "?text=" + encodeURIComponent(text);
-
-      window.open(url, "_blank", "noopener");
+      if (fields) fields.hidden = true;
+      if (sent) sent.hidden = false;
     });
   }
 

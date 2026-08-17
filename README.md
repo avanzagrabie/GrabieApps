@@ -8,7 +8,7 @@ Sitio estático (GitHub Pages) del estudio de ingeniería de Gabriel Díaz Berna
 
 - **Diseño propio**, oscuro y técnico, con fondo animado (canvas), terminal interactiva en el hero y microinteracciones en JS vainilla.
 - **7 idiomas** (Español, English, Français, Português, العربية, 中文, 日本語), cada uno en su **propia URL** — no un solo URL que cambia de texto por JS. Ver [SEO y multi-idioma](#seo-y-multi-idioma).
-- **Contacto muy restringido, no un formulario abierto**: solo se aceptan clientes por invitación. El formulario (`#contact`) no envía nada a ningún servidor nuestro — abre un chat de Telegram con el mensaje ya redactado (`t.me/Chichanofis?text=...`) y el visitante decide si lo envía. Ver [Contacto](#contacto).
+- **Contacto muy restringido, no un formulario abierto**: solo se aceptan clientes por invitación. El formulario (`#contact`) pide únicamente un código de invitación y no lo envía a ningún sitio — al enviarlo, `assets/js/main.js` solo cambia qué se muestra en la propia página, sin red ni almacenamiento de por medio. Ver [Contacto](#contacto).
 - **SEO al detalle**: canonical + `hreflang` por idioma, Open Graph/Twitter localizados, JSON-LD (`Person`, `ProfessionalService`, `WebSite`), `sitemap.xml` con anotaciones de idioma (+ hoja de estilo para verlo legible en el navegador), `robots.txt`, verificación de Google Search Console.
 - **Cada página es 1 sola solicitud HTTP**: HTML, CSS y JS, todo inline. Nada más que cargar — ver [Rendimiento](#rendimiento).
 - **Cero cookies, cero analítica, cero rastreo** — verificable, no solo declarado. Página de privacidad honesta en los 7 idiomas (`/privacy.html`) explicando exactamente eso. Ver [Privacidad](#privacidad-y-cumplimiento).
@@ -131,11 +131,9 @@ Esto es lo estándar y lo que los archivadores que se comportan bien (incluida l
 
 ## Contacto
 
-El formulario (`tools/template.html`, sección `#contact`) no tiene backend ni lo necesita: al enviarlo, `assets/js/main.js` construye el texto a partir de los campos y abre `https://t.me/Chichanofis?text=...` en una pestaña nueva — el navegador (o la app) de Telegram del propio visitante es quien realmente envía el mensaje, si el visitante decide confirmarlo. Este sitio nunca recibe, procesa ni almacena esos datos; por eso la página de privacidad sigue siendo honesta sin necesitar un backend.
+El formulario (`tools/template.html`, sección `#contact`) no tiene backend ni lo necesita, y no envía nada a ningún sitio: pide un código de invitación y, al enviarlo, `assets/js/main.js` (`initContactForm`) solo oculta el campo (`#contact-form-fields`) y muestra un mensaje de confirmación estático (`#contact-form-sent`) en la misma página — sin petición de red, sin redirección, sin ventana emergente. No hay ningún dato que salga del navegador del visitante, así que este sitio nunca recibe, procesa ni almacena nada de ese formulario; por eso la página de privacidad sigue siendo honesta sin necesitar un backend.
 
-**No se usa ni se expone ningún token de bot de Telegram** — hacerlo en código público sería una fuga de credenciales real, ya que cualquiera podría leerlo con solo ver el código fuente. Un enlace `t.me/usuario` es el único mecanismo compatible con un sitio 100% estático sin comprometer eso.
-
-Para cambiar el destinatario, edita el atributo `data-telegram` del `<form>` en `tools/template.html` y regenera con `node tools/build-lang-pages.js`.
+Quién realmente contacta a quién queda fuera del sitio web por diseño: las normas mostradas junto al formulario (`contact.rule1`–`rule6` en `assets/js/i18n.js`) explican el proceso en texto, no en código — no hay ningún mecanismo de contacto automatizado ni de terceros que mantener aquí.
 
 ## Personalización pendiente
 

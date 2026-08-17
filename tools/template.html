@@ -374,9 +374,10 @@
         <div class="about-badges" style="margin-top:14px">
           <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule1">Si ya tienes una invitación activa y es una emergencia, usa el canal directo con tu coordinador que se te entregó al incorporarte — no lo publicamos aquí.</span></div>
           <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule2">Sabemos perfectamente quién te dio la invitación, y por qué la recibiste. No hace falta que nos lo expliques.</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule3">Si decidimos avanzar, seremos nosotros quienes nos presentemos en tus oficinas — en persona y sin aviso previo. Esa primera reunión no es con nadie de nuestro equipo.</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule4">No hay negociación posible sobre estas condiciones: si no las aceptas, no trabajarás con nosotros. Nunca.</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule5">Si aceptamos reunirnos, la reunión no es gratuita: cubre nuestro tiempo, se paga por adelantado y no es reembolsable ni se descuenta del proyecto si finalmente lo aceptamos.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule3">Si tu caso es de máxima prioridad, alguien se presentará físicamente en tu empresa en cuestión de instantes, estés donde estés en el mundo. Esa persona no es de nuestro equipo.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule4">Primero evaluamos la situación. Si podemos actuar y es una urgencia real, te contactaremos antes de presentarnos — y lo haremos con todo un equipo de soluciones inmediatas para resolver el problema.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule5">No hay negociación posible sobre estas condiciones: si no las aceptas, no trabajarás con nosotros. Nunca.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="contact.rule6">Si aceptamos reunirnos, la reunión no es gratuita: cubre nuestro tiempo, se paga por adelantado y no es reembolsable ni se descuenta del proyecto si finalmente lo aceptamos.</span></div>
         </div>
 
         <div class="process-callout reveal" style="margin-top:32px">
@@ -385,13 +386,19 @@
       </div>
 
       <div class="reveal">
-        <form id="contact-form" data-telegram="Chichanofis">
-          <div class="field">
-            <label for="f-code" data-i18n="contact.form_code">Código de invitación</label>
-            <input id="f-code" name="code" type="text" required>
+        <form id="contact-form">
+          <div id="contact-form-fields">
+            <div class="field">
+              <label for="f-code" data-i18n="contact.form_code">Código de invitación</label>
+              <input id="f-code" name="code" type="text" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" data-i18n="contact.form_submit">Enviar</button>
+            <p class="form-note" data-i18n="contact.form_note">Tu código no se envía a ningún sitio. Si corresponde a una invitación activa, ya lo sabremos.</p>
           </div>
-          <button type="submit" class="btn btn-primary btn-block" data-i18n="contact.form_submit">Enviar</button>
-          <p class="form-note" data-i18n="contact.form_note">Al enviar, se abre Telegram con tu código de invitación — decides tú si lo confirmas. Ya sabremos qué hacer a partir de ahí. Este sitio no recopila ni almacena nada de este formulario.</p>
+          <div id="contact-form-sent" hidden>
+            <p class="form-sent-title" data-i18n="contact.form_sent">Recibido.</p>
+            <p class="form-note" data-i18n="contact.form_sent_note">Si la invitación es válida, no hace falta que hagas nada más.</p>
+          </div>
         </form>
       </div>
     </div>

@@ -315,6 +315,7 @@ input, textarea, select{ font: inherit; color: inherit; }
 .field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
 .field textarea{ resize: vertical; min-height: 100px; }
 .form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+.form-sent-title{ font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); margin-bottom: 8px; }
 
 /* ---------- location ---------- */
 .location-box{
