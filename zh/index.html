@@ -727,8 +727,9 @@ input, textarea, select{ font: inherit; color: inherit; }
         <p class="sectors-label" style="margin-top:32px">写信之前</p>
         <div class="about-badges" style="margin-top:14px">
           <div class="about-badge"><span class="dot"></span><span class="label">如果你已经拥有有效邀请，并且是紧急情况，请使用在加入时提供给你的与协调人的直接联络渠道——我们不会在此公开。</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label">我们不会通过此渠道回复私人联系、好奇咨询或预算相关问题。</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label">任何不符合这些条件的信息都不会被回复。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">我们非常清楚是谁给了你邀请，也清楚你为什么会收到邀请。你不需要向我们解释。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">如果我们决定推进，将由我们亲自前往你的办公室——当面、且不事先通知。第一次会面不会有我们团队的任何人参与。</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">这些条件没有协商余地：如果你不接受，就永远无法与我们合作。</span></div>
           <div class="about-badge"><span class="dot"></span><span class="label">如果我们同意会面，该会面并非免费：费用用于支付我们的时间，需提前支付，即使最终接受该项目，该费用也不予退还或抵扣。</span></div>
         </div>
 
@@ -740,19 +741,11 @@ input, textarea, select{ font: inherit; color: inherit; }
       <div class="reveal">
         <form id="contact-form" data-telegram="Chichanofis">
           <div class="field">
-            <label for="f-name">姓名</label>
-            <input id="f-name" name="name" type="text" required autocomplete="name">
-          </div>
-          <div class="field">
             <label for="f-code">邀请码</label>
             <input id="f-code" name="code" type="text" required>
           </div>
-          <div class="field">
-            <label for="f-message">留言</label>
-            <textarea id="f-message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">打开Telegram</button>
-          <p class="form-note">这将打开Telegram，并已为你预填好信息——是否发送由你决定。本网站不会收集或存储此表单的任何信息。</p>
+          <button type="submit" class="btn btn-primary btn-block">发送</button>
+          <p class="form-note">点击发送后会打开Telegram，并附上你的邀请码——是否确认由你决定。之后我们会知道该怎么做。本网站不会收集或存储此表单的任何信息。</p>
         </form>
       </div>
     </div>
@@ -1062,11 +1055,9 @@ input, textarea, select{ font: inherit; color: inherit; }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var username = form.getAttribute("data-telegram") || "Chichanofis";
-      var name = form.querySelector("#f-name").value.trim();
       var code = form.querySelector("#f-code").value.trim();
-      var message = form.querySelector("#f-message").value.trim();
 
-      var text = "Nombre: " + name + "\nCódigo de invitación: " + code + "\n\n" + message;
+      var text = "Código de invitación: " + code;
       var url = "https://t.me/" + encodeURIComponent(username) + "?text=" + encodeURIComponent(text);
 
       window.open(url, "_blank", "noopener");

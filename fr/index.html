@@ -727,8 +727,9 @@ input, textarea, select{ font: inherit; color: inherit; }
         <p class="sectors-label" style="margin-top:32px">Avant d'écrire</p>
         <div class="about-badges" style="margin-top:14px">
           <div class="about-badge"><span class="dot"></span><span class="label">Si vous avez déjà une invitation active et qu'il s'agit d'une urgence, utilisez le canal direct vers votre coordinateur qui vous a été communiqué lors de votre intégration — nous ne le publions pas ici.</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label">Nous ne répondons pas aux contacts personnels, à la curiosité ni aux questions de budget par ce canal.</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label">Tout message ne respectant pas ces conditions restera sans réponse.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Nous savons exactement qui vous a donné l'invitation, et pourquoi vous l'avez reçue. Inutile de nous l'expliquer.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Si nous décidons d'avancer, ce sera nous qui nous présenterons dans vos bureaux — en personne, sans préavis. Cette première rencontre n'est avec personne de notre équipe.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">Ces conditions ne sont pas négociables : si vous ne les acceptez pas, vous ne travaillerez jamais avec nous.</span></div>
           <div class="about-badge"><span class="dot"></span><span class="label">Si nous acceptons de nous rencontrer, la réunion n'est pas gratuite : elle couvre notre temps, se paie à l'avance, et n'est ni remboursable ni déduite du projet si nous l'acceptons finalement.</span></div>
         </div>
 
@@ -740,19 +741,11 @@ input, textarea, select{ font: inherit; color: inherit; }
       <div class="reveal">
         <form id="contact-form" data-telegram="Chichanofis">
           <div class="field">
-            <label for="f-name">Nom</label>
-            <input id="f-name" name="name" type="text" required autocomplete="name">
-          </div>
-          <div class="field">
             <label for="f-code">Code d'invitation</label>
             <input id="f-code" name="code" type="text" required>
           </div>
-          <div class="field">
-            <label for="f-message">Message</label>
-            <textarea id="f-message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Ouvrir Telegram</button>
-          <p class="form-note">Cela ouvre Telegram avec votre message déjà rédigé — c'est vous qui décidez de l'envoyer. Ce site ne collecte ni ne conserve rien de ce formulaire.</p>
+          <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
+          <p class="form-note">En envoyant, Telegram s'ouvre avec votre code d'invitation — c'est vous qui décidez de le confirmer. Nous saurons quoi faire ensuite. Ce site ne collecte ni ne conserve rien de ce formulaire.</p>
         </form>
       </div>
     </div>
@@ -1062,11 +1055,9 @@ input, textarea, select{ font: inherit; color: inherit; }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var username = form.getAttribute("data-telegram") || "Chichanofis";
-      var name = form.querySelector("#f-name").value.trim();
       var code = form.querySelector("#f-code").value.trim();
-      var message = form.querySelector("#f-message").value.trim();
 
-      var text = "Nombre: " + name + "\nCódigo de invitación: " + code + "\n\n" + message;
+      var text = "Código de invitación: " + code;
       var url = "https://t.me/" + encodeURIComponent(username) + "?text=" + encodeURIComponent(text);
 
       window.open(url, "_blank", "noopener");

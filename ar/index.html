@@ -727,8 +727,9 @@ input, textarea, select{ font: inherit; color: inherit; }
         <p class="sectors-label" style="margin-top:32px">قبل أن تكتب</p>
         <div class="about-badges" style="margin-top:14px">
           <div class="about-badge"><span class="dot"></span><span class="label">إذا كانت لديك دعوة نشطة بالفعل وكانت هذه حالة طارئة، استخدم القناة المباشرة مع منسّقك التي حصلت عليها أثناء الانضمام — لا ننشرها هنا.</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label">لا نرد على التواصل الشخصي أو الفضول أو أسئلة الميزانية عبر هذه القناة.</span></div>
-          <div class="about-badge"><span class="dot"></span><span class="label">لن يتم الرد على أي رسالة لا تستوفي هذه الشروط.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">نعرف بالضبط من منحك الدعوة، ولماذا تلقّيتها. لست بحاجة لأن تشرح لنا ذلك.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">إذا قررنا المضي قدمًا، فسنكون نحن من سيحضر إلى مكاتبك — شخصيًا، ودون سابق إنذار. هذا الاجتماع الأول ليس مع أي شخص من فريقنا.</span></div>
+          <div class="about-badge"><span class="dot"></span><span class="label">هذه الشروط غير قابلة للتفاوض: إذا لم تقبلها، فلن تعمل معنا أبدًا.</span></div>
           <div class="about-badge"><span class="dot"></span><span class="label">إذا وافقنا على الاجتماع، فالاجتماع ليس مجانيًا: يغطي وقتنا، ويُدفع مقدمًا، ولا يُسترد أو يُخصم من المشروع إذا قبلناه في النهاية.</span></div>
         </div>
 
@@ -740,19 +741,11 @@ input, textarea, select{ font: inherit; color: inherit; }
       <div class="reveal">
         <form id="contact-form" data-telegram="Chichanofis">
           <div class="field">
-            <label for="f-name">الاسم</label>
-            <input id="f-name" name="name" type="text" required autocomplete="name">
-          </div>
-          <div class="field">
             <label for="f-code">رمز الدعوة</label>
             <input id="f-code" name="code" type="text" required>
           </div>
-          <div class="field">
-            <label for="f-message">الرسالة</label>
-            <textarea id="f-message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">فتح Telegram</button>
-          <p class="form-note">سيتم فتح Telegram برسالتك جاهزة بالفعل — أنت من يقرر إرسالها. هذا الموقع لا يجمع ولا يخزّن أي شيء من هذا النموذج.</p>
+          <button type="submit" class="btn btn-primary btn-block">إرسال</button>
+          <p class="form-note">عند الإرسال، سيُفتح Telegram برمز دعوتك — أنت من يقرر تأكيده. سنعرف ما يجب فعله بعد ذلك. هذا الموقع لا يجمع ولا يخزّن أي شيء من هذا النموذج.</p>
         </form>
       </div>
     </div>
@@ -1062,11 +1055,9 @@ input, textarea, select{ font: inherit; color: inherit; }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var username = form.getAttribute("data-telegram") || "Chichanofis";
-      var name = form.querySelector("#f-name").value.trim();
       var code = form.querySelector("#f-code").value.trim();
-      var message = form.querySelector("#f-message").value.trim();
 
-      var text = "Nombre: " + name + "\nCódigo de invitación: " + code + "\n\n" + message;
+      var text = "Código de invitación: " + code;
       var url = "https://t.me/" + encodeURIComponent(username) + "?text=" + encodeURIComponent(text);
 
       window.open(url, "_blank", "noopener");
