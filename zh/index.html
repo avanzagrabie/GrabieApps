@@ -344,6 +344,22 @@ input, textarea, select{ font: inherit; color: inherit; }
   font-family: var(--font-mono); font-size: .84rem; color: var(--text-dim); transition: border-color .2s ease, color .2s ease;
 }
 .sector-chip:hover{ border-color: var(--accent); color: var(--text); }
+a.sector-chip{ cursor: pointer; }
+a.sector-chip:hover{ background: var(--surface-strong); }
+
+/* ---------- game case study pages ---------- */
+.game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+@media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
+.game-shot{
+  aspect-ratio: 16/10; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
+              radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
+              var(--bg-elevated);
+  display: flex; align-items: flex-end; padding: 16px;
+}
+.game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+.store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
 /* ---------- process ---------- */
 .process-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -671,10 +687,11 @@ input, textarea, select{ font: inherit; color: inherit; }
       <div class="games-block reveal">
         <p class="sectors-label">游戏引擎工作：真实履历</p>
         <div class="sector-chips">
-          <span class="sector-chip">Sniper 3D: Gun Shooting Games</span>
-          <span class="sector-chip">Cities: Skylines II</span>
+          <a class="sector-chip" href="sniper-3d.html">Sniper 3D: Gun Shooting Games</a>
+          <a class="sector-chip" href="cities-skylines-2.html">Cities: Skylines II</a>
         </div>
         <p class="section-subtitle">引擎编程——物理、性能、游戏系统——从不涉及设计或美术，也几乎从不公开署名。我们也在开发自己的游戏：第一款名为Rosmino，还有好几款正在测试阶段，目前处于严格保密状态。这些都不是外包委托——它们将完全属于我们，并将改变这个市场的游戏规则。</p>
+        <p class="section-subtitle">这两款是我们唯一能公开名字的项目。我们还与其他几家工作室保持保密协议下的合作，同时也在开发自己的游戏卖给第三方——其中一些以不带我们名字的品牌发布。做得好的项目，最终会被大型投资基金收购。</p>
       </div>
     </div>
   </section>

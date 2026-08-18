@@ -344,6 +344,22 @@ input, textarea, select{ font: inherit; color: inherit; }
   font-family: var(--font-mono); font-size: .84rem; color: var(--text-dim); transition: border-color .2s ease, color .2s ease;
 }
 .sector-chip:hover{ border-color: var(--accent); color: var(--text); }
+a.sector-chip{ cursor: pointer; }
+a.sector-chip:hover{ background: var(--surface-strong); }
+
+/* ---------- game case study pages ---------- */
+.game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+@media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
+.game-shot{
+  aspect-ratio: 16/10; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
+              radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
+              var(--bg-elevated);
+  display: flex; align-items: flex-end; padding: 16px;
+}
+.game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+.store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
 /* ---------- process ---------- */
 .process-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -671,10 +687,11 @@ input, textarea, select{ font: inherit; color: inherit; }
       <div class="games-block reveal">
         <p class="sectors-label">Motor de videojuegos: trabajo real</p>
         <div class="sector-chips">
-          <span class="sector-chip">Sniper 3D: Gun Shooting Games</span>
-          <span class="sector-chip">Cities: Skylines II</span>
+          <a class="sector-chip" href="sniper-3d.html">Sniper 3D: Gun Shooting Games</a>
+          <a class="sector-chip" href="cities-skylines-2.html">Cities: Skylines II</a>
         </div>
         <p class="section-subtitle">Programación de motor — física, rendimiento, sistemas de juego — nunca diseño ni arte, y casi nunca con crédito público. Además, estamos construyendo nuestros propios juegos: el primero se llama Rosmino, y hay varios más en fase de pruebas, estrictamente secretos por ahora. No son encargos de nadie — serán enteramente nuestros, y van a cambiar las reglas del mercado.</p>
+        <p class="section-subtitle">Estos dos son los únicos que podemos nombrar. Colaboramos con varios estudios más bajo acuerdos de confidencialidad, y además desarrollamos juegos propios para vender a terceros — algunos bajo sellos que no llevan nuestro nombre. Cuando salen bien, acaban vendiéndose a grandes fondos de inversión.</p>
       </div>
     </div>
   </section>

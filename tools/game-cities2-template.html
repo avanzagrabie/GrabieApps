@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="game_cities2.meta_title">Cities: Skylines II — Motor de videojuegos | Gabriel Díaz Bernal</title>
+<meta name="description" content="Trabajo de motor en Cities: Skylines II (Paradox Interactive / Colossal Order): simulación a gran escala y optimización de Unity Engine." data-i18n-attr="content:game_cities2.meta_description">
+<meta name="robots" content="index, follow, noarchive">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html">
+
+<link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html">
+<link rel="alternate" hreflang="en" href="https://avanzagrabie.github.io/GrabieApps/en/cities-skylines-2.html">
+<link rel="alternate" hreflang="fr" href="https://avanzagrabie.github.io/GrabieApps/fr/cities-skylines-2.html">
+<link rel="alternate" hreflang="pt" href="https://avanzagrabie.github.io/GrabieApps/pt/cities-skylines-2.html">
+<link rel="alternate" hreflang="ar" href="https://avanzagrabie.github.io/GrabieApps/ar/cities-skylines-2.html">
+<link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html">
+<link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html">
+<link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Cities: Skylines II — Motor de videojuegos" data-i18n-attr="content:game_cities2.meta_title">
+<meta property="og:description" content="Trabajo de motor en Cities: Skylines II (Paradox Interactive / Colossal Order): simulación a gran escala y optimización de Unity Engine." data-i18n-attr="content:game_cities2.meta_description">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="pt_PT">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cities: Skylines II — Motor de videojuegos" data-i18n-attr="content:game_cities2.meta_title">
+<meta name="twitter:description" content="Trabajo de motor en Cities: Skylines II (Paradox Interactive / Colossal Order)." data-i18n-attr="content:game_cities2.meta_description">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+
+<!-- Icons -->
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small data-i18n="footer.tagline">Software de élite. Bajo invitación.</small></span>
+    </a>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">ES</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html" aria-current="true">Español <span class="code">ES</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/en/cities-skylines-2.html">English <span class="code">EN</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/fr/cities-skylines-2.html">Français <span class="code">FR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/pt/cities-skylines-2.html">Português <span class="code">PT</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ar/cities-skylines-2.html">العربية <span class="code">AR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html">中文 <span class="code">ZH</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html">日本語 <span class="code">JA</span></a>
+        </div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container" style="max-width:860px">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="game_cities2.eyebrow">Motor de videojuegos</p>
+        <h1 class="section-title" data-i18n="game_cities2.title">Cities: Skylines II</h1>
+        <p class="section-subtitle" data-i18n="game_cities2.subtitle">Trabajo de motor en un simulador de ciudades a gran escala: gestión de decenas de miles de agentes simultáneos y optimización de Unity Engine para simulación masiva.</p>
+      </div>
+
+      <div class="stat-row reveal" style="margin-top:0; margin-bottom:56px">
+        <div>
+          <div class="stat-value" data-i18n="game_cities2.stat1_value">Paradox Interactive</div>
+          <div class="stat-label" data-i18n="game_cities2.stat1_label">Editor</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_cities2.stat2_value">Colossal Order</div>
+          <div class="stat-label" data-i18n="game_cities2.stat2_label">Estudio de desarrollo</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_cities2.stat3_value">Unity Engine</div>
+          <div class="stat-label" data-i18n="game_cities2.stat3_label">Motor</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_cities2.stat4_value">24 oct. 2023</div>
+          <div class="stat-label" data-i18n="game_cities2.stat4_label">Lanzamiento (PC)</div>
+        </div>
+      </div>
+
+      <p class="sectors-label reveal" data-i18n="game_cities2.shots_label">Capturas</p>
+      <div class="game-shot-grid reveal">
+        <!-- Placeholders: sustituir por <img src="assets/img/games/cities2-1.jpg" alt="..."> cuando lleguen las capturas con derechos confirmados. -->
+        <div class="game-shot"><span data-i18n="game_cities2.shot1_label">Simulación de tráfico</span></div>
+        <div class="game-shot"><span data-i18n="game_cities2.shot2_label">Vista aérea de ciudad</span></div>
+        <div class="game-shot"><span data-i18n="game_cities2.shot3_label">Panel de gestión de infraestructuras</span></div>
+      </div>
+      <p class="game-shots-note reveal" data-i18n="game_cities2.shots_note">Capturas oficiales pendientes de publicación — se añadirán en cuanto tengamos los derechos confirmados por el estudio.</p>
+
+      <div class="about-copy reveal" style="margin-top:56px">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px" data-i18n="game_cities2.about_title">Sobre el juego</h2>
+        <p data-i18n="game_cities2.about_text">Cities: Skylines II es la secuela del simulador de construcción de ciudades más jugado de su género, desarrollado originalmente por Colossal Order y publicado por Paradox Interactive. Simula miles de ciudadanos individuales, cada uno con su propia rutina, trabajo y trayecto, sobre un mapa que puede crecer hasta convertirse en una metrópolis.</p>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem" data-i18n="game_cities2.engine_title">¿Qué es «el motor» en un simulador así?</h2>
+        <p style="margin-top:14px" data-i18n="game_cities2.engine_text">Aquí el motor tiene que sostener una ciudad entera calculando, fotograma a fotograma, la ruta de cada coche, el trayecto de cada ciudadano y el consumo de cada servicio público — todo a la vez, sin que el juego se ralentice al crecer el mapa. Es el problema de rendimiento más exigente del género: cuantos más agentes simula, más caro es cada fotograma.</p>
+      </div>
+
+      <p class="sectors-label reveal" data-i18n="game_cities2.role_label">Nuestro trabajo de motor</p>
+      <div class="about-badges reveal" style="margin-top:14px; margin-bottom:56px">
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_cities2.role1">Optimización de Unity Engine para simulaciones con decenas de miles de agentes activos</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_cities2.role2">Sistemas de tráfico y trayectos: rutas, congestión y comportamiento de los ciudadanos</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_cities2.role3">Gestión de memoria en partidas de larga duración con ciudades muy grandes</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_cities2.role4">Rendimiento multiplataforma: PC, PlayStation 5 y Xbox Series X|S</span></div>
+      </div>
+
+      <p class="sectors-label reveal" data-i18n="game_cities2.store_label">Disponible en</p>
+      <div class="store-row reveal" style="margin-top:14px; margin-bottom:48px">
+        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener" data-i18n="game_cities2.store_steam">Steam</a>
+        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener" data-i18n="game_cities2.store_paradox">Paradox Interactive</a>
+      </div>
+
+      <a class="btn btn-primary reveal" href="index.html" data-i18n="game_cities2.back_link">← Volver a Gabriel Díaz Bernal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline" data-i18n="footer.tagline">Software de élite. Bajo invitación.</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="index.html#about" data-i18n="nav.about">Sobre mí</a>
+      <a href="index.html#stack" data-i18n="nav.stack">Stack</a>
+      <a href="index.html#clients" data-i18n="nav.clients">Clientes</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contacto</a>
+      <a href="privacy.html" data-i18n="nav.privacy">Privacidad</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span data-i18n="footer.rights">Todos los derechos reservados.</span></span>
+    <span data-i18n="footer.made">Sitio construido con precisión de ingeniería.</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

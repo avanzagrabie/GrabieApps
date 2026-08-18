@@ -75,6 +75,18 @@ function outPathForPrivacy(lang) {
   return lang === "es" ? path.join(ROOT, "privacy.html") : path.join(ROOT, lang, "privacy.html");
 }
 
+// Game case-study pages (one flat file per language, same pattern as privacy.html).
+const GAMES = [
+  { slug: "sniper-3d", templateFile: "game-sniper3d-template.html" },
+  { slug: "cities-skylines-2", templateFile: "game-cities2-template.html" }
+];
+function urlForGame(slug, lang) {
+  return lang === "es" ? `${BASE_URL}${slug}.html` : `${BASE_URL}${lang}/${slug}.html`;
+}
+function outPathForGame(slug, lang) {
+  return lang === "es" ? path.join(ROOT, `${slug}.html`) : path.join(ROOT, lang, `${slug}.html`);
+}
+
 function escapeHtml(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
@@ -268,6 +280,86 @@ function renderPrivacy(templateHtml, lang, dict, cssContent, jsContent) {
   return html;
 }
 
+// Game case-study pages: same recipe as renderPrivacy, parametrized by slug
+// (own canonical/hreflang cluster and lang-menu URLs per game).
+function renderGamePage(templateHtml, lang, dict, cssContent, jsContent, slug) {
+  let html = templateHtml;
+
+  html = html.replace(
+    /<html lang="es">/,
+    LANGS[lang].dir === "rtl" ? `<html lang="${lang}" dir="rtl">` : `<html lang="${lang}">`
+  );
+
+  html = html.replace(
+    /<meta\b([^>]*?)content="[^"]*"([^>]*?)\sdata-i18n-attr="content:([a-zA-Z0-9_.]+)"([^>]*)>/g,
+    (m, pre, mid, key, post) => {
+      const val = dict[key] !== undefined ? dict[key] : key;
+      return `<meta${pre}content="${escapeAttr(val)}"${mid}${post}>`;
+    }
+  );
+
+  html = html.replace(
+    /\sdata-i18n="([a-zA-Z0-9_.]+)"([^>]*)>([^<]*)</g,
+    (m, key, restAttrs, oldText) => {
+      const val = dict[key] !== undefined ? dict[key] : key;
+      return `${restAttrs}>${escapeHtml(val)}<`;
+    }
+  );
+
+  const selfUrl = urlForGame(slug, lang);
+  html = html.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${selfUrl}">`);
+  html = html.replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${selfUrl}">`);
+
+  html = html.replace(
+    /<meta property="og:locale" content="[^"]*">\n(?:<meta property="og:locale:alternate" content="[^"]*">\n?)+/,
+    buildLocaleBlock(lang) + "\n"
+  );
+
+  html = html.replace(/<div class="lang-menu" role="menu">[\s\S]*?<\/div>/, buildLangMenu(lang, (l) => urlForGame(slug, l)));
+
+  html = html.replace(/<span class="code">ES<\/span>\s*<\/button>/, `<span class="code">${LANGS[lang].code}</span>\n        </button>`);
+
+  html = html.replace(
+    /<link rel="stylesheet" href="assets\/css\/style\.css">/,
+    `<style>\n${cssContent}\n</style>`
+  );
+
+  if (lang !== "es") {
+    html = html.replace(/href="assets\//g, 'href="../assets/');
+    html = html.replace(/src="assets\//g, 'src="../assets/');
+    html = html.replace(/href="manifest\.webmanifest"/, 'href="../manifest.webmanifest"');
+  }
+
+  html = inlineMainJs(html, jsContent);
+
+  return html;
+}
+
+// sitemap.xml: generated, not hand-maintained, so it can never drift from the
+// actual set of pages the build produces. One <url> per language for each of
+// home, privacy and every game page, each with the full hreflang cluster.
+function renderSitemap(gameSlugs) {
+  const today = new Date().toISOString().slice(0, 10);
+  function block(urlFn, priorityFor, changefreq) {
+    return ORDER.map((lang) => {
+      const loc = urlFn(lang);
+      const alts = ORDER.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${urlFn(l)}"/>`).join("\n");
+      const xdefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFn("es")}"/>`;
+      return `  <url>\n    <loc>${loc}</loc>\n${alts}\n${xdefault}\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priorityFor(lang)}</priority>\n  </url>`;
+    }).join("\n");
+  }
+
+  const blocks = [
+    block(urlFor, (l) => (l === "es" ? "1.0" : "0.9"), "monthly"),
+    block(urlForPrivacy, () => "0.3", "yearly")
+  ];
+  gameSlugs.forEach((slug) => {
+    blocks.push(block((l) => urlForGame(slug, l), (l) => (l === "es" ? "0.6" : "0.5"), "monthly"));
+  });
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${blocks.join("\n")}\n</urlset>\n`;
+}
+
 function main() {
   const template = fs.readFileSync(path.join(__dirname, "template.html"), "utf8");
   const cssContent = fs.readFileSync(path.join(ROOT, "assets", "css", "style.css"), "utf8").trim();
@@ -300,7 +392,24 @@ function main() {
   fs.writeFileSync(path.join(ROOT, "404.html"), out404, "utf8");
   console.log(`Built 404.html (${out404.length} bytes)`);
 
-  console.log("Done. Edit tools/template.html, tools/privacy-template.html, tools/404-template.html and/or assets/js/i18n.js, then re-run this script.");
+  for (const game of GAMES) {
+    const gameTemplate = fs.readFileSync(path.join(__dirname, game.templateFile), "utf8");
+    for (const lang of ORDER) {
+      const dict = I18N[lang];
+      if (!dict) continue;
+      const out = renderGamePage(gameTemplate, lang, dict, cssContent, jsContent, game.slug);
+      const outPath = outPathForGame(game.slug, lang);
+      fs.mkdirSync(path.dirname(outPath), { recursive: true });
+      fs.writeFileSync(outPath, out, "utf8");
+      console.log(`Built ${path.relative(ROOT, outPath)} (${out.length} bytes)`);
+    }
+  }
+
+  const sitemap = renderSitemap(GAMES.map((g) => g.slug));
+  fs.writeFileSync(path.join(ROOT, "sitemap.xml"), sitemap, "utf8");
+  console.log(`Built sitemap.xml (${sitemap.length} bytes)`);
+
+  console.log("Done. Edit tools/template.html, tools/privacy-template.html, tools/404-template.html, tools/game-*-template.html and/or assets/js/i18n.js, then re-run this script.");
 }
 
 main();
