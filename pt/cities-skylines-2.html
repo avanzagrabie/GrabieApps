@@ -543,7 +543,13 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <div class="location-box reveal" style="margin:48px 0; padding:40px">
         <h2 class="section-title" style="font-size:1.4rem">O que é "o motor" em um simulador assim?</h2>
-        <p style="margin-top:14px">Aqui o motor precisa sustentar uma cidade inteira calculando, quadro a quadro, a rota de cada carro, o trajeto de cada cidadão e o consumo de cada serviço público — tudo ao mesmo tempo, sem que o jogo fique lento à medida que o mapa cresce. É o problema de desempenho mais exigente do gênero: quanto mais agentes ele simula, mais caro fica cada quadro.</p>
+        <p style="margin-top:14px">O motor é o software que fica por baixo do jogo: ele não decide a aparência de um prédio nem quais impostos a prefeitura cobra — decide como cada quadro é renderizado, como cada carro se move em sua faixa, quanta memória cada cidadão simulado ocupa, e quando parar de desenhar um prédio distante para economizar recursos. O jogo são as regras; o motor é o que faz essas regras rodarem 30 ou 60 vezes por segundo sem sufocar o computador. Aqui, além disso, ele precisa sustentar uma cidade inteira calculando, quadro a quadro, a rota de cada carro, o trajeto de cada cidadão e o consumo de cada serviço público — tudo ao mesmo tempo, sem que o jogo fique lento à medida que o mapa cresce. É o problema de desempenho mais exigente do gênero: quanto mais agentes ele simula, mais caro fica cada quadro.</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Um lançamento com muitos problemas de desempenho</h2>
+        <p>Cities: Skylines II foi lançado no PC em 24 de outubro de 2023 com um lançamento conturbado: mesmo em placas de vídeo topo de linha o framerate despencava, havia travamentos constantes ao expandir o mapa, e a versão para consoles precisou ser adiada — até hoje sem data confirmada. Boa parte do problema vinha de como o motor gerenciava o nível de detalhe (LOD) e o culling: os modelos distantes não eram simplificados a tempo, e o que não aparecia na tela continuava sendo desenhado, então cada quadro carregava mais geometria do que o necessário.</p>
+        <p style="margin-top:18px">A Colossal Order — e, desde que a Iceflake Studios assumiu o desenvolvimento em 2026, também ela — respondeu com atualizações de desempenho quase semanais durante meses, e chegou a se comprometer publicamente a não lançar conteúdo pago até que isso fosse resolvido. Foi exatamente aí que entrou nosso trabalho de motor: desafogar esse gargalo de LOD e culling sem reduzir a escala da simulação — mais agentes por quadro, não menos, só que sem que cada um custasse tanto quanto no lançamento.</p>
       </div>
 
       <p class="sectors-label reveal">Nosso trabalho de motor</p>

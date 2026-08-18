@@ -543,7 +543,13 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <div class="location-box reveal" style="margin:48px 0; padding:40px">
         <h2 class="section-title" style="font-size:1.4rem">What is "the engine" in a simulator like this?</h2>
-        <p style="margin-top:14px">Here the engine has to sustain an entire city, calculating every car's route, every citizen's commute, and every public service's load, frame by frame — all at once, without the game slowing down as the map grows. It's the genre's toughest performance problem: the more agents it simulates, the more expensive every frame gets.</p>
+        <p style="margin-top:14px">The engine is the software underneath the game: it doesn't decide what a building looks like or what taxes city hall charges — it decides how every frame gets rendered, how each car moves through its lane, how much memory each simulated citizen takes up, and when to stop drawing a distant building to save resources. The game is the rules; the engine is what makes those rules run 30 or 60 times a second without choking the computer. Here it also has to sustain an entire city, calculating every car's route, every citizen's commute, and every public service's load, frame by frame — all at once, without the game slowing down as the map grows. It's the genre's toughest performance problem: the more agents it simulates, the more expensive every frame gets.</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">A launch with plenty of performance problems</h2>
+        <p>Cities: Skylines II launched on PC on October 24, 2023, to a rocky reception: even on high-end graphics cards the framerate would tank, there was constant stuttering as the map grew, and the console version had to be delayed — it still doesn't have a confirmed date. A big part of the problem came down to how the engine handled level of detail (LOD) and culling: distant models weren't simplified in time, and things off-screen weren't stopped from being drawn, so every frame carried more geometry than it needed to.</p>
+        <p style="margin-top:18px">Colossal Order — and, since Iceflake Studios took over development in 2026, them too — responded with near-weekly performance patches for months, and publicly committed to not shipping paid content until it was fixed. That's exactly where our engine work came in: decongesting that LOD and culling bottleneck without shrinking the scale of the simulation — more agents per frame, not fewer, just without each one costing as much as it did at launch.</p>
       </div>
 
       <p class="sectors-label reveal">Our engine work</p>
