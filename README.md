@@ -10,6 +10,7 @@ Sitio estático (GitHub Pages) del estudio de ingeniería de Gabriel Díaz Berna
 - **7 idiomas** (Español, English, Français, Português, العربية, 中文, 日本語), cada uno en su **propia URL** — no un solo URL que cambia de texto por JS. Ver [SEO y multi-idioma](#seo-y-multi-idioma).
 - **Contacto muy restringido, no un formulario abierto**: solo se aceptan clientes por invitación. El formulario (`#contact`) pide únicamente un código de invitación y no lo envía a ningún sitio — al enviarlo, `assets/js/main.js` solo cambia qué se muestra en la propia página, sin red ni almacenamiento de por medio. Ver [Contacto](#contacto).
 - **Casos de estudio de videojuegos**: página propia por título (`sniper-3d.html`, `cities-skylines-2.html`, 7 idiomas cada una) explicando el trabajo de motor en Sniper 3D: Gun Shooting Games y Cities: Skylines II, con enlaces a las tiendas oficiales. Ver [Juegos](#juegos).
+- **Proyecto propio en desarrollo**: `rosmino.html` (7 idiomas) — una plataforma de dominó online que estamos construyendo nosotros mismos, no un encargo. A diferencia de los casos de estudio, aquí sí se cuenta el progreso fase a fase. Ver [Juegos](#juegos).
 - **SEO al detalle**: canonical + `hreflang` por idioma, Open Graph/Twitter localizados, JSON-LD (`Person`, `ProfessionalService`, `WebSite`), `sitemap.xml` generado (no editado a mano) con anotaciones de idioma (+ hoja de estilo para verlo legible en el navegador), `robots.txt`, verificación de Google Search Console.
 - **Cada página es 1 sola solicitud HTTP**: HTML, CSS y JS, todo inline. Nada más que cargar — ver [Rendimiento](#rendimiento).
 - **Cero cookies, cero analítica, cero rastreo** — verificable, no solo declarado. Página de privacidad honesta en los 7 idiomas (`/privacy.html`) explicando exactamente eso. Ver [Privacidad](#privacidad-y-cumplimiento).
@@ -32,6 +33,8 @@ sniper-3d.html                 ) Casos de estudio de videojuegos, misma lógica,
 en/sniper-3d.html               )
 cities-skylines-2.html          )
 en/cities-skylines-2.html       )
+rosmino.html                    ) Proyecto propio en desarrollo, misma lógica, 7 idiomas.
+en/rosmino.html                  )
 ...                             )
 404.html                      )
 sitemap.xml                   ) Generado por el build — NO se edita a mano.
@@ -40,6 +43,7 @@ tools/
   privacy-template.html        Fuente de la página de privacidad — SE EDITA a mano
   game-sniper3d-template.html  Fuente del caso de estudio de Sniper 3D — SE EDITA a mano
   game-cities2-template.html   Fuente del caso de estudio de Cities: Skylines II — SE EDITA a mano
+  game-rosmino-template.html   Fuente de la página de Rosmino — SE EDITA a mano
   404-template.html            Fuente de la página 404 — SE EDITA a mano
   build-lang-pages.js          Generador (Node, sin dependencias)
 assets/
@@ -92,7 +96,7 @@ El selector de idioma del menú no usa JavaScript para "cambiar" nada — son en
 
 `sniper-3d.html` y `cities-skylines-2.html` (y sus 6 versiones de idioma cada uno) son páginas de caso de estudio para los dos títulos que sí podemos nombrar públicamente — el resto del trabajo de motor con otros estudios queda bajo NDA y no se menciona por nombre (ver el aviso en `#clients` de la portada).
 
-Cada página explica en qué consiste "el motor" en ese género de juego, qué hicimos concretamente a nivel de motor (nunca diseño ni arte), y enlaza a las tiendas oficiales reales (App Store/Google Play para Sniper 3D, Steam/Paradox Interactive para Cities: Skylines II).
+Cada página explica en qué consiste "el motor" en ese género de juego, qué hicimos concretamente a nivel de motor (nunca diseño ni arte), y enlaza a las tiendas oficiales reales (App Store/Google Play para Sniper 3D, Steam/Paradox Interactive para Cities: Skylines II). Ambas incluyen además una sección de contexto real del juego, con fuentes citadas (`game_sniper3d.history_*`/`game_cities2.history_*` en `assets/js/i18n.js`, enlaces con `rel="noopener noreferrer"`): en Cities: Skylines II, el lanzamiento con problemas de rendimiento y el episodio de Beach Properties; en Sniper 3D, casi once años de servicio continuo y lo que implica sostener un motor a través de esa fragmentación de dispositivos (fuente: la propia newsroom de Wildlife Studios).
 
 **Sniper 3D todavía usa marcadores de posición** en `.game-shot-grid` (comentario HTML indicando dónde va el `<img>` real cuando lleguen las capturas con derechos confirmados).
 
@@ -102,6 +106,14 @@ Cada página explica en qué consiste "el motor" en ese género de juego, qué h
 - `og:image`/`twitter:image` de esa página usan una de las capturas reales en vez de la imagen OG genérica del sitio.
 
 Para dar el mismo tratamiento a Sniper 3D: añadir los archivos a `assets/img/games/sniper-3d/`, sustituir los `<div class="game-shot is-placeholder">` de `tools/game-sniper3d-template.html` por `<figure class="game-shot"><img ...></figure>` (mismo patrón que `game-cities2-template.html`), añadir las claves `alt` a `assets/js/i18n.js`, añadir `images` a la entrada `sniper-3d` en `GAMES` (`tools/build-lang-pages.js`) y regenerar.
+
+### Rosmino: proyecto propio, no caso de estudio
+
+`rosmino.html` es distinto de los dos anteriores: no es trabajo para un cliente, es nuestra propia plataforma de dominó en desarrollo, y por eso la página sí cuenta progreso fase a fase ("Cómo va, fase a fase") en vez de limitarse a una explicación genérica de motor. El contenido se basa en documentación real de arquitectura/progreso del proyecto (`ARCHITECTURE.md`, `PROGRESS.md`, `GAME_ENGINE.md`, `DATA_MODEL.md`, `PROMPT_MAESTRO.md`, `REALTIME_PROTOCOL.md`), pero **deliberadamente no la reproduce tal cual**: se traduce a lenguaje de cara al público (qué sistemas están reales y verificados, qué es "el motor" y qué conlleva construirlo) sin exponer identificadores internos de infraestructura (IDs de proyecto de Firebase/GCP, cuentas, nombres de scripts/herramientas internas, post-mortems de bugs concretos) — esos detalles no aportan nada a un visitante y sí tienen coste de exposición (opsec) sin beneficio. Si se actualiza el estado del proyecto (nueva fase cerrada, etc.), edita `game_rosmino.progress_text`/`progress_text2`/`stat2_value` en `assets/js/i18n.js` (7 idiomas) y `tools/game-rosmino-template.html`, aplicando el mismo criterio de redacción.
+
+Sin galería de capturas (`assets/img/games/rosmino/` no existe todavía) — el propio texto explica por qué: el arte final del juego es una fase pendiente (Fase 17), así que no hay ninguna imagen real que mostrar. Añadir capturas aquí en el futuro sigue el mismo patrón que Cities: Skylines II.
+
+El enlace a "Rosmino" en la sección `#clients` de la portada (`clients.games_note_a/games_note_link/games_note_b` en `assets/js/i18n.js`) apunta a esta página.
 
 ## Rendimiento
 

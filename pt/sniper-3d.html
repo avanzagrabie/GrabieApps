@@ -494,8 +494,8 @@ a.sector-chip:hover{ background: var(--surface-strong); }
           <div class="stat-label">Plataformas</div>
         </div>
         <div>
-          <div class="stat-value">2014</div>
-          <div class="stat-label">Ano de lançamento</div>
+          <div class="stat-value">nov. 2014</div>
+          <div class="stat-label">Lançamento no Google Play</div>
         </div>
       </div>
 
@@ -515,7 +515,17 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <div class="location-box reveal" style="margin:48px 0; padding:40px">
         <h2 class="section-title" style="font-size:1.4rem">O que é "o motor" em um jogo como este?</h2>
-        <p style="margin-top:14px">O motor é a camada que não se vê: o código que calcula a trajetória de cada bala, decide quantos quadros por segundo um celular de entrada consegue sustentar sem esquentar demais, e gerencia a memória para que o jogo não feche sozinho no meio de uma missão. Não é design de níveis nem arte — é engenharia pura, e quase nunca leva assinatura.</p>
+        <p style="margin-top:14px">O motor é o software que fica por baixo do jogo: ele não decide a aparência de uma arma nem como um cenário é renderizado — decide quantos quadros por segundo um determinado celular aguenta sem esquentar demais, como se calcula a trajetória de cada bala, quanta memória cada textura carregada ocupa, e quando descarregá-la para não faltar RAM. O jogo são as regras e a arte; o motor é o que faz tudo isso rodar igual em um celular de 2018 e em um de 2026, sem que o jogador note a diferença. Aqui, além disso, ele precisa sustentar isso durante uma sessão de tiro em tempo real: a física de cada bala, a física de cada impacto, e o carregamento/descarregamento dos assets de um cenário novo a cada poucos segundos — tudo sem que o framerate caia um instante sequer. Não é design de níveis nem arte — é engenharia pura, e quase nunca leva assinatura.</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Onze anos de trabalho de motor em produção, sem parar</h2>
+        <p>O Sniper 3D está no Google Play desde novembro de 2014 — quase onze anos de serviço contínuo, com mais de 500 milhões de downloads e uma avaliação média de 4,5-4,6 em 5 em mais de 16 milhões de avaliações. O desafio de motor aqui não é o de um lançamento conturbado — é o oposto. Manter um único motor rodando bem em milhares de modelos de celular diferentes, de entrada até os flagships mais recentes, sem deixar de publicar conteúdo novo a cada poucas semanas e sem poder se dar ao luxo de uma reescrita completa que quebrasse a retrocompatibilidade.</p>
+        <p style="margin-top:18px">Essa é a fragmentação do Android em sua forma mais extrema: cada geração de processador, cada tamanho de RAM e cada versão de sistema operacional desde 2014 ainda tem aparelhos ativos jogando. É exatamente aí que entra nosso trabalho de motor — perfis de qualidade gráfica automáticos de acordo com o hardware detectado, gestão agressiva de memória de texturas para não depender de quanta RAM livre o celular tem naquele momento, e retrocompatibilidade verificada a cada atualização, nunca presumida.</p>
+        <p class="game-shots-note reveal" style="margin-top:14px">
+          <span>Fontes:</span>
+          <a href="https://newsroom.wildlifestudios.com/news/nearly-a-decade-of-success-learn-how-to-play-sniper-3d-a-free-shooting-game-for-mobile-devices/" target="_blank" rel="noopener noreferrer">Wildlife Studios, sobre quase uma década de Sniper 3D</a>.
+        </p>
       </div>
 
       <p class="sectors-label reveal">Nosso trabalho de motor</p>
@@ -524,6 +534,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <div class="about-badge"><span class="dot"></span><span class="label">Sistemas de balística: trajetória, gravidade, vento e penetração de materiais</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Gestão de memória e tempos de carregamento em missões com cenários muito detalhados</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Estabilidade em sessões longas de multijogador em tempo real</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Perfis de qualidade automáticos e retrocompatibilidade verificada a cada atualização, para sustentar uma base de aparelhos que abrange mais de uma década</span></div>
       </div>
 
       <p class="sectors-label reveal">Disponível em</p>

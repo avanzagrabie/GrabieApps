@@ -92,7 +92,8 @@ const GAMES = [
       "cities-skylines-2-diseno-rotonda.webp",
       "cities-skylines-2-horizonte-nocturno-aurora.webp"
     ]
-  }
+  },
+  { slug: "rosmino", templateFile: "game-rosmino-template.html" }
 ];
 function urlForGame(slug, lang) {
   return lang === "es" ? `${BASE_URL}${slug}.html` : `${BASE_URL}${lang}/${slug}.html`;

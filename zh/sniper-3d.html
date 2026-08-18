@@ -494,8 +494,8 @@ a.sector-chip:hover{ background: var(--surface-strong); }
           <div class="stat-label">平台</div>
         </div>
         <div>
-          <div class="stat-value">2014年</div>
-          <div class="stat-label">上线年份</div>
+          <div class="stat-value">2014年11月</div>
+          <div class="stat-label">Google Play上线时间</div>
         </div>
       </div>
 
@@ -515,7 +515,17 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <div class="location-box reveal" style="margin:48px 0; padding:40px">
         <h2 class="section-title" style="font-size:1.4rem">这类游戏中的"引擎"是什么？</h2>
-        <p style="margin-top:14px">引擎是看不见的那一层：计算每颗子弹轨迹的代码，决定一部低端手机在不过热的情况下能维持多少帧率，并管理内存以防止游戏在任务途中意外崩溃。这不是关卡设计，也不是美术——这是纯粹的工程，几乎从不署名。</p>
+        <p style="margin-top:14px">引擎是游戏底层的软件：它不决定武器长什么样，也不决定场景如何渲染——它决定某部手机在不过热的情况下能维持多少帧率、如何计算每颗子弹的轨迹、每张已加载贴图占用多少内存，以及何时该卸载贴图以避免内存耗尽。游戏是规则和美术；引擎则让这一切在2018年的手机和2026年的手机上运行得一样流畅，玩家察觉不到差异。在这里，引擎还必须在实时射击过程中持续支撑：每颗子弹的物理效果、每次命中的物理效果，以及每隔几秒钟加载/卸载新场景素材——所有这些都不能让帧率有一丝下降。这不是关卡设计，也不是美术——这是纯粹的工程，几乎从不署名。</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">十一年不间断的引擎生产工作</h2>
+        <p>Sniper 3D自2014年11月起在Google Play上线——近十一年不间断的持续运营，下载量超过5亿次，超过1600万条评价的平均评分达到4.5-4.6分（满分5分）。这里的引擎挑战不是坎坷的发售，而恰恰相反：要让同一套引擎在成千上万种不同的手机型号上都能良好运行，从入门机型到最新旗舰，同时还要每隔几周就发布新内容，而且永远不能承担一次会破坏向后兼容性的彻底重写。</p>
+        <p style="margin-top:18px">这就是Android碎片化最极端的表现：从2014年至今，每一代处理器、每一种内存容量、每一个系统版本，如今都仍有活跃设备在玩这款游戏。我们的引擎工作正是从这里介入——根据检测到的硬件自动匹配画质档位、对贴图内存进行激进管理以避免依赖手机当下的可用内存量，以及在每次更新时都实际验证向后兼容性，而不是想当然地假设它成立。</p>
+        <p class="game-shots-note reveal" style="margin-top:14px">
+          <span>资料来源：</span>
+          <a href="https://newsroom.wildlifestudios.com/news/nearly-a-decade-of-success-learn-how-to-play-sniper-3d-a-free-shooting-game-for-mobile-devices/" target="_blank" rel="noopener noreferrer">Wildlife Studios，关于Sniper 3D近十年历程的报道</a>.
+        </p>
       </div>
 
       <p class="sectors-label reveal">我们的引擎工作</p>
@@ -524,6 +534,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <div class="about-badge"><span class="dot"></span><span class="label">弹道系统：轨迹、重力、风力与材质穿透</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">在场景细节丰富的任务中管理内存与加载时间</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">长时间实时多人对战场景下的稳定性</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">自动画质档位与每次更新都经过验证的向后兼容性，以支撑跨越十余年的设备基础</span></div>
       </div>
 
       <p class="sectors-label reveal">购买渠道</p>

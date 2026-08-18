@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="game_rosmino.meta_title">Rosmino — Proyecto propio en desarrollo | Gabriel Díaz Bernal</title>
+<meta name="description" content="Rosmino: nuestra propia plataforma de dominó online competitiva y multiplataforma. Cómo va el desarrollo, qué es el motor y qué conlleva construirlo desde cero." data-i18n-attr="content:game_rosmino.meta_description">
+<meta name="robots" content="index, follow, noarchive">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/rosmino.html">
+
+<link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/rosmino.html">
+<link rel="alternate" hreflang="en" href="https://avanzagrabie.github.io/GrabieApps/en/rosmino.html">
+<link rel="alternate" hreflang="fr" href="https://avanzagrabie.github.io/GrabieApps/fr/rosmino.html">
+<link rel="alternate" hreflang="pt" href="https://avanzagrabie.github.io/GrabieApps/pt/rosmino.html">
+<link rel="alternate" hreflang="ar" href="https://avanzagrabie.github.io/GrabieApps/ar/rosmino.html">
+<link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/rosmino.html">
+<link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/rosmino.html">
+<link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/rosmino.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Rosmino — Proyecto propio en desarrollo" data-i18n-attr="content:game_rosmino.meta_title">
+<meta property="og:description" content="Nuestra propia plataforma de dominó online competitiva y multiplataforma. Cómo va el desarrollo." data-i18n-attr="content:game_rosmino.meta_description">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/rosmino.html">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="pt_PT">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rosmino — Proyecto propio en desarrollo" data-i18n-attr="content:game_rosmino.meta_title">
+<meta name="twitter:description" content="Nuestra propia plataforma de dominó online competitiva y multiplataforma." data-i18n-attr="content:game_rosmino.meta_description">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+
+<!-- Icons -->
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small data-i18n="footer.tagline">Software de élite. Bajo invitación.</small></span>
+    </a>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">ES</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/rosmino.html" aria-current="true">Español <span class="code">ES</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/en/rosmino.html">English <span class="code">EN</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/fr/rosmino.html">Français <span class="code">FR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/pt/rosmino.html">Português <span class="code">PT</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ar/rosmino.html">العربية <span class="code">AR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/zh/rosmino.html">中文 <span class="code">ZH</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ja/rosmino.html">日本語 <span class="code">JA</span></a>
+        </div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container" style="max-width:860px">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="game_rosmino.eyebrow">Proyecto propio · En desarrollo</p>
+        <h1 class="section-title" data-i18n="game_rosmino.title">Rosmino</h1>
+        <p class="section-subtitle" data-i18n="game_rosmino.subtitle">Una plataforma de dominó online, competitiva y multiplataforma, construida desde cero. No es un encargo — es nuestra, y así es como va.</p>
+      </div>
+
+      <div class="stat-row reveal" style="margin-top:0; margin-bottom:56px">
+        <div>
+          <div class="stat-value" data-i18n="game_rosmino.stat1_value">5</div>
+          <div class="stat-label" data-i18n="game_rosmino.stat1_label">plataformas: Android, iOS, Windows, macOS y Web</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_rosmino.stat2_value">11/21</div>
+          <div class="stat-label" data-i18n="game_rosmino.stat2_label">fases completadas</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_rosmino.stat3_value">C#/.NET</div>
+          <div class="stat-label" data-i18n="game_rosmino.stat3_label">motor propio, mismo binario en cliente y servidor</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_rosmino.stat4_value">Sin anunciar</div>
+          <div class="stat-label" data-i18n="game_rosmino.stat4_label">fecha de lanzamiento</div>
+        </div>
+      </div>
+
+      <div class="about-copy reveal">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px" data-i18n="game_rosmino.about_title">Qué es Rosmino</h2>
+        <p data-i18n="game_rosmino.about_text">Rosmino es una plataforma de dominó pensada para sentirse como un deporte electrónico, no como un juego casual: partidas 1 contra 1 y por parejas, ranking competitivo, ligas con ascensos y descensos, torneos de eliminación directa y campeonatos oficiales con Hall of Fame, además de partidas contra una IA con dificultades desde principiante hasta gran maestro. Un único proyecto compila para Android, iPhone/iPad, Windows, macOS y navegador web.</p>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem" data-i18n="game_rosmino.engine_title">¿Qué conlleva construir un motor así desde cero?</h2>
+        <p style="margin-top:14px" data-i18n="game_rosmino.engine_text">Aquí «el motor» no es la parte confidencial del trabajo en el juego de otro estudio — es literalmente lo que estamos construyendo, pieza a pieza, y podemos contarlo con detalle porque es nuestro. El núcleo es una librería de reglas en C# puro, sin ninguna dependencia de motor gráfico ni de red, que se compila igual para tres sitios distintos: el cliente (para predicción y animación local), el servidor de partidas (la única fuente de verdad) y, más adelante, un simulador que jugará millones de partidas automáticas para encontrar fallos de equilibrio antes que un jugador real. El estado de una partida nunca se modifica directamente: se reconstruye aplicando, en orden, una secuencia de eventos inmutables — así una partida completa es, literalmente, reproducible desde su historial, lo mismo que hace falta para repeticiones, auditorías y resolver reclamaciones. El cliente puede predecir el movimiento localmente para que se sienta instantáneo, pero nunca decide el resultado: eso lo valida siempre el servidor, contra el mismo conjunto de reglas — así ninguna versión modificada del cliente puede hacer trampa en nada que le importe a la partida.</p>
+        <p style="margin-top:18px" data-i18n="game_rosmino.engine_text2">Las reglas del dominó en sí — número de fichas, condiciones de cierre, puntuación, modalidad 1 contra 1 o por parejas — están detrás de una interfaz de «conjunto de reglas» configurable, así que añadir una variante nueva es añadir una clase, no reescribir el motor. Por encima de eso, el servidor habla con cada cliente por WebSocket con mensajes versionados desde el primer día, precisamente para poder evolucionar el protocolo más adelante sin romper una versión antigua de la app que alguien todavía tenga instalada.</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px" data-i18n="game_rosmino.progress_title">Cómo va, fase a fase</h2>
+        <p data-i18n="game_rosmino.progress_text">El proyecto avanza en 21 fases planificadas, y a día de hoy 11 están cerradas — no en el sentido de «funciona en una demo», sino verificado jugando partidas reales de principio a fin en cada una. El motor de reglas tiene una suite de más de 90 tests automáticos con cerca del 100% de cobertura. El cliente compila y corre en las cinco plataformas. Existe un servidor de partidas autoritativo real hablando por WebSocket, con reconexión real. El emparejamiento automático funciona sobre una cola real, ampliando el rango de nivel aceptable cuanto más tiempo lleva alguien esperando. Las cuentas son reales, con inicio de sesión real. El ranking se calcula con un sistema tipo Elo real tras cada partida. Las ligas tienen ascenso, descenso y protección real. Los torneos generan su cuadro de eliminación directa real, ronda a ronda, sin intervención manual. Y los campeonatos —fases fijas de cuartos, semifinal y final, con clasificación por ranking y un Hall of Fame real— cierran, por ahora, el sistema competitivo.</p>
+        <p style="margin-top:18px" data-i18n="game_rosmino.progress_text2">Queda por delante: una IA de verdad competitiva (no una que juegue al azar, con dificultades de principiante a gran maestro), sistema social, espectadores y repeticiones, endurecer el sistema anti-trampas, el panel de administración, el arte final del juego —de momento no hay ni una sola imagen definitiva, así que no vas a ver capturas de pantalla en esta página todavía— y, por último, optimización, pruebas de carga reales y lanzamiento multiplataforma. Nada de esto lleva fecha anunciada.</p>
+      </div>
+
+      <p class="sectors-label reveal" data-i18n="game_rosmino.role_label">Lo que ya es real</p>
+      <div class="about-badges reveal" style="margin-top:14px; margin-bottom:48px">
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_rosmino.role1">Motor de reglas propio, con más de 90 tests automáticos y cerca del 100% de cobertura</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_rosmino.role2">Cliente real en 5 plataformas: Android, iOS, Windows, macOS y Web</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_rosmino.role3">Servidor de partidas autoritativo en tiempo real, con reconexión real</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_rosmino.role4">Emparejamiento automático y cuentas reales</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_rosmino.role5">Ranking tipo Elo, ligas con ascenso/descenso, torneos y campeonatos — todo real, verificado jugando partidas completas de principio a fin</span></div>
+      </div>
+
+      <div class="process-callout reveal" style="margin-bottom:48px">
+        <span data-i18n="game_rosmino.closing_note">Es el único de nuestros proyectos propios del que contamos este nivel de detalle — el resto siguen, por ahora, estrictamente secretos.</span>
+      </div>
+
+      <a class="btn btn-primary reveal" href="index.html" data-i18n="game_rosmino.back_link">← Volver a Gabriel Díaz Bernal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline" data-i18n="footer.tagline">Software de élite. Bajo invitación.</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="index.html#about" data-i18n="nav.about">Sobre mí</a>
+      <a href="index.html#stack" data-i18n="nav.stack">Stack</a>
+      <a href="index.html#clients" data-i18n="nav.clients">Clientes</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contacto</a>
+      <a href="privacy.html" data-i18n="nav.privacy">Privacidad</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span data-i18n="footer.rights">Todos los derechos reservados.</span></span>
+    <span data-i18n="footer.made">Sitio construido con precisión de ingeniería.</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
