@@ -550,6 +550,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">パフォーマンス問題に悩まされた発売</h2>
         <p>Cities: Skylines IIは2023年10月24日にPC版が発売されましたが、その滑り出しは波乱含みでした——ハイエンドGPUでもフレームレートが落ち込み、マップが広がるにつれて常にカクつきが発生し、コンソール版は延期を余儀なくされました——現在に至るまで発売日は確定していません。問題の大部分は、エンジンがLOD（詳細度）とカリング（描画対象の間引き）をどう扱っていたかに起因していました：遠くのモデルが適切なタイミングで簡略化されず、画面に映っていないものの描画も止められていなかったため、各フレームが必要以上のジオメトリを抱え込んでいたのです。</p>
         <p style="margin-top:18px">Colossal Order——そして2026年にIceflake Studiosが開発を引き継いでからは彼らも——は数か月にわたりほぼ毎週パフォーマンスパッチをリリースし、問題が解決するまで有料コンテンツは出さないと公に約束しました。私たちのエンジン業務がまさにそこに関わっていました：シミュレーションの規模を縮小することなく、そのLODとカリングのボトルネックを解消すること——1フレームあたりのエージェント数は減らさず、むしろ増やしながら、発売当初ほどのコストがかからないようにすることです。</p>
+        <p style="margin-top:18px">その約束は完全には守られませんでした。最初の有料コンテンツであるBeach Properties アセットパックは、パフォーマンスがまだ完全には解決していない2024年3月25日にリリースされ、コミュニティの反発があまりにも大きかったため、Colossal Orderは数週間後にそれを販売停止にし、無料で提供することにしました。「Economy 2.0」アップデート（2024年6月）や、キャラクターごとのLODとメッシュのバッチ処理に焦点を当てた一連のパッチが、月を追うごとに、発売当初をはるかに上回るパフォーマンスを実現する本当の道筋を刻んでいきました。</p>
       </div>
 
       <p class="sectors-label reveal">私たちのエンジン業務</p>
@@ -558,12 +559,13 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <div class="about-badge"><span class="dot"></span><span class="label">交通・通勤システム：経路探索、渋滞、市民の行動</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">非常に大きな都市を持つ長時間プレイのセーブデータでのメモリ管理</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">クロスプラットフォームでのパフォーマンス：PC、PlayStation 5、Xbox Series X|S</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">人口密度の高い都市での描画コールを削減するためのメッシュのバッチ処理とキャラクターごとのLOD</span></div>
       </div>
 
       <p class="sectors-label reveal">配信中</p>
       <div class="store-row reveal" style="margin-top:14px; margin-bottom:48px">
-        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener">Steam</a>
-        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener">Paradox Interactive</a>
+        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener noreferrer">Steam</a>
+        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener noreferrer">Paradox Interactive</a>
       </div>
 
       <a class="btn btn-primary reveal" href="index.html">← Gabriel Díaz Bernalに戻る</a>
@@ -592,7 +594,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
       <a href="index.html#clients">クライアント</a>
       <a href="index.html#contact">お問い合わせ</a>
       <a href="privacy.html">プライバシー</a>
-      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </div>
   <div class="container footer-bottom">

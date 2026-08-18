@@ -550,6 +550,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Um lançamento com muitos problemas de desempenho</h2>
         <p>Cities: Skylines II foi lançado no PC em 24 de outubro de 2023 com um lançamento conturbado: mesmo em placas de vídeo topo de linha o framerate despencava, havia travamentos constantes ao expandir o mapa, e a versão para consoles precisou ser adiada — até hoje sem data confirmada. Boa parte do problema vinha de como o motor gerenciava o nível de detalhe (LOD) e o culling: os modelos distantes não eram simplificados a tempo, e o que não aparecia na tela continuava sendo desenhado, então cada quadro carregava mais geometria do que o necessário.</p>
         <p style="margin-top:18px">A Colossal Order — e, desde que a Iceflake Studios assumiu o desenvolvimento em 2026, também ela — respondeu com atualizações de desempenho quase semanais durante meses, e chegou a se comprometer publicamente a não lançar conteúdo pago até que isso fosse resolvido. Foi exatamente aí que entrou nosso trabalho de motor: desafogar esse gargalo de LOD e culling sem reduzir a escala da simulação — mais agentes por quadro, não menos, só que sem que cada um custasse tanto quanto no lançamento.</p>
+        <p style="margin-top:18px">Essa promessa não foi totalmente cumprida: o primeiro conteúdo pago, o pacote de assets Beach Properties, foi lançado em 25 de março de 2024 com o desempenho ainda não totalmente resolvido — a reação da comunidade foi tão ruim que a Colossal Order o retirou de venda semanas depois e o tornou gratuito. A atualização "Economy 2.0" (junho de 2024) e uma série de patches focados em LOD por personagem e agrupamento de malhas foram marcando, mês a mês, o caminho real até um jogo que hoje roda muito melhor do que no lançamento.</p>
       </div>
 
       <p class="sectors-label reveal">Nosso trabalho de motor</p>
@@ -558,12 +559,13 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <div class="about-badge"><span class="dot"></span><span class="label">Sistemas de tráfego e trajeto: rotas, congestionamento e comportamento dos cidadãos</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Gestão de memória em partidas de longa duração com cidades muito grandes</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Desempenho multiplataforma: PC, PlayStation 5 e Xbox Series X|S</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Agrupamento de malhas e LOD por personagem para reduzir chamadas de desenho em cidades muito povoadas</span></div>
       </div>
 
       <p class="sectors-label reveal">Disponível em</p>
       <div class="store-row reveal" style="margin-top:14px; margin-bottom:48px">
-        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener">Steam</a>
-        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener">Paradox Interactive</a>
+        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener noreferrer">Steam</a>
+        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener noreferrer">Paradox Interactive</a>
       </div>
 
       <a class="btn btn-primary reveal" href="index.html">← Voltar para Gabriel Díaz Bernal</a>
@@ -592,7 +594,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
       <a href="index.html#clients">Clientes</a>
       <a href="index.html#contact">Contato</a>
       <a href="privacy.html">Privacidade</a>
-      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </div>
   <div class="container footer-bottom">

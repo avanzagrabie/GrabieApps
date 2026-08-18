@@ -550,6 +550,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Un lancement semé de problèmes de performance</h2>
         <p>Cities: Skylines II est sorti sur PC le 24 octobre 2023 dans un lancement chaotique : même sur des cartes graphiques haut de gamme, le framerate s'effondrait, il y avait des ralentissements constants à mesure que la carte grandissait, et la version console a dû être repoussée — elle n'a toujours pas de date confirmée à ce jour. Une grande partie du problème venait de la façon dont le moteur gérait le niveau de détail (LOD) et le culling : les modèles éloignés n'étaient pas simplifiés à temps, et ce qui n'était pas visible à l'écran continuait d'être dessiné, si bien que chaque image portait plus de géométrie que nécessaire.</p>
         <p style="margin-top:18px">Colossal Order — et, depuis qu'Iceflake Studios a repris le développement en 2026, eux aussi — ont répondu par des correctifs de performance presque hebdomadaires pendant des mois, et se sont publiquement engagés à ne sortir aucun contenu payant tant que ce ne serait pas réglé. C'est exactement là qu'intervenait notre travail moteur : décongestionner ce goulot d'étranglement de LOD et de culling sans réduire l'échelle de la simulation — plus d'agents par image, pas moins, simplement sans que chacun coûte autant qu'au lancement.</p>
+        <p style="margin-top:18px">Cette promesse n'a pas été totalement tenue : le premier contenu payant, le pack d'assets Beach Properties, est sorti le 25 mars 2024 alors que la performance n'était toujours pas totalement résolue — la réaction de la communauté a été si mauvaise que Colossal Order l'a retiré de la vente quelques semaines plus tard et l'a rendu gratuit. La mise à jour « Economy 2.0 » (juin 2024) et une série de correctifs centrés sur le LOD par personnage et le regroupement de maillages ont marqué, mois après mois, le véritable chemin vers un jeu qui, aujourd'hui, tourne bien mieux qu'au lancement.</p>
       </div>
 
       <p class="sectors-label reveal">Notre travail moteur</p>
@@ -558,12 +559,13 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <div class="about-badge"><span class="dot"></span><span class="label">Systèmes de trafic et de trajets : itinéraires, congestion et comportement des citoyens</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Gestion de la mémoire sur des parties longue durée avec des villes très grandes</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Performance multiplateforme : PC, PlayStation 5 et Xbox Series X|S</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Regroupement de maillages et LOD par personnage pour réduire les appels de rendu dans les villes très peuplées</span></div>
       </div>
 
       <p class="sectors-label reveal">Disponible sur</p>
       <div class="store-row reveal" style="margin-top:14px; margin-bottom:48px">
-        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener">Steam</a>
-        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener">Paradox Interactive</a>
+        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener noreferrer">Steam</a>
+        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener noreferrer">Paradox Interactive</a>
       </div>
 
       <a class="btn btn-primary reveal" href="index.html">← Retour à Gabriel Díaz Bernal</a>
@@ -592,7 +594,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
       <a href="index.html#clients">Clients</a>
       <a href="index.html#contact">Contact</a>
       <a href="privacy.html">Confidentialité</a>
-      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </div>
   <div class="container footer-bottom">

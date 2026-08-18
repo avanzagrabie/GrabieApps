@@ -550,6 +550,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Un lanzamiento con muchos problemas de rendimiento</h2>
         <p>Cities: Skylines II salió en PC el 24 de octubre de 2023 con un lanzamiento accidentado: incluso en tarjetas gráficas de gama alta el framerate se hundía, había tirones constantes al ampliar el mapa, y la versión de consola tuvo que retrasarse — todavía hoy sigue sin fecha confirmada. Buena parte del problema venía de cómo el motor gestionaba el nivel de detalle (LOD) y el culling: no simplificaba a tiempo los modelos lejanos ni dejaba de dibujar lo que no se veía en pantalla, así que cada fotograma cargaba con más geometría de la necesaria.</p>
         <p style="margin-top:18px">Colossal Order —y, desde que Iceflake Studios tomó el relevo del desarrollo en 2026, también ellos— respondieron con parches de rendimiento casi semanales durante meses, y llegaron a comprometerse públicamente a no lanzar contenido de pago hasta arreglarlo. Nuestro trabajo de motor entró exactamente ahí: descongestionar ese cuello de botella de LOD y culling sin reducir la escala de la simulación — más agentes por fotograma, no menos, pero sin que cada uno cueste tanto como al principio.</p>
+        <p style="margin-top:18px">Esa promesa no se cumplió del todo: el primer contenido de pago, el pack de assets Beach Properties, salió el 25 de marzo de 2024 con el rendimiento aún sin resolver del todo — la respuesta de la comunidad fue tan mala que Colossal Order lo retiró de la venta semanas después y lo convirtió en gratuito. La actualización «Economy 2.0» (junio de 2024) y una serie de parches centrados en LOD por personaje y agrupación de mallas fueron marcando, mes a mes, el camino real hacia un juego que hoy rinde muy por encima de como lo hacía en el lanzamiento.</p>
       </div>
 
       <p class="sectors-label reveal">Nuestro trabajo de motor</p>
@@ -558,12 +559,13 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <div class="about-badge"><span class="dot"></span><span class="label">Sistemas de tráfico y trayectos: rutas, congestión y comportamiento de los ciudadanos</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Gestión de memoria en partidas de larga duración con ciudades muy grandes</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Rendimiento multiplataforma: PC, PlayStation 5 y Xbox Series X|S</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Agrupación de mallas y LOD por personaje para reducir las llamadas de dibujo en ciudades muy pobladas</span></div>
       </div>
 
       <p class="sectors-label reveal">Disponible en</p>
       <div class="store-row reveal" style="margin-top:14px; margin-bottom:48px">
-        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener">Steam</a>
-        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener">Paradox Interactive</a>
+        <a class="btn btn-ghost" href="https://store.steampowered.com/app/949230/Cities_Skylines_II/" target="_blank" rel="noopener noreferrer">Steam</a>
+        <a class="btn btn-ghost" href="https://www.paradoxinteractive.com/games/cities-skylines-ii/" target="_blank" rel="noopener noreferrer">Paradox Interactive</a>
       </div>
 
       <a class="btn btn-primary reveal" href="index.html">← Volver a Gabriel Díaz Bernal</a>
@@ -592,7 +594,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
       <a href="index.html#clients">Clientes</a>
       <a href="index.html#contact">Contacto</a>
       <a href="privacy.html">Privacidad</a>
-      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </div>
   <div class="container footer-bottom">
