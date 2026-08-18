@@ -486,7 +486,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
           <div class="stat-label">平台：Android、iOS、Windows、macOS与网页</div>
         </div>
         <div>
-          <div class="stat-value">11/21</div>
+          <div class="stat-value">12/21</div>
           <div class="stat-label">已完成阶段</div>
         </div>
         <div>
@@ -512,8 +512,9 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <div class="about-copy reveal" style="margin:48px 0">
         <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">目前进展如何，逐阶段来看</h2>
-        <p>项目共规划了21个阶段，截至目前已完成11个——不是"在演示中能跑"的那种完成，而是每个阶段都通过实际从头到尾进行真实对局来验证过的。规则引擎拥有超过90个自动化测试，覆盖率接近100%。客户端已经能在全部五个平台上编译并运行。已经有一个真实的、具备权威性的对局服务器通过WebSocket通信，并支持真实的重连机制。自动匹配运行在真实的队列之上，等待时间越长，可接受的分差范围就越宽。账户系统是真实的，登录也是真实的。每局结束后都会通过真实的类Elo系统计算排名。联赛具备真实的升级、降级与保护机制。锦标赛会真正逐轮生成单败淘汰赛表，无需人工干预。而正式锦标赛——固定的四分之一决赛、半决赛与决赛阶段，按排名获得资格，并拥有真实的名人堂——目前构成了整个竞技系统的收尾。</p>
-        <p style="margin-top:18px">仍待完成的部分包括：真正具备竞技水平的AI（而非随机出招，具备从新手到特级大师的多档难度）、社交系统、观战与回放功能、加固反作弊系统、管理后台、游戏的最终美术资源——目前还没有一张定稿的美术图，所以这个页面暂时还看不到任何截图——最后还有性能优化、真实的负载测试以及跨平台正式发布。以上这些都还没有公布日期。</p>
+        <p>项目共规划了21个阶段，截至目前已完成12个——不是"在演示中能跑"的那种完成，而是每个阶段都通过实际从头到尾进行真实对局来验证过的。规则引擎拥有超过90个自动化测试，覆盖率接近100%。客户端已经能在全部五个平台上编译并运行。已经有一个真实的、具备权威性的对局服务器通过WebSocket通信，并支持真实的重连机制。自动匹配运行在真实的队列之上，等待时间越长，可接受的分差范围就越宽。账户系统是真实的，登录也是真实的。每局结束后都会通过真实的类Elo系统计算排名。联赛具备真实的升级、降级与保护机制。锦标赛会真正逐轮生成单败淘汰赛表，无需人工干预。而正式锦标赛——固定的四分之一决赛、半决赛与决赛阶段，按排名获得资格，并拥有真实的名人堂——构成了整个竞技系统的收尾。</p>
+        <p style="margin-top:18px">最新完成的阶段加入了真正具备竞技水平的AI：从新手到特级大师共七档难度，能够真实推断对手手中可能持有的牌，并真实搜索最佳出牌——绝不随机出牌。在模拟对局中，特级大师对新手的战绩是17胜3负（20局中），中等难度对新手的战绩是48胜12负（60局中）——这是真实的实力梯度，而不是简单地"故意多犯错"。同一套AI还会在任何真人玩家掉线时自动接管，直到该玩家回来。</p>
+        <p style="margin-top:18px">仍待完成的部分包括：社交系统、观战与回放功能、加固反作弊系统、管理后台、游戏的最终美术资源——目前还没有一张定稿的美术图，所以这个页面暂时还看不到任何截图——最后还有性能优化、真实的负载测试以及跨平台正式发布。以上这些都还没有公布日期。</p>
       </div>
 
       <p class="sectors-label reveal">目前已经真实存在的内容</p>
@@ -523,6 +524,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <div class="about-badge"><span class="dot"></span><span class="label">真实的实时权威对局服务器，具备真实的重连机制</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">自动匹配与真实账户系统</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">类Elo排名、带升降级的联赛、锦标赛与正式锦标赛——全部真实存在，并通过完整对局从头到尾验证过</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">真实的AI系统，共七档难度——从新手到特级大师——还能在玩家掉线时自动接管其位置</span></div>
       </div>
 
       <div class="process-callout reveal" style="margin-bottom:48px">
