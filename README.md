@@ -94,7 +94,14 @@ El selector de idioma del menú no usa JavaScript para "cambiar" nada — son en
 
 Cada página explica en qué consiste "el motor" en ese género de juego, qué hicimos concretamente a nivel de motor (nunca diseño ni arte), y enlaza a las tiendas oficiales reales (App Store/Google Play para Sniper 3D, Steam/Paradox Interactive para Cities: Skylines II).
 
-**Las capturas de pantalla son marcadores de posición**, no imágenes reales del juego: son propiedad de Wildlife Studios y de Paradox Interactive/Colossal Order respectivamente, y no había forma de verificar aquí mismo que tuviéramos derecho a publicarlas. La sección `.game-shot-grid` de cada plantilla (`tools/game-sniper3d-template.html`, `tools/game-cities2-template.html`) tiene un comentario HTML en cada bloque indicando exactamente dónde va la etiqueta `<img>` real cuando lleguen las capturas con derechos confirmados por el estudio — sustituir el `<div class="game-shot">` correspondiente y regenerar.
+**Sniper 3D todavía usa marcadores de posición** en `.game-shot-grid` (comentario HTML indicando dónde va el `<img>` real cuando lleguen las capturas con derechos confirmados).
+
+**Cities: Skylines II ya usa capturas reales**: 8 imágenes en `assets/img/games/cities-skylines-2/` (WebP, redimensionadas a un máximo de 1200px de ancho, nombradas de forma descriptiva para SEO de imágenes — p. ej. `cities-skylines-2-horizonte-nocturno-aurora.webp`), con `alt` traducido en los 7 idiomas (`game_cities2.shot1_label`…`shot8_label` en `assets/js/i18n.js`, aplicado vía `data-i18n-attr="alt:..."`) y una nota de atribución (`game_cities2.shots_note`) — © Paradox Interactive / Colossal Order. Además:
+
+- `sitemap.xml` incluye las 8 imágenes como `<image:image>` (extensión de imagen del protocolo sitemap) en cada una de las 7 versiones de idioma de `cities-skylines-2.html`, para ayudar a que se indexen en Google Imágenes — se genera automáticamente desde `GAMES[].images` en `tools/build-lang-pages.js`, no a mano.
+- `og:image`/`twitter:image` de esa página usan una de las capturas reales en vez de la imagen OG genérica del sitio.
+
+Para dar el mismo tratamiento a Sniper 3D: añadir los archivos a `assets/img/games/sniper-3d/`, sustituir los `<div class="game-shot is-placeholder">` de `tools/game-sniper3d-template.html` por `<figure class="game-shot"><img ...></figure>` (mismo patrón que `game-cities2-template.html`), añadir las claves `alt` a `assets/js/i18n.js`, añadir `images` a la entrada `sniper-3d` en `GAMES` (`tools/build-lang-pages.js`) y regenerar.
 
 ## Rendimiento
 
@@ -157,4 +164,4 @@ Quién realmente contacta a quién queda fuera del sitio web por diseño: las no
 ## Personalización pendiente
 
 - El enlace de GitHub en el pie de página apunta a `github.com/avanzagrabie` — actualízalo si procede.
-- Las capturas de pantalla en `sniper-3d.html` y `cities-skylines-2.html` son marcadores de posición (ver [Juegos](#juegos)) — sustitúyelas por las capturas reales en cuanto tengas los derechos confirmados.
+- Las capturas de pantalla en `sniper-3d.html` siguen siendo marcadores de posición (ver [Juegos](#juegos)) — sustitúyelas por las capturas reales en cuanto tengas los derechos confirmados. `cities-skylines-2.html` ya usa capturas reales.

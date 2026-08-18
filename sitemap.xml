@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://avanzagrabie.github.io/GrabieApps/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/"/>
@@ -306,6 +307,30 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html"/>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp</image:loc>
+    </image:image>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -320,6 +345,30 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html"/>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp</image:loc>
+    </image:image>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -334,6 +383,30 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html"/>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp</image:loc>
+    </image:image>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -348,6 +421,30 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html"/>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp</image:loc>
+    </image:image>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -362,6 +459,30 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html"/>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp</image:loc>
+    </image:image>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -376,6 +497,30 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html"/>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp</image:loc>
+    </image:image>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -390,6 +535,30 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html"/>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp</image:loc>
+    </image:image>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

@@ -349,13 +349,23 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 .game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
 @media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
 .game-shot{
-  aspect-ratio: 16/10; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-elevated); margin: 0;
+}
+.game-shot.is-placeholder{
+  border-style: dashed; border-color: var(--border-strong);
   background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
               radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
               var(--bg-elevated);
   display: flex; align-items: flex-end; padding: 16px;
 }
 .game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-shot figcaption{
+  position: absolute; inset-inline: 0; bottom: 0; padding: 22px 14px 10px;
+  background: linear-gradient(to top, rgba(5,7,13,.85), transparent);
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text);
+}
 .game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
 .store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
@@ -491,10 +501,10 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <p class="sectors-label reveal">Capturas de tela</p>
       <div class="game-shot-grid reveal">
-        <!-- Placeholders: sustituir por <img src="../assets/img/games/sniper3d-1.jpg" alt="..."> cuando lleguen las capturas con derechos confirmados. -->
-        <div class="game-shot"><span>Balística e mira telescópica</span></div>
-        <div class="game-shot"><span>Seleção de armas</span></div>
-        <div class="game-shot"><span>HUD de missão</span></div>
+        <!-- Placeholders: sustituir por <img src="../assets/img/games/sniper-3d/..."> cuando lleguen las capturas con derechos confirmados. -->
+        <div class="game-shot is-placeholder"><span>Balística e mira telescópica</span></div>
+        <div class="game-shot is-placeholder"><span>Seleção de armas</span></div>
+        <div class="game-shot is-placeholder"><span>HUD de missão</span></div>
       </div>
       <p class="game-shots-note reveal">Capturas oficiais pendentes de publicação — serão adicionadas assim que tivermos os direitos confirmados pelo estúdio.</p>
 

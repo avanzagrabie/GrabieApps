@@ -76,9 +76,23 @@ function outPathForPrivacy(lang) {
 }
 
 // Game case-study pages (one flat file per language, same pattern as privacy.html).
+// `images` (optional): filenames under assets/img/games/<slug>/, listed in sitemap.xml's
+// image extension so Google Images has a direct feed of what's on each page.
 const GAMES = [
   { slug: "sniper-3d", templateFile: "game-sniper3d-template.html" },
-  { slug: "cities-skylines-2", templateFile: "game-cities2-template.html" }
+  {
+    slug: "cities-skylines-2", templateFile: "game-cities2-template.html",
+    images: [
+      "cities-skylines-2-puerto-industrial.webp",
+      "cities-skylines-2-vista-aerea-dirigible.webp",
+      "cities-skylines-2-herramienta-carreteras.webp",
+      "cities-skylines-2-ciudad-montanas-lago.webp",
+      "cities-skylines-2-nudo-autopista-atardecer.webp",
+      "cities-skylines-2-litoral-montanas-dia.webp",
+      "cities-skylines-2-diseno-rotonda.webp",
+      "cities-skylines-2-horizonte-nocturno-aurora.webp"
+    ]
+  }
 ];
 function urlForGame(slug, lang) {
   return lang === "es" ? `${BASE_URL}${slug}.html` : `${BASE_URL}${lang}/${slug}.html`;
@@ -306,6 +320,16 @@ function renderGamePage(templateHtml, lang, dict, cssContent, jsContent, slug) {
     }
   );
 
+  // <img ... alt="OLD" ... data-i18n-attr="alt:KEY"> -> filled in, attribute stripped
+  // (screenshot galleries need translated alt text; same recipe as the meta content rule above)
+  html = html.replace(
+    /<img\b([^>]*?)alt="[^"]*"([^>]*?)\sdata-i18n-attr="alt:([a-zA-Z0-9_.]+)"([^>]*)>/g,
+    (m, pre, mid, key, post) => {
+      const val = dict[key] !== undefined ? dict[key] : key;
+      return `<img${pre}alt="${escapeAttr(val)}"${mid}${post}>`;
+    }
+  );
+
   const selfUrl = urlForGame(slug, lang);
   html = html.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${selfUrl}">`);
   html = html.replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${selfUrl}">`);
@@ -338,14 +362,18 @@ function renderGamePage(templateHtml, lang, dict, cssContent, jsContent, slug) {
 // sitemap.xml: generated, not hand-maintained, so it can never drift from the
 // actual set of pages the build produces. One <url> per language for each of
 // home, privacy and every game page, each with the full hreflang cluster.
-function renderSitemap(gameSlugs) {
+function renderSitemap(games) {
   const today = new Date().toISOString().slice(0, 10);
-  function block(urlFn, priorityFor, changefreq) {
+  function block(urlFn, priorityFor, changefreq, images) {
+    const imageLines = (images || [])
+      .map((file) => `    <image:image>\n      <image:loc>${BASE_URL}assets/img/games/${images.slug}/${file}</image:loc>\n    </image:image>`)
+      .join("\n");
     return ORDER.map((lang) => {
       const loc = urlFn(lang);
       const alts = ORDER.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${urlFn(l)}"/>`).join("\n");
       const xdefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFn("es")}"/>`;
-      return `  <url>\n    <loc>${loc}</loc>\n${alts}\n${xdefault}\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priorityFor(lang)}</priority>\n  </url>`;
+      const imgBlock = imageLines ? `\n${imageLines}` : "";
+      return `  <url>\n    <loc>${loc}</loc>\n${alts}\n${xdefault}${imgBlock}\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priorityFor(lang)}</priority>\n  </url>`;
     }).join("\n");
   }
 
@@ -353,11 +381,12 @@ function renderSitemap(gameSlugs) {
     block(urlFor, (l) => (l === "es" ? "1.0" : "0.9"), "monthly"),
     block(urlForPrivacy, () => "0.3", "yearly")
   ];
-  gameSlugs.forEach((slug) => {
-    blocks.push(block((l) => urlForGame(slug, l), (l) => (l === "es" ? "0.6" : "0.5"), "monthly"));
+  games.forEach((game) => {
+    const images = game.images ? Object.assign([...game.images], { slug: game.slug }) : null;
+    blocks.push(block((l) => urlForGame(game.slug, l), (l) => (l === "es" ? "0.6" : "0.5"), "monthly", images));
   });
 
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${blocks.join("\n")}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:xhtml="http://www.w3.org/1999/xhtml"\n        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${blocks.join("\n")}\n</urlset>\n`;
 }
 
 function main() {
@@ -405,7 +434,7 @@ function main() {
     }
   }
 
-  const sitemap = renderSitemap(GAMES.map((g) => g.slug));
+  const sitemap = renderSitemap(GAMES);
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), sitemap, "utf8");
   console.log(`Built sitemap.xml (${sitemap.length} bytes)`);
 

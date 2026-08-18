@@ -24,9 +24,9 @@
 <meta property="og:title" content="Cities: Skylines II — Motor de videojuegos | Gabriel Díaz Bernal">
 <meta property="og:description" content="Trabajo de motor en Cities: Skylines II (Paradox Interactive / Colossal Order): simulación a gran escala y optimización de Unity Engine.">
 <meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/cities-skylines-2.html">
-<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:height" content="675">
 <meta property="og:locale" content="es_ES">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="fr_FR">
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cities: Skylines II — Motor de videojuegos | Gabriel Díaz Bernal">
 <meta name="twitter:description" content="Trabajo de motor en Cities: Skylines II (Paradox Interactive / Colossal Order): simulación a gran escala y optimización de Unity Engine.">
-<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp">
 
 <!-- Icons -->
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -349,13 +349,23 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 .game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
 @media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
 .game-shot{
-  aspect-ratio: 16/10; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-elevated); margin: 0;
+}
+.game-shot.is-placeholder{
+  border-style: dashed; border-color: var(--border-strong);
   background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
               radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
               var(--bg-elevated);
   display: flex; align-items: flex-end; padding: 16px;
 }
 .game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-shot figcaption{
+  position: absolute; inset-inline: 0; bottom: 0; padding: 22px 14px 10px;
+  background: linear-gradient(to top, rgba(5,7,13,.85), transparent);
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text);
+}
 .game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
 .store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
@@ -491,12 +501,40 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <p class="sectors-label reveal">Capturas</p>
       <div class="game-shot-grid reveal">
-        <!-- Placeholders: sustituir por <img src="assets/img/games/cities2-1.jpg" alt="..."> cuando lleguen las capturas con derechos confirmados. -->
-        <div class="game-shot"><span>Simulación de tráfico</span></div>
-        <div class="game-shot"><span>Vista aérea de ciudad</span></div>
-        <div class="game-shot"><span>Panel de gestión de infraestructuras</span></div>
+        <figure class="game-shot">
+          <img src="assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp" width="1200" height="733" alt="Puerto industrial y horizonte urbano" loading="eager" decoding="async">
+          <figcaption>Puerto industrial y horizonte urbano</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp" width="640" height="360" alt="Vista aérea con dirigible sobre la ciudad" loading="lazy" decoding="async">
+          <figcaption>Vista aérea con dirigible sobre la ciudad</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp" width="1200" height="675" alt="Herramienta de diseño de carreteras" loading="lazy" decoding="async">
+          <figcaption>Herramienta de diseño de carreteras</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp" width="640" height="360" alt="Ciudad junto al lago, con montañas al fondo" loading="lazy" decoding="async">
+          <figcaption>Ciudad junto al lago, con montañas al fondo</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp" width="640" height="360" alt="Nudo de autopista al atardecer" loading="lazy" decoding="async">
+          <figcaption>Nudo de autopista al atardecer</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp" width="640" height="360" alt="Litoral de la ciudad con montañas de fondo" loading="lazy" decoding="async">
+          <figcaption>Litoral de la ciudad con montañas de fondo</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp" width="1200" height="675" alt="Diseño de una rotonda de tráfico" loading="lazy" decoding="async">
+          <figcaption>Diseño de una rotonda de tráfico</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp" width="1200" height="675" alt="Horizonte nocturno con aurora boreal" loading="lazy" decoding="async">
+          <figcaption>Horizonte nocturno con aurora boreal</figcaption>
+        </figure>
       </div>
-      <p class="game-shots-note reveal">Capturas oficiales pendientes de publicación — se añadirán en cuanto tengamos los derechos confirmados por el estudio.</p>
+      <p class="game-shots-note reveal">Capturas e imágenes promocionales cedidas para este caso de estudio — © Paradox Interactive / Colossal Order.</p>
 
       <div class="about-copy reveal" style="margin-top:56px">
         <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Sobre el juego</h2>

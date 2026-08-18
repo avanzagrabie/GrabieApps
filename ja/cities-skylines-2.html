@@ -24,9 +24,9 @@
 <meta property="og:title" content="Cities: Skylines II — ゲームエンジン開発 | Gabriel Díaz Bernal">
 <meta property="og:description" content="Cities: Skylines II（Paradox Interactive / Colossal Order）のエンジン開発：大規模シミュレーションとUnityエンジンの最適化。">
 <meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/ja/cities-skylines-2.html">
-<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:height" content="675">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="es_ES">
 <meta property="og:locale:alternate" content="en_US">
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cities: Skylines II — ゲームエンジン開発 | Gabriel Díaz Bernal">
 <meta name="twitter:description" content="Cities: Skylines II（Paradox Interactive / Colossal Order）のエンジン開発：大規模シミュレーションとUnityエンジンの最適化。">
-<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp">
 
 <!-- Icons -->
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
@@ -349,13 +349,23 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 .game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
 @media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
 .game-shot{
-  aspect-ratio: 16/10; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-elevated); margin: 0;
+}
+.game-shot.is-placeholder{
+  border-style: dashed; border-color: var(--border-strong);
   background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
               radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
               var(--bg-elevated);
   display: flex; align-items: flex-end; padding: 16px;
 }
 .game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-shot figcaption{
+  position: absolute; inset-inline: 0; bottom: 0; padding: 22px 14px 10px;
+  background: linear-gradient(to top, rgba(5,7,13,.85), transparent);
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text);
+}
 .game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
 .store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
@@ -491,12 +501,40 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <p class="sectors-label reveal">スクリーンショット</p>
       <div class="game-shot-grid reveal">
-        <!-- Placeholders: sustituir por <img src="../assets/img/games/cities2-1.jpg" alt="..."> cuando lleguen las capturas con derechos confirmados. -->
-        <div class="game-shot"><span>交通シミュレーション</span></div>
-        <div class="game-shot"><span>都市の空撮ビュー</span></div>
-        <div class="game-shot"><span>インフラ管理パネル</span></div>
+        <figure class="game-shot">
+          <img src="../assets/img/games/cities-skylines-2/cities-skylines-2-puerto-industrial.webp" width="1200" height="733" alt="工業港と都市のスカイライン" loading="eager" decoding="async">
+          <figcaption>工業港と都市のスカイライン</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/cities-skylines-2/cities-skylines-2-vista-aerea-dirigible.webp" width="640" height="360" alt="飛行船が浮かぶ都市の空撮ビュー" loading="lazy" decoding="async">
+          <figcaption>飛行船が浮かぶ都市の空撮ビュー</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/cities-skylines-2/cities-skylines-2-herramienta-carreteras.webp" width="1200" height="675" alt="道路設計ツール" loading="lazy" decoding="async">
+          <figcaption>道路設計ツール</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/cities-skylines-2/cities-skylines-2-ciudad-montanas-lago.webp" width="640" height="360" alt="湖畔の都市と背景の山々" loading="lazy" decoding="async">
+          <figcaption>湖畔の都市と背景の山々</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/cities-skylines-2/cities-skylines-2-nudo-autopista-atardecer.webp" width="640" height="360" alt="夕暮れのインターチェンジ" loading="lazy" decoding="async">
+          <figcaption>夕暮れのインターチェンジ</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/cities-skylines-2/cities-skylines-2-litoral-montanas-dia.webp" width="640" height="360" alt="山々を背景にした都市の臨海部" loading="lazy" decoding="async">
+          <figcaption>山々を背景にした都市の臨海部</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/cities-skylines-2/cities-skylines-2-diseno-rotonda.webp" width="1200" height="675" alt="ラウンドアバウトの設計" loading="lazy" decoding="async">
+          <figcaption>ラウンドアバウトの設計</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/cities-skylines-2/cities-skylines-2-horizonte-nocturno-aurora.webp" width="1200" height="675" alt="オーロラが見える夜のスカイライン" loading="lazy" decoding="async">
+          <figcaption>オーロラが見える夜のスカイライン</figcaption>
+        </figure>
       </div>
-      <p class="game-shots-note reveal">公式スクリーンショットは公開待ちです——スタジオから権利確認が取れ次第、追加します。</p>
+      <p class="game-shots-note reveal">本ケーススタディのために提供されたスクリーンショットおよびプロモーション画像——© Paradox Interactive / Colossal Order。</p>
 
       <div class="about-copy reveal" style="margin-top:56px">
         <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">ゲームについて</h2>
