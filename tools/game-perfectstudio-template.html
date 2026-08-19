@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="game_perfectstudio.meta_title">Perfect Studio — Proyecto propio en desarrollo | Gabriel Díaz Bernal</title>
+<meta name="description" content="Perfect Studio: nuestra propia aplicación de generación musical con IA, multiplataforma. Cómo va el desarrollo y cómo está construida por dentro." data-i18n-attr="content:game_perfectstudio.meta_description">
+<meta name="robots" content="index, follow, noarchive">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/perfect-studio.html">
+
+<link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/perfect-studio.html">
+<link rel="alternate" hreflang="en" href="https://avanzagrabie.github.io/GrabieApps/en/perfect-studio.html">
+<link rel="alternate" hreflang="fr" href="https://avanzagrabie.github.io/GrabieApps/fr/perfect-studio.html">
+<link rel="alternate" hreflang="pt" href="https://avanzagrabie.github.io/GrabieApps/pt/perfect-studio.html">
+<link rel="alternate" hreflang="ar" href="https://avanzagrabie.github.io/GrabieApps/ar/perfect-studio.html">
+<link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/perfect-studio.html">
+<link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/perfect-studio.html">
+<link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/perfect-studio.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Perfect Studio — Proyecto propio en desarrollo" data-i18n-attr="content:game_perfectstudio.meta_title">
+<meta property="og:description" content="Nuestra propia aplicación de generación musical con IA, multiplataforma. Cómo va el desarrollo." data-i18n-attr="content:game_perfectstudio.meta_description">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/perfect-studio.html">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="pt_PT">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Perfect Studio — Proyecto propio en desarrollo" data-i18n-attr="content:game_perfectstudio.meta_title">
+<meta name="twitter:description" content="Nuestra propia aplicación de generación musical con IA, multiplataforma." data-i18n-attr="content:game_perfectstudio.meta_description">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/og-default.png">
+
+<!-- Icons -->
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small data-i18n="footer.tagline">Software de élite. Bajo invitación.</small></span>
+    </a>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">ES</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/perfect-studio.html" aria-current="true">Español <span class="code">ES</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/en/perfect-studio.html">English <span class="code">EN</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/fr/perfect-studio.html">Français <span class="code">FR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/pt/perfect-studio.html">Português <span class="code">PT</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ar/perfect-studio.html">العربية <span class="code">AR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/zh/perfect-studio.html">中文 <span class="code">ZH</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ja/perfect-studio.html">日本語 <span class="code">JA</span></a>
+        </div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container" style="max-width:860px">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="game_perfectstudio.eyebrow">Proyecto propio · En desarrollo</p>
+        <h1 class="section-title" data-i18n="game_perfectstudio.title">Perfect Studio</h1>
+        <p class="section-subtitle" data-i18n="game_perfectstudio.subtitle">Una aplicación multiplataforma que genera canciones completas — letra, voz e instrumentación — a partir de una idea, con modelos de inteligencia artificial de última generación. Tampoco es un encargo — es nuestra.</p>
+      </div>
+
+      <div class="stat-row reveal" style="margin-top:0; margin-bottom:56px">
+        <div>
+          <div class="stat-value" data-i18n="game_perfectstudio.stat1_value">3</div>
+          <div class="stat-label" data-i18n="game_perfectstudio.stat1_label">plataformas: Android, iOS y Web, un solo código</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_perfectstudio.stat2_value">Fase 3/8</div>
+          <div class="stat-label" data-i18n="game_perfectstudio.stat2_label">generación musical, en curso</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_perfectstudio.stat3_value">12</div>
+          <div class="stat-label" data-i18n="game_perfectstudio.stat3_label">idiomas de lanzamiento ya traducidos</div>
+        </div>
+        <div>
+          <div class="stat-value" data-i18n="game_perfectstudio.stat4_value">Sin anunciar</div>
+          <div class="stat-label" data-i18n="game_perfectstudio.stat4_label">fecha de lanzamiento</div>
+        </div>
+      </div>
+
+      <div class="about-copy reveal">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px" data-i18n="game_perfectstudio.about_title">Qué es Perfect Studio</h2>
+        <p data-i18n="game_perfectstudio.about_text">Perfect Studio genera canciones completas — letra, voz e instrumentación — a partir de una idea, un estilo o una letra propia, en el idioma que elija cada usuario. Se puede elegir género y estado de ánimo, generar en modo instrumental, regenerar solo una sección concreta, separar la canción en pistas (voz, batería, bajo, melodía) o extenderla. El modelo de negocio es freemium: unas pocas canciones gratis a cambio de publicidad verificada, y varios niveles de suscripción para quien quiera más.</p>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem" data-i18n="game_perfectstudio.engine_title">¿Cómo está construido por dentro?</h2>
+        <p style="margin-top:14px" data-i18n="game_perfectstudio.engine_text">El cliente —una única base de código para Android, iPhone/iPad y navegador— nunca habla directamente con ningún modelo de inteligencia artificial ni tiene ninguna clave de acceso propia: eso sería exactamente el tipo de fuga de credenciales que este sitio lleva evitando desde el principio. Toda petición pasa primero por un orquestador ligero que verifica identidad, suscripción, cuota mensual y publicidad vista antes de aceptar el trabajo, y solo entonces lo encola.</p>
+        <p style="margin-top:18px" data-i18n="game_perfectstudio.engine_text2">El diseño que hemos construido encima de esa cola es lo que de verdad marca la diferencia de coste: cada región del mundo tiene su propia cola de trabajo y su propio grupo de máquinas que escala automáticamente — de cero a varias instancias cuando hay canciones que generar, y de vuelta a cero minutos después de quedarse sin trabajo. Si nadie en una región concreta pide canciones durante un rato, esa región no cuesta nada. Es una arquitectura propia, portable a cualquier proveedor de nube que ofrezca colas de trabajo y grupos de instancias autoescalables — no depende de uno en concreto.</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px" data-i18n="game_perfectstudio.progress_title">En qué fase está</h2>
+        <p data-i18n="game_perfectstudio.progress_text">El proyecto avanza en 8 fases planificadas. Las dos primeras —arquitectura y cimientos del backend— están cerradas y verificadas de extremo a extremo con datos reales, no solo desplegadas: un usuario real se registra, su cuenta se crea sola, pide generar una canción, el sistema comprueba su cuota y sus créditos de publicidad, y el trabajo llega de verdad a la cola de su región. La aplicación ya compila y se ejecuta en Android y en navegador (iOS necesita un equipo con el que todavía no contamos), con los 12 idiomas de lanzamiento ya traducidos — pendientes de revisión por hablante nativo en los diez que no son español o inglés.</p>
+        <p style="margin-top:18px" data-i18n="game_perfectstudio.progress_text2">Ahora mismo estamos en la fase de generación musical: la mitad de letra del proceso ya funciona de extremo a extremo contra el modelo de texto real, generando letras completas y coherentes. La mitad de música todavía no — el modelo que usamos para eso sigue en lista de espera de acceso por parte de nuestro proveedor, así que esa parte queda bloqueada hasta que se active; no hay nada más que podamos hacer desde nuestro lado para acelerarlo. Mientras tanto, ya construimos y verificamos el reproductor —con onda visual y salto de posición al tocarla— contra audio real.</p>
+        <p style="margin-top:18px" data-i18n="game_perfectstudio.progress_text3">Quedan cinco fases por delante: monetización real con publicidad y suscripciones (siempre validadas en servidor, nunca en el cliente), blindaje de seguridad, panel de administración, funciones sociales y, por último, el lanzamiento — que además necesita cuentas de desarrollador en las tiendas que todavía no tenemos. Nada de esto lleva fecha anunciada.</p>
+      </div>
+
+      <p class="sectors-label reveal" data-i18n="game_perfectstudio.role_label">Lo que ya es real</p>
+      <div class="about-badges reveal" style="margin-top:14px; margin-bottom:48px">
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_perfectstudio.role1">Cuentas y perfiles reales, verificados de extremo a extremo con datos reales, no simulados</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_perfectstudio.role2">Cuota, créditos de publicidad y verificación de suscripción reales antes de aceptar cualquier trabajo</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_perfectstudio.role3">Arquitectura de despliegue propia: colas de trabajo por región y cómputo que escala a cero coste cuando no hay nada que hacer</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_perfectstudio.role4">Generación de letra real y verificada contra el modelo de texto — la generación musical sigue a la espera de acceso</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_perfectstudio.role5">Reproductor real, con onda visual y salto de posición, verificado con audio real</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label" data-i18n="game_perfectstudio.role6">12 idiomas de lanzamiento completos, con detección automática del idioma del dispositivo</span></div>
+      </div>
+
+      <div class="process-callout reveal" style="margin-bottom:48px">
+        <span data-i18n="game_perfectstudio.closing_note">Es otro de nuestros proyectos propios del que contamos este nivel de detalle — el resto siguen, por ahora, estrictamente secretos.</span>
+      </div>
+
+      <a class="btn btn-primary reveal" href="index.html" data-i18n="game_perfectstudio.back_link">← Volver a Gabriel Díaz Bernal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline" data-i18n="footer.tagline">Software de élite. Bajo invitación.</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="index.html#about" data-i18n="nav.about">Sobre mí</a>
+      <a href="index.html#stack" data-i18n="nav.stack">Stack</a>
+      <a href="index.html#clients" data-i18n="nav.clients">Clientes</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contacto</a>
+      <a href="privacy.html" data-i18n="nav.privacy">Privacidad</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span data-i18n="footer.rights">Todos los derechos reservados.</span></span>
+    <span data-i18n="footer.made">Sitio construido con precisión de ingeniería.</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

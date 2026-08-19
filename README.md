@@ -10,7 +10,7 @@ Sitio estático (GitHub Pages) del estudio de ingeniería de Gabriel Díaz Berna
 - **7 idiomas** (Español, English, Français, Português, العربية, 中文, 日本語), cada uno en su **propia URL** — no un solo URL que cambia de texto por JS. Ver [SEO y multi-idioma](#seo-y-multi-idioma).
 - **Contacto muy restringido, no un formulario abierto**: solo se aceptan clientes por invitación. El formulario (`#contact`) pide únicamente un código de invitación y no lo envía a ningún sitio — al enviarlo, `assets/js/main.js` solo cambia qué se muestra en la propia página, sin red ni almacenamiento de por medio. Ver [Contacto](#contacto).
 - **Casos de estudio de videojuegos**: página propia por título (`sniper-3d.html`, `cities-skylines-2.html`, 7 idiomas cada una) explicando el trabajo de motor en Sniper 3D: Gun Shooting Games y Cities: Skylines II, con enlaces a las tiendas oficiales. Ver [Juegos](#juegos).
-- **Proyecto propio en desarrollo**: `rosmino.html` (7 idiomas) — una plataforma de dominó online que estamos construyendo nosotros mismos, no un encargo. A diferencia de los casos de estudio, aquí sí se cuenta el progreso fase a fase. Ver [Juegos](#juegos).
+- **Proyectos propios en desarrollo**: `rosmino.html` (plataforma de dominó online) y `perfect-studio.html` (generación musical con IA), 7 idiomas cada una — construidos por nosotros mismos, no encargos. A diferencia de los casos de estudio, aquí sí se cuenta el progreso fase a fase. Ver [Juegos](#juegos).
 - **SEO al detalle**: canonical + `hreflang` por idioma, Open Graph/Twitter localizados, JSON-LD (`Person`, `ProfessionalService`, `WebSite`), `sitemap.xml` generado (no editado a mano) con anotaciones de idioma (+ hoja de estilo para verlo legible en el navegador), `robots.txt`, verificación de Google Search Console.
 - **Cada página es 1 sola solicitud HTTP**: HTML, CSS y JS, todo inline. Nada más que cargar — ver [Rendimiento](#rendimiento).
 - **Cero cookies, cero analítica, cero rastreo** — verificable, no solo declarado. Página de privacidad honesta en los 7 idiomas (`/privacy.html`) explicando exactamente eso. Ver [Privacidad](#privacidad-y-cumplimiento).
@@ -33,8 +33,10 @@ sniper-3d.html                 ) Casos de estudio de videojuegos, misma lógica,
 en/sniper-3d.html               )
 cities-skylines-2.html          )
 en/cities-skylines-2.html       )
-rosmino.html                    ) Proyecto propio en desarrollo, misma lógica, 7 idiomas.
+rosmino.html                    ) Proyectos propios en desarrollo, misma lógica, 7 idiomas.
 en/rosmino.html                  )
+perfect-studio.html               )
+en/perfect-studio.html             )
 ...                             )
 404.html                      )
 sitemap.xml                   ) Generado por el build — NO se edita a mano.
@@ -44,6 +46,7 @@ tools/
   game-sniper3d-template.html  Fuente del caso de estudio de Sniper 3D — SE EDITA a mano
   game-cities2-template.html   Fuente del caso de estudio de Cities: Skylines II — SE EDITA a mano
   game-rosmino-template.html   Fuente de la página de Rosmino — SE EDITA a mano
+  game-perfectstudio-template.html  Fuente de la página de Perfect Studio — SE EDITA a mano
   404-template.html            Fuente de la página 404 — SE EDITA a mano
   build-lang-pages.js          Generador (Node, sin dependencias)
 assets/
@@ -113,7 +116,15 @@ Para dar el mismo tratamiento a Sniper 3D: añadir los archivos a `assets/img/ga
 
 Sin galería de capturas (`assets/img/games/rosmino/` no existe todavía) — el propio texto explica por qué: el arte final del juego es una fase pendiente (Fase 17), así que no hay ninguna imagen real que mostrar. Añadir capturas aquí en el futuro sigue el mismo patrón que Cities: Skylines II.
 
-El enlace a "Rosmino" en la sección `#clients` de la portada (`clients.games_note_a/games_note_link/games_note_b` en `assets/js/i18n.js`) apunta a esta página.
+"Rosmino" es uno de los tres chips enlazables de la sección `#clients` de la portada (junto a Sniper 3D y Cities: Skylines II, `clients.game1/game2/game3` en `assets/js/i18n.js`) — apunta a esta página.
+
+### Perfect Studio: mismo criterio, con una precisión de más
+
+`perfect-studio.html` sigue el mismo patrón que Rosmino (proyecto propio, no caso de estudio de un cliente), basado igualmente en documentación real de arquitectura/progreso (`ARQUITECTURA.md`, `PROGRESO.md`, `SEGURIDAD.md`, `MONETIZACION.md`, etc. del repo del proyecto), traducida a lenguaje de cara al público sin exponer identificadores internos.
+
+Aquí hay una capa extra de redacción deliberada, más allá de ocultar IDs/cuentas: **la página no nombra ningún proveedor de IA ni de nube concretos** (ni el modelo de generación musical, ni el de texto, ni el proveedor cloud), y en ningún caso afirma que esos modelos de IA sean propios — no lo son. Lo que sí se describe como propio, porque lo es de verdad, es el **diseño de la arquitectura de despliegue** (orquestador ligero + cola de trabajo por región + cómputo con autoescalado a cero coste): eso sí es ingeniería propia, aunque corra sobre primitivas de nube genéricas — se explica como "portable a cualquier proveedor que ofrezca colas de trabajo y grupos de instancias autoescalables", sin atarlo a uno en concreto. Al actualizar esta página, mantener esa distinción: confidencialidad de proveedor (omitir el nombre) sí, reclamar autoría de un modelo de IA de terceros no.
+
+La fase de desarrollo mostrada (`game_perfectstudio.stat2_value`, hoy "Fase 3/8") debe reflejar lo que diga el `PROGRESO.md` real del proyecto en el momento de actualizar — no una cifra optimista de memoria.
 
 ## Rendimiento
 
