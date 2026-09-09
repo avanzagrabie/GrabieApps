@@ -3,3 +3,11 @@ Thumbs.db
 *.log
 .vscode/
 node_modules/
+
+# Material de prensa de origen (notas, kits, capturas sin optimizar). Es material
+# interno: este repo se publica entero en GitHub Pages, así que cualquier archivo
+# aquí queda accesible en avanzagrabie.github.io. Las capturas que sí van a la web
+# viven, ya en WebP, en assets/img/games/<slug>/.
+/prensa/
+/press-kit.html
+/PODER-Y-NACION-nota-de-prensa.md

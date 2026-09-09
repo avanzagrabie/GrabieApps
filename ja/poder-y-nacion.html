@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poder y Nación — 自社プロジェクト（開発中） | Gabriel Díaz Bernal</title>
+<meta name="description" content="Poder y Nación：私たち自身が開発するスペインの統治シミュレーター。一国だけを徹底的に——19の自治州、19の省庁、実際の議会、そして地図そのものが盤面です。">
+<meta name="robots" content="index, follow, noarchive">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/ja/poder-y-nacion.html">
+
+<link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">
+<link rel="alternate" hreflang="en" href="https://avanzagrabie.github.io/GrabieApps/en/poder-y-nacion.html">
+<link rel="alternate" hreflang="fr" href="https://avanzagrabie.github.io/GrabieApps/fr/poder-y-nacion.html">
+<link rel="alternate" hreflang="pt" href="https://avanzagrabie.github.io/GrabieApps/pt/poder-y-nacion.html">
+<link rel="alternate" hreflang="ar" href="https://avanzagrabie.github.io/GrabieApps/ar/poder-y-nacion.html">
+<link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/poder-y-nacion.html">
+<link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/poder-y-nacion.html">
+<link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Poder y Nación — 自社プロジェクト（開発中） | Gabriel Díaz Bernal">
+<meta property="og:description" content="Poder y Nación：私たち自身が開発するスペインの統治シミュレーター。一国だけを徹底的に——19の自治州、19の省庁、実際の議会、そして地図そのものが盤面です。">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/ja/poder-y-nacion.html">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp">
+<meta property="og:image:width" content="1152">
+<meta property="og:image:height" content="648">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="pt_PT">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="zh_CN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Poder y Nación — 自社プロジェクト（開発中） | Gabriel Díaz Bernal">
+<meta name="twitter:description" content="Poder y Nación：私たち自身が開発するスペインの統治シミュレーター。一国だけを徹底的に——19の自治州、19の省庁、実際の議会、そして地図そのものが盤面です。">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp">
+
+<!-- Icons -->
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+
+<style>
+/* =========================================================
+   Gabriel Díaz Bernal — Estudio de ingeniería
+   Design system: dark, elite, technical.
+   Zero external dependencies. Zero web fonts. Zero CDNs.
+   ========================================================= */
+
+:root{
+  --bg: #05070d;
+  --bg-alt: #0a0e1a;
+  --bg-elevated: #0d1220;
+  --surface: rgba(255,255,255,.035);
+  --surface-strong: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.09);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #eef1fa;
+  --text-dim: #9aa3ba;
+  --text-faint: #626c85;
+  --accent: #5eead4;
+  --accent-2: #8b5cf6;
+  --accent-3: #22d3ee;
+  --danger: #ff6b81;
+  --gradient: linear-gradient(120deg, var(--accent-3), var(--accent-2));
+  --gradient-soft: linear-gradient(160deg, rgba(94,234,212,.14), rgba(139,92,246,.14));
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 20px 60px -20px rgba(0,0,0,.6);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans Arabic", "Segoe UI Arabic", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --maxw: 1180px;
+  --nav-h: 76px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg{ display: block; max-width: 100%; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin: 0; padding: 0; list-style: none; }
+h1,h2,h3,h4,p{ margin: 0; }
+button{ font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, textarea, select{ font: inherit; color: inherit; }
+
+::selection{ background: var(--accent-2); color: #fff; }
+
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- layout helpers ---------- */
+.container{ width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.section{ padding: 120px 0; position: relative; }
+.section-tight{ padding: 80px 0; }
+@media (max-width: 720px){
+  .section{ padding: 80px 0; }
+  .section-tight{ padding: 56px 0; }
+}
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.eyebrow::before{
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gradient); box-shadow: 0 0 12px var(--accent);
+}
+
+.section-head{ max-width: 720px; margin-bottom: 56px; }
+.section-title{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; }
+.section-subtitle{ margin-top: 14px; color: var(--text-dim); font-size: 1.05rem; max-width: 620px; }
+
+.gradient-text{
+  background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity: 1; transform: none; }
+
+/* ---------- buttons ---------- */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: .95rem;
+  border: 1px solid var(--border-strong);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.btn-primary{
+  background: var(--gradient); color: #04121a; border-color: transparent;
+  box-shadow: 0 8px 30px -8px rgba(94,234,212,.45);
+}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px -10px rgba(139,92,246,.55); }
+.btn-ghost{ background: var(--surface); color: var(--text); }
+.btn-ghost:hover{ border-color: var(--accent); background: var(--surface-strong); transform: translateY(-2px); }
+.btn-block{ width: 100%; }
+
+/* ---------- background fx ---------- */
+.bg-grid{
+  position: fixed; inset: 0; z-index: -2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+.bg-glow{
+  position: fixed; inset: 0; z-index: -3; background: var(--bg);
+}
+.bg-glow::before, .bg-glow::after{
+  content: ""; position: absolute; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px;
+  border-radius: 50%; filter: blur(120px); opacity: .18;
+}
+.bg-glow::before{ background: var(--accent-3); top: -12%; left: -10%; }
+.bg-glow::after{ background: var(--accent-2); bottom: -18%; right: -8%; }
+#fx-canvas{ position: fixed; inset: 0; z-index: -1; opacity: .5; pointer-events: none; }
+
+/* ---------- nav ---------- */
+.nav{
+  position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+/* Blur lives on a pseudo-element (not on .nav itself) so backdrop-filter doesn't
+   turn .nav into a containing block for its position:fixed mobile-menu descendant. */
+.nav::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(5,7,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.nav .container{ display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand{ display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; font-size: 1.05rem; }
+.brand-mark{ width: 34px; height: 34px; }
+.brand small{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: .68rem; color: var(--text-faint); letter-spacing: .06em; }
+
+.nav-links{ display: flex; align-items: center; gap: 30px; }
+.nav-links a{ font-size: .92rem; color: var(--text-dim); position: relative; }
+.nav-links a:hover, .nav-links a.is-active{ color: var(--text); }
+.nav-links a.is-active::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--gradient);
+}
+
+.nav-right{ display: flex; align-items: center; gap: 14px; }
+
+.lang-switch{ position: relative; }
+.lang-btn{
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px;
+  font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-dim);
+  transition: border-color .2s ease, color .2s ease;
+}
+.lang-btn:hover{ border-color: var(--accent); color: var(--text); }
+.lang-menu{
+  position: absolute; top: calc(100% + 10px); inset-inline-end: 0; min-width: 168px; max-height: 320px; overflow-y: auto;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow); padding: 6px; display: none; flex-direction: column; gap: 2px;
+}
+.lang-switch.is-open .lang-menu{ display: flex; }
+.lang-menu a{
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 9px 10px; border-radius: 6px; font-size: .86rem; color: var(--text-dim); text-align: left;
+}
+.lang-menu a:hover{ background: var(--surface-strong); color: var(--text); }
+.lang-menu a[aria-current="true"]{ color: var(--accent); background: var(--surface); }
+.lang-menu .code{ font-family: var(--font-mono); font-size: .72rem; color: var(--text-faint); }
+
+.nav-toggle{ display: none; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; align-items: center; justify-content: center; }
+.nav-toggle span{ display: block; width: 18px; height: 2px; background: var(--text); position: relative; }
+.nav-toggle span::before, .nav-toggle span::after{ content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: var(--text); transition: transform .2s ease; }
+.nav-toggle span::before{ top: -6px; } .nav-toggle span::after{ top: 6px; }
+
+@media (max-width: 880px){
+  .nav-links{
+    position: fixed; inset: var(--nav-h) 0 0 0; flex-direction: column; align-items: stretch;
+    background: var(--bg-alt); padding: 28px 24px; gap: 4px; transform: translateY(-8px);
+    opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    border-top: 1px solid var(--border); overflow-y: auto;
+  }
+  .nav-links a{ padding: 14px 6px; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+  body.menu-open .nav-links{ opacity: 1; pointer-events: auto; transform: none; }
+  .nav-toggle{ display: flex; }
+}
+
+/* ---------- hero ---------- */
+.hero{ padding: 76px 0 60px; }
+.hero-grid{ display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+@media (max-width: 980px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+.hero-title{ font-size: clamp(2.3rem, 5.4vw, 3.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.hero-subtitle{ margin-top: 20px; font-size: 1.14rem; color: var(--text-dim); max-width: 560px; }
+.hero-actions{ display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+
+.stat-row{ display: grid; grid-template-columns: repeat(4, auto); gap: 32px; margin-top: 56px; }
+.stat-value{ font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.stat-label{ margin-top: 4px; font-size: .78rem; color: var(--text-faint); max-width: 120px; }
+@media (max-width: 620px){ .stat-row{ grid-template-columns: repeat(2, auto); row-gap: 24px; } }
+
+/* terminal card — stays LTR chrome (dots, prompt) even on RTL pages, like any code/terminal widget */
+.terminal{
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); overflow: hidden; direction: ltr; text-align: start;
+}
+.terminal-bar{ display: flex; align-items: center; gap: 8px; padding: 14px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.terminal-dot{ width: 11px; height: 11px; border-radius: 50%; }
+.terminal-dot:nth-child(1){ background: #ff6159; }
+.terminal-dot:nth-child(2){ background: #ffbd2e; }
+.terminal-dot:nth-child(3){ background: #27c93f; }
+.terminal-title{ margin-inline-start: 8px; font-family: var(--font-mono); font-size: .74rem; color: var(--text-faint); }
+.terminal-body{ padding: 22px 22px 26px; font-family: var(--font-mono); font-size: .9rem; min-height: 260px; }
+.term-line{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.term-prompt{ color: var(--accent); flex-shrink: 0; }
+.term-cmd{ color: var(--text); }
+.term-out{ color: var(--text-dim); padding-inline-start: 20px; margin-top: 4px; flex-basis: 100%; }
+.term-cursor{ display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+@keyframes blink{ 50%{ opacity: 0; } }
+
+/* ---------- about ---------- */
+.about-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+@media (max-width: 900px){ .about-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.about-copy p{ color: var(--text-dim); margin-bottom: 18px; font-size: 1.02rem; }
+.about-badges{ display: flex; flex-direction: column; gap: 14px; }
+.about-badge{
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--surface);
+}
+.about-badge .dot{ width: 10px; height: 10px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
+.about-badge span.label{ font-weight: 600; font-size: .95rem; }
+
+/* ---------- stack grid ---------- */
+.stack-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px){ .stack-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px){ .stack-grid{ grid-template-columns: 1fr; } }
+.stack-card{
+  padding: 26px 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.stack-card:hover{ transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-strong); }
+.stack-icon{
+  width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  background: var(--gradient-soft); border: 1px solid var(--border); margin-bottom: 16px;
+}
+.stack-icon svg{ width: 22px; height: 22px; stroke: var(--accent); }
+.stack-card h3{ font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
+.stack-card p{ color: var(--text-dim); font-size: .92rem; }
+
+/* ---------- team ---------- */
+.team-wrap{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .team-wrap{ grid-template-columns: 1fr; gap: 32px; } }
+.team-list{ display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.team-row{ display: flex; align-items: center; gap: 18px; padding: 18px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.team-row:last-child{ border-bottom: 0; }
+.team-count{ font-family: var(--font-mono); font-weight: 700; color: var(--accent); font-size: 1.05rem; width: 34px; flex-shrink: 0; }
+.team-note{ margin-top: 20px; color: var(--text-faint); font-size: .9rem; font-style: italic; }
+.team-orb{
+  aspect-ratio: 1; border-radius: 50%; position: relative;
+  background: radial-gradient(circle at 35% 30%, rgba(94,234,212,.22), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(139,92,246,.25), transparent 55%),
+              var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.team-orb .orb-number{ font-family: var(--font-mono); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 800; }
+.team-orb .orb-label{ position: absolute; bottom: 14%; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+
+/* ---------- clients ---------- */
+.clients-grid{ display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .clients-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.games-block{ margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+.games-block .section-subtitle{ margin-top: 16px; max-width: 640px; }
+.clients-stat .value{ font-family: var(--font-mono); font-weight: 800; font-size: clamp(3rem, 7vw, 4.5rem); line-height: 1; }
+.clients-stat .label{ margin-top: 12px; color: var(--text-dim); font-size: 1rem; max-width: 260px; }
+.sectors-label{ font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
+.sector-chips{ display: flex; flex-wrap: wrap; gap: 10px; }
+.sector-chip{
+  padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
+  font-family: var(--font-mono); font-size: .84rem; color: var(--text-dim); transition: border-color .2s ease, color .2s ease;
+}
+.sector-chip:hover{ border-color: var(--accent); color: var(--text); }
+a.sector-chip{ cursor: pointer; }
+a.sector-chip:hover{ background: var(--surface-strong); }
+
+/* featured project card (home) */
+.featured-project{
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
+}
+.featured-card{
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); margin-top: 18px;
+  transition: border-color .2s ease;
+}
+.featured-card:hover{ border-color: var(--accent); }
+/* the media column stretches to whatever height the text needs; it must not set the
+   row height itself, or a long translation gets clipped by the overflow:hidden above */
+.featured-card .featured-media{ margin: 0; position: relative; min-height: 260px; background: var(--bg-elevated); }
+.featured-card .featured-media img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px){
+  .featured-card{ grid-template-columns: 1fr; }
+  .featured-card .featured-media{ aspect-ratio: 16/9; min-height: 0; }
+}
+.featured-body{ padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+.featured-body h3{ font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; margin: 6px 0 0; }
+.featured-body p{ color: var(--text-dim); margin-top: 14px; font-size: .98rem; }
+.featured-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.featured-stats > div{ min-width: 0; }
+.featured-stats .value{ font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; line-height: 1; }
+.featured-stats .label{ color: var(--text-faint); font-size: .74rem; line-height: 1.35; margin-top: 6px; }
+@media (max-width: 420px){ .featured-stats{ grid-template-columns: 1fr 1fr; } }
+.featured-cta{
+  margin-top: 24px; align-self: flex-start; font-family: var(--font-mono); font-size: .84rem;
+  color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s ease;
+}
+.featured-card:hover .featured-cta{ border-bottom-color: var(--accent); }
+
+/* ---------- game case study pages ---------- */
+.game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+@media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
+.game-shot{
+  position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-elevated); margin: 0;
+}
+.game-shot.is-placeholder{
+  border-style: dashed; border-color: var(--border-strong);
+  background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
+              radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
+              var(--bg-elevated);
+  display: flex; align-items: flex-end; padding: 16px;
+}
+.game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-shot figcaption{
+  position: absolute; inset-inline: 0; bottom: 0; padding: 22px 14px 10px;
+  background: linear-gradient(to top, rgba(5,7,13,.85), transparent);
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text);
+}
+.game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+.store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+/* ---------- process ---------- */
+.process-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 980px){ .process-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .process-grid{ grid-template-columns: 1fr; } }
+.process-card{ padding: 26px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); position: relative; }
+.process-step{ font-family: var(--font-mono); color: var(--text-faint); font-size: .8rem; margin-bottom: 14px; }
+.process-card h3{ font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.process-card p{ color: var(--text-dim); font-size: .9rem; }
+.process-callout{
+  margin-top: 40px; padding: 22px 26px; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  display: flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: .92rem; color: var(--text);
+  background: var(--gradient-soft);
+}
+
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+.form-sent-title{ font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); margin-bottom: 8px; }
+
+/* ---------- location ---------- */
+.location-box{
+  border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.14), transparent 60%), var(--bg-elevated);
+}
+.location-badge{
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .78rem;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--danger); margin-top: 22px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.location-badge::before{ content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+.location-box p{ color: var(--text-dim); max-width: 620px; margin: 0 auto; font-size: 1.02rem; }
+
+/* ---------- footer ---------- */
+.footer{ border-top: 1px solid var(--border); padding: 48px 0; }
+.footer .container{ display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand{ display: flex; align-items: center; gap: 12px; }
+.footer-tagline{ font-size: .82rem; color: var(--text-faint); }
+.footer-links{ display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a{ font-size: .86rem; color: var(--text-dim); }
+.footer-links a:hover{ color: var(--accent); }
+.footer-bottom{ margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- 404 ---------- */
+.notfound{ min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+.notfound-code{ font-family: var(--font-mono); font-size: clamp(4rem, 14vw, 8rem); font-weight: 800; line-height: 1; }
+.notfound p{ margin-top: 18px; color: var(--text-dim); font-size: 1.05rem; }
+.notfound .btn{ margin-top: 30px; }
+
+/* ---------- misc ---------- */
+.skip-link{
+  position: absolute; inset-inline-start: -9999px; top: 0; background: var(--accent); color: #04121a; padding: 12px 18px;
+  border-end-end-radius: 8px; z-index: 200; font-weight: 600;
+}
+.skip-link:focus{ inset-inline-start: 0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small>エリートソフトウェア。招待制。</small></span>
+    </a>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">JA</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">Español <span class="code">ES</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/en/poder-y-nacion.html">English <span class="code">EN</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/fr/poder-y-nacion.html">Français <span class="code">FR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/pt/poder-y-nacion.html">Português <span class="code">PT</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ar/poder-y-nacion.html">العربية <span class="code">AR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/zh/poder-y-nacion.html">中文 <span class="code">ZH</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ja/poder-y-nacion.html" aria-current="true">日本語 <span class="code">JA</span></a>
+        </div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container" style="max-width:860px">
+      <div class="section-head reveal">
+        <p class="eyebrow">自社プロジェクト · 開発中</p>
+        <h1 class="section-title">Poder y Nación</h1>
+        <p class="section-subtitle">月単位のターン制で進む、ゼロから作ったスペインの政治・経済シミュレーター。これも受注仕事ではなく私たちのものであり、これらのスクリーンショットは実際に動作している画面です。</p>
+      </div>
+
+      <div class="stat-row reveal" style="margin-top:0; margin-bottom:56px">
+        <div>
+          <div class="stat-value">19 + 19</div>
+          <div class="stat-label">の自治州と省庁、そのすべてを内部までシミュレート</div>
+        </div>
+        <div>
+          <div class="stat-value">460</div>
+          <div class="stat-label">件の自動テストにコアが合格</div>
+        </div>
+        <div>
+          <div class="stat-value">8,112</div>
+          <div class="stat-label">の自治体を地図上に、地区単位まで掘り下げ可能</div>
+        </div>
+        <div>
+          <div class="stat-value">未発表</div>
+          <div class="stat-label">リリース日</div>
+        </div>
+      </div>
+
+      <div class="about-copy reveal">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Poder y Nación とは</h2>
+        <p>Poder y Nación は、プレイヤーを首相として——あるいはその座を狙う野党党首として——スペインの舵取りに就かせる、月単位ターン制の政治・経済シミュレーターです。政治の衣をまとった戦略ゲームではありません。国家が内部で実際にどう機能しているか、その省庁、議会、自治州、欧州との関係、そして統治者が下す一つひとつの判断がもたらす現実的な帰結を、現実的な遅れとともにモデル化しています。</p>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem">一国だけを、徹底的に</h2>
+        <p style="margin-top:14px">このジャンルのシミュレーターは複雑さを数十か国に分散させ、その結果どうしても各国を汎用モデルで単純化します。私たちの賭けはその逆です。国をひとつに絞り、同ジャンルの他のどの作品にも見当たらない水準まで作り込む。19の自治州はプロジェクト初日からすべて揃っています——「まずは縮小版で」という時期は一度もありませんでした。各州は実際の議席構成を持つ独自の議会（カタルーニャ135、アンダルシア109…）を備え、固有名を持つ「地方の重鎮」が率いる州政府があり、それぞれの野心とマドリードへの親和——あるいは敵対——を抱え、独自の首班指名手続きを踏みます。第1回投票は絶対多数、第2回は単純多数、合意に至らなければ少数与党政権です。</p>
+        <p style="margin-top:18px">選挙制度はドント方式を県ごとに再現し、350議席の配分は人口動態の変化に応じて選挙のたびに計算し直されます。その結果、スペインの選挙制度に実在する現象がひとりでに現れます——地域的に票が集中した小政党が、票数では上回る全国分散型の大政党よりも多くの議席を得る、といった具合です。モデルが生む不比例性をギャラガー指数で測ると、スペインの実際の選挙の幅の内側に収まります。</p>
+      </div>
+
+      <p class="sectors-label reveal">スクリーンショット</p>
+      <div class="game-shot-grid reveal">
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp" width="1152" height="648" alt="メイン画面：指標、地図、受信トレイ" loading="eager" decoding="async">
+          <figcaption>メイン画面：指標、地図、受信トレイ</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-mapa-pais-entero.webp" width="1152" height="648" alt="国全体を、自治州ごとに" loading="lazy" decoding="async">
+          <figcaption>国全体を、自治州ごとに</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-mapa-red-nacional.webp" width="1152" height="648" alt="実在の高速道路網と高速鉄道網" loading="lazy" decoding="async">
+          <figcaption>実在の高速道路網と高速鉄道網</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-mapa-zoom-madrid.webp" width="1152" height="648" alt="マドリード周辺を拡大、実際の起伏付き" loading="lazy" decoding="async">
+          <figcaption>マドリード周辺を拡大、実際の起伏付き</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-congreso-votacion.webp" width="1152" height="648" alt="国家予算を採決する議会" loading="lazy" decoding="async">
+          <figcaption>国家予算を採決する議会</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-tramitacion-leyes.webp" width="1152" height="648" alt="法案が実際の立法過程をたどる様子" loading="lazy" decoding="async">
+          <figcaption>法案が実際の立法過程をたどる様子</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-hemeroteca-boe.webp" width="1152" height="648" alt="官報のアーカイブ" loading="lazy" decoding="async">
+          <figcaption>官報のアーカイブ</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-sala-hacienda.webp" width="1152" height="648" alt="財務省の内側、脱税問題まで含めて" loading="lazy" decoding="async">
+          <figcaption>財務省の内側、脱税問題まで含めて</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-distritos-barrios.webp" width="1152" height="648" alt="マドリードを地区ごとに、実際の所得水準で" loading="lazy" decoding="async">
+          <figcaption>マドリードを地区ごとに、実際の所得水準で</figcaption>
+        </figure>
+      </div>
+      <p class="game-shots-note reveal">開発中バージョン（v0.5.0）のスクリーンショットです。登場する政党および人物はすべて架空のものです。最終的なアートは未確定であり、ここに写っているものは変更される可能性があります。</p>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">結果を眺めるのではなく、実際に統治する</h2>
+        <p>最も深い差はここにあります。このゲームは国がどう推移するかを計算するだけではありません。統治という過程そのものをモデル化しています。立法エンジンは本物です——法案は実際の段階（登録、委員会、本会議、上院、官報公布）をたどり、その法形式が要求する多数を得たときにのみ発効します。上院は県代表色の強い独自構成を持ち、270議席で第一党が過大代表され、憲法第90条による実際の拒否権を備えます。下院がそれを覆せるのは、憲法が定める期間と多数要件を満たしたときだけです。可決された法律はそれぞれ架空の官報——国のもの、あるいは該当する自治州のもの——を生成し、ゲーム内アーカイブで閲覧でき、そのプレイの恒久的な記録として残ります。</p>
+        <p style="margin-top:18px">閣議も実際に機能します。行政決定は即座に適用されず、議題に載せられ、閣議で承認されて初めて政令になります——通常の火曜の閣議、あるいは臨時閣議で——しかも政府がそれを政治資本で賄える場合に限られます。木曜に決めた政令が官報に載るのは翌週の火曜です。交渉には記憶があります。ある会派と取引すればその態度は軟化しますが、約束を反故にすれば、以後そのプレイの間ずっと相手の要求水準が上がります。そして少数与党で統治するとは、本当に少数与党で統治するということです——連立相手は任期途中で離脱をちらつかせ、譲るにせよ突っぱねるにせよ代償は大きく、政権が倒れるところまで行き得ます。</p>
+        <p style="margin-top:18px">これらはどれも即座に効果を出しません。そこがまさに要点です。重要な構造改革で即効性のあるものなど存在しないからです。脱税対策を打ち出しても、その週のうちに税収は増えません。現実の税務当局と同じく、数か月かかります。財政赤字を放置しても、すぐには跳ね返ってきません——ある日EUが過剰赤字手続きを開始し、リスクプレミアムが跳ね上がるまでは。帰結は来ます。ただし遅れて来ます——だからこそ、目の前の火を消すことだけでなく、中期を見据えた統治が求められるのです。</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">地図こそが盤面</h2>
+        <p>プレイのすべては実際のスペインの地図の上で進みます。19自治州の公式輪郭、簡略化した直線ではなく実際の曲線をそのまま持つ道路網と鉄道網、国土の輪郭で切り抜いた本物の山岳起伏、そして13種類の切り替え可能なデータレイヤー（地域的緊張、失業率、一人当たりGDP、医療、教育、医療待機日数、住宅価格、どこを誰が統治しているか…）。これらが地図を、国全体を常時映す体温計に変えます。地図は最新のデジタル地図と同じくズームに応じて区画単位で読み込まれ、最も細かい階層まで下ります。47の大都市はそれぞれ選挙法に基づきドント方式で配分された市議会を持ち、大都市はさらに行政区に分かれ——マドリードは21、バルセロナは10——各区が実際の相対所得を持ち、そこからその地区の治安と社会的緊張が導かれます。</p>
+      </div>
+
+      <p class="sectors-label reveal">すでに実在している部分</p>
+      <div class="about-badges reveal" style="margin-top:14px; margin-bottom:48px">
+        <div class="about-badge"><span class="dot"></span><span class="label">460件の自動テストに合格し、GUIなしで動作するシミュレーションコア：調整のため20年分のプレイを数秒でシミュレートできます</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">19の省庁それぞれに専用のコントロールルーム、内部指標、行政決定——上下するだけの平板な数値ではありません</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">両院、上院の拒否権、閣議、官報アーカイブまで揃った完全な立法エンジン</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">19自治州それぞれに議会・首班指名・予算・地方の重鎮を備え、さらに97の市議会と地区単位の内訳</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">一期を狂わせ得る137の政策と114のイベント、それぞれ独自の感応度を持つ684の世論セグメントに作用</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">掌握可能な国家機関——統計局、世論調査機関、公共放送、情報機関——が与える短期的な優位と、蓄積していくスキャンダルのリスク</span></div>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem">宣言ではなく、設計で中立</h2>
+        <p style="margin-top:14px">登場する政党はすべて架空です。制度は写実的ですが、実在の政治勢力を指す名前は一つもありません。そしていかなるイデオロギーも設計上優遇も冷遇もされません——世論の中心は、設計者があらかじめ固定するのではなく、そのプレイで実際に成立している政党配置そのものの重心に常にアンカーされるよう、数学的に構築されています。新しいコンテンツを追加するたびに20年分のバランス検証を回し、いずれのイデオロギー配分も偏らないことを確認しています。このゲームは各判断の帰結を示します。どれが正解かは告げません。</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin-bottom:40px">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">どう作られているか</h2>
+        <p>ゲームはすべて Godot で構築しています。シミュレーションコアはGUIなしで動作し——だからこそ20年分のプレイを数秒でシミュレートしてテストと調整ができます——プレイ可能なインターフェースはビジュアルエディタを使わず、すべてコードで組んでいます。ゲームの内容（政策、イベント、調整パラメータ）はコード内ではなく外部データに置いてあるため、拡張のためにエンジンへ手を入れる必要がありません。</p>
+        <p style="margin-top:18px">地図はオープンデータを利用し、各ライセンスが求める帰属表示を行っています。道路網・鉄道網および街路データは OpenStreetMap とその貢献者より（ODbLライセンス）、起伏は Terrarium 標高データ（AWS Open Data）より、公式の行政区画輪郭はスペイン国立地理院より geoBoundaries 経由（CC BY 4.0）で取得しています。</p>
+      </div>
+
+      <div class="process-callout reveal" style="margin-bottom:48px">
+        <span>これは、私たちがこの水準の詳しさで語れる数少ない自社プロジェクトの一つであり、すでにスクリーンショットをお見せできる最初の一つでもあります。残りは現時点では厳重に非公開のままです。</span>
+      </div>
+
+      <a class="btn btn-primary reveal" href="index.html">← Gabriel Díaz Bernal に戻る</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline">エリートソフトウェア。招待制。</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="index.html#about">プロフィール</a>
+      <a href="index.html#stack">技術スタック</a>
+      <a href="index.html#clients">クライアント</a>
+      <a href="index.html#contact">お問い合わせ</a>
+      <a href="privacy.html">プライバシー</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span>全著作権所有。</span></span>
+    <span>エンジニアリングの精度で構築されたサイト。</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   Gabriel Díaz Bernal — interactions
+   Nav, language switcher, scroll reveal, terminal typewriter,
+   background canvas. Vanilla JS, no dependencies.
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initNav();
+    initLangSwitch();
+    initReveal();
+    initActiveLink();
+    initTerminal();
+    initBackgroundFx();
+    initContactForm();
+    initYear();
+  });
+
+  /* ---------- mobile nav ---------- */
+  function initNav() {
+    var toggle = document.querySelector(".nav-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      var open = document.body.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    var links = document.querySelectorAll(".nav-links a");
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", function () {
+        document.body.classList.remove("menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    }
+  }
+
+  /* ---------- language switcher ----------
+     Each language lives at its own crawlable URL (/, /en/, /fr/...);
+     the menu items are plain <a> links, so switching is just navigation.
+     This JS only opens/closes the dropdown. */
+  function initLangSwitch() {
+    var switcher = document.querySelector(".lang-switch");
+    if (!switcher) return;
+    var btn = switcher.querySelector(".lang-btn");
+    var menu = switcher.querySelector(".lang-menu");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      switcher.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", switcher.classList.contains("is-open") ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!switcher.contains(e.target)) switcher.classList.remove("is-open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") switcher.classList.remove("is-open");
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  function initReveal() {
+    var items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("is-visible"); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    items.forEach(function (el) { obs.observe(el); });
+  }
+
+  /* ---------- active nav link on scroll ---------- */
+  function initActiveLink() {
+    var links = document.querySelectorAll('.nav-links a[href^="#"]');
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var section = document.getElementById(id);
+      if (section) map[id] = a;
+    });
+    var ids = Object.keys(map);
+    if (!ids.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = map[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove("is-active"); });
+          link.classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+
+    ids.forEach(function (id) { obs.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- terminal typewriter ---------- */
+  var terminalTimer = null;
+
+  function initTerminal() {
+    var body = document.querySelector(".terminal-body");
+    if (!body) return;
+    runTerminal(body);
+  }
+
+  function runTerminal(body) {
+    if (terminalTimer) { clearTimeout(terminalTimer); terminalTimer = null; }
+    var lines = window.GDB_TERMINAL_LINES;
+    if (!lines || !lines.length) return;
+
+    body.innerHTML = "";
+
+    if (reduceMotion) {
+      lines.forEach(function (l) {
+        body.appendChild(buildLine(l.cmd, l.out, true));
+      });
+      return;
+    }
+
+    var lineIndex = 0;
+    function nextLine() {
+      if (lineIndex >= lines.length) return;
+      var l = lines[lineIndex];
+      var row = buildLine("", "", false);
+      body.appendChild(row);
+      var cmdEl = row.querySelector(".term-cmd");
+      var cursor = row.querySelector(".term-cursor");
+      typeText(cmdEl, l.cmd, cursor, function () {
+        var outEl = row.querySelector(".term-out");
+        outEl.textContent = l.out;
+        outEl.style.display = "block";
+        cursor.remove();
+        lineIndex++;
+        terminalTimer = setTimeout(nextLine, 420);
+      });
+    }
+    nextLine();
+  }
+
+  function buildLine(cmd, out, immediate) {
+    var row = document.createElement("div");
+    row.className = "term-line";
+    var prompt = document.createElement("span");
+    prompt.className = "term-prompt";
+    prompt.textContent = "$";
+    var cmdEl = document.createElement("span");
+    cmdEl.className = "term-cmd";
+    var outEl = document.createElement("span");
+    outEl.className = "term-out";
+
+    if (immediate) {
+      cmdEl.textContent = cmd;
+      outEl.textContent = out;
+      row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(outEl);
+      return row;
+    }
+
+    var cursor = document.createElement("span");
+    cursor.className = "term-cursor";
+    outEl.style.display = "none";
+    row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(cursor); row.appendChild(outEl);
+    return row;
+  }
+
+  function typeText(el, text, cursor, done) {
+    var i = 0;
+    (function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        terminalTimer = setTimeout(step, 26);
+      } else {
+        done();
+      }
+    })();
+  }
+
+  /* ---------- background canvas: subtle drifting node network ---------- */
+  function initBackgroundFx() {
+    var canvas = document.getElementById("fx-canvas");
+    if (!canvas || reduceMotion) return;
+    var ctx = canvas.getContext("2d");
+    var w, h, nodes = [];
+    var NODE_COUNT = Math.min(46, Math.floor((window.innerWidth * window.innerHeight) / 34000));
+    var LINK_DIST = 140;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeNodes() {
+      nodes = [];
+      for (var i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      ctx.fillStyle = "rgba(94,234,212,0.55)";
+      for (var a = 0; a < nodes.length; a++) {
+        for (var b = a + 1; b < nodes.length; b++) {
+          var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            ctx.strokeStyle = "rgba(139,92,246," + (0.12 * (1 - dist / LINK_DIST)) + ")";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[a].x, nodes[a].y);
+            ctx.lineTo(nodes[b].x, nodes[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (var c = 0; c < nodes.length; c++) {
+        ctx.beginPath();
+        ctx.arc(nodes[c].x, nodes[c].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    makeNodes();
+    requestAnimationFrame(tick);
+    window.addEventListener("resize", function () {
+      resize();
+      makeNodes();
+    });
+  }
+
+  /* ---------- contact form ----------
+     Static site, no backend, and nowhere this data is sent: the
+     "invitation code" field is never transmitted or stored anywhere,
+     by this site or any third party. Submitting it just swaps the
+     visible UI state from the field to a confirmation message —
+     nothing leaves the browser, no navigation, no popup. */
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    var fields = document.getElementById("contact-form-fields");
+    var sent = document.getElementById("contact-form-sent");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (fields) fields.hidden = true;
+      if (sent) sent.hidden = false;
+    });
+  }
+
+  /* ---------- footer year ---------- */
+  function initYear() {
+    var el = document.getElementById("year");
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
+})();
+</script>
+</body>
+</html>

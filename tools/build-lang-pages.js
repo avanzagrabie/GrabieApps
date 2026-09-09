@@ -94,7 +94,21 @@ const GAMES = [
     ]
   },
   { slug: "rosmino", templateFile: "game-rosmino-template.html" },
-  { slug: "perfect-studio", templateFile: "game-perfectstudio-template.html" }
+  { slug: "perfect-studio", templateFile: "game-perfectstudio-template.html" },
+  {
+    slug: "poder-y-nacion", templateFile: "game-podernacion-template.html",
+    images: [
+      "poder-y-nacion-pantalla-principal.webp",
+      "poder-y-nacion-mapa-pais-entero.webp",
+      "poder-y-nacion-mapa-red-nacional.webp",
+      "poder-y-nacion-mapa-zoom-madrid.webp",
+      "poder-y-nacion-congreso-votacion.webp",
+      "poder-y-nacion-tramitacion-leyes.webp",
+      "poder-y-nacion-hemeroteca-boe.webp",
+      "poder-y-nacion-sala-hacienda.webp",
+      "poder-y-nacion-distritos-barrios.webp"
+    ]
+  }
 ];
 function urlForGame(slug, lang) {
   return lang === "es" ? `${BASE_URL}${slug}.html` : `${BASE_URL}${lang}/${slug}.html`;
@@ -179,6 +193,16 @@ function renderPage(templateHtml, lang, dict, cssContent, jsContent) {
     (m, key, restAttrs, oldText) => {
       const val = dict[key] !== undefined ? dict[key] : key;
       return `${restAttrs}>${escapeHtml(val)}<`;
+    }
+  );
+
+  // <img ... alt="OLD" ... data-i18n-attr="alt:KEY"> -> filled in, attribute stripped
+  // (the featured-project card on the home page carries a translated alt)
+  html = html.replace(
+    /<img\b([^>]*?)alt="[^"]*"([^>]*?)\sdata-i18n-attr="alt:([a-zA-Z0-9_.]+)"([^>]*)>/g,
+    (m, pre, mid, key, post) => {
+      const val = dict[key] !== undefined ? dict[key] : key;
+      return `<img${pre}alt="${escapeAttr(val)}"${mid}${post}>`;
     }
   );
 

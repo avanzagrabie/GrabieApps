@@ -47,6 +47,7 @@ tools/
   game-cities2-template.html   Fuente del caso de estudio de Cities: Skylines II — SE EDITA a mano
   game-rosmino-template.html   Fuente de la página de Rosmino — SE EDITA a mano
   game-perfectstudio-template.html  Fuente de la página de Perfect Studio — SE EDITA a mano
+  game-podernacion-template.html    Fuente de la página de Poder y Nación — SE EDITA a mano
   404-template.html            Fuente de la página 404 — SE EDITA a mano
   build-lang-pages.js          Generador (Node, sin dependencias)
 assets/
@@ -125,6 +126,21 @@ Sin galería de capturas (`assets/img/games/rosmino/` no existe todavía) — el
 Aquí hay una capa extra de redacción deliberada, más allá de ocultar IDs/cuentas: **la página no nombra ningún proveedor de IA ni de nube concretos** (ni el modelo de generación musical, ni el de texto, ni el proveedor cloud), y en ningún caso afirma que esos modelos de IA sean propios — no lo son. Lo que sí se describe como propio, porque lo es de verdad, es el **diseño de la arquitectura de despliegue** (orquestador ligero + cola de trabajo por región + cómputo con autoescalado a cero coste): eso sí es ingeniería propia, aunque corra sobre primitivas de nube genéricas — se explica como "portable a cualquier proveedor que ofrezca colas de trabajo y grupos de instancias autoescalables", sin atarlo a uno en concreto. Al actualizar esta página, mantener esa distinción: confidencialidad de proveedor (omitir el nombre) sí, reclamar autoría de un modelo de IA de terceros no.
 
 La fase de desarrollo mostrada (`game_perfectstudio.stat2_value`, hoy "Fase 3/8") debe reflejar lo que diga el `PROGRESO.md` real del proyecto en el momento de actualizar — no una cifra optimista de memoria.
+
+### Poder y Nación: proyecto propio, con capturas reales y créditos de datos abiertos
+
+`poder-y-nacion.html` es el tercer proyecto propio con página detallada (simulador político y económico de España, hecho en Godot). Mismo criterio que Rosmino y Perfect Studio: se basa en el `CLAUDE.md` real del repo del proyecto y en `project.godot` (de donde sale la versión que cita `game_podernacion.shots_note`), no en la nota de prensa. **Toda cifra publicada se verifica contra esos archivos antes de escribirla** — 460 pruebas, 8.112 municipios, 19 comunidades y 19 ministerios, 137 políticas, 114 eventos, 684 segmentos de opinión, 47 grandes ciudades / 97 ayuntamientos, Madrid 21 distritos y Barcelona 10, 13 capas de datos.
+
+Dos reglas específicas de esta página:
+
+- **Nada de superlativos no comprobables.** La nota de prensa interna afirma que es "el simulador de gobierno más completo jamás hecho sobre un solo país"; eso no se puede verificar, así que la página dice lo que sí es atribuible: "un nivel de detalle que no hemos encontrado en ningún otro juego del género" (`game_podernacion.depth_text`). Misma regla que en el resto del sitio.
+- **Los créditos de datos abiertos son una obligación de licencia, no texto opcional.** `game_podernacion.credits_text` atribuye OpenStreetMap y sus colaboradores (ODbL), los datos de elevación Terrarium (AWS Open Data) y el Instituto Geográfico Nacional vía geoBoundaries (CC BY 4.0). No se borra ni se resume hasta hacerlo irreconocible; si cambian las fuentes cartográficas del juego, se actualiza en los 7 idiomas.
+
+Galería de 9 capturas reales en `assets/img/games/poder-y-nacion/` (WebP, 1152×648, convertidas con `ffmpeg -c:v libwebp -quality 85 -compression_level 6`), con `alt` y pie traducidos (`game_podernacion.shot1_label`…`shot9_label`) y `og:image`/`twitter:image` apuntando a una de ellas, igual que Cities: Skylines II. Las 9 se listan en `GAMES[].images` para que entren en `sitemap.xml`. Como son capturas de una versión en desarrollo con partidos y personajes ficticios, `game_podernacion.shots_note` lo dice explícitamente.
+
+**Material de prensa de origen**: `prensa/`, `press-kit.html` y la nota `.md` están en `.gitignore` a propósito. Este repo se publica entero en GitHub Pages, así que cualquier archivo versionado queda accesible públicamente — el material interno no se comitea; solo las capturas ya optimizadas de `assets/img/games/<slug>/`.
+
+En la portada, Poder y Nación no es un chip más de la fila de juegos: tiene una **tarjeta destacada** propia (`.featured-project` / `.featured-card` en `assets/css/style.css`, claves `clients.featured_*`), con captura, tres cifras y enlace. Por eso la nota `clients.games_secret_note` sigue diciendo "estos tres": se refiere a los juegos de trabajo de motor que podemos nombrar, no a los proyectos propios.
 
 ## Rendimiento
 

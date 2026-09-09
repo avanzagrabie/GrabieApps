@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poder y Nación——我们自己的开发中项目 | Gabriel Díaz Bernal</title>
+<meta name="description" content="Poder y Nación：我们自己开发的西班牙执政模拟器。只做一个国家，但做到极深——19个自治区、19个部委、真实的议会，地图就是棋盘。">
+<meta name="robots" content="index, follow, noarchive">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/zh/poder-y-nacion.html">
+
+<link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">
+<link rel="alternate" hreflang="en" href="https://avanzagrabie.github.io/GrabieApps/en/poder-y-nacion.html">
+<link rel="alternate" hreflang="fr" href="https://avanzagrabie.github.io/GrabieApps/fr/poder-y-nacion.html">
+<link rel="alternate" hreflang="pt" href="https://avanzagrabie.github.io/GrabieApps/pt/poder-y-nacion.html">
+<link rel="alternate" hreflang="ar" href="https://avanzagrabie.github.io/GrabieApps/ar/poder-y-nacion.html">
+<link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/poder-y-nacion.html">
+<link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/poder-y-nacion.html">
+<link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Poder y Nación——我们自己的开发中项目 | Gabriel Díaz Bernal">
+<meta property="og:description" content="Poder y Nación：我们自己开发的西班牙执政模拟器。只做一个国家，但做到极深——19个自治区、19个部委、真实的议会，地图就是棋盘。">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/zh/poder-y-nacion.html">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp">
+<meta property="og:image:width" content="1152">
+<meta property="og:image:height" content="648">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="pt_PT">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="ja_JP">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Poder y Nación——我们自己的开发中项目 | Gabriel Díaz Bernal">
+<meta name="twitter:description" content="Poder y Nación：我们自己开发的西班牙执政模拟器。只做一个国家，但做到极深——19个自治区、19个部委、真实的议会，地图就是棋盘。">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp">
+
+<!-- Icons -->
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+
+<style>
+/* =========================================================
+   Gabriel Díaz Bernal — Estudio de ingeniería
+   Design system: dark, elite, technical.
+   Zero external dependencies. Zero web fonts. Zero CDNs.
+   ========================================================= */
+
+:root{
+  --bg: #05070d;
+  --bg-alt: #0a0e1a;
+  --bg-elevated: #0d1220;
+  --surface: rgba(255,255,255,.035);
+  --surface-strong: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.09);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #eef1fa;
+  --text-dim: #9aa3ba;
+  --text-faint: #626c85;
+  --accent: #5eead4;
+  --accent-2: #8b5cf6;
+  --accent-3: #22d3ee;
+  --danger: #ff6b81;
+  --gradient: linear-gradient(120deg, var(--accent-3), var(--accent-2));
+  --gradient-soft: linear-gradient(160deg, rgba(94,234,212,.14), rgba(139,92,246,.14));
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 20px 60px -20px rgba(0,0,0,.6);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans Arabic", "Segoe UI Arabic", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --maxw: 1180px;
+  --nav-h: 76px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg{ display: block; max-width: 100%; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin: 0; padding: 0; list-style: none; }
+h1,h2,h3,h4,p{ margin: 0; }
+button{ font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, textarea, select{ font: inherit; color: inherit; }
+
+::selection{ background: var(--accent-2); color: #fff; }
+
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- layout helpers ---------- */
+.container{ width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.section{ padding: 120px 0; position: relative; }
+.section-tight{ padding: 80px 0; }
+@media (max-width: 720px){
+  .section{ padding: 80px 0; }
+  .section-tight{ padding: 56px 0; }
+}
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.eyebrow::before{
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gradient); box-shadow: 0 0 12px var(--accent);
+}
+
+.section-head{ max-width: 720px; margin-bottom: 56px; }
+.section-title{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; }
+.section-subtitle{ margin-top: 14px; color: var(--text-dim); font-size: 1.05rem; max-width: 620px; }
+
+.gradient-text{
+  background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity: 1; transform: none; }
+
+/* ---------- buttons ---------- */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: .95rem;
+  border: 1px solid var(--border-strong);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.btn-primary{
+  background: var(--gradient); color: #04121a; border-color: transparent;
+  box-shadow: 0 8px 30px -8px rgba(94,234,212,.45);
+}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px -10px rgba(139,92,246,.55); }
+.btn-ghost{ background: var(--surface); color: var(--text); }
+.btn-ghost:hover{ border-color: var(--accent); background: var(--surface-strong); transform: translateY(-2px); }
+.btn-block{ width: 100%; }
+
+/* ---------- background fx ---------- */
+.bg-grid{
+  position: fixed; inset: 0; z-index: -2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+.bg-glow{
+  position: fixed; inset: 0; z-index: -3; background: var(--bg);
+}
+.bg-glow::before, .bg-glow::after{
+  content: ""; position: absolute; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px;
+  border-radius: 50%; filter: blur(120px); opacity: .18;
+}
+.bg-glow::before{ background: var(--accent-3); top: -12%; left: -10%; }
+.bg-glow::after{ background: var(--accent-2); bottom: -18%; right: -8%; }
+#fx-canvas{ position: fixed; inset: 0; z-index: -1; opacity: .5; pointer-events: none; }
+
+/* ---------- nav ---------- */
+.nav{
+  position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+/* Blur lives on a pseudo-element (not on .nav itself) so backdrop-filter doesn't
+   turn .nav into a containing block for its position:fixed mobile-menu descendant. */
+.nav::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(5,7,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.nav .container{ display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand{ display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; font-size: 1.05rem; }
+.brand-mark{ width: 34px; height: 34px; }
+.brand small{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: .68rem; color: var(--text-faint); letter-spacing: .06em; }
+
+.nav-links{ display: flex; align-items: center; gap: 30px; }
+.nav-links a{ font-size: .92rem; color: var(--text-dim); position: relative; }
+.nav-links a:hover, .nav-links a.is-active{ color: var(--text); }
+.nav-links a.is-active::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--gradient);
+}
+
+.nav-right{ display: flex; align-items: center; gap: 14px; }
+
+.lang-switch{ position: relative; }
+.lang-btn{
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px;
+  font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-dim);
+  transition: border-color .2s ease, color .2s ease;
+}
+.lang-btn:hover{ border-color: var(--accent); color: var(--text); }
+.lang-menu{
+  position: absolute; top: calc(100% + 10px); inset-inline-end: 0; min-width: 168px; max-height: 320px; overflow-y: auto;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow); padding: 6px; display: none; flex-direction: column; gap: 2px;
+}
+.lang-switch.is-open .lang-menu{ display: flex; }
+.lang-menu a{
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 9px 10px; border-radius: 6px; font-size: .86rem; color: var(--text-dim); text-align: left;
+}
+.lang-menu a:hover{ background: var(--surface-strong); color: var(--text); }
+.lang-menu a[aria-current="true"]{ color: var(--accent); background: var(--surface); }
+.lang-menu .code{ font-family: var(--font-mono); font-size: .72rem; color: var(--text-faint); }
+
+.nav-toggle{ display: none; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; align-items: center; justify-content: center; }
+.nav-toggle span{ display: block; width: 18px; height: 2px; background: var(--text); position: relative; }
+.nav-toggle span::before, .nav-toggle span::after{ content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: var(--text); transition: transform .2s ease; }
+.nav-toggle span::before{ top: -6px; } .nav-toggle span::after{ top: 6px; }
+
+@media (max-width: 880px){
+  .nav-links{
+    position: fixed; inset: var(--nav-h) 0 0 0; flex-direction: column; align-items: stretch;
+    background: var(--bg-alt); padding: 28px 24px; gap: 4px; transform: translateY(-8px);
+    opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    border-top: 1px solid var(--border); overflow-y: auto;
+  }
+  .nav-links a{ padding: 14px 6px; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+  body.menu-open .nav-links{ opacity: 1; pointer-events: auto; transform: none; }
+  .nav-toggle{ display: flex; }
+}
+
+/* ---------- hero ---------- */
+.hero{ padding: 76px 0 60px; }
+.hero-grid{ display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+@media (max-width: 980px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+.hero-title{ font-size: clamp(2.3rem, 5.4vw, 3.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.hero-subtitle{ margin-top: 20px; font-size: 1.14rem; color: var(--text-dim); max-width: 560px; }
+.hero-actions{ display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+
+.stat-row{ display: grid; grid-template-columns: repeat(4, auto); gap: 32px; margin-top: 56px; }
+.stat-value{ font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.stat-label{ margin-top: 4px; font-size: .78rem; color: var(--text-faint); max-width: 120px; }
+@media (max-width: 620px){ .stat-row{ grid-template-columns: repeat(2, auto); row-gap: 24px; } }
+
+/* terminal card — stays LTR chrome (dots, prompt) even on RTL pages, like any code/terminal widget */
+.terminal{
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); overflow: hidden; direction: ltr; text-align: start;
+}
+.terminal-bar{ display: flex; align-items: center; gap: 8px; padding: 14px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.terminal-dot{ width: 11px; height: 11px; border-radius: 50%; }
+.terminal-dot:nth-child(1){ background: #ff6159; }
+.terminal-dot:nth-child(2){ background: #ffbd2e; }
+.terminal-dot:nth-child(3){ background: #27c93f; }
+.terminal-title{ margin-inline-start: 8px; font-family: var(--font-mono); font-size: .74rem; color: var(--text-faint); }
+.terminal-body{ padding: 22px 22px 26px; font-family: var(--font-mono); font-size: .9rem; min-height: 260px; }
+.term-line{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.term-prompt{ color: var(--accent); flex-shrink: 0; }
+.term-cmd{ color: var(--text); }
+.term-out{ color: var(--text-dim); padding-inline-start: 20px; margin-top: 4px; flex-basis: 100%; }
+.term-cursor{ display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+@keyframes blink{ 50%{ opacity: 0; } }
+
+/* ---------- about ---------- */
+.about-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+@media (max-width: 900px){ .about-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.about-copy p{ color: var(--text-dim); margin-bottom: 18px; font-size: 1.02rem; }
+.about-badges{ display: flex; flex-direction: column; gap: 14px; }
+.about-badge{
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--surface);
+}
+.about-badge .dot{ width: 10px; height: 10px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
+.about-badge span.label{ font-weight: 600; font-size: .95rem; }
+
+/* ---------- stack grid ---------- */
+.stack-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px){ .stack-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px){ .stack-grid{ grid-template-columns: 1fr; } }
+.stack-card{
+  padding: 26px 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.stack-card:hover{ transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-strong); }
+.stack-icon{
+  width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  background: var(--gradient-soft); border: 1px solid var(--border); margin-bottom: 16px;
+}
+.stack-icon svg{ width: 22px; height: 22px; stroke: var(--accent); }
+.stack-card h3{ font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
+.stack-card p{ color: var(--text-dim); font-size: .92rem; }
+
+/* ---------- team ---------- */
+.team-wrap{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .team-wrap{ grid-template-columns: 1fr; gap: 32px; } }
+.team-list{ display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.team-row{ display: flex; align-items: center; gap: 18px; padding: 18px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.team-row:last-child{ border-bottom: 0; }
+.team-count{ font-family: var(--font-mono); font-weight: 700; color: var(--accent); font-size: 1.05rem; width: 34px; flex-shrink: 0; }
+.team-note{ margin-top: 20px; color: var(--text-faint); font-size: .9rem; font-style: italic; }
+.team-orb{
+  aspect-ratio: 1; border-radius: 50%; position: relative;
+  background: radial-gradient(circle at 35% 30%, rgba(94,234,212,.22), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(139,92,246,.25), transparent 55%),
+              var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.team-orb .orb-number{ font-family: var(--font-mono); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 800; }
+.team-orb .orb-label{ position: absolute; bottom: 14%; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+
+/* ---------- clients ---------- */
+.clients-grid{ display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .clients-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.games-block{ margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+.games-block .section-subtitle{ margin-top: 16px; max-width: 640px; }
+.clients-stat .value{ font-family: var(--font-mono); font-weight: 800; font-size: clamp(3rem, 7vw, 4.5rem); line-height: 1; }
+.clients-stat .label{ margin-top: 12px; color: var(--text-dim); font-size: 1rem; max-width: 260px; }
+.sectors-label{ font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
+.sector-chips{ display: flex; flex-wrap: wrap; gap: 10px; }
+.sector-chip{
+  padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
+  font-family: var(--font-mono); font-size: .84rem; color: var(--text-dim); transition: border-color .2s ease, color .2s ease;
+}
+.sector-chip:hover{ border-color: var(--accent); color: var(--text); }
+a.sector-chip{ cursor: pointer; }
+a.sector-chip:hover{ background: var(--surface-strong); }
+
+/* featured project card (home) */
+.featured-project{
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
+}
+.featured-card{
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); margin-top: 18px;
+  transition: border-color .2s ease;
+}
+.featured-card:hover{ border-color: var(--accent); }
+/* the media column stretches to whatever height the text needs; it must not set the
+   row height itself, or a long translation gets clipped by the overflow:hidden above */
+.featured-card .featured-media{ margin: 0; position: relative; min-height: 260px; background: var(--bg-elevated); }
+.featured-card .featured-media img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px){
+  .featured-card{ grid-template-columns: 1fr; }
+  .featured-card .featured-media{ aspect-ratio: 16/9; min-height: 0; }
+}
+.featured-body{ padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+.featured-body h3{ font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; margin: 6px 0 0; }
+.featured-body p{ color: var(--text-dim); margin-top: 14px; font-size: .98rem; }
+.featured-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.featured-stats > div{ min-width: 0; }
+.featured-stats .value{ font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; line-height: 1; }
+.featured-stats .label{ color: var(--text-faint); font-size: .74rem; line-height: 1.35; margin-top: 6px; }
+@media (max-width: 420px){ .featured-stats{ grid-template-columns: 1fr 1fr; } }
+.featured-cta{
+  margin-top: 24px; align-self: flex-start; font-family: var(--font-mono); font-size: .84rem;
+  color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s ease;
+}
+.featured-card:hover .featured-cta{ border-bottom-color: var(--accent); }
+
+/* ---------- game case study pages ---------- */
+.game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+@media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
+.game-shot{
+  position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-elevated); margin: 0;
+}
+.game-shot.is-placeholder{
+  border-style: dashed; border-color: var(--border-strong);
+  background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
+              radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
+              var(--bg-elevated);
+  display: flex; align-items: flex-end; padding: 16px;
+}
+.game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-shot figcaption{
+  position: absolute; inset-inline: 0; bottom: 0; padding: 22px 14px 10px;
+  background: linear-gradient(to top, rgba(5,7,13,.85), transparent);
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text);
+}
+.game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+.store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+/* ---------- process ---------- */
+.process-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 980px){ .process-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .process-grid{ grid-template-columns: 1fr; } }
+.process-card{ padding: 26px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); position: relative; }
+.process-step{ font-family: var(--font-mono); color: var(--text-faint); font-size: .8rem; margin-bottom: 14px; }
+.process-card h3{ font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.process-card p{ color: var(--text-dim); font-size: .9rem; }
+.process-callout{
+  margin-top: 40px; padding: 22px 26px; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  display: flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: .92rem; color: var(--text);
+  background: var(--gradient-soft);
+}
+
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+.form-sent-title{ font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); margin-bottom: 8px; }
+
+/* ---------- location ---------- */
+.location-box{
+  border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.14), transparent 60%), var(--bg-elevated);
+}
+.location-badge{
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .78rem;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--danger); margin-top: 22px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.location-badge::before{ content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+.location-box p{ color: var(--text-dim); max-width: 620px; margin: 0 auto; font-size: 1.02rem; }
+
+/* ---------- footer ---------- */
+.footer{ border-top: 1px solid var(--border); padding: 48px 0; }
+.footer .container{ display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand{ display: flex; align-items: center; gap: 12px; }
+.footer-tagline{ font-size: .82rem; color: var(--text-faint); }
+.footer-links{ display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a{ font-size: .86rem; color: var(--text-dim); }
+.footer-links a:hover{ color: var(--accent); }
+.footer-bottom{ margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- 404 ---------- */
+.notfound{ min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+.notfound-code{ font-family: var(--font-mono); font-size: clamp(4rem, 14vw, 8rem); font-weight: 800; line-height: 1; }
+.notfound p{ margin-top: 18px; color: var(--text-dim); font-size: 1.05rem; }
+.notfound .btn{ margin-top: 30px; }
+
+/* ---------- misc ---------- */
+.skip-link{
+  position: absolute; inset-inline-start: -9999px; top: 0; background: var(--accent); color: #04121a; padding: 12px 18px;
+  border-end-end-radius: 8px; z-index: 200; font-weight: 600;
+}
+.skip-link:focus{ inset-inline-start: 0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small>精英软件，仅限受邀。</small></span>
+    </a>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">ZH</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">Español <span class="code">ES</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/en/poder-y-nacion.html">English <span class="code">EN</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/fr/poder-y-nacion.html">Français <span class="code">FR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/pt/poder-y-nacion.html">Português <span class="code">PT</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ar/poder-y-nacion.html">العربية <span class="code">AR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/zh/poder-y-nacion.html" aria-current="true">中文 <span class="code">ZH</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ja/poder-y-nacion.html">日本語 <span class="code">JA</span></a>
+        </div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container" style="max-width:860px">
+      <div class="section-head reveal">
+        <p class="eyebrow">自研项目 · 开发中</p>
+        <h1 class="section-title">Poder y Nación</h1>
+        <p class="section-subtitle">一款以月为回合、从零构建的西班牙政治经济模拟器。这同样不是外包委托——它属于我们，而这些截图来自真正运行中的游戏。</p>
+      </div>
+
+      <div class="stat-row reveal" style="margin-top:0; margin-bottom:56px">
+        <div>
+          <div class="stat-value">19 + 19</div>
+          <div class="stat-label">个自治区与部委，每一个都有独立的内部模拟</div>
+        </div>
+        <div>
+          <div class="stat-value">460</div>
+          <div class="stat-label">项核心通过的自动化测试</div>
+        </div>
+        <div>
+          <div class="stat-value">8,112</div>
+          <div class="stat-label">个市镇呈现在地图上，可下钻到街区</div>
+        </div>
+        <div>
+          <div class="stat-value">尚未公布</div>
+          <div class="stat-label">发布日期</div>
+        </div>
+      </div>
+
+      <div class="about-copy reveal">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Poder y Nación 是什么</h2>
+        <p>Poder y Nación 让玩家以首相身份执掌西班牙——或以在野党领袖的身份争取上位——在一款以月为回合的政治经济模拟器中展开。它不是披着政治外衣的策略游戏：它模拟一个国家内部真正的运作方式，它的部委、议会、自治区、与欧洲的关系，以及执政者每一个决定所带来的真实后果与真实延迟。</p>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem">只做一个国家，但做到极深</h2>
+        <p style="margin-top:14px">同类模拟器把复杂度分摊到几十个国家上，因而不得不用一套通用模型简化每一个。我们的选择恰好相反：只取一个国家，把它做到我们在同类游戏中未曾见过的细致程度。19个自治区从项目第一天起就全部在内——从来没有过所谓「先做个精简版」。每个自治区都有自己的议会与真实席位构成（加泰罗尼亚135席、安达卢西亚109席……），有自己具名的地方大佬主政，各有野心，与马德里或亲或疏，并有各自真实的组阁投票流程：首轮绝对多数、次轮简单多数，谈不拢就是少数派政府。</p>
+        <p style="margin-top:18px">选举制度逐省复现顿特法，350个席位的分配会在每次大选前依人口变动重新计算。于是西班牙选制的真实现象会自行浮现，比如一个地域集中的小党，能以更少的选票拿到比一个盘子铺得很开的大党更多的席位。模型产生的比例失真程度，以加拉格指数衡量，落在西班牙历次真实大选的区间之内。</p>
+      </div>
+
+      <p class="sectors-label reveal">游戏截图</p>
+      <div class="game-shot-grid reveal">
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp" width="1152" height="648" alt="主界面：指标、地图与收件箱" loading="eager" decoding="async">
+          <figcaption>主界面：指标、地图与收件箱</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-mapa-pais-entero.webp" width="1152" height="648" alt="整个国家，一个自治区一个自治区地呈现" loading="lazy" decoding="async">
+          <figcaption>整个国家，一个自治区一个自治区地呈现</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-mapa-red-nacional.webp" width="1152" height="648" alt="真实的高速公路与高铁路网" loading="lazy" decoding="async">
+          <figcaption>真实的高速公路与高铁路网</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-mapa-zoom-madrid.webp" width="1152" height="648" alt="放大到马德里，带真实地形起伏" loading="lazy" decoding="async">
+          <figcaption>放大到马德里，带真实地形起伏</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-congreso-votacion.webp" width="1152" height="648" alt="议会正在表决国家预算" loading="lazy" decoding="async">
+          <figcaption>议会正在表决国家预算</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-tramitacion-leyes.webp" width="1152" height="648" alt="一部法律走完真实的立法程序" loading="lazy" decoding="async">
+          <figcaption>一部法律走完真实的立法程序</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-hemeroteca-boe.webp" width="1152" height="648" alt="官方公报的历史档案库" loading="lazy" decoding="async">
+          <figcaption>官方公报的历史档案库</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-sala-hacienda.webp" width="1152" height="648" alt="财政部内部，连税务欺诈一并建模" loading="lazy" decoding="async">
+          <figcaption>财政部内部，连税务欺诈一并建模</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-distritos-barrios.webp" width="1152" height="648" alt="马德里逐个城区，带真实收入水平" loading="lazy" decoding="async">
+          <figcaption>马德里逐个城区，带真实收入水平</figcaption>
+        </figure>
+      </div>
+      <p class="game-shots-note reveal">开发中版本的截图（v0.5.0）。其中出现的政党与人物均为虚构。最终美术尚未定案：此处所见可能会有变化。</p>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">真正地执政，而不只是看结果</h2>
+        <p>这是最深层的差异所在。游戏不止于计算国家如何演变：它模拟执政这一过程本身。立法引擎是真实的——法案要走完登记、委员会、全体会议、参议院、正式公布这些实际阶段，且只有取得其法律位阶所要求的多数才会生效。参议院有自己以省为主的构成，270个席位且第一大党被超额代表，并拥有真实的第90条否决权，下院只能按宪法规定的时限与多数才能推翻。每一部通过的法律都会生成属于它的虚构官方公报——视情况是国家级或自治区级——可在游戏内档案库中翻阅，成为这局游戏永久的文献记录。</p>
+        <p style="margin-top:18px">内阁会议是真的在运作：行政决定不会立即生效，而是列入议程，只有内阁通过后才成为法令——在每周二的例会上，或在临时会议上——而且还得看政府的政治资本付不付得起。周四拍板的法令，要等到下周二才会见诸公报。谈判是有记忆的：与某个议会党团达成协议会改善其态度，但一旦食言，之后整局游戏它开出的价码都会更高。少数派执政也是真正的少数派执政——联合执政的伙伴可能在任期中途以退出相要挟，而无论让步还是硬顶，代价都很沉重，甚至足以让政府垮台。</p>
+        <p style="margin-top:18px">这一切都不会立竿见影，而这正是重点：任何重要的结构性改革都不会。打击税务欺诈的方案不会在当周就带来更多税收，而是要花上好几个月，就像现实中的税务机关一样。放任赤字失控也不会马上付出代价——直到某天欧盟启动过度赤字程序，风险溢价随之飙升。后果会来，但来得很迟——这就迫使你必须着眼中期来执政，而不只是扑灭眼前这场火。</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">地图就是棋盘</h2>
+        <p>整局游戏都在一张真实的西班牙地图上进行：19个自治区的官方轮廓，带全部真实弯道的公路与铁路网——而非简化的直线——按国界裁切的真实山地起伏，以及13个可切换的数据图层（地区紧张度、失业率、人均GDP、医疗、教育、就医等待时间、房价、各地由谁执政……），让它成为观察整个国家的常设温度计。地图会随缩放分区块加载，一如任何现代数字地图，并可下钻到最细的层级：47座大城市各有依选举法按顿特法分配的市议会席位，其中最大的几座还会拆分为城区——马德里21个、巴塞罗那10个——每个城区都有真实的相对收入水平，由此推导出该街区的治安与社会紧张度。</p>
+      </div>
+
+      <p class="sectors-label reveal">已经落地的部分</p>
+      <div class="about-badges reveal" style="margin-top:14px; margin-bottom:48px">
+        <div class="about-badge"><span class="dot"></span><span class="label">通过460项自动化测试、可无图形界面运行的模拟核心：二十年的对局可在数秒内跑完以供校准</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">19个部委各有自己的控制室、内部指标与行政决策——而不是一个上下浮动的扁平数字</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">完整的立法引擎，含两院、参议院否决权、内阁会议与官方公报档案库</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">19个自治区各有议会、组阁投票、预算与地方大佬，另有97个市镇议会及城区细分</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">137项政策与114个可能让一届任期脱轨的事件，作用于684个各有敏感点的民意分层</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">可被控制的国家机构——统计局、民调中心、公共广播与情报机关——既带来短期优势，也不断累积丑闻风险</span></div>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem">中立源于设计，而非声明</h2>
+        <p style="margin-top:14px">游戏中的政党都是虚构的：制度是写实的，但没有任何名字指向现实中的政治力量。也没有任何意识形态在设计上被奖励或惩罚——游戏在数学上被构建为：民意的中心始终锚定在当前这局政党格局自身的重心上，而不是由设计者事先钉死。每一批新增内容都会用一次二十年的平衡跑批来验证，确认没有任何意识形态分布发生漂移。游戏呈现每个决定的后果；它不告诉你哪个才是对的。</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin-bottom:40px">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">它是怎么构建的</h2>
+        <p>游戏完全用 Godot 构建，其模拟核心可无图形界面运行——正因如此，才能用数秒内跑完的二十年对局来测试和校准——而完整可玩的界面则全部由代码写成，不使用可视化编辑器。游戏的全部内容（政策、事件、校准参数）都存放在外部数据中，而非代码里，因此扩充内容无需改动引擎。</p>
+        <p style="margin-top:18px">地图采用开放数据，并按其许可要求署名：公路与铁路网及街道图层来自 OpenStreetMap 及其贡献者（ODbL 许可）；地形起伏来自 Terrarium 高程数据（AWS Open Data）；官方行政区轮廓来自西班牙国家地理研究院，经由 geoBoundaries 提供（CC BY 4.0）。</p>
+      </div>
+
+      <div class="process-callout reveal" style="margin-bottom:48px">
+        <span>这是我们少数几个愿意讲到这个细节程度的自研项目之一——也是第一个已经可以放出截图的。其余的目前仍严格保密。</span>
+      </div>
+
+      <a class="btn btn-primary reveal" href="index.html">← 返回 Gabriel Díaz Bernal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline">精英软件，仅限受邀。</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="index.html#about">关于我</a>
+      <a href="index.html#stack">技术栈</a>
+      <a href="index.html#clients">客户</a>
+      <a href="index.html#contact">联系</a>
+      <a href="privacy.html">隐私</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span>版权所有，保留所有权利。</span></span>
+    <span>以工程级精度构建的网站。</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   Gabriel Díaz Bernal — interactions
+   Nav, language switcher, scroll reveal, terminal typewriter,
+   background canvas. Vanilla JS, no dependencies.
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initNav();
+    initLangSwitch();
+    initReveal();
+    initActiveLink();
+    initTerminal();
+    initBackgroundFx();
+    initContactForm();
+    initYear();
+  });
+
+  /* ---------- mobile nav ---------- */
+  function initNav() {
+    var toggle = document.querySelector(".nav-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      var open = document.body.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    var links = document.querySelectorAll(".nav-links a");
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", function () {
+        document.body.classList.remove("menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    }
+  }
+
+  /* ---------- language switcher ----------
+     Each language lives at its own crawlable URL (/, /en/, /fr/...);
+     the menu items are plain <a> links, so switching is just navigation.
+     This JS only opens/closes the dropdown. */
+  function initLangSwitch() {
+    var switcher = document.querySelector(".lang-switch");
+    if (!switcher) return;
+    var btn = switcher.querySelector(".lang-btn");
+    var menu = switcher.querySelector(".lang-menu");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      switcher.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", switcher.classList.contains("is-open") ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!switcher.contains(e.target)) switcher.classList.remove("is-open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") switcher.classList.remove("is-open");
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  function initReveal() {
+    var items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("is-visible"); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    items.forEach(function (el) { obs.observe(el); });
+  }
+
+  /* ---------- active nav link on scroll ---------- */
+  function initActiveLink() {
+    var links = document.querySelectorAll('.nav-links a[href^="#"]');
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var section = document.getElementById(id);
+      if (section) map[id] = a;
+    });
+    var ids = Object.keys(map);
+    if (!ids.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = map[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove("is-active"); });
+          link.classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+
+    ids.forEach(function (id) { obs.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- terminal typewriter ---------- */
+  var terminalTimer = null;
+
+  function initTerminal() {
+    var body = document.querySelector(".terminal-body");
+    if (!body) return;
+    runTerminal(body);
+  }
+
+  function runTerminal(body) {
+    if (terminalTimer) { clearTimeout(terminalTimer); terminalTimer = null; }
+    var lines = window.GDB_TERMINAL_LINES;
+    if (!lines || !lines.length) return;
+
+    body.innerHTML = "";
+
+    if (reduceMotion) {
+      lines.forEach(function (l) {
+        body.appendChild(buildLine(l.cmd, l.out, true));
+      });
+      return;
+    }
+
+    var lineIndex = 0;
+    function nextLine() {
+      if (lineIndex >= lines.length) return;
+      var l = lines[lineIndex];
+      var row = buildLine("", "", false);
+      body.appendChild(row);
+      var cmdEl = row.querySelector(".term-cmd");
+      var cursor = row.querySelector(".term-cursor");
+      typeText(cmdEl, l.cmd, cursor, function () {
+        var outEl = row.querySelector(".term-out");
+        outEl.textContent = l.out;
+        outEl.style.display = "block";
+        cursor.remove();
+        lineIndex++;
+        terminalTimer = setTimeout(nextLine, 420);
+      });
+    }
+    nextLine();
+  }
+
+  function buildLine(cmd, out, immediate) {
+    var row = document.createElement("div");
+    row.className = "term-line";
+    var prompt = document.createElement("span");
+    prompt.className = "term-prompt";
+    prompt.textContent = "$";
+    var cmdEl = document.createElement("span");
+    cmdEl.className = "term-cmd";
+    var outEl = document.createElement("span");
+    outEl.className = "term-out";
+
+    if (immediate) {
+      cmdEl.textContent = cmd;
+      outEl.textContent = out;
+      row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(outEl);
+      return row;
+    }
+
+    var cursor = document.createElement("span");
+    cursor.className = "term-cursor";
+    outEl.style.display = "none";
+    row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(cursor); row.appendChild(outEl);
+    return row;
+  }
+
+  function typeText(el, text, cursor, done) {
+    var i = 0;
+    (function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        terminalTimer = setTimeout(step, 26);
+      } else {
+        done();
+      }
+    })();
+  }
+
+  /* ---------- background canvas: subtle drifting node network ---------- */
+  function initBackgroundFx() {
+    var canvas = document.getElementById("fx-canvas");
+    if (!canvas || reduceMotion) return;
+    var ctx = canvas.getContext("2d");
+    var w, h, nodes = [];
+    var NODE_COUNT = Math.min(46, Math.floor((window.innerWidth * window.innerHeight) / 34000));
+    var LINK_DIST = 140;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeNodes() {
+      nodes = [];
+      for (var i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      ctx.fillStyle = "rgba(94,234,212,0.55)";
+      for (var a = 0; a < nodes.length; a++) {
+        for (var b = a + 1; b < nodes.length; b++) {
+          var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            ctx.strokeStyle = "rgba(139,92,246," + (0.12 * (1 - dist / LINK_DIST)) + ")";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[a].x, nodes[a].y);
+            ctx.lineTo(nodes[b].x, nodes[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (var c = 0; c < nodes.length; c++) {
+        ctx.beginPath();
+        ctx.arc(nodes[c].x, nodes[c].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    makeNodes();
+    requestAnimationFrame(tick);
+    window.addEventListener("resize", function () {
+      resize();
+      makeNodes();
+    });
+  }
+
+  /* ---------- contact form ----------
+     Static site, no backend, and nowhere this data is sent: the
+     "invitation code" field is never transmitted or stored anywhere,
+     by this site or any third party. Submitting it just swaps the
+     visible UI state from the field to a confirmation message —
+     nothing leaves the browser, no navigation, no popup. */
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    var fields = document.getElementById("contact-form-fields");
+    var sent = document.getElementById("contact-form-sent");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (fields) fields.hidden = true;
+      if (sent) sent.hidden = false;
+    });
+  }
+
+  /* ---------- footer year ---------- */
+  function initYear() {
+    var el = document.getElementById("year");
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
+})();
+</script>
+</body>
+</html>

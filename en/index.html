@@ -347,6 +347,39 @@ input, textarea, select{ font: inherit; color: inherit; }
 a.sector-chip{ cursor: pointer; }
 a.sector-chip:hover{ background: var(--surface-strong); }
 
+/* featured project card (home) */
+.featured-project{
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
+}
+.featured-card{
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); margin-top: 18px;
+  transition: border-color .2s ease;
+}
+.featured-card:hover{ border-color: var(--accent); }
+/* the media column stretches to whatever height the text needs; it must not set the
+   row height itself, or a long translation gets clipped by the overflow:hidden above */
+.featured-card .featured-media{ margin: 0; position: relative; min-height: 260px; background: var(--bg-elevated); }
+.featured-card .featured-media img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px){
+  .featured-card{ grid-template-columns: 1fr; }
+  .featured-card .featured-media{ aspect-ratio: 16/9; min-height: 0; }
+}
+.featured-body{ padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+.featured-body h3{ font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; margin: 6px 0 0; }
+.featured-body p{ color: var(--text-dim); margin-top: 14px; font-size: .98rem; }
+.featured-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.featured-stats > div{ min-width: 0; }
+.featured-stats .value{ font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; line-height: 1; }
+.featured-stats .label{ color: var(--text-faint); font-size: .74rem; line-height: 1.35; margin-top: 6px; }
+@media (max-width: 420px){ .featured-stats{ grid-template-columns: 1fr 1fr; } }
+.featured-cta{
+  margin-top: 24px; align-self: flex-start; font-family: var(--font-mono); font-size: .84rem;
+  color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s ease;
+}
+.featured-card:hover .featured-cta{ border-bottom-color: var(--accent); }
+
 /* ---------- game case study pages ---------- */
 .game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
 @media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
@@ -703,6 +736,33 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         </div>
         <p class="section-subtitle">Engine programming — physics, performance, game systems — never design or art, and almost never with public credit. We're also building our own games, with several more in testing, strictly under wraps for now. These aren't work-for-hire — they'll be entirely ours, and they're going to change the rules of the market.</p>
         <p class="section-subtitle">These three are the only ones we can name. We work with several other studios under confidentiality agreements, and we also develop our own games to sell to third parties — some under labels that don't carry our name. When they do well, they end up being sold to large investment funds.</p>
+      </div>
+      <div class="featured-project reveal">
+        <p class="sectors-label">Featured · Our own project</p>
+        <a class="featured-card" href="poder-y-nacion.html">
+          <figure class="featured-media">
+            <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp" width="1152" height="648" alt="Poder y Nación main screen: national indicators, map of Spain and the decisions inbox" loading="lazy" decoding="async">
+          </figure>
+          <div class="featured-body">
+            <h3>Poder y Nación</h3>
+            <p>Our political and economic simulator of Spain, played in monthly turns. One country simulated in depth: its 19 autonomous regions each with their own parliament, its 19 ministries from the inside, a parliament that really moves bills through their stages, and a real map that is the board. In development — and these screenshots are the game actually running.</p>
+            <div class="featured-stats">
+              <div>
+                <div class="value gradient-text">19 + 19</div>
+                <div class="label">regions and ministries</div>
+              </div>
+              <div>
+                <div class="value gradient-text">8,112</div>
+                <div class="label">municipalities on the map</div>
+              </div>
+              <div>
+                <div class="value gradient-text">460</div>
+                <div class="label">automated tests</div>
+              </div>
+            </div>
+            <span class="featured-cta">See the project</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>

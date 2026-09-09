@@ -347,6 +347,39 @@ input, textarea, select{ font: inherit; color: inherit; }
 a.sector-chip{ cursor: pointer; }
 a.sector-chip:hover{ background: var(--surface-strong); }
 
+/* featured project card (home) */
+.featured-project{
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
+}
+.featured-card{
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); margin-top: 18px;
+  transition: border-color .2s ease;
+}
+.featured-card:hover{ border-color: var(--accent); }
+/* the media column stretches to whatever height the text needs; it must not set the
+   row height itself, or a long translation gets clipped by the overflow:hidden above */
+.featured-card .featured-media{ margin: 0; position: relative; min-height: 260px; background: var(--bg-elevated); }
+.featured-card .featured-media img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px){
+  .featured-card{ grid-template-columns: 1fr; }
+  .featured-card .featured-media{ aspect-ratio: 16/9; min-height: 0; }
+}
+.featured-body{ padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+.featured-body h3{ font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; margin: 6px 0 0; }
+.featured-body p{ color: var(--text-dim); margin-top: 14px; font-size: .98rem; }
+.featured-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.featured-stats > div{ min-width: 0; }
+.featured-stats .value{ font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; line-height: 1; }
+.featured-stats .label{ color: var(--text-faint); font-size: .74rem; line-height: 1.35; margin-top: 6px; }
+@media (max-width: 420px){ .featured-stats{ grid-template-columns: 1fr 1fr; } }
+.featured-cta{
+  margin-top: 24px; align-self: flex-start; font-family: var(--font-mono); font-size: .84rem;
+  color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s ease;
+}
+.featured-card:hover .featured-cta{ border-bottom-color: var(--accent); }
+
 /* ---------- game case study pages ---------- */
 .game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
 @media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
@@ -703,6 +736,33 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         </div>
         <p class="section-subtitle">Programmation moteur — physique, performance, systèmes de jeu — jamais de design ni d'art, et presque jamais crédités publiquement. Nous développons aussi nos propres jeux, avec plusieurs autres en phase de test, strictement confidentiels pour l'instant. Ce ne sont pas des commandes — ils seront entièrement à nous, et ils vont changer les règles du marché.</p>
         <p class="section-subtitle">Ce sont les trois seuls que nous pouvons nommer. Nous collaborons avec plusieurs autres studios sous accord de confidentialité, et nous développons aussi nos propres jeux pour les vendre à des tiers — certains sous des labels qui ne portent pas notre nom. Quand ça marche, ils finissent par être vendus à de grands fonds d'investissement.</p>
+      </div>
+      <div class="featured-project reveal">
+        <p class="sectors-label">À la une · Projet interne</p>
+        <a class="featured-card" href="poder-y-nacion.html">
+          <figure class="featured-media">
+            <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp" width="1152" height="648" alt="Écran principal de Poder y Nación : indicateurs du pays, carte de l'Espagne et boîte de réception des décisions" loading="lazy" decoding="async">
+          </figure>
+          <div class="featured-body">
+            <h3>Poder y Nación</h3>
+            <p>Notre simulateur politique et économique de l'Espagne, au tour par tour mensuel. Un seul pays simulé en profondeur : ses 19 communautés autonomes avec leur propre parlement, ses 19 ministères de l'intérieur, des Cortes qui font réellement cheminer les lois, et une carte réelle qui sert de plateau. En développement — et ces captures montrent le jeu réellement en fonctionnement.</p>
+            <div class="featured-stats">
+              <div>
+                <div class="value gradient-text">19 + 19</div>
+                <div class="label">communautés et ministères</div>
+              </div>
+              <div>
+                <div class="value gradient-text">8 112</div>
+                <div class="label">communes sur la carte</div>
+              </div>
+              <div>
+                <div class="value gradient-text">460</div>
+                <div class="label">tests automatisés</div>
+              </div>
+            </div>
+            <span class="featured-cta">Voir le projet</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>

@@ -347,6 +347,39 @@ input, textarea, select{ font: inherit; color: inherit; }
 a.sector-chip{ cursor: pointer; }
 a.sector-chip:hover{ background: var(--surface-strong); }
 
+/* featured project card (home) */
+.featured-project{
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
+}
+.featured-card{
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); margin-top: 18px;
+  transition: border-color .2s ease;
+}
+.featured-card:hover{ border-color: var(--accent); }
+/* the media column stretches to whatever height the text needs; it must not set the
+   row height itself, or a long translation gets clipped by the overflow:hidden above */
+.featured-card .featured-media{ margin: 0; position: relative; min-height: 260px; background: var(--bg-elevated); }
+.featured-card .featured-media img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px){
+  .featured-card{ grid-template-columns: 1fr; }
+  .featured-card .featured-media{ aspect-ratio: 16/9; min-height: 0; }
+}
+.featured-body{ padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+.featured-body h3{ font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; margin: 6px 0 0; }
+.featured-body p{ color: var(--text-dim); margin-top: 14px; font-size: .98rem; }
+.featured-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.featured-stats > div{ min-width: 0; }
+.featured-stats .value{ font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; line-height: 1; }
+.featured-stats .label{ color: var(--text-faint); font-size: .74rem; line-height: 1.35; margin-top: 6px; }
+@media (max-width: 420px){ .featured-stats{ grid-template-columns: 1fr 1fr; } }
+.featured-cta{
+  margin-top: 24px; align-self: flex-start; font-family: var(--font-mono); font-size: .84rem;
+  color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s ease;
+}
+.featured-card:hover .featured-cta{ border-bottom-color: var(--accent); }
+
 /* ---------- game case study pages ---------- */
 .game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
 @media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
@@ -703,6 +736,33 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         </div>
         <p class="section-subtitle">Programação de motor — física, desempenho, sistemas de jogo — nunca design ou arte, e quase nunca com crédito público. Também estamos construindo nossos próprios jogos, com vários outros em fase de testes, estritamente sigilosos por enquanto. Não são encomendas de ninguém — serão inteiramente nossos, e vão mudar as regras do mercado.</p>
         <p class="section-subtitle">Esses três são os únicos que podemos nomear. Colaboramos com vários outros estúdios sob acordos de confidencialidade, e também desenvolvemos jogos próprios para vender a terceiros — alguns sob selos que não levam nosso nome. Quando dão certo, acabam sendo vendidos a grandes fundos de investimento.</p>
+      </div>
+      <div class="featured-project reveal">
+        <p class="sectors-label">Destaque · Projeto próprio</p>
+        <a class="featured-card" href="poder-y-nacion.html">
+          <figure class="featured-media">
+            <img src="../assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp" width="1152" height="648" alt="Ecrã principal de Poder y Nación: indicadores do país, mapa da Espanha e caixa de entrada de decisões" loading="lazy" decoding="async">
+          </figure>
+          <div class="featured-body">
+            <h3>Poder y Nación</h3>
+            <p>O nosso simulador político e económico da Espanha, por turnos mensais. Um só país simulado a fundo: as suas 19 comunidades autónomas com parlamento próprio, os seus 19 ministérios por dentro, um parlamento que tramita leis a sério e um mapa real que é o tabuleiro. Em desenvolvimento — e estas capturas são do jogo a funcionar.</p>
+            <div class="featured-stats">
+              <div>
+                <div class="value gradient-text">19 + 19</div>
+                <div class="label">comunidades e ministérios</div>
+              </div>
+              <div>
+                <div class="value gradient-text">8.112</div>
+                <div class="label">municípios no mapa</div>
+              </div>
+              <div>
+                <div class="value gradient-text">460</div>
+                <div class="label">testes automáticos</div>
+              </div>
+            </div>
+            <span class="featured-cta">Ver o projeto</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>

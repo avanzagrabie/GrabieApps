@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poder y Nación — Proyecto propio en desarrollo | Gabriel Díaz Bernal</title>
+<meta name="description" content="Poder y Nación: nuestro simulador de gobierno de España. Un solo país simulado a fondo — 19 comunidades, 19 ministerios, Cortes reales y el mapa como tablero.">
+<meta name="robots" content="index, follow, noarchive">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">
+
+<link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">
+<link rel="alternate" hreflang="en" href="https://avanzagrabie.github.io/GrabieApps/en/poder-y-nacion.html">
+<link rel="alternate" hreflang="fr" href="https://avanzagrabie.github.io/GrabieApps/fr/poder-y-nacion.html">
+<link rel="alternate" hreflang="pt" href="https://avanzagrabie.github.io/GrabieApps/pt/poder-y-nacion.html">
+<link rel="alternate" hreflang="ar" href="https://avanzagrabie.github.io/GrabieApps/ar/poder-y-nacion.html">
+<link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/poder-y-nacion.html">
+<link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/poder-y-nacion.html">
+<link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Poder y Nación — Proyecto propio en desarrollo | Gabriel Díaz Bernal">
+<meta property="og:description" content="Poder y Nación: nuestro simulador de gobierno de España. Un solo país simulado a fondo — 19 comunidades, 19 ministerios, Cortes reales y el mapa como tablero.">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp">
+<meta property="og:image:width" content="1152">
+<meta property="og:image:height" content="648">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="pt_PT">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Poder y Nación — Proyecto propio en desarrollo | Gabriel Díaz Bernal">
+<meta name="twitter:description" content="Poder y Nación: nuestro simulador de gobierno de España. Un solo país simulado a fondo — 19 comunidades, 19 ministerios, Cortes reales y el mapa como tablero.">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp">
+
+<!-- Icons -->
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<style>
+/* =========================================================
+   Gabriel Díaz Bernal — Estudio de ingeniería
+   Design system: dark, elite, technical.
+   Zero external dependencies. Zero web fonts. Zero CDNs.
+   ========================================================= */
+
+:root{
+  --bg: #05070d;
+  --bg-alt: #0a0e1a;
+  --bg-elevated: #0d1220;
+  --surface: rgba(255,255,255,.035);
+  --surface-strong: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.09);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #eef1fa;
+  --text-dim: #9aa3ba;
+  --text-faint: #626c85;
+  --accent: #5eead4;
+  --accent-2: #8b5cf6;
+  --accent-3: #22d3ee;
+  --danger: #ff6b81;
+  --gradient: linear-gradient(120deg, var(--accent-3), var(--accent-2));
+  --gradient-soft: linear-gradient(160deg, rgba(94,234,212,.14), rgba(139,92,246,.14));
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 20px 60px -20px rgba(0,0,0,.6);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans Arabic", "Segoe UI Arabic", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --maxw: 1180px;
+  --nav-h: 76px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg{ display: block; max-width: 100%; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin: 0; padding: 0; list-style: none; }
+h1,h2,h3,h4,p{ margin: 0; }
+button{ font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, textarea, select{ font: inherit; color: inherit; }
+
+::selection{ background: var(--accent-2); color: #fff; }
+
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- layout helpers ---------- */
+.container{ width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.section{ padding: 120px 0; position: relative; }
+.section-tight{ padding: 80px 0; }
+@media (max-width: 720px){
+  .section{ padding: 80px 0; }
+  .section-tight{ padding: 56px 0; }
+}
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.eyebrow::before{
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gradient); box-shadow: 0 0 12px var(--accent);
+}
+
+.section-head{ max-width: 720px; margin-bottom: 56px; }
+.section-title{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; }
+.section-subtitle{ margin-top: 14px; color: var(--text-dim); font-size: 1.05rem; max-width: 620px; }
+
+.gradient-text{
+  background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity: 1; transform: none; }
+
+/* ---------- buttons ---------- */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: .95rem;
+  border: 1px solid var(--border-strong);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.btn-primary{
+  background: var(--gradient); color: #04121a; border-color: transparent;
+  box-shadow: 0 8px 30px -8px rgba(94,234,212,.45);
+}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px -10px rgba(139,92,246,.55); }
+.btn-ghost{ background: var(--surface); color: var(--text); }
+.btn-ghost:hover{ border-color: var(--accent); background: var(--surface-strong); transform: translateY(-2px); }
+.btn-block{ width: 100%; }
+
+/* ---------- background fx ---------- */
+.bg-grid{
+  position: fixed; inset: 0; z-index: -2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+.bg-glow{
+  position: fixed; inset: 0; z-index: -3; background: var(--bg);
+}
+.bg-glow::before, .bg-glow::after{
+  content: ""; position: absolute; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px;
+  border-radius: 50%; filter: blur(120px); opacity: .18;
+}
+.bg-glow::before{ background: var(--accent-3); top: -12%; left: -10%; }
+.bg-glow::after{ background: var(--accent-2); bottom: -18%; right: -8%; }
+#fx-canvas{ position: fixed; inset: 0; z-index: -1; opacity: .5; pointer-events: none; }
+
+/* ---------- nav ---------- */
+.nav{
+  position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+/* Blur lives on a pseudo-element (not on .nav itself) so backdrop-filter doesn't
+   turn .nav into a containing block for its position:fixed mobile-menu descendant. */
+.nav::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(5,7,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.nav .container{ display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand{ display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; font-size: 1.05rem; }
+.brand-mark{ width: 34px; height: 34px; }
+.brand small{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: .68rem; color: var(--text-faint); letter-spacing: .06em; }
+
+.nav-links{ display: flex; align-items: center; gap: 30px; }
+.nav-links a{ font-size: .92rem; color: var(--text-dim); position: relative; }
+.nav-links a:hover, .nav-links a.is-active{ color: var(--text); }
+.nav-links a.is-active::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--gradient);
+}
+
+.nav-right{ display: flex; align-items: center; gap: 14px; }
+
+.lang-switch{ position: relative; }
+.lang-btn{
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px;
+  font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-dim);
+  transition: border-color .2s ease, color .2s ease;
+}
+.lang-btn:hover{ border-color: var(--accent); color: var(--text); }
+.lang-menu{
+  position: absolute; top: calc(100% + 10px); inset-inline-end: 0; min-width: 168px; max-height: 320px; overflow-y: auto;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow); padding: 6px; display: none; flex-direction: column; gap: 2px;
+}
+.lang-switch.is-open .lang-menu{ display: flex; }
+.lang-menu a{
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 9px 10px; border-radius: 6px; font-size: .86rem; color: var(--text-dim); text-align: left;
+}
+.lang-menu a:hover{ background: var(--surface-strong); color: var(--text); }
+.lang-menu a[aria-current="true"]{ color: var(--accent); background: var(--surface); }
+.lang-menu .code{ font-family: var(--font-mono); font-size: .72rem; color: var(--text-faint); }
+
+.nav-toggle{ display: none; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; align-items: center; justify-content: center; }
+.nav-toggle span{ display: block; width: 18px; height: 2px; background: var(--text); position: relative; }
+.nav-toggle span::before, .nav-toggle span::after{ content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: var(--text); transition: transform .2s ease; }
+.nav-toggle span::before{ top: -6px; } .nav-toggle span::after{ top: 6px; }
+
+@media (max-width: 880px){
+  .nav-links{
+    position: fixed; inset: var(--nav-h) 0 0 0; flex-direction: column; align-items: stretch;
+    background: var(--bg-alt); padding: 28px 24px; gap: 4px; transform: translateY(-8px);
+    opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    border-top: 1px solid var(--border); overflow-y: auto;
+  }
+  .nav-links a{ padding: 14px 6px; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+  body.menu-open .nav-links{ opacity: 1; pointer-events: auto; transform: none; }
+  .nav-toggle{ display: flex; }
+}
+
+/* ---------- hero ---------- */
+.hero{ padding: 76px 0 60px; }
+.hero-grid{ display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+@media (max-width: 980px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+.hero-title{ font-size: clamp(2.3rem, 5.4vw, 3.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.hero-subtitle{ margin-top: 20px; font-size: 1.14rem; color: var(--text-dim); max-width: 560px; }
+.hero-actions{ display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+
+.stat-row{ display: grid; grid-template-columns: repeat(4, auto); gap: 32px; margin-top: 56px; }
+.stat-value{ font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.stat-label{ margin-top: 4px; font-size: .78rem; color: var(--text-faint); max-width: 120px; }
+@media (max-width: 620px){ .stat-row{ grid-template-columns: repeat(2, auto); row-gap: 24px; } }
+
+/* terminal card — stays LTR chrome (dots, prompt) even on RTL pages, like any code/terminal widget */
+.terminal{
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); overflow: hidden; direction: ltr; text-align: start;
+}
+.terminal-bar{ display: flex; align-items: center; gap: 8px; padding: 14px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.terminal-dot{ width: 11px; height: 11px; border-radius: 50%; }
+.terminal-dot:nth-child(1){ background: #ff6159; }
+.terminal-dot:nth-child(2){ background: #ffbd2e; }
+.terminal-dot:nth-child(3){ background: #27c93f; }
+.terminal-title{ margin-inline-start: 8px; font-family: var(--font-mono); font-size: .74rem; color: var(--text-faint); }
+.terminal-body{ padding: 22px 22px 26px; font-family: var(--font-mono); font-size: .9rem; min-height: 260px; }
+.term-line{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.term-prompt{ color: var(--accent); flex-shrink: 0; }
+.term-cmd{ color: var(--text); }
+.term-out{ color: var(--text-dim); padding-inline-start: 20px; margin-top: 4px; flex-basis: 100%; }
+.term-cursor{ display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+@keyframes blink{ 50%{ opacity: 0; } }
+
+/* ---------- about ---------- */
+.about-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+@media (max-width: 900px){ .about-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.about-copy p{ color: var(--text-dim); margin-bottom: 18px; font-size: 1.02rem; }
+.about-badges{ display: flex; flex-direction: column; gap: 14px; }
+.about-badge{
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--surface);
+}
+.about-badge .dot{ width: 10px; height: 10px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
+.about-badge span.label{ font-weight: 600; font-size: .95rem; }
+
+/* ---------- stack grid ---------- */
+.stack-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px){ .stack-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px){ .stack-grid{ grid-template-columns: 1fr; } }
+.stack-card{
+  padding: 26px 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.stack-card:hover{ transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-strong); }
+.stack-icon{
+  width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  background: var(--gradient-soft); border: 1px solid var(--border); margin-bottom: 16px;
+}
+.stack-icon svg{ width: 22px; height: 22px; stroke: var(--accent); }
+.stack-card h3{ font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
+.stack-card p{ color: var(--text-dim); font-size: .92rem; }
+
+/* ---------- team ---------- */
+.team-wrap{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .team-wrap{ grid-template-columns: 1fr; gap: 32px; } }
+.team-list{ display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.team-row{ display: flex; align-items: center; gap: 18px; padding: 18px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.team-row:last-child{ border-bottom: 0; }
+.team-count{ font-family: var(--font-mono); font-weight: 700; color: var(--accent); font-size: 1.05rem; width: 34px; flex-shrink: 0; }
+.team-note{ margin-top: 20px; color: var(--text-faint); font-size: .9rem; font-style: italic; }
+.team-orb{
+  aspect-ratio: 1; border-radius: 50%; position: relative;
+  background: radial-gradient(circle at 35% 30%, rgba(94,234,212,.22), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(139,92,246,.25), transparent 55%),
+              var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.team-orb .orb-number{ font-family: var(--font-mono); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 800; }
+.team-orb .orb-label{ position: absolute; bottom: 14%; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+
+/* ---------- clients ---------- */
+.clients-grid{ display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .clients-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.games-block{ margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+.games-block .section-subtitle{ margin-top: 16px; max-width: 640px; }
+.clients-stat .value{ font-family: var(--font-mono); font-weight: 800; font-size: clamp(3rem, 7vw, 4.5rem); line-height: 1; }
+.clients-stat .label{ margin-top: 12px; color: var(--text-dim); font-size: 1rem; max-width: 260px; }
+.sectors-label{ font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
+.sector-chips{ display: flex; flex-wrap: wrap; gap: 10px; }
+.sector-chip{
+  padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
+  font-family: var(--font-mono); font-size: .84rem; color: var(--text-dim); transition: border-color .2s ease, color .2s ease;
+}
+.sector-chip:hover{ border-color: var(--accent); color: var(--text); }
+a.sector-chip{ cursor: pointer; }
+a.sector-chip:hover{ background: var(--surface-strong); }
+
+/* featured project card (home) */
+.featured-project{
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
+}
+.featured-card{
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); margin-top: 18px;
+  transition: border-color .2s ease;
+}
+.featured-card:hover{ border-color: var(--accent); }
+/* the media column stretches to whatever height the text needs; it must not set the
+   row height itself, or a long translation gets clipped by the overflow:hidden above */
+.featured-card .featured-media{ margin: 0; position: relative; min-height: 260px; background: var(--bg-elevated); }
+.featured-card .featured-media img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px){
+  .featured-card{ grid-template-columns: 1fr; }
+  .featured-card .featured-media{ aspect-ratio: 16/9; min-height: 0; }
+}
+.featured-body{ padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+.featured-body h3{ font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; margin: 6px 0 0; }
+.featured-body p{ color: var(--text-dim); margin-top: 14px; font-size: .98rem; }
+.featured-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.featured-stats > div{ min-width: 0; }
+.featured-stats .value{ font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; line-height: 1; }
+.featured-stats .label{ color: var(--text-faint); font-size: .74rem; line-height: 1.35; margin-top: 6px; }
+@media (max-width: 420px){ .featured-stats{ grid-template-columns: 1fr 1fr; } }
+.featured-cta{
+  margin-top: 24px; align-self: flex-start; font-family: var(--font-mono); font-size: .84rem;
+  color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s ease;
+}
+.featured-card:hover .featured-cta{ border-bottom-color: var(--accent); }
+
+/* ---------- game case study pages ---------- */
+.game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+@media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
+.game-shot{
+  position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-elevated); margin: 0;
+}
+.game-shot.is-placeholder{
+  border-style: dashed; border-color: var(--border-strong);
+  background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
+              radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
+              var(--bg-elevated);
+  display: flex; align-items: flex-end; padding: 16px;
+}
+.game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-shot figcaption{
+  position: absolute; inset-inline: 0; bottom: 0; padding: 22px 14px 10px;
+  background: linear-gradient(to top, rgba(5,7,13,.85), transparent);
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text);
+}
+.game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+.store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+/* ---------- process ---------- */
+.process-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 980px){ .process-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .process-grid{ grid-template-columns: 1fr; } }
+.process-card{ padding: 26px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); position: relative; }
+.process-step{ font-family: var(--font-mono); color: var(--text-faint); font-size: .8rem; margin-bottom: 14px; }
+.process-card h3{ font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.process-card p{ color: var(--text-dim); font-size: .9rem; }
+.process-callout{
+  margin-top: 40px; padding: 22px 26px; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  display: flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: .92rem; color: var(--text);
+  background: var(--gradient-soft);
+}
+
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+.form-sent-title{ font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); margin-bottom: 8px; }
+
+/* ---------- location ---------- */
+.location-box{
+  border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.14), transparent 60%), var(--bg-elevated);
+}
+.location-badge{
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .78rem;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--danger); margin-top: 22px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.location-badge::before{ content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+.location-box p{ color: var(--text-dim); max-width: 620px; margin: 0 auto; font-size: 1.02rem; }
+
+/* ---------- footer ---------- */
+.footer{ border-top: 1px solid var(--border); padding: 48px 0; }
+.footer .container{ display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand{ display: flex; align-items: center; gap: 12px; }
+.footer-tagline{ font-size: .82rem; color: var(--text-faint); }
+.footer-links{ display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a{ font-size: .86rem; color: var(--text-dim); }
+.footer-links a:hover{ color: var(--accent); }
+.footer-bottom{ margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- 404 ---------- */
+.notfound{ min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+.notfound-code{ font-family: var(--font-mono); font-size: clamp(4rem, 14vw, 8rem); font-weight: 800; line-height: 1; }
+.notfound p{ margin-top: 18px; color: var(--text-dim); font-size: 1.05rem; }
+.notfound .btn{ margin-top: 30px; }
+
+/* ---------- misc ---------- */
+.skip-link{
+  position: absolute; inset-inline-start: -9999px; top: 0; background: var(--accent); color: #04121a; padding: 12px 18px;
+  border-end-end-radius: 8px; z-index: 200; font-weight: 600;
+}
+.skip-link:focus{ inset-inline-start: 0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small>Software de élite. Bajo invitación.</small></span>
+    </a>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">ES</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/poder-y-nacion.html" aria-current="true">Español <span class="code">ES</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/en/poder-y-nacion.html">English <span class="code">EN</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/fr/poder-y-nacion.html">Français <span class="code">FR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/pt/poder-y-nacion.html">Português <span class="code">PT</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ar/poder-y-nacion.html">العربية <span class="code">AR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/zh/poder-y-nacion.html">中文 <span class="code">ZH</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ja/poder-y-nacion.html">日本語 <span class="code">JA</span></a>
+        </div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container" style="max-width:860px">
+      <div class="section-head reveal">
+        <p class="eyebrow">Proyecto propio · En desarrollo</p>
+        <h1 class="section-title">Poder y Nación</h1>
+        <p class="section-subtitle">Un simulador político y económico de España por turnos mensuales, construido desde cero. Tampoco es un encargo — es nuestro, y estas capturas son del juego funcionando de verdad.</p>
+      </div>
+
+      <div class="stat-row reveal" style="margin-top:0; margin-bottom:56px">
+        <div>
+          <div class="stat-value">19 + 19</div>
+          <div class="stat-label">comunidades autónomas y ministerios, cada uno simulado por dentro</div>
+        </div>
+        <div>
+          <div class="stat-value">460</div>
+          <div class="stat-label">pruebas automáticas que pasa el núcleo</div>
+        </div>
+        <div>
+          <div class="stat-value">8.112</div>
+          <div class="stat-label">municipios en el mapa, con desglose hasta el barrio</div>
+        </div>
+        <div>
+          <div class="stat-value">Sin anunciar</div>
+          <div class="stat-label">fecha de lanzamiento</div>
+        </div>
+      </div>
+
+      <div class="about-copy reveal">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Qué es Poder y Nación</h2>
+        <p>Poder y Nación pone al jugador al mando de España como Presidente del Gobierno —o como líder de la oposición aspirando a serlo—, en un simulador político-económico por turnos mensuales. No es un juego de estrategia con ropaje político: modela cómo funciona de verdad un Estado por dentro, sus ministerios, su Parlamento, sus comunidades autónomas, su relación con Europa, y las consecuencias reales, con retraso real, de cada decisión que toma quien gobierna.</p>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem">Un solo país, simulado a fondo</h2>
+        <p style="margin-top:14px">Los simuladores del género reparten su complejidad entre decenas de países y, por fuerza, simplifican cada uno con un modelo genérico. Nuestra apuesta es la contraria: coger un solo país y simularlo con un nivel de detalle que no hemos encontrado en ningún otro juego del género. Las 19 comunidades autónomas están desde el primer día del proyecto — nunca hubo una versión reducida «para empezar». Cada una tiene su parlamento con la composición real de escaños (Cataluña 135, Andalucía 109…), su gobierno regional presidido por un barón con nombre propio, su ambición y su afinidad —o su hostilidad— hacia Madrid, y su propio ciclo de investidura real: primera vuelta por mayoría absoluta, segunda por mayoría simple, o gobierno en minoría si no hay acuerdo.</p>
+        <p style="margin-top:18px">El sistema electoral reproduce el método D'Hondt provincia a provincia, y el reparto de los 350 escaños se recalcula antes de cada elección según cómo haya cambiado la población. Eso hace aparecer solos fenómenos reales del sistema español, como que un partido pequeño y territorialmente concentrado saque más escaños con menos votos que uno grande y disperso. La desproporcionalidad que produce el modelo, medida con el índice de Gallagher, cae dentro del rango real de las elecciones españolas.</p>
+      </div>
+
+      <p class="sectors-label reveal">Capturas</p>
+      <div class="game-shot-grid reveal">
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-pantalla-principal.webp" width="1152" height="648" alt="La pantalla principal: indicadores, mapa y bandeja" loading="eager" decoding="async">
+          <figcaption>La pantalla principal: indicadores, mapa y bandeja</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-mapa-pais-entero.webp" width="1152" height="648" alt="El país entero, comunidad a comunidad" loading="lazy" decoding="async">
+          <figcaption>El país entero, comunidad a comunidad</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-mapa-red-nacional.webp" width="1152" height="648" alt="La red real de autovías y alta velocidad" loading="lazy" decoding="async">
+          <figcaption>La red real de autovías y alta velocidad</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-mapa-zoom-madrid.webp" width="1152" height="648" alt="Zoom sobre Madrid, con el relieve real" loading="lazy" decoding="async">
+          <figcaption>Zoom sobre Madrid, con el relieve real</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-congreso-votacion.webp" width="1152" height="648" alt="El Congreso votando los Presupuestos" loading="lazy" decoding="async">
+          <figcaption>El Congreso votando los Presupuestos</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-tramitacion-leyes.webp" width="1152" height="648" alt="La tramitación real de una ley" loading="lazy" decoding="async">
+          <figcaption>La tramitación real de una ley</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-hemeroteca-boe.webp" width="1152" height="648" alt="La hemeroteca de boletines oficiales" loading="lazy" decoding="async">
+          <figcaption>La hemeroteca de boletines oficiales</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-sala-hacienda.webp" width="1152" height="648" alt="Hacienda por dentro, con su fraude fiscal" loading="lazy" decoding="async">
+          <figcaption>Hacienda por dentro, con su fraude fiscal</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="assets/img/games/poder-y-nacion/poder-y-nacion-distritos-barrios.webp" width="1152" height="648" alt="Madrid barrio a barrio, con su renta real" loading="lazy" decoding="async">
+          <figcaption>Madrid barrio a barrio, con su renta real</figcaption>
+        </figure>
+      </div>
+      <p class="game-shots-note reveal">Capturas del juego en desarrollo (v0.5.0). Los partidos y los personajes que aparecen son ficticios. El arte definitivo no está cerrado: lo que se ve aquí puede cambiar.</p>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Gobernar de verdad, no solo ver resultados</h2>
+        <p>Aquí está el diferencial más profundo. El juego no se limita a calcular cómo evoluciona el país: modela el proceso real de gobernar. El motor legislativo es real — las leyes recorren sus fases (registro, comisión, pleno, Senado, publicación oficial) y solo entran en vigor si reúnen la mayoría que exige su rango. El Senado tiene su propia composición mayoritariamente provincial, con 270 escaños y el primer partido sobrerrepresentado, y su veto real del artículo 90, que el Congreso solo puede levantar con los tiempos y mayorías que marca la Constitución. Cada ley aprobada genera su boletín oficial ficticio —BOE estatal o el autonómico que corresponda—, navegable en una hemeroteca propia como registro documental permanente de la partida.</p>
+        <p style="margin-top:18px">El Consejo de Ministros funciona de verdad: las decisiones ejecutivas no se aplican al instante, se llevan al orden del día y solo se convierten en decreto cuando el Consejo las aprueba —el martes ordinario, o en un Consejo extraordinario— y solo si el Gobierno puede costearlas con su capital político. Un decreto decidido un jueves no llega al boletín hasta el martes siguiente. La negociación tiene memoria: pactar con un grupo mejora su disposición, pero incumplir lo prometido sube su precio para el resto de la partida. Y gobernar en minoría es gobernar en minoría de verdad — un socio de coalición puede amenazar con romper a mitad de legislatura, y ceder o plantar cara cuesta caro en las dos direcciones, hasta el punto de poder hacer caer al Gobierno.</p>
+        <p style="margin-top:18px">Nada de esto da resultados al instante, que es justo el punto: ninguna reforma estructural importante los da. Un plan contra el fraude fiscal no sube la recaudación esa misma semana; tarda meses, como con la Agencia Tributaria real. Dejar que el déficit se descontrole no pasa factura de inmediato, hasta que un día la Unión Europea abre un procedimiento por déficit excesivo y la prima de riesgo se dispara. La consecuencia llega, pero llega tarde — lo que obliga a gobernar pensando en el medio plazo y no solo en apagar el fuego del momento.</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">El mapa es el tablero</h2>
+        <p>Toda la partida transcurre sobre un mapa real de España: las siluetas oficiales de las 19 comunidades, la red de carreteras y ferrocarril con todas sus curvas —no líneas rectas simplificadas—, el relieve auténtico de las montañas recortado a la silueta del país, y 13 capas de datos conmutables (tensión territorial, paro, PIB per cápita, sanidad, educación, espera médica, precio de la vivienda, quién gobierna…) que lo convierten en un termómetro constante del país entero. El mapa se carga por secciones según el zoom, como cualquier mapa digital moderno, y baja hasta el nivel más fino: las 47 grandes ciudades tienen su pleno municipal propio repartido por D'Hondt según la ley electoral, y las mayores se desglosan en sus distritos —Madrid en 21, Barcelona en 10— cada uno con su renta relativa real, de la que salen la seguridad y la tensión vecinal del barrio.</p>
+      </div>
+
+      <p class="sectors-label reveal">Lo que ya es real</p>
+      <div class="about-badges reveal" style="margin-top:14px; margin-bottom:48px">
+        <div class="about-badge"><span class="dot"></span><span class="label">Núcleo de simulación que pasa 460 pruebas automáticas y corre sin interfaz gráfica: veinte años de partida se simulan en segundos para calibrarlo</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Los 19 ministerios con su propia sala de control, sus indicadores internos y sus decisiones ejecutivas — no una cifra plana que sube y baja</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Motor legislativo completo con las dos cámaras, el veto del Senado, el Consejo de Ministros y la hemeroteca de boletines oficiales</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Las 19 comunidades con parlamento, investidura, presupuesto y barón propios, más 97 ayuntamientos y el desglose por distritos</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">137 políticas y 114 eventos que pueden torcer una legislatura, sobre 684 segmentos de opinión pública con su propia sensibilidad</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Organismos del Estado capturables —INE, CIS, RTVE y CNI— con la ventaja que dan a corto plazo y el riesgo de escándalo que acumulan</span></div>
+      </div>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem">Neutral por diseño, no por discurso</h2>
+        <p style="margin-top:14px">Los partidos que aparecen en el juego son ficticios: el sistema es realista, pero ningún nombre identifica a una formación real. Y ninguna ideología está premiada ni castigada por diseño — el juego está construido matemáticamente para que el centro de la opinión pública se ancle siempre al centro de gravedad del propio sistema de partidos en juego, nunca fijado de antemano por quien lo diseña. Cada bloque de contenido nuevo se verifica contra un balance de veinte años que comprueba que ningún reparto ideológico se desvía. El juego enseña las consecuencias de cada decisión; no dicta cuál es la correcta.</p>
+      </div>
+
+      <div class="about-copy reveal" style="margin-bottom:40px">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Cómo está construido</h2>
+        <p>El juego se construye enteramente en Godot, con un núcleo de simulación que corre sin interfaz gráfica —lo que permite probarlo y calibrarlo con partidas de veinte años simuladas en segundos— y una interfaz jugable completa construida por código, sin editor visual. Todo el contenido del juego (políticas, eventos, parámetros de calibración) vive en datos externos, nunca en el código, así que ampliarlo no obliga a tocar el motor.</p>
+        <p style="margin-top:18px">La cartografía usa datos abiertos, con la atribución que exigen sus licencias: la red de carreteras y ferrocarril y el callejero proceden de OpenStreetMap y sus colaboradores (licencia ODbL); el relieve, de los datos de elevación Terrarium (AWS Open Data); y las siluetas administrativas oficiales, del Instituto Geográfico Nacional a través de geoBoundaries (CC BY 4.0).</p>
+      </div>
+
+      <div class="process-callout reveal" style="margin-bottom:48px">
+        <span>Es uno de los pocos proyectos propios de los que contamos este nivel de detalle — y el primero del que ya podemos enseñar capturas. El resto siguen, por ahora, estrictamente secretos.</span>
+      </div>
+
+      <a class="btn btn-primary reveal" href="index.html">← Volver a Gabriel Díaz Bernal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline">Software de élite. Bajo invitación.</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="index.html#about">Sobre mí</a>
+      <a href="index.html#stack">Stack</a>
+      <a href="index.html#clients">Clientes</a>
+      <a href="index.html#contact">Contacto</a>
+      <a href="privacy.html">Privacidad</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span>Todos los derechos reservados.</span></span>
+    <span>Sitio construido con precisión de ingeniería.</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   Gabriel Díaz Bernal — interactions
+   Nav, language switcher, scroll reveal, terminal typewriter,
+   background canvas. Vanilla JS, no dependencies.
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initNav();
+    initLangSwitch();
+    initReveal();
+    initActiveLink();
+    initTerminal();
+    initBackgroundFx();
+    initContactForm();
+    initYear();
+  });
+
+  /* ---------- mobile nav ---------- */
+  function initNav() {
+    var toggle = document.querySelector(".nav-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      var open = document.body.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    var links = document.querySelectorAll(".nav-links a");
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", function () {
+        document.body.classList.remove("menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    }
+  }
+
+  /* ---------- language switcher ----------
+     Each language lives at its own crawlable URL (/, /en/, /fr/...);
+     the menu items are plain <a> links, so switching is just navigation.
+     This JS only opens/closes the dropdown. */
+  function initLangSwitch() {
+    var switcher = document.querySelector(".lang-switch");
+    if (!switcher) return;
+    var btn = switcher.querySelector(".lang-btn");
+    var menu = switcher.querySelector(".lang-menu");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      switcher.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", switcher.classList.contains("is-open") ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!switcher.contains(e.target)) switcher.classList.remove("is-open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") switcher.classList.remove("is-open");
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  function initReveal() {
+    var items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("is-visible"); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    items.forEach(function (el) { obs.observe(el); });
+  }
+
+  /* ---------- active nav link on scroll ---------- */
+  function initActiveLink() {
+    var links = document.querySelectorAll('.nav-links a[href^="#"]');
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var section = document.getElementById(id);
+      if (section) map[id] = a;
+    });
+    var ids = Object.keys(map);
+    if (!ids.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = map[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove("is-active"); });
+          link.classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+
+    ids.forEach(function (id) { obs.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- terminal typewriter ---------- */
+  var terminalTimer = null;
+
+  function initTerminal() {
+    var body = document.querySelector(".terminal-body");
+    if (!body) return;
+    runTerminal(body);
+  }
+
+  function runTerminal(body) {
+    if (terminalTimer) { clearTimeout(terminalTimer); terminalTimer = null; }
+    var lines = window.GDB_TERMINAL_LINES;
+    if (!lines || !lines.length) return;
+
+    body.innerHTML = "";
+
+    if (reduceMotion) {
+      lines.forEach(function (l) {
+        body.appendChild(buildLine(l.cmd, l.out, true));
+      });
+      return;
+    }
+
+    var lineIndex = 0;
+    function nextLine() {
+      if (lineIndex >= lines.length) return;
+      var l = lines[lineIndex];
+      var row = buildLine("", "", false);
+      body.appendChild(row);
+      var cmdEl = row.querySelector(".term-cmd");
+      var cursor = row.querySelector(".term-cursor");
+      typeText(cmdEl, l.cmd, cursor, function () {
+        var outEl = row.querySelector(".term-out");
+        outEl.textContent = l.out;
+        outEl.style.display = "block";
+        cursor.remove();
+        lineIndex++;
+        terminalTimer = setTimeout(nextLine, 420);
+      });
+    }
+    nextLine();
+  }
+
+  function buildLine(cmd, out, immediate) {
+    var row = document.createElement("div");
+    row.className = "term-line";
+    var prompt = document.createElement("span");
+    prompt.className = "term-prompt";
+    prompt.textContent = "$";
+    var cmdEl = document.createElement("span");
+    cmdEl.className = "term-cmd";
+    var outEl = document.createElement("span");
+    outEl.className = "term-out";
+
+    if (immediate) {
+      cmdEl.textContent = cmd;
+      outEl.textContent = out;
+      row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(outEl);
+      return row;
+    }
+
+    var cursor = document.createElement("span");
+    cursor.className = "term-cursor";
+    outEl.style.display = "none";
+    row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(cursor); row.appendChild(outEl);
+    return row;
+  }
+
+  function typeText(el, text, cursor, done) {
+    var i = 0;
+    (function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        terminalTimer = setTimeout(step, 26);
+      } else {
+        done();
+      }
+    })();
+  }
+
+  /* ---------- background canvas: subtle drifting node network ---------- */
+  function initBackgroundFx() {
+    var canvas = document.getElementById("fx-canvas");
+    if (!canvas || reduceMotion) return;
+    var ctx = canvas.getContext("2d");
+    var w, h, nodes = [];
+    var NODE_COUNT = Math.min(46, Math.floor((window.innerWidth * window.innerHeight) / 34000));
+    var LINK_DIST = 140;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeNodes() {
+      nodes = [];
+      for (var i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      ctx.fillStyle = "rgba(94,234,212,0.55)";
+      for (var a = 0; a < nodes.length; a++) {
+        for (var b = a + 1; b < nodes.length; b++) {
+          var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            ctx.strokeStyle = "rgba(139,92,246," + (0.12 * (1 - dist / LINK_DIST)) + ")";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[a].x, nodes[a].y);
+            ctx.lineTo(nodes[b].x, nodes[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (var c = 0; c < nodes.length; c++) {
+        ctx.beginPath();
+        ctx.arc(nodes[c].x, nodes[c].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    makeNodes();
+    requestAnimationFrame(tick);
+    window.addEventListener("resize", function () {
+      resize();
+      makeNodes();
+    });
+  }
+
+  /* ---------- contact form ----------
+     Static site, no backend, and nowhere this data is sent: the
+     "invitation code" field is never transmitted or stored anywhere,
+     by this site or any third party. Submitting it just swaps the
+     visible UI state from the field to a confirmation message —
+     nothing leaves the browser, no navigation, no popup. */
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    var fields = document.getElementById("contact-form-fields");
+    var sent = document.getElementById("contact-form-sent");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (fields) fields.hidden = true;
+      if (sent) sent.hidden = false;
+    });
+  }
+
+  /* ---------- footer year ---------- */
+  function initYear() {
+    var el = document.getElementById("year");
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
+})();
+</script>
+</body>
+</html>
