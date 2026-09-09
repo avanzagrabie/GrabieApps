@@ -18,6 +18,7 @@
     initBackgroundFx();
     initContactForm();
     initYear();
+    initLightbox();
   });
 
   /* ---------- mobile nav ---------- */
@@ -277,5 +278,118 @@
   function initYear() {
     var el = document.getElementById("year");
     if (el) el.textContent = String(new Date().getFullYear());
+  }
+
+  /* ---------- gallery lightbox ----------
+     Capturas ampliables en las galerías de las páginas de proyecto.
+     Se construye entero desde JS para que ninguna plantilla tenga que
+     cambiar y funcione en todas las galerías existentes a la vez. Las
+     etiquetas van aquí y no en i18n.js porque el diccionario no viaja a
+     las páginas generadas (el texto se hornea en el build): son tres
+     cadenas de interfaz, se resuelven por el lang del <html>. */
+  var LB_LABELS = {
+    es: { close: "Cerrar", prev: "Anterior", next: "Siguiente", of: "de" },
+    en: { close: "Close", prev: "Previous", next: "Next", of: "of" },
+    fr: { close: "Fermer", prev: "Précédent", next: "Suivant", of: "sur" },
+    pt: { close: "Fechar", prev: "Anterior", next: "Seguinte", of: "de" },
+    ar: { close: "إغلاق", prev: "السابق", next: "التالي", of: "من" },
+    zh: { close: "关闭", prev: "上一张", next: "下一张", of: "/" },
+    ja: { close: "閉じる", prev: "前へ", next: "次へ", of: "/" }
+  };
+
+  function initLightbox() {
+    var figures = [].slice.call(document.querySelectorAll(".game-shot-grid .game-shot"));
+    var shots = figures.filter(function (f) { return f.querySelector("img"); });
+    if (!shots.length) return;
+
+    var t = LB_LABELS[(document.documentElement.lang || "es").slice(0, 2)] || LB_LABELS.es;
+    var index = 0;
+    var lastFocused = null;
+
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.hidden = true;
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="' + t.close + '">&times;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-prev" aria-label="' + t.prev + '">&#8249;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-next" aria-label="' + t.next + '">&#8250;</button>' +
+      '<figure class="lightbox-figure">' +
+      '<img alt="">' +
+      '<figcaption><span class="lightbox-caption"></span><span class="lightbox-count"></span></figcaption>' +
+      "</figure>";
+    document.body.appendChild(overlay);
+
+    var lbImg = overlay.querySelector("img");
+    var lbCaption = overlay.querySelector(".lightbox-caption");
+    var lbCount = overlay.querySelector(".lightbox-count");
+    var btnClose = overlay.querySelector(".lightbox-close");
+    var btnPrev = overlay.querySelector(".lightbox-prev");
+    var btnNext = overlay.querySelector(".lightbox-next");
+    // A single image needs no prev/next chrome.
+    if (shots.length < 2) { btnPrev.hidden = true; btnNext.hidden = true; }
+
+    function show(i) {
+      index = (i + shots.length) % shots.length;
+      var img = shots[index].querySelector("img");
+      var cap = shots[index].querySelector("figcaption");
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || "";
+      lbCaption.textContent = cap ? cap.textContent : "";
+      lbCount.textContent = shots.length > 1 ? String(index + 1) + " " + t.of + " " + String(shots.length) : "";
+      overlay.setAttribute("aria-label", lbImg.alt || lbCaption.textContent);
+    }
+
+    function open(i) {
+      lastFocused = document.activeElement;
+      show(i);
+      overlay.hidden = false;
+      document.body.classList.add("lightbox-open");
+      btnClose.focus();
+    }
+
+    function close() {
+      overlay.hidden = true;
+      document.body.classList.remove("lightbox-open");
+      lbImg.removeAttribute("src");
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    shots.forEach(function (fig, i) {
+      fig.classList.add("is-zoomable");
+      fig.tabIndex = 0;
+      fig.setAttribute("role", "button");
+      fig.addEventListener("click", function () { open(i); });
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(i); }
+      });
+    });
+
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", function () { show(index - 1); });
+    btnNext.addEventListener("click", function () { show(index + 1); });
+    // Clicking the backdrop closes; clicking the image or a control does not.
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+
+    document.addEventListener("keydown", function (e) {
+      if (overlay.hidden) return;
+      if (e.key === "Escape") { close(); return; }
+      if (shots.length < 2) return;
+      // In RTL the arrow that points at the previous thumbnail is the right one.
+      var rtl = document.documentElement.dir === "rtl";
+      if (e.key === "ArrowLeft") show(index + (rtl ? 1 : -1));
+      else if (e.key === "ArrowRight") show(index + (rtl ? -1 : 1));
+    });
+
+    // Keep focus inside the dialog while it is open.
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusables = [btnClose, btnPrev, btnNext].filter(function (b) { return !b.hidden; });
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   }
 })();

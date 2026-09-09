@@ -402,6 +402,50 @@ a.sector-chip:hover{ background: var(--surface-strong); }
   font-family: var(--font-mono); font-size: .76rem; color: var(--text);
 }
 .game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+
+/* zoomable thumbnails + lightbox (built by initLightbox in main.js) */
+.game-shot.is-zoomable{ cursor: zoom-in; transition: border-color .2s ease, transform .2s ease; }
+.game-shot.is-zoomable:hover{ border-color: var(--accent); }
+.game-shot.is-zoomable:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference){
+  .game-shot.is-zoomable:hover{ transform: translateY(-2px); }
+}
+body.lightbox-open{ overflow: hidden; }
+.lightbox{
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  padding: 56px 24px; background: rgba(3,5,10,.94);
+}
+.lightbox[hidden]{ display: none; }
+.lightbox-figure{ margin: 0; max-width: min(1200px, 100%); max-height: 100%; display: flex; flex-direction: column; gap: 12px; }
+.lightbox-figure img{
+  max-width: 100%; max-height: calc(100vh - 150px); width: auto; height: auto;
+  object-fit: contain; display: block; margin: 0 auto;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--bg-elevated);
+}
+.lightbox-figure figcaption{
+  display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: center; align-items: baseline;
+  font-family: var(--font-mono); font-size: .82rem; color: var(--text-dim); text-align: center;
+}
+.lightbox-count{ color: var(--text-faint); }
+.lightbox-close, .lightbox-nav{
+  position: absolute; border: 1px solid var(--border-strong); border-radius: 999px;
+  background: var(--surface); color: var(--text); cursor: pointer; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s ease, background .2s ease;
+}
+.lightbox-close:hover, .lightbox-nav:hover{ border-color: var(--accent); background: var(--surface-strong); }
+.lightbox-close:focus-visible, .lightbox-nav:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+.lightbox-close{ top: 14px; inset-inline-end: 16px; width: 40px; height: 40px; font-size: 1.5rem; }
+.lightbox-nav{ top: 50%; transform: translateY(-50%); width: 44px; height: 44px; font-size: 1.8rem; }
+.lightbox-prev{ inset-inline-start: 14px; }
+.lightbox-next{ inset-inline-end: 14px; }
+[dir="rtl"] .lightbox-prev, [dir="rtl"] .lightbox-next{ transform: translateY(-50%) scaleX(-1); }
+@media (max-width: 620px){
+  .lightbox{ padding: 64px 12px 24px; }
+  .lightbox-nav{ top: auto; bottom: 14px; transform: none; }
+  [dir="rtl"] .lightbox-prev, [dir="rtl"] .lightbox-next{ transform: scaleX(-1); }
+  .lightbox-figure img{ max-height: calc(100vh - 210px); }
+}
 .store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
 /* ---------- process ---------- */
@@ -737,6 +781,13 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <p class="section-subtitle">Programmation moteur — physique, performance, systèmes de jeu — jamais de design ni d'art, et presque jamais crédités publiquement. Nous développons aussi nos propres jeux, avec plusieurs autres en phase de test, strictement confidentiels pour l'instant. Ce ne sont pas des commandes — ils seront entièrement à nous, et ils vont changer les règles du marché.</p>
         <p class="section-subtitle">Ce sont les trois seuls que nous pouvons nommer. Nous collaborons avec plusieurs autres studios sous accord de confidentialité, et nous développons aussi nos propres jeux pour les vendre à des tiers — certains sous des labels qui ne portent pas notre nom. Quand ça marche, ils finissent par être vendus à de grands fonds d'investissement.</p>
       </div>
+      <div class="games-block reveal">
+        <p class="sectors-label">Nos propres applications</p>
+        <div class="sector-chips">
+          <a class="sector-chip" href="perfect-studio.html">Perfect Studio</a>
+        </div>
+        <p class="section-subtitle">Perfect Studio n'est pas un jeu : c'est une application multiplateforme qui génère des chansons complètes — paroles, voix et instrumentation — à partir d'une idée. Elle est également à nous, également en développement, et sa page explique où elle en est et comment elle est construite.</p>
+      </div>
       <div class="featured-project reveal">
         <p class="sectors-label">À la une · Projet interne</p>
         <a class="featured-card" href="poder-y-nacion.html">
@@ -911,6 +962,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
     initBackgroundFx();
     initContactForm();
     initYear();
+    initLightbox();
   });
 
   /* ---------- mobile nav ---------- */
@@ -1170,6 +1222,119 @@ a.sector-chip:hover{ background: var(--surface-strong); }
   function initYear() {
     var el = document.getElementById("year");
     if (el) el.textContent = String(new Date().getFullYear());
+  }
+
+  /* ---------- gallery lightbox ----------
+     Capturas ampliables en las galerías de las páginas de proyecto.
+     Se construye entero desde JS para que ninguna plantilla tenga que
+     cambiar y funcione en todas las galerías existentes a la vez. Las
+     etiquetas van aquí y no en i18n.js porque el diccionario no viaja a
+     las páginas generadas (el texto se hornea en el build): son tres
+     cadenas de interfaz, se resuelven por el lang del <html>. */
+  var LB_LABELS = {
+    es: { close: "Cerrar", prev: "Anterior", next: "Siguiente", of: "de" },
+    en: { close: "Close", prev: "Previous", next: "Next", of: "of" },
+    fr: { close: "Fermer", prev: "Précédent", next: "Suivant", of: "sur" },
+    pt: { close: "Fechar", prev: "Anterior", next: "Seguinte", of: "de" },
+    ar: { close: "إغلاق", prev: "السابق", next: "التالي", of: "من" },
+    zh: { close: "关闭", prev: "上一张", next: "下一张", of: "/" },
+    ja: { close: "閉じる", prev: "前へ", next: "次へ", of: "/" }
+  };
+
+  function initLightbox() {
+    var figures = [].slice.call(document.querySelectorAll(".game-shot-grid .game-shot"));
+    var shots = figures.filter(function (f) { return f.querySelector("img"); });
+    if (!shots.length) return;
+
+    var t = LB_LABELS[(document.documentElement.lang || "es").slice(0, 2)] || LB_LABELS.es;
+    var index = 0;
+    var lastFocused = null;
+
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.hidden = true;
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="' + t.close + '">&times;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-prev" aria-label="' + t.prev + '">&#8249;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-next" aria-label="' + t.next + '">&#8250;</button>' +
+      '<figure class="lightbox-figure">' +
+      '<img alt="">' +
+      '<figcaption><span class="lightbox-caption"></span><span class="lightbox-count"></span></figcaption>' +
+      "</figure>";
+    document.body.appendChild(overlay);
+
+    var lbImg = overlay.querySelector("img");
+    var lbCaption = overlay.querySelector(".lightbox-caption");
+    var lbCount = overlay.querySelector(".lightbox-count");
+    var btnClose = overlay.querySelector(".lightbox-close");
+    var btnPrev = overlay.querySelector(".lightbox-prev");
+    var btnNext = overlay.querySelector(".lightbox-next");
+    // A single image needs no prev/next chrome.
+    if (shots.length < 2) { btnPrev.hidden = true; btnNext.hidden = true; }
+
+    function show(i) {
+      index = (i + shots.length) % shots.length;
+      var img = shots[index].querySelector("img");
+      var cap = shots[index].querySelector("figcaption");
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || "";
+      lbCaption.textContent = cap ? cap.textContent : "";
+      lbCount.textContent = shots.length > 1 ? String(index + 1) + " " + t.of + " " + String(shots.length) : "";
+      overlay.setAttribute("aria-label", lbImg.alt || lbCaption.textContent);
+    }
+
+    function open(i) {
+      lastFocused = document.activeElement;
+      show(i);
+      overlay.hidden = false;
+      document.body.classList.add("lightbox-open");
+      btnClose.focus();
+    }
+
+    function close() {
+      overlay.hidden = true;
+      document.body.classList.remove("lightbox-open");
+      lbImg.removeAttribute("src");
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    shots.forEach(function (fig, i) {
+      fig.classList.add("is-zoomable");
+      fig.tabIndex = 0;
+      fig.setAttribute("role", "button");
+      fig.addEventListener("click", function () { open(i); });
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(i); }
+      });
+    });
+
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", function () { show(index - 1); });
+    btnNext.addEventListener("click", function () { show(index + 1); });
+    // Clicking the backdrop closes; clicking the image or a control does not.
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+
+    document.addEventListener("keydown", function (e) {
+      if (overlay.hidden) return;
+      if (e.key === "Escape") { close(); return; }
+      if (shots.length < 2) return;
+      // In RTL the arrow that points at the previous thumbnail is the right one.
+      var rtl = document.documentElement.dir === "rtl";
+      if (e.key === "ArrowLeft") show(index + (rtl ? 1 : -1));
+      else if (e.key === "ArrowRight") show(index + (rtl ? -1 : 1));
+    });
+
+    // Keep focus inside the dialog while it is open.
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusables = [btnClose, btnPrev, btnNext].filter(function (b) { return !b.hidden; });
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   }
 })();
 </script>

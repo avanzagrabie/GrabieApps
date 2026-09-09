@@ -400,6 +400,50 @@ a.sector-chip:hover{ background: var(--surface-strong); }
   font-family: var(--font-mono); font-size: .76rem; color: var(--text);
 }
 .game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+
+/* zoomable thumbnails + lightbox (built by initLightbox in main.js) */
+.game-shot.is-zoomable{ cursor: zoom-in; transition: border-color .2s ease, transform .2s ease; }
+.game-shot.is-zoomable:hover{ border-color: var(--accent); }
+.game-shot.is-zoomable:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference){
+  .game-shot.is-zoomable:hover{ transform: translateY(-2px); }
+}
+body.lightbox-open{ overflow: hidden; }
+.lightbox{
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  padding: 56px 24px; background: rgba(3,5,10,.94);
+}
+.lightbox[hidden]{ display: none; }
+.lightbox-figure{ margin: 0; max-width: min(1200px, 100%); max-height: 100%; display: flex; flex-direction: column; gap: 12px; }
+.lightbox-figure img{
+  max-width: 100%; max-height: calc(100vh - 150px); width: auto; height: auto;
+  object-fit: contain; display: block; margin: 0 auto;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--bg-elevated);
+}
+.lightbox-figure figcaption{
+  display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: center; align-items: baseline;
+  font-family: var(--font-mono); font-size: .82rem; color: var(--text-dim); text-align: center;
+}
+.lightbox-count{ color: var(--text-faint); }
+.lightbox-close, .lightbox-nav{
+  position: absolute; border: 1px solid var(--border-strong); border-radius: 999px;
+  background: var(--surface); color: var(--text); cursor: pointer; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s ease, background .2s ease;
+}
+.lightbox-close:hover, .lightbox-nav:hover{ border-color: var(--accent); background: var(--surface-strong); }
+.lightbox-close:focus-visible, .lightbox-nav:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+.lightbox-close{ top: 14px; inset-inline-end: 16px; width: 40px; height: 40px; font-size: 1.5rem; }
+.lightbox-nav{ top: 50%; transform: translateY(-50%); width: 44px; height: 44px; font-size: 1.8rem; }
+.lightbox-prev{ inset-inline-start: 14px; }
+.lightbox-next{ inset-inline-end: 14px; }
+[dir="rtl"] .lightbox-prev, [dir="rtl"] .lightbox-next{ transform: translateY(-50%) scaleX(-1); }
+@media (max-width: 620px){
+  .lightbox{ padding: 64px 12px 24px; }
+  .lightbox-nav{ top: auto; bottom: 14px; transform: none; }
+  [dir="rtl"] .lightbox-prev, [dir="rtl"] .lightbox-next{ transform: scaleX(-1); }
+  .lightbox-figure img{ max-height: calc(100vh - 210px); }
+}
 .store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
 /* ---------- process ---------- */
@@ -519,8 +563,8 @@ a.sector-chip:hover{ background: var(--surface-strong); }
           <div class="stat-label">platforms: Android, iOS, and Web, one codebase</div>
         </div>
         <div>
-          <div class="stat-value">Phase 3/8</div>
-          <div class="stat-label">music generation, in progress</div>
+          <div class="stat-value">Phase 4/8</div>
+          <div class="stat-label">monetisation, in progress</div>
         </div>
         <div>
           <div class="stat-value">12</div>
@@ -545,9 +589,9 @@ a.sector-chip:hover{ background: var(--surface-strong); }
 
       <div class="about-copy reveal" style="margin:48px 0">
         <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">Where it stands</h2>
-        <p>The project is moving through 8 planned phases. The first two — architecture and backend foundations — are closed and verified end to end with real data, not just deployed: a real user signs up, their account provisions itself, they request a song, the system checks their quota and ad credits, and the job actually reaches their region's queue. The app already builds and runs on Android and in the browser (iOS needs a machine we don't have yet), with the 12 launch languages already translated — pending native-speaker review for the ten that aren't Spanish or English.</p>
-        <p style="margin-top:18px">Right now we're in the music-generation phase: the lyrics half of the pipeline already works end to end against the real text model, producing complete, coherent lyrics. The music half doesn't yet — the model we use for that is still on our provider's access waitlist, so that part stays blocked until it's activated; there's nothing more we can do on our end to speed that up. In the meantime, we already built and verified the player — with a visual waveform and tap-to-seek — against real audio.</p>
-        <p style="margin-top:18px">Five phases remain: real monetization with ads and subscriptions (always validated server-side, never on the client), security hardening, an admin panel, social features, and finally launch — which also needs store developer accounts we don't have yet. None of this has an announced date.</p>
+        <p>The project runs through 8 planned phases, and four are now closed and verified end to end with real data, not merely deployed: a real user signs up, their account is created automatically, they ask for a song, the system checks their quota and credits, the job genuinely reaches their region's queue, and it comes back as a playable audio file. The app already builds and runs on Android and in the browser (iOS needs hardware we don't have yet), with all 12 launch languages translated — pending native-speaker review in the ten that aren't Spanish or English.</p>
+        <p style="margin-top:18px">Music generation is now closed: the full pipeline — lyrics and music — works end to end and returns real, playable audio, not a well-formed URL; the player, with its waveform and tap-to-seek, is verified against that audio. We're currently in the monetisation phase: mandatory prior consent before any advertising code loads in Europe, mediation across several networks, an offer wall with every reward cryptographically signed and reconciled daily, and subscriptions always validated on the server through a signed, idempotent webhook, never on the client. All of it can be switched on and off from our own admin panel.</p>
+        <p style="margin-top:18px">Before calling that phase done we ran an end-to-end bug audit, with particular attention to the money path: 24 findings, 23 fixed and each with its own automated test, one under watch, none left open. The worst of them: the process that generates songs wasn't idempotent, so a queue message redelivered after the job had already finished re-ran the work, corrupted the audio and charged twice. Four phases remain: security hardening, the admin panel, social features, and launch. What's holding it up today isn't code — the app is signed and packaged; what's left is publishing it and completing the account and store paperwork. None of this has an announced date.</p>
       </div>
 
       <p class="sectors-label reveal">What's already real</p>
@@ -555,7 +599,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
         <div class="about-badge"><span class="dot"></span><span class="label">Real accounts and profiles, verified end to end with real data, not simulated</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">Real quota, ad credits, and subscription verification before accepting any job</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">An architecture of our own for deployment: per-region job queues and compute that scales to zero cost when there's nothing to do</span></div>
-        <div class="about-badge"><span class="dot"></span><span class="label">Real lyrics generation, verified against the text model — music generation is still waiting on access</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Complete lyrics-and-music generation, verified end to end returning real, playable audio</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">A real player, with a visual waveform and tap-to-seek, verified with real audio</span></div>
         <div class="about-badge"><span class="dot"></span><span class="label">12 launch languages complete, with automatic device-language detection</span></div>
       </div>
@@ -620,6 +664,7 @@ a.sector-chip:hover{ background: var(--surface-strong); }
     initBackgroundFx();
     initContactForm();
     initYear();
+    initLightbox();
   });
 
   /* ---------- mobile nav ---------- */
@@ -879,6 +924,119 @@ a.sector-chip:hover{ background: var(--surface-strong); }
   function initYear() {
     var el = document.getElementById("year");
     if (el) el.textContent = String(new Date().getFullYear());
+  }
+
+  /* ---------- gallery lightbox ----------
+     Capturas ampliables en las galerías de las páginas de proyecto.
+     Se construye entero desde JS para que ninguna plantilla tenga que
+     cambiar y funcione en todas las galerías existentes a la vez. Las
+     etiquetas van aquí y no en i18n.js porque el diccionario no viaja a
+     las páginas generadas (el texto se hornea en el build): son tres
+     cadenas de interfaz, se resuelven por el lang del <html>. */
+  var LB_LABELS = {
+    es: { close: "Cerrar", prev: "Anterior", next: "Siguiente", of: "de" },
+    en: { close: "Close", prev: "Previous", next: "Next", of: "of" },
+    fr: { close: "Fermer", prev: "Précédent", next: "Suivant", of: "sur" },
+    pt: { close: "Fechar", prev: "Anterior", next: "Seguinte", of: "de" },
+    ar: { close: "إغلاق", prev: "السابق", next: "التالي", of: "من" },
+    zh: { close: "关闭", prev: "上一张", next: "下一张", of: "/" },
+    ja: { close: "閉じる", prev: "前へ", next: "次へ", of: "/" }
+  };
+
+  function initLightbox() {
+    var figures = [].slice.call(document.querySelectorAll(".game-shot-grid .game-shot"));
+    var shots = figures.filter(function (f) { return f.querySelector("img"); });
+    if (!shots.length) return;
+
+    var t = LB_LABELS[(document.documentElement.lang || "es").slice(0, 2)] || LB_LABELS.es;
+    var index = 0;
+    var lastFocused = null;
+
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.hidden = true;
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="' + t.close + '">&times;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-prev" aria-label="' + t.prev + '">&#8249;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-next" aria-label="' + t.next + '">&#8250;</button>' +
+      '<figure class="lightbox-figure">' +
+      '<img alt="">' +
+      '<figcaption><span class="lightbox-caption"></span><span class="lightbox-count"></span></figcaption>' +
+      "</figure>";
+    document.body.appendChild(overlay);
+
+    var lbImg = overlay.querySelector("img");
+    var lbCaption = overlay.querySelector(".lightbox-caption");
+    var lbCount = overlay.querySelector(".lightbox-count");
+    var btnClose = overlay.querySelector(".lightbox-close");
+    var btnPrev = overlay.querySelector(".lightbox-prev");
+    var btnNext = overlay.querySelector(".lightbox-next");
+    // A single image needs no prev/next chrome.
+    if (shots.length < 2) { btnPrev.hidden = true; btnNext.hidden = true; }
+
+    function show(i) {
+      index = (i + shots.length) % shots.length;
+      var img = shots[index].querySelector("img");
+      var cap = shots[index].querySelector("figcaption");
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || "";
+      lbCaption.textContent = cap ? cap.textContent : "";
+      lbCount.textContent = shots.length > 1 ? String(index + 1) + " " + t.of + " " + String(shots.length) : "";
+      overlay.setAttribute("aria-label", lbImg.alt || lbCaption.textContent);
+    }
+
+    function open(i) {
+      lastFocused = document.activeElement;
+      show(i);
+      overlay.hidden = false;
+      document.body.classList.add("lightbox-open");
+      btnClose.focus();
+    }
+
+    function close() {
+      overlay.hidden = true;
+      document.body.classList.remove("lightbox-open");
+      lbImg.removeAttribute("src");
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    shots.forEach(function (fig, i) {
+      fig.classList.add("is-zoomable");
+      fig.tabIndex = 0;
+      fig.setAttribute("role", "button");
+      fig.addEventListener("click", function () { open(i); });
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(i); }
+      });
+    });
+
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", function () { show(index - 1); });
+    btnNext.addEventListener("click", function () { show(index + 1); });
+    // Clicking the backdrop closes; clicking the image or a control does not.
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+
+    document.addEventListener("keydown", function (e) {
+      if (overlay.hidden) return;
+      if (e.key === "Escape") { close(); return; }
+      if (shots.length < 2) return;
+      // In RTL the arrow that points at the previous thumbnail is the right one.
+      var rtl = document.documentElement.dir === "rtl";
+      if (e.key === "ArrowLeft") show(index + (rtl ? 1 : -1));
+      else if (e.key === "ArrowRight") show(index + (rtl ? -1 : 1));
+    });
+
+    // Keep focus inside the dialog while it is open.
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusables = [btnClose, btnPrev, btnNext].filter(function (b) { return !b.hidden; });
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   }
 })();
 </script>
