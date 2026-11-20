@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ondelio — Our own app, coming soon | Gabriel Díaz Bernal</title>
+<meta name="description" content="Ondelio: our Windows program that recovers deleted files, copies failing disks, repairs damaged files and erases securely — and tells you the truth about every file.">
+<meta name="robots" content="index, follow, noarchive">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/en/ondelio.html">
+
+<link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/ondelio.html">
+<link rel="alternate" hreflang="en" href="https://avanzagrabie.github.io/GrabieApps/en/ondelio.html">
+<link rel="alternate" hreflang="fr" href="https://avanzagrabie.github.io/GrabieApps/fr/ondelio.html">
+<link rel="alternate" hreflang="pt" href="https://avanzagrabie.github.io/GrabieApps/pt/ondelio.html">
+<link rel="alternate" hreflang="ar" href="https://avanzagrabie.github.io/GrabieApps/ar/ondelio.html">
+<link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/ondelio.html">
+<link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/ondelio.html">
+<link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/ondelio.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Ondelio — Our own app, coming soon | Gabriel Díaz Bernal">
+<meta property="og:description" content="Ondelio: our Windows program that recovers deleted files, copies failing disks, repairs damaged files and erases securely — and tells you the truth about every file.">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/en/ondelio.html">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/ondelio/ondelio-resultados-vista-previa.webp">
+<meta property="og:image:width" content="1152">
+<meta property="og:image:height" content="749">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="pt_PT">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ondelio — Our own app, coming soon | Gabriel Díaz Bernal">
+<meta name="twitter:description" content="Ondelio: our Windows program that recovers deleted files, copies failing disks, repairs damaged files and erases securely — and tells you the truth about every file.">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/ondelio/ondelio-resultados-vista-previa.webp">
+
+<!-- Icons -->
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+
+<style>
+/* =========================================================
+   Gabriel Díaz Bernal — Estudio de ingeniería
+   Design system: dark, elite, technical.
+   Zero external dependencies. Zero web fonts. Zero CDNs.
+   ========================================================= */
+
+:root{
+  --bg: #05070d;
+  --bg-alt: #0a0e1a;
+  --bg-elevated: #0d1220;
+  --surface: rgba(255,255,255,.035);
+  --surface-strong: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.09);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #eef1fa;
+  --text-dim: #9aa3ba;
+  --text-faint: #626c85;
+  --accent: #5eead4;
+  --accent-2: #8b5cf6;
+  --accent-3: #22d3ee;
+  --danger: #ff6b81;
+  --gradient: linear-gradient(120deg, var(--accent-3), var(--accent-2));
+  --gradient-soft: linear-gradient(160deg, rgba(94,234,212,.14), rgba(139,92,246,.14));
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 20px 60px -20px rgba(0,0,0,.6);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans Arabic", "Segoe UI Arabic", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --maxw: 1180px;
+  --nav-h: 76px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg{ display: block; max-width: 100%; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin: 0; padding: 0; list-style: none; }
+h1,h2,h3,h4,p{ margin: 0; }
+button{ font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, textarea, select{ font: inherit; color: inherit; }
+
+::selection{ background: var(--accent-2); color: #fff; }
+
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- layout helpers ---------- */
+.container{ width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.section{ padding: 120px 0; position: relative; }
+.section-tight{ padding: 80px 0; }
+@media (max-width: 720px){
+  .section{ padding: 80px 0; }
+  .section-tight{ padding: 56px 0; }
+}
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.eyebrow::before{
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gradient); box-shadow: 0 0 12px var(--accent);
+}
+
+.section-head{ max-width: 720px; margin-bottom: 56px; }
+.section-title{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; }
+.section-subtitle{ margin-top: 14px; color: var(--text-dim); font-size: 1.05rem; max-width: 620px; }
+
+.gradient-text{
+  background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity: 1; transform: none; }
+
+/* ---------- buttons ---------- */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: .95rem;
+  border: 1px solid var(--border-strong);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.btn-primary{
+  background: var(--gradient); color: #04121a; border-color: transparent;
+  box-shadow: 0 8px 30px -8px rgba(94,234,212,.45);
+}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px -10px rgba(139,92,246,.55); }
+.btn-ghost{ background: var(--surface); color: var(--text); }
+.btn-ghost:hover{ border-color: var(--accent); background: var(--surface-strong); transform: translateY(-2px); }
+.btn-block{ width: 100%; }
+
+/* ---------- background fx ---------- */
+.bg-grid{
+  position: fixed; inset: 0; z-index: -2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+.bg-glow{
+  position: fixed; inset: 0; z-index: -3; background: var(--bg);
+}
+.bg-glow::before, .bg-glow::after{
+  content: ""; position: absolute; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px;
+  border-radius: 50%; filter: blur(120px); opacity: .18;
+}
+.bg-glow::before{ background: var(--accent-3); top: -12%; left: -10%; }
+.bg-glow::after{ background: var(--accent-2); bottom: -18%; right: -8%; }
+#fx-canvas{ position: fixed; inset: 0; z-index: -1; opacity: .5; pointer-events: none; }
+
+/* ---------- nav ---------- */
+.nav{
+  position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+/* Blur lives on a pseudo-element (not on .nav itself) so backdrop-filter doesn't
+   turn .nav into a containing block for its position:fixed mobile-menu descendant. */
+.nav::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(5,7,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.nav .container{ display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand{ display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; font-size: 1.05rem; }
+.brand-mark{ width: 34px; height: 34px; }
+.brand small{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: .68rem; color: var(--text-faint); letter-spacing: .06em; }
+
+.nav-links{ display: flex; align-items: center; gap: 30px; }
+.nav-links a{ font-size: .92rem; color: var(--text-dim); position: relative; }
+.nav-links a:hover, .nav-links a.is-active{ color: var(--text); }
+.nav-links a.is-active::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--gradient);
+}
+
+.nav-right{ display: flex; align-items: center; gap: 14px; }
+
+.lang-switch{ position: relative; }
+.lang-btn{
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px;
+  font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-dim);
+  transition: border-color .2s ease, color .2s ease;
+}
+.lang-btn:hover{ border-color: var(--accent); color: var(--text); }
+.lang-menu{
+  position: absolute; top: calc(100% + 10px); inset-inline-end: 0; min-width: 168px; max-height: 320px; overflow-y: auto;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow); padding: 6px; display: none; flex-direction: column; gap: 2px;
+}
+.lang-switch.is-open .lang-menu{ display: flex; }
+.lang-menu a{
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 9px 10px; border-radius: 6px; font-size: .86rem; color: var(--text-dim); text-align: left;
+}
+.lang-menu a:hover{ background: var(--surface-strong); color: var(--text); }
+.lang-menu a[aria-current="true"]{ color: var(--accent); background: var(--surface); }
+.lang-menu .code{ font-family: var(--font-mono); font-size: .72rem; color: var(--text-faint); }
+
+.nav-toggle{ display: none; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; align-items: center; justify-content: center; }
+.nav-toggle span{ display: block; width: 18px; height: 2px; background: var(--text); position: relative; }
+.nav-toggle span::before, .nav-toggle span::after{ content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: var(--text); transition: transform .2s ease; }
+.nav-toggle span::before{ top: -6px; } .nav-toggle span::after{ top: 6px; }
+
+@media (max-width: 880px){
+  .nav-links{
+    position: fixed; inset: var(--nav-h) 0 0 0; flex-direction: column; align-items: stretch;
+    background: var(--bg-alt); padding: 28px 24px; gap: 4px; transform: translateY(-8px);
+    opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    border-top: 1px solid var(--border); overflow-y: auto;
+  }
+  .nav-links a{ padding: 14px 6px; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+  body.menu-open .nav-links{ opacity: 1; pointer-events: auto; transform: none; }
+  .nav-toggle{ display: flex; }
+}
+
+/* ---------- hero ---------- */
+.hero{ padding: 76px 0 60px; }
+.hero-grid{ display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+@media (max-width: 980px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+.hero-title{ font-size: clamp(2.3rem, 5.4vw, 3.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.hero-subtitle{ margin-top: 20px; font-size: 1.14rem; color: var(--text-dim); max-width: 560px; }
+.hero-actions{ display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+
+.stat-row{ display: grid; grid-template-columns: repeat(4, auto); gap: 32px; margin-top: 56px; }
+.stat-value{ font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.stat-label{ margin-top: 4px; font-size: .78rem; color: var(--text-faint); max-width: 120px; }
+@media (max-width: 620px){ .stat-row{ grid-template-columns: repeat(2, auto); row-gap: 24px; } }
+
+/* terminal card — stays LTR chrome (dots, prompt) even on RTL pages, like any code/terminal widget */
+.terminal{
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); overflow: hidden; direction: ltr; text-align: start;
+}
+.terminal-bar{ display: flex; align-items: center; gap: 8px; padding: 14px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.terminal-dot{ width: 11px; height: 11px; border-radius: 50%; }
+.terminal-dot:nth-child(1){ background: #ff6159; }
+.terminal-dot:nth-child(2){ background: #ffbd2e; }
+.terminal-dot:nth-child(3){ background: #27c93f; }
+.terminal-title{ margin-inline-start: 8px; font-family: var(--font-mono); font-size: .74rem; color: var(--text-faint); }
+.terminal-body{ padding: 22px 22px 26px; font-family: var(--font-mono); font-size: .9rem; min-height: 260px; }
+.term-line{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.term-prompt{ color: var(--accent); flex-shrink: 0; }
+.term-cmd{ color: var(--text); }
+.term-out{ color: var(--text-dim); padding-inline-start: 20px; margin-top: 4px; flex-basis: 100%; }
+.term-cursor{ display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+@keyframes blink{ 50%{ opacity: 0; } }
+
+/* ---------- about ---------- */
+.about-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+@media (max-width: 900px){ .about-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.about-copy p{ color: var(--text-dim); margin-bottom: 18px; font-size: 1.02rem; }
+.about-badges{ display: flex; flex-direction: column; gap: 14px; }
+.about-badge{
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--surface);
+}
+.about-badge .dot{ width: 10px; height: 10px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
+.about-badge span.label{ font-weight: 600; font-size: .95rem; }
+
+/* ---------- stack grid ---------- */
+.stack-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px){ .stack-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px){ .stack-grid{ grid-template-columns: 1fr; } }
+.stack-card{
+  padding: 26px 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.stack-card:hover{ transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-strong); }
+.stack-icon{
+  width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  background: var(--gradient-soft); border: 1px solid var(--border); margin-bottom: 16px;
+}
+.stack-icon svg{ width: 22px; height: 22px; stroke: var(--accent); }
+.stack-card h3{ font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
+.stack-card p{ color: var(--text-dim); font-size: .92rem; }
+
+/* ---------- team ---------- */
+.team-wrap{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .team-wrap{ grid-template-columns: 1fr; gap: 32px; } }
+.team-list{ display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.team-row{ display: flex; align-items: center; gap: 18px; padding: 18px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.team-row:last-child{ border-bottom: 0; }
+.team-count{ font-family: var(--font-mono); font-weight: 700; color: var(--accent); font-size: 1.05rem; width: 34px; flex-shrink: 0; }
+.team-note{ margin-top: 20px; color: var(--text-faint); font-size: .9rem; font-style: italic; }
+.team-orb{
+  aspect-ratio: 1; border-radius: 50%; position: relative;
+  background: radial-gradient(circle at 35% 30%, rgba(94,234,212,.22), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(139,92,246,.25), transparent 55%),
+              var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.team-orb .orb-number{ font-family: var(--font-mono); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 800; }
+.team-orb .orb-label{ position: absolute; bottom: 14%; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+
+/* ---------- clients ---------- */
+.clients-grid{ display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .clients-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.games-block{ margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+.games-block .section-subtitle{ margin-top: 16px; max-width: 640px; }
+.clients-stat .value{ font-family: var(--font-mono); font-weight: 800; font-size: clamp(3rem, 7vw, 4.5rem); line-height: 1; }
+.clients-stat .label{ margin-top: 12px; color: var(--text-dim); font-size: 1rem; max-width: 260px; }
+.sectors-label{ font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
+.sector-chips{ display: flex; flex-wrap: wrap; gap: 10px; }
+.sector-chip{
+  padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
+  font-family: var(--font-mono); font-size: .84rem; color: var(--text-dim); transition: border-color .2s ease, color .2s ease;
+}
+.sector-chip:hover{ border-color: var(--accent); color: var(--text); }
+a.sector-chip{ cursor: pointer; }
+a.sector-chip:hover{ background: var(--surface-strong); }
+
+/* featured project card (home) */
+.featured-project{
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
+}
+.featured-card{
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); margin-top: 18px;
+  transition: border-color .2s ease;
+}
+.featured-card:hover{ border-color: var(--accent); }
+/* the media column stretches to whatever height the text needs; it must not set the
+   row height itself, or a long translation gets clipped by the overflow:hidden above */
+.featured-card .featured-media{ margin: 0; position: relative; min-height: 260px; background: var(--bg-elevated); }
+.featured-card .featured-media img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px){
+  .featured-card{ grid-template-columns: 1fr; }
+  .featured-card .featured-media{ aspect-ratio: 16/9; min-height: 0; }
+}
+.featured-body{ padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+.featured-body h3{ font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; margin: 6px 0 0; }
+.featured-body p{ color: var(--text-dim); margin-top: 14px; font-size: .98rem; }
+.featured-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.featured-stats > div{ min-width: 0; }
+.featured-stats .value{ font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; line-height: 1; }
+.featured-stats .label{ color: var(--text-faint); font-size: .74rem; line-height: 1.35; margin-top: 6px; }
+@media (max-width: 420px){ .featured-stats{ grid-template-columns: 1fr 1fr; } }
+.featured-cta{
+  margin-top: 24px; align-self: flex-start; font-family: var(--font-mono); font-size: .84rem;
+  color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s ease;
+}
+.featured-card:hover .featured-cta{ border-bottom-color: var(--accent); }
+
+/* ---------- game case study pages ---------- */
+.game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+@media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
+.game-shot{
+  position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-elevated); margin: 0;
+}
+.game-shot.is-placeholder{
+  border-style: dashed; border-color: var(--border-strong);
+  background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
+              radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
+              var(--bg-elevated);
+  display: flex; align-items: flex-end; padding: 16px;
+}
+.game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-shot figcaption{
+  position: absolute; inset-inline: 0; bottom: 0; padding: 22px 14px 10px;
+  background: linear-gradient(to top, rgba(5,7,13,.85), transparent);
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text);
+}
+.game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+
+/* zoomable thumbnails + lightbox (built by initLightbox in main.js) */
+.game-shot.is-zoomable{ cursor: zoom-in; transition: border-color .2s ease, transform .2s ease; }
+.game-shot.is-zoomable:hover{ border-color: var(--accent); }
+.game-shot.is-zoomable:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference){
+  .game-shot.is-zoomable:hover{ transform: translateY(-2px); }
+}
+body.lightbox-open{ overflow: hidden; }
+.lightbox{
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  padding: 56px 24px; background: rgba(3,5,10,.94);
+}
+.lightbox[hidden]{ display: none; }
+.lightbox-figure{ margin: 0; max-width: min(1200px, 100%); max-height: 100%; display: flex; flex-direction: column; gap: 12px; }
+.lightbox-figure img{
+  max-width: 100%; max-height: calc(100vh - 150px); width: auto; height: auto;
+  object-fit: contain; display: block; margin: 0 auto;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--bg-elevated);
+}
+.lightbox-figure figcaption{
+  display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: center; align-items: baseline;
+  font-family: var(--font-mono); font-size: .82rem; color: var(--text-dim); text-align: center;
+}
+.lightbox-count{ color: var(--text-faint); }
+.lightbox-close, .lightbox-nav{
+  position: absolute; border: 1px solid var(--border-strong); border-radius: 999px;
+  background: var(--surface); color: var(--text); cursor: pointer; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s ease, background .2s ease;
+}
+.lightbox-close:hover, .lightbox-nav:hover{ border-color: var(--accent); background: var(--surface-strong); }
+.lightbox-close:focus-visible, .lightbox-nav:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+.lightbox-close{ top: 14px; inset-inline-end: 16px; width: 40px; height: 40px; font-size: 1.5rem; }
+.lightbox-nav{ top: 50%; transform: translateY(-50%); width: 44px; height: 44px; font-size: 1.8rem; }
+.lightbox-prev{ inset-inline-start: 14px; }
+.lightbox-next{ inset-inline-end: 14px; }
+[dir="rtl"] .lightbox-prev, [dir="rtl"] .lightbox-next{ transform: translateY(-50%) scaleX(-1); }
+@media (max-width: 620px){
+  .lightbox{ padding: 64px 12px 24px; }
+  .lightbox-nav{ top: auto; bottom: 14px; transform: none; }
+  [dir="rtl"] .lightbox-prev, [dir="rtl"] .lightbox-next{ transform: scaleX(-1); }
+  .lightbox-figure img{ max-height: calc(100vh - 210px); }
+}
+.store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+/* ---------- process ---------- */
+.process-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 980px){ .process-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .process-grid{ grid-template-columns: 1fr; } }
+.process-card{ padding: 26px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); position: relative; }
+.process-step{ font-family: var(--font-mono); color: var(--text-faint); font-size: .8rem; margin-bottom: 14px; }
+.process-card h3{ font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.process-card p{ color: var(--text-dim); font-size: .9rem; }
+.process-callout{
+  margin-top: 40px; padding: 22px 26px; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  display: flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: .92rem; color: var(--text);
+  background: var(--gradient-soft);
+}
+
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+.form-sent-title{ font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); margin-bottom: 8px; }
+
+/* ---------- location ---------- */
+.location-box{
+  border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.14), transparent 60%), var(--bg-elevated);
+}
+.location-badge{
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .78rem;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--danger); margin-top: 22px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.location-badge::before{ content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+.location-box p{ color: var(--text-dim); max-width: 620px; margin: 0 auto; font-size: 1.02rem; }
+
+/* ---------- footer ---------- */
+.footer{ border-top: 1px solid var(--border); padding: 48px 0; }
+.footer .container{ display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand{ display: flex; align-items: center; gap: 12px; }
+.footer-tagline{ font-size: .82rem; color: var(--text-faint); }
+.footer-links{ display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a{ font-size: .86rem; color: var(--text-dim); }
+.footer-links a:hover{ color: var(--accent); }
+.footer-bottom{ margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- 404 ---------- */
+.notfound{ min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+.notfound-code{ font-family: var(--font-mono); font-size: clamp(4rem, 14vw, 8rem); font-weight: 800; line-height: 1; }
+.notfound p{ margin-top: 18px; color: var(--text-dim); font-size: 1.05rem; }
+.notfound .btn{ margin-top: 30px; }
+
+/* ---------- misc ---------- */
+.skip-link{
+  position: absolute; inset-inline-start: -9999px; top: 0; background: var(--accent); color: #04121a; padding: 12px 18px;
+  border-end-end-radius: 8px; z-index: 200; font-weight: 600;
+}
+.skip-link:focus{ inset-inline-start: 0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small>Elite software. By invitation.</small></span>
+    </a>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">EN</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ondelio.html">Español <span class="code">ES</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/en/ondelio.html" aria-current="true">English <span class="code">EN</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/fr/ondelio.html">Français <span class="code">FR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/pt/ondelio.html">Português <span class="code">PT</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ar/ondelio.html">العربية <span class="code">AR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/zh/ondelio.html">中文 <span class="code">ZH</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ja/ondelio.html">日本語 <span class="code">JA</span></a>
+        </div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container" style="max-width:860px">
+      <div class="section-head reveal">
+        <p class="eyebrow">Our own app · Coming soon to the Microsoft Store</p>
+        <h1 class="section-title">Ondelio</h1>
+        <p class="section-subtitle">A program for Windows 10 and 11 that recovers, copies, repairs and securely erases what is on your drives. And it tells you the truth about every file. Not a commission either — it's ours.</p>
+      </div>
+
+      <div class="stat-row reveal" style="margin-top:0; margin-bottom:56px">
+        <div>
+          <div class="stat-value">6</div>
+          <div class="stat-label">languages, defaulting to the one Windows uses</div>
+        </div>
+        <div>
+          <div class="stat-value">Read-only</div>
+          <div class="stat-label">when recovering: it never writes to the drive it is scanning</div>
+        </div>
+        <div>
+          <div class="stat-value">4</div>
+          <div class="stat-label">honest states per file: Recoverable, Partial, Overwritten or Doubtful</div>
+        </div>
+        <div>
+          <div class="stat-value">Coming soon</div>
+          <div class="stat-label">on the Microsoft Store · Windows 10 and 11 (64-bit)</div>
+        </div>
+      </div>
+
+      <div class="about-copy reveal">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">What Ondelio is</h2>
+        <p>Ondelio helps when something has been lost or broken on a drive, a USB stick or a card: files deleted by mistake, a formatted drive, a disk that no longer shows up or is starting to fail, a photo or document that won't open. You don't need to know anything about disks: the start screen asks "What happened?" and, depending on what you pick, the program decides how to scan. It then shows a list of files with a preview, tells you clearly what is recoverable and what isn't, and recovers what you choose to a different drive.</p>
+        <p style="margin-top:18px">Besides recovering, the same suite copies failing disks, repairs damaged files — photos, Office documents, ZIPs and videos — and securely erases whatever you want gone for good. It runs entirely on your machine: it collects no data and needs no Internet to work, and its recovery engine was written from scratch, with no code from other recovery programs.</p>
+      </div>
+
+      <p class="sectors-label reveal" style="margin-top:48px">Screenshots</p>
+      <div class="game-shot-grid reveal">
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-pantalla-inicio.webp" width="1152" height="749" alt="The start screen: &quot;What happened?&quot;" loading="eager" decoding="async">
+          <figcaption>The start screen: "What happened?"</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-mira-aqui-papelera-nube.webp" width="1152" height="749" alt="Before scanning: recycle bin, previous versions and cloud" loading="lazy" decoding="async">
+          <figcaption>Before scanning: recycle bin, previous versions and cloud</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-resultados-vista-previa.webp" width="1152" height="749" alt="Results with a preview and a status per file" loading="lazy" decoding="async">
+          <figcaption>Results with a preview and a status per file</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-resultados-con-huecos.webp" width="1152" height="749" alt="Files touching unreadable areas, marked &quot;With gaps&quot;" loading="lazy" decoding="async">
+          <figcaption>Files touching unreadable areas, marked "With gaps"</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-aviso-disco-que-falla.webp" width="1152" height="749" alt="Warning when the disk throws errors: copy it first" loading="lazy" decoding="async">
+          <figcaption>Warning when the disk throws errors: copy it first</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-copia-verificada-sha256.webp" width="1152" height="749" alt="Verified copy, with its SHA-256 fingerprint" loading="lazy" decoding="async">
+          <figcaption>Verified copy, with its SHA-256 fingerprint</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-reparar-diagnostico-foto.webp" width="1152" height="749" alt="Diagnosis of a damaged photo: what is kept and what is lost" loading="lazy" decoding="async">
+          <figcaption>Diagnosis of a damaged photo: what is kept and what is lost</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-borrado-seguro-informe.webp" width="1152" height="749" alt="Secure erase, with a report of what was done" loading="lazy" decoding="async">
+          <figcaption>Secure erase, with a report of what was done</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-idioma-ingles.webp" width="1152" height="749" alt="The same screen in English: six languages" loading="lazy" decoding="async">
+          <figcaption>The same screen in English: six languages</figcaption>
+        </figure>
+      </div>
+      <p class="game-shots-note reveal">Screenshots of the program in development, using sample files and disks. Planned features that are not yet available don't appear here, and the final design may change.</p>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem">It tells the truth, even when it isn't what you want to hear</h2>
+        <p style="margin-top:14px">No program can recover data that has already been overwritten, nor, usually, what was deleted on an SSD with TRIM. Ondelio says so plainly and warns you when it sees signs of it, instead of promising the impossible. Every file carries a status — Recoverable, Partial, Overwritten or Doubtful — and its content can be checked before recovering (Verified, Structure correct or Damaged), so you know what to expect before saving anything.</p>
+        <p style="margin-top:18px">And it does no harm: to recover, it opens drives read-only and won't let you save what it recovers onto the drive it is scanning, because a deleted file stays there until something new overwrites it. The few functions that do write to a disk are kept separate, say so, and ask for confirmation. The repair tool always works on a new copy and tells you what is kept, what is lost and what can't be guaranteed. And secure erase gives you a report, not a "certificate": on an SSD or a USB stick it warns that overwriting does not guarantee erasing the media's internal copies.</p>
+      </div>
+
+      <p class="sectors-label reveal">What is already built</p>
+      <div class="about-badges reveal" style="margin-top:14px; margin-bottom:48px">
+        <div class="about-badge"><span class="dot"></span><span class="label">Recovery of deleted files and of formatted drives on NTFS, FAT (16 and 32) and exFAT, or from a disk image</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">"Look here": before scanning, it checks the recycle bin, previous Windows versions, File History, Windows.old and your cloud</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Signature-based rescue: photos, documents, audio and video found by their content, with a useful name taken from their own data</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Exact copy of a failing disk into an image file, which can be cancelled, resumed and verified</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Repair of PNG and JPEG photos, ZIPs, Word, Excel and PowerPoint documents and MP4 and MOV videos, always into a new copy</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Ondelio Sense: a small model that runs on your own machine, with no Internet, to assess free space and detect foreign content inside a photo</span></div>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">What doesn't exist yet</h2>
+        <p>In development and not yet available: disk-to-disk copy, erasing a whole disk, a dedicated section for USB sticks and cards (with fake-drive detection and camera RAW photos), the disk health warning, recovering an unsaved document, thumbnails as a last resort, ransomware help and a portable USB edition. Until they exist, we don't treat them as done.</p>
+        <h2 class="section-title" style="font-size:1.4rem; margin:32px 0 14px">Free to check, paid for the advanced parts</h2>
+        <p>Scanning and seeing what can be recovered is free, with a preview; so are "Look here", copying a disk to an image, diagnosing damaged files and erasing files, folders and free space. Recovering up to 500 MB in total is free, to check that it works. The advanced functions (recovering without that limit, cloning, saving the repaired copy and erasing whole disks) will be paid add-ons on the Microsoft Store, with a Pro bundle. Cancelling, verifying and reports are never limited.</p>
+        <h2 class="section-title" style="font-size:1.4rem; margin:32px 0 14px">How we tested it, and where the limits are</h2>
+        <p>In lab tests, with disk images built for the purpose (deletion on FAT32, NTFS and exFAT, quick format, destroyed partition table and content-based rescue), the recovered files matched the originals byte for byte. These are lab tests, not a promise for every disk: each real case depends on what was written afterwards.</p>
+        <p style="margin-top:18px">For now it does not scan BitLocker-encrypted disks or extract EFS-encrypted files, and a physically damaged disk may need a specialist service: that is why Ondelio recommends copying it first. The French, German, Italian and Portuguese translations are still being polished.</p>
+      </div>
+
+      <div class="process-callout reveal" style="margin-bottom:48px">
+        <span>This is another of our own projects we describe in this much detail — the rest remain, for now, strictly secret.</span>
+      </div>
+
+      <a class="btn btn-primary reveal" href="index.html">← Back to Gabriel Díaz Bernal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline">Elite software. By invitation.</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="index.html#about">About</a>
+      <a href="index.html#stack">Stack</a>
+      <a href="index.html#clients">Clients</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span>All rights reserved.</span></span>
+    <span>Site built with engineering precision.</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   Gabriel Díaz Bernal — interactions
+   Nav, language switcher, scroll reveal, terminal typewriter,
+   background canvas. Vanilla JS, no dependencies.
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initNav();
+    initLangSwitch();
+    initReveal();
+    initActiveLink();
+    initTerminal();
+    initBackgroundFx();
+    initContactForm();
+    initYear();
+    initLightbox();
+  });
+
+  /* ---------- mobile nav ---------- */
+  function initNav() {
+    var toggle = document.querySelector(".nav-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      var open = document.body.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    var links = document.querySelectorAll(".nav-links a");
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", function () {
+        document.body.classList.remove("menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    }
+  }
+
+  /* ---------- language switcher ----------
+     Each language lives at its own crawlable URL (/, /en/, /fr/...);
+     the menu items are plain <a> links, so switching is just navigation.
+     This JS only opens/closes the dropdown. */
+  function initLangSwitch() {
+    var switcher = document.querySelector(".lang-switch");
+    if (!switcher) return;
+    var btn = switcher.querySelector(".lang-btn");
+    var menu = switcher.querySelector(".lang-menu");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      switcher.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", switcher.classList.contains("is-open") ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!switcher.contains(e.target)) switcher.classList.remove("is-open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") switcher.classList.remove("is-open");
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  function initReveal() {
+    var items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("is-visible"); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    items.forEach(function (el) { obs.observe(el); });
+  }
+
+  /* ---------- active nav link on scroll ---------- */
+  function initActiveLink() {
+    var links = document.querySelectorAll('.nav-links a[href^="#"]');
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var section = document.getElementById(id);
+      if (section) map[id] = a;
+    });
+    var ids = Object.keys(map);
+    if (!ids.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = map[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove("is-active"); });
+          link.classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+
+    ids.forEach(function (id) { obs.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- terminal typewriter ---------- */
+  var terminalTimer = null;
+
+  function initTerminal() {
+    var body = document.querySelector(".terminal-body");
+    if (!body) return;
+    runTerminal(body);
+  }
+
+  function runTerminal(body) {
+    if (terminalTimer) { clearTimeout(terminalTimer); terminalTimer = null; }
+    var lines = window.GDB_TERMINAL_LINES;
+    if (!lines || !lines.length) return;
+
+    body.innerHTML = "";
+
+    if (reduceMotion) {
+      lines.forEach(function (l) {
+        body.appendChild(buildLine(l.cmd, l.out, true));
+      });
+      return;
+    }
+
+    var lineIndex = 0;
+    function nextLine() {
+      if (lineIndex >= lines.length) return;
+      var l = lines[lineIndex];
+      var row = buildLine("", "", false);
+      body.appendChild(row);
+      var cmdEl = row.querySelector(".term-cmd");
+      var cursor = row.querySelector(".term-cursor");
+      typeText(cmdEl, l.cmd, cursor, function () {
+        var outEl = row.querySelector(".term-out");
+        outEl.textContent = l.out;
+        outEl.style.display = "block";
+        cursor.remove();
+        lineIndex++;
+        terminalTimer = setTimeout(nextLine, 420);
+      });
+    }
+    nextLine();
+  }
+
+  function buildLine(cmd, out, immediate) {
+    var row = document.createElement("div");
+    row.className = "term-line";
+    var prompt = document.createElement("span");
+    prompt.className = "term-prompt";
+    prompt.textContent = "$";
+    var cmdEl = document.createElement("span");
+    cmdEl.className = "term-cmd";
+    var outEl = document.createElement("span");
+    outEl.className = "term-out";
+
+    if (immediate) {
+      cmdEl.textContent = cmd;
+      outEl.textContent = out;
+      row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(outEl);
+      return row;
+    }
+
+    var cursor = document.createElement("span");
+    cursor.className = "term-cursor";
+    outEl.style.display = "none";
+    row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(cursor); row.appendChild(outEl);
+    return row;
+  }
+
+  function typeText(el, text, cursor, done) {
+    var i = 0;
+    (function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        terminalTimer = setTimeout(step, 26);
+      } else {
+        done();
+      }
+    })();
+  }
+
+  /* ---------- background canvas: subtle drifting node network ---------- */
+  function initBackgroundFx() {
+    var canvas = document.getElementById("fx-canvas");
+    if (!canvas || reduceMotion) return;
+    var ctx = canvas.getContext("2d");
+    var w, h, nodes = [];
+    var NODE_COUNT = Math.min(46, Math.floor((window.innerWidth * window.innerHeight) / 34000));
+    var LINK_DIST = 140;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeNodes() {
+      nodes = [];
+      for (var i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      ctx.fillStyle = "rgba(94,234,212,0.55)";
+      for (var a = 0; a < nodes.length; a++) {
+        for (var b = a + 1; b < nodes.length; b++) {
+          var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            ctx.strokeStyle = "rgba(139,92,246," + (0.12 * (1 - dist / LINK_DIST)) + ")";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[a].x, nodes[a].y);
+            ctx.lineTo(nodes[b].x, nodes[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (var c = 0; c < nodes.length; c++) {
+        ctx.beginPath();
+        ctx.arc(nodes[c].x, nodes[c].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    makeNodes();
+    requestAnimationFrame(tick);
+    window.addEventListener("resize", function () {
+      resize();
+      makeNodes();
+    });
+  }
+
+  /* ---------- contact form ----------
+     Static site, no backend, and nowhere this data is sent: the
+     "invitation code" field is never transmitted or stored anywhere,
+     by this site or any third party. Submitting it just swaps the
+     visible UI state from the field to a confirmation message —
+     nothing leaves the browser, no navigation, no popup. */
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    var fields = document.getElementById("contact-form-fields");
+    var sent = document.getElementById("contact-form-sent");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (fields) fields.hidden = true;
+      if (sent) sent.hidden = false;
+    });
+  }
+
+  /* ---------- footer year ---------- */
+  function initYear() {
+    var el = document.getElementById("year");
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
+
+  /* ---------- gallery lightbox ----------
+     Capturas ampliables en las galerías de las páginas de proyecto.
+     Se construye entero desde JS para que ninguna plantilla tenga que
+     cambiar y funcione en todas las galerías existentes a la vez. Las
+     etiquetas van aquí y no en i18n.js porque el diccionario no viaja a
+     las páginas generadas (el texto se hornea en el build): son tres
+     cadenas de interfaz, se resuelven por el lang del <html>. */
+  var LB_LABELS = {
+    es: { close: "Cerrar", prev: "Anterior", next: "Siguiente", of: "de" },
+    en: { close: "Close", prev: "Previous", next: "Next", of: "of" },
+    fr: { close: "Fermer", prev: "Précédent", next: "Suivant", of: "sur" },
+    pt: { close: "Fechar", prev: "Anterior", next: "Seguinte", of: "de" },
+    ar: { close: "إغلاق", prev: "السابق", next: "التالي", of: "من" },
+    zh: { close: "关闭", prev: "上一张", next: "下一张", of: "/" },
+    ja: { close: "閉じる", prev: "前へ", next: "次へ", of: "/" }
+  };
+
+  function initLightbox() {
+    var figures = [].slice.call(document.querySelectorAll(".game-shot-grid .game-shot"));
+    var shots = figures.filter(function (f) { return f.querySelector("img"); });
+    if (!shots.length) return;
+
+    var t = LB_LABELS[(document.documentElement.lang || "es").slice(0, 2)] || LB_LABELS.es;
+    var index = 0;
+    var lastFocused = null;
+
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.hidden = true;
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="' + t.close + '">&times;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-prev" aria-label="' + t.prev + '">&#8249;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-next" aria-label="' + t.next + '">&#8250;</button>' +
+      '<figure class="lightbox-figure">' +
+      '<img alt="">' +
+      '<figcaption><span class="lightbox-caption"></span><span class="lightbox-count"></span></figcaption>' +
+      "</figure>";
+    document.body.appendChild(overlay);
+
+    var lbImg = overlay.querySelector("img");
+    var lbCaption = overlay.querySelector(".lightbox-caption");
+    var lbCount = overlay.querySelector(".lightbox-count");
+    var btnClose = overlay.querySelector(".lightbox-close");
+    var btnPrev = overlay.querySelector(".lightbox-prev");
+    var btnNext = overlay.querySelector(".lightbox-next");
+    // A single image needs no prev/next chrome.
+    if (shots.length < 2) { btnPrev.hidden = true; btnNext.hidden = true; }
+
+    function show(i) {
+      index = (i + shots.length) % shots.length;
+      var img = shots[index].querySelector("img");
+      var cap = shots[index].querySelector("figcaption");
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || "";
+      lbCaption.textContent = cap ? cap.textContent : "";
+      lbCount.textContent = shots.length > 1 ? String(index + 1) + " " + t.of + " " + String(shots.length) : "";
+      overlay.setAttribute("aria-label", lbImg.alt || lbCaption.textContent);
+    }
+
+    function open(i) {
+      lastFocused = document.activeElement;
+      show(i);
+      overlay.hidden = false;
+      document.body.classList.add("lightbox-open");
+      btnClose.focus();
+    }
+
+    function close() {
+      overlay.hidden = true;
+      document.body.classList.remove("lightbox-open");
+      lbImg.removeAttribute("src");
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    shots.forEach(function (fig, i) {
+      fig.classList.add("is-zoomable");
+      fig.tabIndex = 0;
+      fig.setAttribute("role", "button");
+      fig.addEventListener("click", function () { open(i); });
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(i); }
+      });
+    });
+
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", function () { show(index - 1); });
+    btnNext.addEventListener("click", function () { show(index + 1); });
+    // Clicking the backdrop closes; clicking the image or a control does not.
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+
+    document.addEventListener("keydown", function (e) {
+      if (overlay.hidden) return;
+      if (e.key === "Escape") { close(); return; }
+      if (shots.length < 2) return;
+      // In RTL the arrow that points at the previous thumbnail is the right one.
+      var rtl = document.documentElement.dir === "rtl";
+      if (e.key === "ArrowLeft") show(index + (rtl ? 1 : -1));
+      else if (e.key === "ArrowRight") show(index + (rtl ? -1 : 1));
+    });
+
+    // Keep focus inside the dialog while it is open.
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusables = [btnClose, btnPrev, btnNext].filter(function (b) { return !b.hidden; });
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
+})();
+</script>
+</body>
+</html>

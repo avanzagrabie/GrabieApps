@@ -96,6 +96,20 @@ const GAMES = [
   { slug: "rosmino", templateFile: "game-rosmino-template.html" },
   { slug: "perfect-studio", templateFile: "game-perfectstudio-template.html" },
   {
+    slug: "ondelio", templateFile: "game-ondelio-template.html",
+    images: [
+      "ondelio-pantalla-inicio.webp",
+      "ondelio-mira-aqui-papelera-nube.webp",
+      "ondelio-resultados-vista-previa.webp",
+      "ondelio-resultados-con-huecos.webp",
+      "ondelio-aviso-disco-que-falla.webp",
+      "ondelio-copia-verificada-sha256.webp",
+      "ondelio-reparar-diagnostico-foto.webp",
+      "ondelio-borrado-seguro-informe.webp",
+      "ondelio-idioma-ingles.webp"
+    ]
+  },
+  {
     slug: "poder-y-nacion", templateFile: "game-podernacion-template.html",
     images: [
       "poder-y-nacion-pantalla-principal.webp",

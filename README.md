@@ -10,7 +10,7 @@ Sitio estático (GitHub Pages) del estudio de ingeniería de Gabriel Díaz Berna
 - **7 idiomas** (Español, English, Français, Português, العربية, 中文, 日本語), cada uno en su **propia URL** — no un solo URL que cambia de texto por JS. Ver [SEO y multi-idioma](#seo-y-multi-idioma).
 - **Contacto muy restringido, no un formulario abierto**: solo se aceptan clientes por invitación. El formulario (`#contact`) pide únicamente un código de invitación y no lo envía a ningún sitio — al enviarlo, `assets/js/main.js` solo cambia qué se muestra en la propia página, sin red ni almacenamiento de por medio. Ver [Contacto](#contacto).
 - **Casos de estudio de videojuegos**: página propia por título (`sniper-3d.html`, `cities-skylines-2.html`, 7 idiomas cada una) explicando el trabajo de motor en Sniper 3D: Gun Shooting Games y Cities: Skylines II, con enlaces a las tiendas oficiales. Ver [Juegos](#juegos).
-- **Proyectos propios en desarrollo**: `rosmino.html` (plataforma de dominó online) y `perfect-studio.html` (generación musical con IA), 7 idiomas cada una — construidos por nosotros mismos, no encargos. A diferencia de los casos de estudio, aquí sí se cuenta el progreso fase a fase. Ver [Juegos](#juegos).
+- **Proyectos propios en desarrollo**: `rosmino.html` (plataforma de dominó online), `perfect-studio.html` (generación musical con IA) y `ondelio.html` (recuperación de archivos para Windows, con 9 capturas reales), 7 idiomas cada una — construidos por nosotros mismos, no encargos. A diferencia de los casos de estudio, aquí sí se cuenta el progreso fase a fase. Ver [Juegos](#juegos).
 - **SEO al detalle**: canonical + `hreflang` por idioma, Open Graph/Twitter localizados, JSON-LD (`Person`, `ProfessionalService`, `WebSite`), `sitemap.xml` generado (no editado a mano) con anotaciones de idioma (+ hoja de estilo para verlo legible en el navegador), `robots.txt`, verificación de Google Search Console.
 - **Cada página es 1 sola solicitud HTTP**: HTML, CSS y JS, todo inline. Nada más que cargar — ver [Rendimiento](#rendimiento).
 - **Cero cookies, cero analítica, cero rastreo** — verificable, no solo declarado. Página de privacidad honesta en los 7 idiomas (`/privacy.html`) explicando exactamente eso. Ver [Privacidad](#privacidad-y-cumplimiento).
@@ -47,6 +47,7 @@ tools/
   game-cities2-template.html   Fuente del caso de estudio de Cities: Skylines II — SE EDITA a mano
   game-rosmino-template.html   Fuente de la página de Rosmino — SE EDITA a mano
   game-perfectstudio-template.html  Fuente de la página de Perfect Studio — SE EDITA a mano
+  game-ondelio-template.html   Fuente de la página de Ondelio — SE EDITA a mano
   game-podernacion-template.html    Fuente de la página de Poder y Nación — SE EDITA a mano
   404-template.html            Fuente de la página 404 — SE EDITA a mano
   build-lang-pages.js          Generador (Node, sin dependencias)

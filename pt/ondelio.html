@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ondelio — Aplicação própria, em breve | Gabriel Díaz Bernal</title>
+<meta name="description" content="Ondelio: o nosso programa para Windows que recupera ficheiros apagados, copia discos que falham, repara ficheiros danificados e apaga com segurança — e diz-lhe a verdade sobre cada ficheiro.">
+<meta name="robots" content="index, follow, noarchive">
+<meta name="theme-color" content="#05070d">
+<link rel="canonical" href="https://avanzagrabie.github.io/GrabieApps/pt/ondelio.html">
+
+<link rel="alternate" hreflang="es" href="https://avanzagrabie.github.io/GrabieApps/ondelio.html">
+<link rel="alternate" hreflang="en" href="https://avanzagrabie.github.io/GrabieApps/en/ondelio.html">
+<link rel="alternate" hreflang="fr" href="https://avanzagrabie.github.io/GrabieApps/fr/ondelio.html">
+<link rel="alternate" hreflang="pt" href="https://avanzagrabie.github.io/GrabieApps/pt/ondelio.html">
+<link rel="alternate" hreflang="ar" href="https://avanzagrabie.github.io/GrabieApps/ar/ondelio.html">
+<link rel="alternate" hreflang="zh" href="https://avanzagrabie.github.io/GrabieApps/zh/ondelio.html">
+<link rel="alternate" hreflang="ja" href="https://avanzagrabie.github.io/GrabieApps/ja/ondelio.html">
+<link rel="alternate" hreflang="x-default" href="https://avanzagrabie.github.io/GrabieApps/ondelio.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gabriel Díaz Bernal">
+<meta property="og:title" content="Ondelio — Aplicação própria, em breve | Gabriel Díaz Bernal">
+<meta property="og:description" content="Ondelio: o nosso programa para Windows que recupera ficheiros apagados, copia discos que falham, repara ficheiros danificados e apaga com segurança — e diz-lhe a verdade sobre cada ficheiro.">
+<meta property="og:url" content="https://avanzagrabie.github.io/GrabieApps/pt/ondelio.html">
+<meta property="og:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/ondelio/ondelio-resultados-vista-previa.webp">
+<meta property="og:image:width" content="1152">
+<meta property="og:image:height" content="749">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ondelio — Aplicação própria, em breve | Gabriel Díaz Bernal">
+<meta name="twitter:description" content="Ondelio: o nosso programa para Windows que recupera ficheiros apagados, copia discos que falham, repara ficheiros danificados e apaga com segurança — e diz-lhe a verdade sobre cada ficheiro.">
+<meta name="twitter:image" content="https://avanzagrabie.github.io/GrabieApps/assets/img/games/ondelio/ondelio-resultados-vista-previa.webp">
+
+<!-- Icons -->
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+
+<style>
+/* =========================================================
+   Gabriel Díaz Bernal — Estudio de ingeniería
+   Design system: dark, elite, technical.
+   Zero external dependencies. Zero web fonts. Zero CDNs.
+   ========================================================= */
+
+:root{
+  --bg: #05070d;
+  --bg-alt: #0a0e1a;
+  --bg-elevated: #0d1220;
+  --surface: rgba(255,255,255,.035);
+  --surface-strong: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.09);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #eef1fa;
+  --text-dim: #9aa3ba;
+  --text-faint: #626c85;
+  --accent: #5eead4;
+  --accent-2: #8b5cf6;
+  --accent-3: #22d3ee;
+  --danger: #ff6b81;
+  --gradient: linear-gradient(120deg, var(--accent-3), var(--accent-2));
+  --gradient-soft: linear-gradient(160deg, rgba(94,234,212,.14), rgba(139,92,246,.14));
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 20px 60px -20px rgba(0,0,0,.6);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans Arabic", "Segoe UI Arabic", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --maxw: 1180px;
+  --nav-h: 76px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg{ display: block; max-width: 100%; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin: 0; padding: 0; list-style: none; }
+h1,h2,h3,h4,p{ margin: 0; }
+button{ font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, textarea, select{ font: inherit; color: inherit; }
+
+::selection{ background: var(--accent-2); color: #fff; }
+
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- layout helpers ---------- */
+.container{ width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.section{ padding: 120px 0; position: relative; }
+.section-tight{ padding: 80px 0; }
+@media (max-width: 720px){
+  .section{ padding: 80px 0; }
+  .section-tight{ padding: 56px 0; }
+}
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.eyebrow::before{
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gradient); box-shadow: 0 0 12px var(--accent);
+}
+
+.section-head{ max-width: 720px; margin-bottom: 56px; }
+.section-title{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; }
+.section-subtitle{ margin-top: 14px; color: var(--text-dim); font-size: 1.05rem; max-width: 620px; }
+
+.gradient-text{
+  background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity: 1; transform: none; }
+
+/* ---------- buttons ---------- */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: .95rem;
+  border: 1px solid var(--border-strong);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.btn-primary{
+  background: var(--gradient); color: #04121a; border-color: transparent;
+  box-shadow: 0 8px 30px -8px rgba(94,234,212,.45);
+}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px -10px rgba(139,92,246,.55); }
+.btn-ghost{ background: var(--surface); color: var(--text); }
+.btn-ghost:hover{ border-color: var(--accent); background: var(--surface-strong); transform: translateY(-2px); }
+.btn-block{ width: 100%; }
+
+/* ---------- background fx ---------- */
+.bg-grid{
+  position: fixed; inset: 0; z-index: -2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+.bg-glow{
+  position: fixed; inset: 0; z-index: -3; background: var(--bg);
+}
+.bg-glow::before, .bg-glow::after{
+  content: ""; position: absolute; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px;
+  border-radius: 50%; filter: blur(120px); opacity: .18;
+}
+.bg-glow::before{ background: var(--accent-3); top: -12%; left: -10%; }
+.bg-glow::after{ background: var(--accent-2); bottom: -18%; right: -8%; }
+#fx-canvas{ position: fixed; inset: 0; z-index: -1; opacity: .5; pointer-events: none; }
+
+/* ---------- nav ---------- */
+.nav{
+  position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+/* Blur lives on a pseudo-element (not on .nav itself) so backdrop-filter doesn't
+   turn .nav into a containing block for its position:fixed mobile-menu descendant. */
+.nav::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(5,7,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.nav .container{ display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand{ display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; font-size: 1.05rem; }
+.brand-mark{ width: 34px; height: 34px; }
+.brand small{ display: block; font-family: var(--font-mono); font-weight: 400; font-size: .68rem; color: var(--text-faint); letter-spacing: .06em; }
+
+.nav-links{ display: flex; align-items: center; gap: 30px; }
+.nav-links a{ font-size: .92rem; color: var(--text-dim); position: relative; }
+.nav-links a:hover, .nav-links a.is-active{ color: var(--text); }
+.nav-links a.is-active::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--gradient);
+}
+
+.nav-right{ display: flex; align-items: center; gap: 14px; }
+
+.lang-switch{ position: relative; }
+.lang-btn{
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px;
+  font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-dim);
+  transition: border-color .2s ease, color .2s ease;
+}
+.lang-btn:hover{ border-color: var(--accent); color: var(--text); }
+.lang-menu{
+  position: absolute; top: calc(100% + 10px); inset-inline-end: 0; min-width: 168px; max-height: 320px; overflow-y: auto;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow); padding: 6px; display: none; flex-direction: column; gap: 2px;
+}
+.lang-switch.is-open .lang-menu{ display: flex; }
+.lang-menu a{
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 9px 10px; border-radius: 6px; font-size: .86rem; color: var(--text-dim); text-align: left;
+}
+.lang-menu a:hover{ background: var(--surface-strong); color: var(--text); }
+.lang-menu a[aria-current="true"]{ color: var(--accent); background: var(--surface); }
+.lang-menu .code{ font-family: var(--font-mono); font-size: .72rem; color: var(--text-faint); }
+
+.nav-toggle{ display: none; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; align-items: center; justify-content: center; }
+.nav-toggle span{ display: block; width: 18px; height: 2px; background: var(--text); position: relative; }
+.nav-toggle span::before, .nav-toggle span::after{ content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: var(--text); transition: transform .2s ease; }
+.nav-toggle span::before{ top: -6px; } .nav-toggle span::after{ top: 6px; }
+
+@media (max-width: 880px){
+  .nav-links{
+    position: fixed; inset: var(--nav-h) 0 0 0; flex-direction: column; align-items: stretch;
+    background: var(--bg-alt); padding: 28px 24px; gap: 4px; transform: translateY(-8px);
+    opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    border-top: 1px solid var(--border); overflow-y: auto;
+  }
+  .nav-links a{ padding: 14px 6px; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+  body.menu-open .nav-links{ opacity: 1; pointer-events: auto; transform: none; }
+  .nav-toggle{ display: flex; }
+}
+
+/* ---------- hero ---------- */
+.hero{ padding: 76px 0 60px; }
+.hero-grid{ display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+@media (max-width: 980px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+.hero-title{ font-size: clamp(2.3rem, 5.4vw, 3.8rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.hero-subtitle{ margin-top: 20px; font-size: 1.14rem; color: var(--text-dim); max-width: 560px; }
+.hero-actions{ display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+
+.stat-row{ display: grid; grid-template-columns: repeat(4, auto); gap: 32px; margin-top: 56px; }
+.stat-value{ font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.stat-label{ margin-top: 4px; font-size: .78rem; color: var(--text-faint); max-width: 120px; }
+@media (max-width: 620px){ .stat-row{ grid-template-columns: repeat(2, auto); row-gap: 24px; } }
+
+/* terminal card — stays LTR chrome (dots, prompt) even on RTL pages, like any code/terminal widget */
+.terminal{
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); overflow: hidden; direction: ltr; text-align: start;
+}
+.terminal-bar{ display: flex; align-items: center; gap: 8px; padding: 14px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.terminal-dot{ width: 11px; height: 11px; border-radius: 50%; }
+.terminal-dot:nth-child(1){ background: #ff6159; }
+.terminal-dot:nth-child(2){ background: #ffbd2e; }
+.terminal-dot:nth-child(3){ background: #27c93f; }
+.terminal-title{ margin-inline-start: 8px; font-family: var(--font-mono); font-size: .74rem; color: var(--text-faint); }
+.terminal-body{ padding: 22px 22px 26px; font-family: var(--font-mono); font-size: .9rem; min-height: 260px; }
+.term-line{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.term-prompt{ color: var(--accent); flex-shrink: 0; }
+.term-cmd{ color: var(--text); }
+.term-out{ color: var(--text-dim); padding-inline-start: 20px; margin-top: 4px; flex-basis: 100%; }
+.term-cursor{ display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+@keyframes blink{ 50%{ opacity: 0; } }
+
+/* ---------- about ---------- */
+.about-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+@media (max-width: 900px){ .about-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.about-copy p{ color: var(--text-dim); margin-bottom: 18px; font-size: 1.02rem; }
+.about-badges{ display: flex; flex-direction: column; gap: 14px; }
+.about-badge{
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--surface);
+}
+.about-badge .dot{ width: 10px; height: 10px; border-radius: 50%; background: var(--gradient); flex-shrink: 0; }
+.about-badge span.label{ font-weight: 600; font-size: .95rem; }
+
+/* ---------- stack grid ---------- */
+.stack-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px){ .stack-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px){ .stack-grid{ grid-template-columns: 1fr; } }
+.stack-card{
+  padding: 26px 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.stack-card:hover{ transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-strong); }
+.stack-icon{
+  width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  background: var(--gradient-soft); border: 1px solid var(--border); margin-bottom: 16px;
+}
+.stack-icon svg{ width: 22px; height: 22px; stroke: var(--accent); }
+.stack-card h3{ font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
+.stack-card p{ color: var(--text-dim); font-size: .92rem; }
+
+/* ---------- team ---------- */
+.team-wrap{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .team-wrap{ grid-template-columns: 1fr; gap: 32px; } }
+.team-list{ display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.team-row{ display: flex; align-items: center; gap: 18px; padding: 18px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.team-row:last-child{ border-bottom: 0; }
+.team-count{ font-family: var(--font-mono); font-weight: 700; color: var(--accent); font-size: 1.05rem; width: 34px; flex-shrink: 0; }
+.team-note{ margin-top: 20px; color: var(--text-faint); font-size: .9rem; font-style: italic; }
+.team-orb{
+  aspect-ratio: 1; border-radius: 50%; position: relative;
+  background: radial-gradient(circle at 35% 30%, rgba(94,234,212,.22), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(139,92,246,.25), transparent 55%),
+              var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.team-orb .orb-number{ font-family: var(--font-mono); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 800; }
+.team-orb .orb-label{ position: absolute; bottom: 14%; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+
+/* ---------- clients ---------- */
+.clients-grid{ display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+@media (max-width: 900px){ .clients-grid{ grid-template-columns: 1fr; gap: 32px; } }
+.games-block{ margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+.games-block .section-subtitle{ margin-top: 16px; max-width: 640px; }
+.clients-stat .value{ font-family: var(--font-mono); font-weight: 800; font-size: clamp(3rem, 7vw, 4.5rem); line-height: 1; }
+.clients-stat .label{ margin-top: 12px; color: var(--text-dim); font-size: 1rem; max-width: 260px; }
+.sectors-label{ font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
+.sector-chips{ display: flex; flex-wrap: wrap; gap: 10px; }
+.sector-chip{
+  padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
+  font-family: var(--font-mono); font-size: .84rem; color: var(--text-dim); transition: border-color .2s ease, color .2s ease;
+}
+.sector-chip:hover{ border-color: var(--accent); color: var(--text); }
+a.sector-chip{ cursor: pointer; }
+a.sector-chip:hover{ background: var(--surface-strong); }
+
+/* featured project card (home) */
+.featured-project{
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border);
+}
+.featured-card{
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); margin-top: 18px;
+  transition: border-color .2s ease;
+}
+.featured-card:hover{ border-color: var(--accent); }
+/* the media column stretches to whatever height the text needs; it must not set the
+   row height itself, or a long translation gets clipped by the overflow:hidden above */
+.featured-card .featured-media{ margin: 0; position: relative; min-height: 260px; background: var(--bg-elevated); }
+.featured-card .featured-media img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px){
+  .featured-card{ grid-template-columns: 1fr; }
+  .featured-card .featured-media{ aspect-ratio: 16/9; min-height: 0; }
+}
+.featured-body{ padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+.featured-body h3{ font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; margin: 6px 0 0; }
+.featured-body p{ color: var(--text-dim); margin-top: 14px; font-size: .98rem; }
+.featured-stats{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.featured-stats > div{ min-width: 0; }
+.featured-stats .value{ font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; line-height: 1; }
+.featured-stats .label{ color: var(--text-faint); font-size: .74rem; line-height: 1.35; margin-top: 6px; }
+@media (max-width: 420px){ .featured-stats{ grid-template-columns: 1fr 1fr; } }
+.featured-cta{
+  margin-top: 24px; align-self: flex-start; font-family: var(--font-mono); font-size: .84rem;
+  color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s ease;
+}
+.featured-card:hover .featured-cta{ border-bottom-color: var(--accent); }
+
+/* ---------- game case study pages ---------- */
+.game-shot-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+@media (max-width: 720px){ .game-shot-grid{ grid-template-columns: 1fr; } }
+.game-shot{
+  position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-elevated); margin: 0;
+}
+.game-shot.is-placeholder{
+  border-style: dashed; border-color: var(--border-strong);
+  background: radial-gradient(circle at 30% 20%, rgba(94,234,212,.14), transparent 55%),
+              radial-gradient(circle at 75% 80%, rgba(139,92,246,.16), transparent 55%),
+              var(--bg-elevated);
+  display: flex; align-items: flex-end; padding: 16px;
+}
+.game-shot span{ font-family: var(--font-mono); font-size: .78rem; color: var(--text-faint); }
+.game-shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-shot figcaption{
+  position: absolute; inset-inline: 0; bottom: 0; padding: 22px 14px 10px;
+  background: linear-gradient(to top, rgba(5,7,13,.85), transparent);
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text);
+}
+.game-shots-note{ margin-top: 14px; font-size: .82rem; color: var(--text-faint); font-style: italic; }
+
+/* zoomable thumbnails + lightbox (built by initLightbox in main.js) */
+.game-shot.is-zoomable{ cursor: zoom-in; transition: border-color .2s ease, transform .2s ease; }
+.game-shot.is-zoomable:hover{ border-color: var(--accent); }
+.game-shot.is-zoomable:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference){
+  .game-shot.is-zoomable:hover{ transform: translateY(-2px); }
+}
+body.lightbox-open{ overflow: hidden; }
+.lightbox{
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  padding: 56px 24px; background: rgba(3,5,10,.94);
+}
+.lightbox[hidden]{ display: none; }
+.lightbox-figure{ margin: 0; max-width: min(1200px, 100%); max-height: 100%; display: flex; flex-direction: column; gap: 12px; }
+.lightbox-figure img{
+  max-width: 100%; max-height: calc(100vh - 150px); width: auto; height: auto;
+  object-fit: contain; display: block; margin: 0 auto;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--bg-elevated);
+}
+.lightbox-figure figcaption{
+  display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: center; align-items: baseline;
+  font-family: var(--font-mono); font-size: .82rem; color: var(--text-dim); text-align: center;
+}
+.lightbox-count{ color: var(--text-faint); }
+.lightbox-close, .lightbox-nav{
+  position: absolute; border: 1px solid var(--border-strong); border-radius: 999px;
+  background: var(--surface); color: var(--text); cursor: pointer; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s ease, background .2s ease;
+}
+.lightbox-close:hover, .lightbox-nav:hover{ border-color: var(--accent); background: var(--surface-strong); }
+.lightbox-close:focus-visible, .lightbox-nav:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+.lightbox-close{ top: 14px; inset-inline-end: 16px; width: 40px; height: 40px; font-size: 1.5rem; }
+.lightbox-nav{ top: 50%; transform: translateY(-50%); width: 44px; height: 44px; font-size: 1.8rem; }
+.lightbox-prev{ inset-inline-start: 14px; }
+.lightbox-next{ inset-inline-end: 14px; }
+[dir="rtl"] .lightbox-prev, [dir="rtl"] .lightbox-next{ transform: translateY(-50%) scaleX(-1); }
+@media (max-width: 620px){
+  .lightbox{ padding: 64px 12px 24px; }
+  .lightbox-nav{ top: auto; bottom: 14px; transform: none; }
+  [dir="rtl"] .lightbox-prev, [dir="rtl"] .lightbox-next{ transform: scaleX(-1); }
+  .lightbox-figure img{ max-height: calc(100vh - 210px); }
+}
+.store-row{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+/* ---------- process ---------- */
+.process-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 980px){ .process-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .process-grid{ grid-template-columns: 1fr; } }
+.process-card{ padding: 26px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); position: relative; }
+.process-step{ font-family: var(--font-mono); color: var(--text-faint); font-size: .8rem; margin-bottom: 14px; }
+.process-card h3{ font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.process-card p{ color: var(--text-dim); font-size: .9rem; }
+.process-callout{
+  margin-top: 40px; padding: 22px 26px; border-radius: var(--radius); border: 1px dashed var(--border-strong);
+  display: flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: .92rem; color: var(--text);
+  background: var(--gradient-soft);
+}
+
+/* ---------- contact form ---------- */
+.field{ margin-bottom: 18px; }
+.field label{ display: block; font-size: .82rem; color: var(--text-dim); margin-bottom: 8px; font-family: var(--font-mono); }
+.field input, .field textarea{
+  width: 100%; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); background: var(--surface-strong); outline: none; }
+.field textarea{ resize: vertical; min-height: 100px; }
+.form-note{ margin-top: 16px; font-size: .8rem; color: var(--text-faint); }
+.form-sent-title{ font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); margin-bottom: 8px; }
+
+/* ---------- location ---------- */
+.location-box{
+  border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 56px; text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.14), transparent 60%), var(--bg-elevated);
+}
+.location-badge{
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .78rem;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--danger); margin-top: 22px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.location-badge::before{ content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+.location-box p{ color: var(--text-dim); max-width: 620px; margin: 0 auto; font-size: 1.02rem; }
+
+/* ---------- footer ---------- */
+.footer{ border-top: 1px solid var(--border); padding: 48px 0; }
+.footer .container{ display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand{ display: flex; align-items: center; gap: 12px; }
+.footer-tagline{ font-size: .82rem; color: var(--text-faint); }
+.footer-links{ display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a{ font-size: .86rem; color: var(--text-dim); }
+.footer-links a:hover{ color: var(--accent); }
+.footer-bottom{ margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- 404 ---------- */
+.notfound{ min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+.notfound-code{ font-family: var(--font-mono); font-size: clamp(4rem, 14vw, 8rem); font-weight: 800; line-height: 1; }
+.notfound p{ margin-top: 18px; color: var(--text-dim); font-size: 1.05rem; }
+.notfound .btn{ margin-top: 30px; }
+
+/* ---------- misc ---------- */
+.skip-link{
+  position: absolute; inset-inline-start: -9999px; top: 0; background: var(--accent); color: #04121a; padding: 12px 18px;
+  border-end-end-radius: 8px; z-index: 200; font-weight: 600;
+}
+.skip-link:focus{ inset-inline-start: 0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Gabriel Díaz Bernal — inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="navg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#navg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="26" fill="#05070d">GD</text>
+      </svg>
+      <span>Gabriel Díaz Bernal<small>Software de elite. Sob convite.</small></span>
+    </a>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+          <span class="code">PT</span>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ondelio.html">Español <span class="code">ES</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/en/ondelio.html">English <span class="code">EN</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/fr/ondelio.html">Français <span class="code">FR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/pt/ondelio.html" aria-current="true">Português <span class="code">PT</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ar/ondelio.html">العربية <span class="code">AR</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/zh/ondelio.html">中文 <span class="code">ZH</span></a>
+          <a role="menuitem" href="https://avanzagrabie.github.io/GrabieApps/ja/ondelio.html">日本語 <span class="code">JA</span></a>
+        </div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container" style="max-width:860px">
+      <div class="section-head reveal">
+        <p class="eyebrow">Aplicação própria · Em breve na Microsoft Store</p>
+        <h1 class="section-title">Ondelio</h1>
+        <p class="section-subtitle">Um programa para Windows 10 e 11 que recupera, copia, repara e apaga com segurança o que está nos seus discos. E diz-lhe a verdade sobre cada ficheiro. Também não é uma encomenda — é nosso.</p>
+      </div>
+
+      <div class="stat-row reveal" style="margin-top:0; margin-bottom:56px">
+        <div>
+          <div class="stat-value">6</div>
+          <div class="stat-label">idiomas, com o do Windows por predefinição</div>
+        </div>
+        <div>
+          <div class="stat-value">Só leitura</div>
+          <div class="stat-label">ao recuperar: nunca escreve na unidade que analisa</div>
+        </div>
+        <div>
+          <div class="stat-value">4</div>
+          <div class="stat-label">estados honestos por ficheiro: Recuperável, Parcial, Substituído ou Duvidoso</div>
+        </div>
+        <div>
+          <div class="stat-value">Em breve</div>
+          <div class="stat-label">na Microsoft Store · Windows 10 e 11 (64 bits)</div>
+        </div>
+      </div>
+
+      <div class="about-copy reveal">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">O que é o Ondelio</h2>
+        <p>O Ondelio ajuda quando algo se perdeu ou se avariou num disco, numa pen USB ou num cartão: ficheiros apagados por engano, uma unidade formatada, um disco que já não aparece ou que começa a falhar, uma foto ou um documento que não abre. Não é preciso saber de discos: o ecrã inicial pergunta «O que aconteceu?» e, conforme a sua escolha, o programa decide como analisar. Depois mostra uma lista de ficheiros com pré-visualização, diz com clareza o que é recuperável e o que não é, e recupera o que escolher para outra unidade.</p>
+        <p style="margin-top:18px">Além de recuperar, a mesma suite copia discos que falham, repara ficheiros danificados — fotos, documentos Office, ZIP e vídeos — e apaga com segurança o que quiser que não volte. Funciona inteiramente no seu computador: não recolhe dados nem precisa de Internet para trabalhar, e o seu motor de recuperação foi desenvolvido de raiz, sem código de outros programas de recuperação.</p>
+      </div>
+
+      <p class="sectors-label reveal" style="margin-top:48px">Capturas de ecrã</p>
+      <div class="game-shot-grid reveal">
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-pantalla-inicio.webp" width="1152" height="749" alt="O ecrã inicial: «O que aconteceu?»" loading="eager" decoding="async">
+          <figcaption>O ecrã inicial: «O que aconteceu?»</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-mira-aqui-papelera-nube.webp" width="1152" height="749" alt="Antes de analisar: reciclagem, versões anteriores e nuvem" loading="lazy" decoding="async">
+          <figcaption>Antes de analisar: reciclagem, versões anteriores e nuvem</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-resultados-vista-previa.webp" width="1152" height="749" alt="Resultados com pré-visualização e estado por ficheiro" loading="lazy" decoding="async">
+          <figcaption>Resultados com pré-visualização e estado por ficheiro</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-resultados-con-huecos.webp" width="1152" height="749" alt="Ficheiros que tocam zonas ilegíveis, marcados «Com lacunas»" loading="lazy" decoding="async">
+          <figcaption>Ficheiros que tocam zonas ilegíveis, marcados «Com lacunas»</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-aviso-disco-que-falla.webp" width="1152" height="749" alt="Aviso quando o disco dá erros: copiar primeiro" loading="lazy" decoding="async">
+          <figcaption>Aviso quando o disco dá erros: copiar primeiro</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-copia-verificada-sha256.webp" width="1152" height="749" alt="Cópia verificada, com a sua impressão digital SHA-256" loading="lazy" decoding="async">
+          <figcaption>Cópia verificada, com a sua impressão digital SHA-256</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-reparar-diagnostico-foto.webp" width="1152" height="749" alt="Diagnóstico de uma foto danificada: o que se conserva e o que se perde" loading="lazy" decoding="async">
+          <figcaption>Diagnóstico de uma foto danificada: o que se conserva e o que se perde</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-borrado-seguro-informe.webp" width="1152" height="749" alt="Eliminação segura, com relatório do que foi feito" loading="lazy" decoding="async">
+          <figcaption>Eliminação segura, com relatório do que foi feito</figcaption>
+        </figure>
+        <figure class="game-shot">
+          <img src="../assets/img/games/ondelio/ondelio-idioma-ingles.webp" width="1152" height="749" alt="O mesmo ecrã em inglês: seis idiomas" loading="lazy" decoding="async">
+          <figcaption>O mesmo ecrã em inglês: seis idiomas</figcaption>
+        </figure>
+      </div>
+      <p class="game-shots-note reveal">Capturas do programa em desenvolvimento, com ficheiros e discos de exemplo. As funções previstas que ainda não estão disponíveis não aparecem aqui, e o design final pode mudar.</p>
+
+      <div class="location-box reveal" style="margin:48px 0; padding:40px">
+        <h2 class="section-title" style="font-size:1.4rem">Diz a verdade, mesmo quando não é o que quer ouvir</h2>
+        <p style="margin-top:14px">Nenhum programa consegue recuperar dados que já foram substituídos nem, normalmente, o que foi apagado num SSD com TRIM. O Ondelio di-lo com clareza e avisa quando deteta sinais disso, em vez de prometer o impossível. Cada ficheiro tem um estado — Recuperável, Parcial, Substituído ou Duvidoso — e o seu conteúdo pode ser verificado antes de recuperar (Verificado, Estrutura correta ou Danificado), pelo que sabe o que esperar antes de guardar fosse o que fosse.</p>
+        <p style="margin-top:18px">E não faz mal: para recuperar, abre os discos só para leitura e não deixa guardar o recuperado na unidade que está a analisar, porque um ficheiro apagado continua lá até algo novo o substituir. As poucas funções que escrevem num disco estão separadas, avisam e pedem confirmação. O reparador trabalha sempre sobre uma cópia nova e diz o que se conserva, o que se perde e o que não se pode garantir. E a eliminação segura dá um relatório, não um «certificado»: num SSD ou numa pen USB avisa que substituir os dados não garante apagar as cópias internas do suporte.</p>
+      </div>
+
+      <p class="sectors-label reveal">O que já está feito</p>
+      <div class="about-badges reveal" style="margin-top:14px; margin-bottom:48px">
+        <div class="about-badge"><span class="dot"></span><span class="label">Recuperação de ficheiros apagados e de unidades formatadas em NTFS, FAT (16 e 32) e exFAT, ou a partir de uma imagem de disco</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">«Veja aqui»: antes de analisar, procura na reciclagem, nas versões anteriores do Windows, no Histórico de Ficheiros, no Windows.old e na sua nuvem</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Recuperação por assinaturas: fotos, documentos, áudio e vídeo encontrados pelo conteúdo, com um nome útil tirado dos seus próprios dados</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Cópia exata de um disco que falha para um ficheiro de imagem, que se pode cancelar, retomar e verificar</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Reparação de fotos PNG e JPEG, ZIP, documentos Word, Excel e PowerPoint e vídeos MP4 e MOV, sempre numa cópia nova</span></div>
+        <div class="about-badge"><span class="dot"></span><span class="label">Ondelio Sense: um pequeno modelo que corre no seu próprio computador, sem Internet, para diagnosticar o espaço livre e detetar conteúdo alheio dentro de uma foto</span></div>
+      </div>
+
+      <div class="about-copy reveal" style="margin:48px 0">
+        <h2 class="section-title" style="font-size:1.4rem; margin-bottom:14px">O que ainda não existe</h2>
+        <p>Em desenvolvimento e ainda não disponível: copiar de disco para disco, apagar um disco inteiro, uma secção específica para pens USB e cartões (com deteção de pens falsas e fotos RAW de câmara), o aviso de saúde do disco, recuperar um documento não guardado, miniaturas como último recurso, ajuda perante ransomware e uma edição portátil em USB. Até existirem, não as damos como feitas.</p>
+        <h2 class="section-title" style="font-size:1.4rem; margin:32px 0 14px">Grátis para verificar, pago para o avançado</h2>
+        <p>Analisar e ver o que se pode recuperar é grátis, com pré-visualização; tal como «Veja aqui», copiar um disco para uma imagem, diagnosticar ficheiros danificados e apagar ficheiros, pastas e espaço livre. Recuperar até 500 MB no total é grátis, para comprovar que funciona. As funções avançadas (recuperar sem esse limite, clonar, guardar a cópia reparada e apagar discos inteiros) serão complementos pagos na Microsoft Store, com um pacote Pro. Cancelar, verificar e os relatórios nunca são limitados.</p>
+        <h2 class="section-title" style="font-size:1.4rem; margin:32px 0 14px">Como o testámos, e onde estão os limites</h2>
+        <p>Em testes de laboratório, com imagens de disco criadas para o efeito (eliminação em FAT32, NTFS e exFAT, formatação rápida, tabela de partições destruída e recuperação por conteúdo), os ficheiros recuperados coincidiram byte a byte com os originais. São testes de laboratório, não uma promessa para cada disco: cada caso real depende do que foi escrito depois.</p>
+        <p style="margin-top:18px">Por agora, não analisa discos cifrados com BitLocker nem extrai ficheiros cifrados com EFS, e um disco fisicamente danificado pode precisar de um serviço especializado: por isso o Ondelio recomenda copiá-lo primeiro. As traduções para francês, alemão, italiano e português continuam a ser afinadas.</p>
+      </div>
+
+      <div class="process-callout reveal" style="margin-bottom:48px">
+        <span>É mais um dos nossos projetos próprios de que contamos este nível de detalhe — os restantes continuam, por agora, estritamente secretos.</span>
+      </div>
+
+      <a class="btn btn-primary reveal" href="index.html">← Voltar para Gabriel Díaz Bernal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="footg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#footg)"/>
+        <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="Segoe UI, sans-serif" font-weight="800" font-size="24" fill="#05070d">GD</text>
+      </svg>
+      <div>
+        <div>Gabriel Díaz Bernal</div>
+        <div class="footer-tagline">Software de elite. Sob convite.</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Enlaces de pie de página">
+      <a href="index.html#about">Sobre mim</a>
+      <a href="index.html#stack">Stack</a>
+      <a href="index.html#clients">Clientes</a>
+      <a href="index.html#contact">Contato</a>
+      <a href="privacy.html">Privacidade</a>
+      <a href="https://github.com/avanzagrabie" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Gabriel Díaz Bernal — <span>Todos os direitos reservados.</span></span>
+    <span>Site construído com precisão de engenharia.</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   Gabriel Díaz Bernal — interactions
+   Nav, language switcher, scroll reveal, terminal typewriter,
+   background canvas. Vanilla JS, no dependencies.
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initNav();
+    initLangSwitch();
+    initReveal();
+    initActiveLink();
+    initTerminal();
+    initBackgroundFx();
+    initContactForm();
+    initYear();
+    initLightbox();
+  });
+
+  /* ---------- mobile nav ---------- */
+  function initNav() {
+    var toggle = document.querySelector(".nav-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      var open = document.body.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    var links = document.querySelectorAll(".nav-links a");
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", function () {
+        document.body.classList.remove("menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    }
+  }
+
+  /* ---------- language switcher ----------
+     Each language lives at its own crawlable URL (/, /en/, /fr/...);
+     the menu items are plain <a> links, so switching is just navigation.
+     This JS only opens/closes the dropdown. */
+  function initLangSwitch() {
+    var switcher = document.querySelector(".lang-switch");
+    if (!switcher) return;
+    var btn = switcher.querySelector(".lang-btn");
+    var menu = switcher.querySelector(".lang-menu");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      switcher.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", switcher.classList.contains("is-open") ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!switcher.contains(e.target)) switcher.classList.remove("is-open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") switcher.classList.remove("is-open");
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  function initReveal() {
+    var items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("is-visible"); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    items.forEach(function (el) { obs.observe(el); });
+  }
+
+  /* ---------- active nav link on scroll ---------- */
+  function initActiveLink() {
+    var links = document.querySelectorAll('.nav-links a[href^="#"]');
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var section = document.getElementById(id);
+      if (section) map[id] = a;
+    });
+    var ids = Object.keys(map);
+    if (!ids.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = map[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove("is-active"); });
+          link.classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+
+    ids.forEach(function (id) { obs.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- terminal typewriter ---------- */
+  var terminalTimer = null;
+
+  function initTerminal() {
+    var body = document.querySelector(".terminal-body");
+    if (!body) return;
+    runTerminal(body);
+  }
+
+  function runTerminal(body) {
+    if (terminalTimer) { clearTimeout(terminalTimer); terminalTimer = null; }
+    var lines = window.GDB_TERMINAL_LINES;
+    if (!lines || !lines.length) return;
+
+    body.innerHTML = "";
+
+    if (reduceMotion) {
+      lines.forEach(function (l) {
+        body.appendChild(buildLine(l.cmd, l.out, true));
+      });
+      return;
+    }
+
+    var lineIndex = 0;
+    function nextLine() {
+      if (lineIndex >= lines.length) return;
+      var l = lines[lineIndex];
+      var row = buildLine("", "", false);
+      body.appendChild(row);
+      var cmdEl = row.querySelector(".term-cmd");
+      var cursor = row.querySelector(".term-cursor");
+      typeText(cmdEl, l.cmd, cursor, function () {
+        var outEl = row.querySelector(".term-out");
+        outEl.textContent = l.out;
+        outEl.style.display = "block";
+        cursor.remove();
+        lineIndex++;
+        terminalTimer = setTimeout(nextLine, 420);
+      });
+    }
+    nextLine();
+  }
+
+  function buildLine(cmd, out, immediate) {
+    var row = document.createElement("div");
+    row.className = "term-line";
+    var prompt = document.createElement("span");
+    prompt.className = "term-prompt";
+    prompt.textContent = "$";
+    var cmdEl = document.createElement("span");
+    cmdEl.className = "term-cmd";
+    var outEl = document.createElement("span");
+    outEl.className = "term-out";
+
+    if (immediate) {
+      cmdEl.textContent = cmd;
+      outEl.textContent = out;
+      row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(outEl);
+      return row;
+    }
+
+    var cursor = document.createElement("span");
+    cursor.className = "term-cursor";
+    outEl.style.display = "none";
+    row.appendChild(prompt); row.appendChild(cmdEl); row.appendChild(cursor); row.appendChild(outEl);
+    return row;
+  }
+
+  function typeText(el, text, cursor, done) {
+    var i = 0;
+    (function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        terminalTimer = setTimeout(step, 26);
+      } else {
+        done();
+      }
+    })();
+  }
+
+  /* ---------- background canvas: subtle drifting node network ---------- */
+  function initBackgroundFx() {
+    var canvas = document.getElementById("fx-canvas");
+    if (!canvas || reduceMotion) return;
+    var ctx = canvas.getContext("2d");
+    var w, h, nodes = [];
+    var NODE_COUNT = Math.min(46, Math.floor((window.innerWidth * window.innerHeight) / 34000));
+    var LINK_DIST = 140;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeNodes() {
+      nodes = [];
+      for (var i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      ctx.fillStyle = "rgba(94,234,212,0.55)";
+      for (var a = 0; a < nodes.length; a++) {
+        for (var b = a + 1; b < nodes.length; b++) {
+          var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            ctx.strokeStyle = "rgba(139,92,246," + (0.12 * (1 - dist / LINK_DIST)) + ")";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[a].x, nodes[a].y);
+            ctx.lineTo(nodes[b].x, nodes[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (var c = 0; c < nodes.length; c++) {
+        ctx.beginPath();
+        ctx.arc(nodes[c].x, nodes[c].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    makeNodes();
+    requestAnimationFrame(tick);
+    window.addEventListener("resize", function () {
+      resize();
+      makeNodes();
+    });
+  }
+
+  /* ---------- contact form ----------
+     Static site, no backend, and nowhere this data is sent: the
+     "invitation code" field is never transmitted or stored anywhere,
+     by this site or any third party. Submitting it just swaps the
+     visible UI state from the field to a confirmation message —
+     nothing leaves the browser, no navigation, no popup. */
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    var fields = document.getElementById("contact-form-fields");
+    var sent = document.getElementById("contact-form-sent");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (fields) fields.hidden = true;
+      if (sent) sent.hidden = false;
+    });
+  }
+
+  /* ---------- footer year ---------- */
+  function initYear() {
+    var el = document.getElementById("year");
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
+
+  /* ---------- gallery lightbox ----------
+     Capturas ampliables en las galerías de las páginas de proyecto.
+     Se construye entero desde JS para que ninguna plantilla tenga que
+     cambiar y funcione en todas las galerías existentes a la vez. Las
+     etiquetas van aquí y no en i18n.js porque el diccionario no viaja a
+     las páginas generadas (el texto se hornea en el build): son tres
+     cadenas de interfaz, se resuelven por el lang del <html>. */
+  var LB_LABELS = {
+    es: { close: "Cerrar", prev: "Anterior", next: "Siguiente", of: "de" },
+    en: { close: "Close", prev: "Previous", next: "Next", of: "of" },
+    fr: { close: "Fermer", prev: "Précédent", next: "Suivant", of: "sur" },
+    pt: { close: "Fechar", prev: "Anterior", next: "Seguinte", of: "de" },
+    ar: { close: "إغلاق", prev: "السابق", next: "التالي", of: "من" },
+    zh: { close: "关闭", prev: "上一张", next: "下一张", of: "/" },
+    ja: { close: "閉じる", prev: "前へ", next: "次へ", of: "/" }
+  };
+
+  function initLightbox() {
+    var figures = [].slice.call(document.querySelectorAll(".game-shot-grid .game-shot"));
+    var shots = figures.filter(function (f) { return f.querySelector("img"); });
+    if (!shots.length) return;
+
+    var t = LB_LABELS[(document.documentElement.lang || "es").slice(0, 2)] || LB_LABELS.es;
+    var index = 0;
+    var lastFocused = null;
+
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.hidden = true;
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="' + t.close + '">&times;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-prev" aria-label="' + t.prev + '">&#8249;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-next" aria-label="' + t.next + '">&#8250;</button>' +
+      '<figure class="lightbox-figure">' +
+      '<img alt="">' +
+      '<figcaption><span class="lightbox-caption"></span><span class="lightbox-count"></span></figcaption>' +
+      "</figure>";
+    document.body.appendChild(overlay);
+
+    var lbImg = overlay.querySelector("img");
+    var lbCaption = overlay.querySelector(".lightbox-caption");
+    var lbCount = overlay.querySelector(".lightbox-count");
+    var btnClose = overlay.querySelector(".lightbox-close");
+    var btnPrev = overlay.querySelector(".lightbox-prev");
+    var btnNext = overlay.querySelector(".lightbox-next");
+    // A single image needs no prev/next chrome.
+    if (shots.length < 2) { btnPrev.hidden = true; btnNext.hidden = true; }
+
+    function show(i) {
+      index = (i + shots.length) % shots.length;
+      var img = shots[index].querySelector("img");
+      var cap = shots[index].querySelector("figcaption");
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || "";
+      lbCaption.textContent = cap ? cap.textContent : "";
+      lbCount.textContent = shots.length > 1 ? String(index + 1) + " " + t.of + " " + String(shots.length) : "";
+      overlay.setAttribute("aria-label", lbImg.alt || lbCaption.textContent);
+    }
+
+    function open(i) {
+      lastFocused = document.activeElement;
+      show(i);
+      overlay.hidden = false;
+      document.body.classList.add("lightbox-open");
+      btnClose.focus();
+    }
+
+    function close() {
+      overlay.hidden = true;
+      document.body.classList.remove("lightbox-open");
+      lbImg.removeAttribute("src");
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    shots.forEach(function (fig, i) {
+      fig.classList.add("is-zoomable");
+      fig.tabIndex = 0;
+      fig.setAttribute("role", "button");
+      fig.addEventListener("click", function () { open(i); });
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(i); }
+      });
+    });
+
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", function () { show(index - 1); });
+    btnNext.addEventListener("click", function () { show(index + 1); });
+    // Clicking the backdrop closes; clicking the image or a control does not.
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+
+    document.addEventListener("keydown", function (e) {
+      if (overlay.hidden) return;
+      if (e.key === "Escape") { close(); return; }
+      if (shots.length < 2) return;
+      // In RTL the arrow that points at the previous thumbnail is the right one.
+      var rtl = document.documentElement.dir === "rtl";
+      if (e.key === "ArrowLeft") show(index + (rtl ? 1 : -1));
+      else if (e.key === "ArrowRight") show(index + (rtl ? -1 : 1));
+    });
+
+    // Keep focus inside the dialog while it is open.
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusables = [btnClose, btnPrev, btnNext].filter(function (b) { return !b.hidden; });
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
